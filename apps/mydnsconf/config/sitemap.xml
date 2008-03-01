@@ -1,0 +1,7 @@
+<map:sitemap xmlns:map="http://www.nexista.org/sitemap"> 
+    <map:prepend>
+    </map:prepend>
+    <map:gate name="welcome">
+        <map:script src="../../index.php"/>
+    </map:gate>
+</map:sitemap>

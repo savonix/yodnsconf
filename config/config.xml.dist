@@ -1,0 +1,87 @@
+<config>
+    <datasource id="mydns">
+        <type>mysql</type>
+        <hostname>127.0.0.1</hostname>
+        <database>pbooks</database>
+        <username>username</username>
+        <password>password</password>
+    </datasource>
+    <datasource id="auth">
+        <type>mysql</type>
+        <hostname>127.0.0.1</hostname>
+        <database>pbooks</database>
+        <username>username</username>
+        <password>password</password>
+    </datasource>	
+
+    <!-- AUTHENTICATION-->
+    <auth>       
+        <expire>0</expire>
+        <idle>0</idle>
+    </auth>
+
+    <session>
+		<active>1</active>
+        <cookieLifetime>0</cookieLifetime>
+        <cacheLimiter>private</cacheLimiter>
+        <cacheExpires>120000</cacheExpires>
+    </session>
+	
+    <!-- FLOW -->
+    <flow name="www">
+        <globals>PG</globals>
+        <request>PGFR</request>
+    </flow>
+    <flow name="dev">
+        <globals>PGC</globals>   
+        <request>PGFR</request>
+    </flow>
+	
+	
+	<modes>
+		<dev/>
+	</modes>
+	
+	<domain>
+		<server_name mode="dev">&server_name;</server_name>
+	</domain>
+    
+    <!-- PATH SETTINGS -->
+    <path>
+        <base>&includepath;nexista/</base>
+        <!-- I would like to simplify these -->
+        <builders>&includepath;nexista/modules/builders/</builders>
+        <handlers>&includepath;nexista/modules/handlers/</handlers>
+        <validators>&includepath;nexista/modules/validators/</validators>
+        <actions>&includepath;nexista/modules/actions/</actions>
+        
+        <applications>&project_root;/apps/&app_name;/</applications>
+        <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
+		<cache>&project_root;/cache/&server_name;/cache/</cache>
+        
+        <tmp>/tmp/php/</tmp>
+        <logs></logs>
+
+		<home>/index.php</home>
+    </path>
+
+    <!-- BUILD SETTINGS -->
+    <build>
+        <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
+        <sitemap>&project_root;/apps/&app_name;/config/sitemap.xml</sitemap>
+
+        <prepend>&project_root;/lib/php/prepend.php</prepend>
+        <!-- enter a gate name for missing when there is no match -->
+        <missing>welcome</missing>
+        <!-- this needs the relative url, not the gate -->
+        <default>index.php?nid=welcome</default>
+        <query>nid</query>
+    </build>
+
+	<!-- 0 = false, anything else = true -->
+    <runtime>
+        <development_console>0</development_console>
+        <cache>0</cache>
+        <debug>0</debug>
+    </runtime>
+</config>
