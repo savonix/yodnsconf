@@ -84,4 +84,6 @@
         <cache>0</cache>
         <debug>0</debug>
     </runtime>
+    <plugins>
+    </plugins>
 </config>
