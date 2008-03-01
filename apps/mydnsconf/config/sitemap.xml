@@ -2,6 +2,6 @@
     <map:prepend>
     </map:prepend>
     <map:gate name="welcome">
-        <map:script src="../../index.php"/>
+        <map:xsl src="templates/xsl/zones.xsl"/>
     </map:gate>
 </map:sitemap>
