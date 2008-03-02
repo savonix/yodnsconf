@@ -6,6 +6,9 @@ body {
 	font-size : 12px; 
 }
 
+img {
+    border: 0;
+}
 textarea,input.text,select,option{
 	color:#000;
 	font-family:CourierNew,Courier,monospace;
@@ -58,38 +61,4 @@ input {
 textarea {
 	border: 1px solid #BFCBD9;
 }
-
-.fieldTitle {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #000000;
-	font-weight:bold;
-	text-decoration: none;
-
-}
-
-.fielContent {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #000000;
-	text-decoration: none;
-
-}
-
-h2 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 18px;
-	color: #333333;
-	text-decoration: none;
-	font-weight:bold;
-}
-
-h3 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	color: #333333;
-	text-decoration: none;
-	font-weight:bold;
-}
-
 
