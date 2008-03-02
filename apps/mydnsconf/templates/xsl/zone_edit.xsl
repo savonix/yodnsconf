@@ -1,6 +1,6 @@
 <!--
 Program: MyDNSConf
-Component: soa_edit.xsl
+Component: zone_edit.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -30,47 +30,47 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Origin:</td>
     <td>
-        <input name="origin" type="text" class="text" value="{//soa_get_by_id/origin}" size="30" maxlength="255"/>
+        <input name="origin" type="text" class="text" value="{//zone_get_by_id/origin}" size="30" maxlength="255"/>
     </td>
   </tr>
   <tr>
     <td>Name Server:</td>
     <td>
-        <input name="ns" type="text" class="text" value="{//soa_get_by_id/ns}" size="30" maxlength="255"/></td>
+        <input name="ns" type="text" class="text" value="{//zone_get_by_id/ns}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>Admin Email:</td>
     <td>
-        <input name="mbox" type="text" class="text" value="{//soa_get_by_id/mbox}" size="30" maxlength="255"/></td>
+        <input name="mbox" type="text" class="text" value="{//zone_get_by_id/mbox}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>Serial No.:</td>
     <td>
-        <input name="serial" type="text" class="text" value="{//soa_get_by_id/ttl}" size="30" maxlength="255"/></td>
+        <input name="serial" type="text" class="text" value="{//zone_get_by_id/ttl}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>Refresh:</td>
     <td>
-        <input name="refresh" type="text" class="text" value="{//soa_get_by_id/refresh}" size="30" maxlength="255"/></td>
+        <input name="refresh" type="text" class="text" value="{//zone_get_by_id/refresh}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>Retry:</td>
-    <td><input name="retry" type="text" class="text" value="{//soa_get_by_id/retry}" size="30" maxlength="255"/></td>
+    <td><input name="retry" type="text" class="text" value="{//zone_get_by_id/retry}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>Expire:</td>
     <td>
-        <input name="expire" type="text" class="text" value="{//soa_get_by_id/expire}" size="30" maxlength="255"/></td>
+        <input name="expire" type="text" class="text" value="{//zone_get_by_id/expire}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>Minimum TTL:</td>
     <td>
-        <input name="minimum" type="text" class="text" value="{//soa_get_by_id/minimum}" size="30" maxlength="255"/></td>
+        <input name="minimum" type="text" class="text" value="{//zone_get_by_id/minimum}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td>TTL:</td>
     <td>
-        <input name="ttl" type="text" class="text" value="{//soa_get_by_id/ttl}" size="30" maxlength="255"/></td>
+        <input name="ttl" type="text" class="text" value="{//zone_get_by_id/ttl}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td valign="top">Active:</td>

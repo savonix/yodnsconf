@@ -45,12 +45,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
         <td align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
     </tr>
-    <xsl:for-each select="//soa_get_all">
+    <xsl:for-each select="//zones_get_all">
     <tr>
-        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
-        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
-        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
-        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
+        <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
+        <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
+        <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
+        <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
         <td align="right">[<a href="{//link_prefix}delete&amp;id={id}">Delete</a>]</td>
     </tr>
     </xsl:for-each> 

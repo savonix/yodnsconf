@@ -1,6 +1,6 @@
 <!--
 Program: MyDNSConf
-Component: soa_get_all.xml
+Component: zones_get_all.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,7 +22,7 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="soa_get_all">
+<query name="zones_get_all">
     <connection>mydnsconf</connection>
     <params>
 	</params>

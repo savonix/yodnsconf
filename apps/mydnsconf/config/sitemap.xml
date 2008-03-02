@@ -3,26 +3,34 @@
         <map:script src="lib/php/runtime.php"/>
     </map:prepend>
     <map:gate name="index">
-        <map:query src="data/sql/soa_get_all.xml"/>
+        <map:query src="data/sql/zones_get_all.xml"/>
         <map:xsl src="templates/xsl/zones.xsl"/>
     </map:gate>
-    <map:gate name="soa-edit">
-        <map:query src="data/sql/soa_get_by_id.xml"/>
-        <map:xsl src="templates/xsl/soa_edit.xsl"/>
+    <map:gate name="zone-edit">
+        <map:if name="//_post">
+            <map:true>
+                <map:query src="data/sql/zone_update.xml"/>
+                <map:action type="redirect" params="{//link_prefix}zone-edit&amp;zone={//_post/zone}"/>
+            </map:true>
+            <map:false>
+            </map:false>
+        </map:if>
+        <map:query src="data/sql/zone_get_by_id.xml"/>
+        <map:xsl src="templates/xsl/zone_edit.xsl"/>
     </map:gate>
-    <map:gate name="soa-delete">
-        <map:query src="data/sql/soa_delete.xml"/>
+    <map:gate name="zone-delete">
+        <map:query src="data/sql/zone_delete.xml"/>
         <map:action type="redirect" params="index"/>
     </map:gate>
     <map:gate name="records">
         <map:xml src="data/xml/dns_record_types.xml"/>
-        <map:query src="data/sql/soa_get_by_id.xml"/>
-        <map:query src="data/sql/records_get_by_soa_id.xml"/>
+        <map:query src="data/sql/zone_get_by_id.xml"/>
+        <map:query src="data/sql/records_get_by_zone_id.xml"/>
         <map:xsl src="templates/xsl/records.xsl"/>
     </map:gate>
     <map:gate name="record-edit">
         <map:xml src="data/xml/dns_record_types.xml"/>
-        <map:query src="data/sql/soa_get_by_id.xml"/>
+        <map:query src="data/sql/zone_get_by_id.xml"/>
         <map:query src="data/sql/record_get_by_id.xml"/>
         <map:xsl src="templates/xsl/record_edit.xsl"/>
     </map:gate>

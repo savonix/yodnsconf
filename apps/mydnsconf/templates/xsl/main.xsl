@@ -40,9 +40,9 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 </xsl:for-each>
 <div id="main-menu">
     <a href="{//link_prefix}index">Zones</a>
-    <a href="{//link_prefix}soa-edit">New Zone</a>
+    <a href="{//link_prefix}zone-edit">New Zone</a>
     <xsl:if test="//_get/zone">
-    <a href="{//link_prefix}soa-edit&amp;zone={//_get/zone}" class="sub"><xsl:value-of select="//soa_get_by_id/origin"/></a>
+    <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub"><xsl:value-of select="//zone_get_by_id/origin"/></a>
     <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">Records</a>
     <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">New Record</a>
     </xsl:if>
