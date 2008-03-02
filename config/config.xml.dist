@@ -1,7 +1,7 @@
 <!-- This is a configuration file for Nexista applications. It can be
 used for a single or several applications. -->
 <config>
-    <datasource id="pbooks">
+    <datasource id="yodnsconf">
         <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
