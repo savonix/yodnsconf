@@ -50,14 +50,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </td>
     <td class="frmText11" align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
   </tr>
+  
+  <xsl:for-each select="//soa_get_all">
     <tr bgcolor="#EEEEEE">
-    <td class="frmText11"><a href="soa_edit.php?id=1" class="frmText11">dddddf.com.</a></td>
-    <td class="frmText11"><a href="soa_edit.php?id=1" class="frmText11">ns1.example.com.</a></td>
-    <td class="frmText11"><a href="soa_edit.php?id=1" class="frmText11">86400</a></td>
-    <td class="frmText11"><a href="soa_edit.php?id=1" class="frmText11">Yes</a></td>
-    <td class="frmText11" align="right">[<a href="javascript: del_record('');" class="frmText11">Delete</a>]</td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="origin"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="ns"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="ttl"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="active"/></a></td>
+    <td class="frmText11" align="right">[<a href="{//link_prefix}delete&amp;id={id}" class="frmText11">Delete</a>]</td>
   </tr>
-
+</xsl:for-each> 
   
   <tr>
           <td colspan="5" height="40" align="center" class="tblFooter">

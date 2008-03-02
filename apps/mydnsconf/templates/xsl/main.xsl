@@ -27,8 +27,6 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:template match="/">
 <html>
 <head>
-<pun_head/>
-<link rel="stylesheet" type="text/css" href="s/style/Oxygen.css" />
 <xsl:for-each select="//in_head">
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
@@ -39,7 +37,6 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
-
     <xsl:call-template name="content"/>
 
 <xsl:for-each select="//footer">

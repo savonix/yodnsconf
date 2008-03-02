@@ -1,8 +1,25 @@
 <map:sitemap xmlns:map="http://www.nexista.org/sitemap"> 
     <map:prepend>
+        <map:script src="lib/php/runtime.php"/>
     </map:prepend>
-    <map:gate name="welcome">
+    <map:gate name="index">
         <map:query src="data/sql/soa_get_all.xml"/>
         <map:xsl src="templates/xsl/zones.xsl"/>
+    </map:gate>
+    <map:gate name="soa-edit">
+        <map:query src="data/sql/soa_get_by_id.xml"/>
+        <map:xsl src="templates/xsl/soa_edit.xsl"/>
+    </map:gate>
+    <map:gate name="soa-delete">
+        <map:query src="data/sql/soa_delete.xml"/>
+        <map:action type="redirect" params="index"/>
+    </map:gate>
+    <map:gate name="records">
+        <map:query src="data/sql/records_get_by_soa_id.xml"/>
+        <map:xsl src="templates/xsl/records.xsl"/>
+    </map:gate>
+    <map:gate name="record-edit">
+        <map:query src="data/sql/record_get_by_id.xml"/>
+        <map:xsl src="templates/xsl/record_edit.xsl"/>
     </map:gate>
 </map:sitemap>
