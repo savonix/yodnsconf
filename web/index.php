@@ -13,8 +13,8 @@ $server_name = $_SERVER['SERVER_NAME'];
 define('SERVER_NAME',$server_name);
 $project_root = dirname(dirname(__FILE__));
 define('PROJECT_ROOT',$project_root);
-define('PROJECT_NAME','mydnsconf');
-define('APP_NAME','mydnsconf');
+define('PROJECT_NAME','yodnsconf');
+define('APP_NAME','yodnsconf');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
