@@ -34,19 +34,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Type:</td>
     <td>
-                <select name="type" class="text">
-                        <option value="A">A</option>
-                        <option value="AAAA">AAAA</option>
-                        <option value="ALIAS">ALIAS</option>
-                        <option value="CNAME">CNAME</option>
-                        <option value="HINFO">HINFO</option>
-                        <option value="MX">MX</option>
-                        <option value="NS">NS</option>
-                        <option value="PTR">PTR</option>
-                        <option value="RP">RP</option>
-                        <option value="SRV">SRV</option>
-                        <option value="TXT">TXT</option>
-                </select>
+    <select name="type" class="text">
+    <xsl:for-each select="//record_types/type">
+        <xsl:variable name="this_type"><xsl:value-of select="."/></xsl:variable>
+        <option value="{type}">
+            <xsl:if test="//record_get_by_id/type=$this_type">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="."/>
+        </option>
+    </xsl:for-each>
+</select>
         </td>
   </tr>
   <tr>
@@ -55,7 +53,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input name="data" type="text" class="text" value="{//record_get_by_id/data}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-
     <td>Preference/Priority:</td>
     <td><input name="aux" type="text" class="text" value="{//record_get_by_id/aux}" size="30" maxlength="255"/></td>
   </tr>

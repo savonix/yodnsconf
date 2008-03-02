@@ -24,47 +24,43 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
-<form method="post" action="soa_list.php" name="myform" enctype="multipart/form-data">
-<table width="100%" border="0" cellspacing="0" cellpadding="4">
-
-  <tr>
-    <td class="tblHead">Origin</td>
-    <td class="tblHead">Name Server</td>
-
-    <td class="tblHead">TTL</td>
-    <td class="tblHead">Active</td>
-
-    <td class="tblHead"></td>
-  </tr>
-  <tr>
-    <td class="frmText11"><input type="text" name="search_origin" value="" class="text" /></td>
-    <td class="frmText11"><input type="text" name="search_ns" value="" class="text" /></td>
-    <td class="frmText11"><input type="text" name="search_ttl" value="" class="text" /></td>
-    <td class="frmText11">
-        <select name="search_active" onChange="document.myform.submit();"><option value=""></option>
-        <option value='Y'>Yes</option>
-        <option value='N'>No</option>
-        </select>
-    </td>
-    <td class="frmText11" align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
-  </tr>
-  
-  <xsl:for-each select="//soa_get_all">
-    <tr bgcolor="#EEEEEE">
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="origin"/></a></td>
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="ns"/></a></td>
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="ttl"/></a></td>
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="active"/></a></td>
-    <td class="frmText11" align="right">[<a href="{//link_prefix}delete&amp;id={id}" class="frmText11">Delete</a>]</td>
-  </tr>
-</xsl:for-each> 
-  
-  <tr>
-          <td colspan="5" height="40" align="center" class="tblFooter">
-              <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png" border="0"/></a>Page 1 of 1 
-              <a href="soa_list.php?page=0"> <img src="{//path_prefix}s/themes/grey/images/btn_right.png" border="0"/></a>
-          </td>
-  </tr>
+<form method="post" name="myform" enctype="multipart/form-data">
+<table width="100%">
+    <tr>
+        <td>Origin</td>
+        <td>Name Server</td>
+        <td>TTL</td>
+        <td>Active</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><input type="text" name="search_origin" value="" class="text" /></td>
+        <td><input type="text" name="search_ns" value="" class="text" /></td>
+        <td><input type="text" name="search_ttl" value="" class="text" /></td>
+        <td>
+            <select name="search_active" onChange="document.myform.submit();"><option value=""></option>
+            <option value='Y'>Yes</option>
+            <option value='N'>No</option>
+            </select>
+        </td>
+        <td align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
+    </tr>
+    <xsl:for-each select="//soa_get_all">
+    <tr>
+        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
+        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
+        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
+        <td><a href="{//link_prefix}soa-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
+        <td align="right">[<a href="{//link_prefix}delete&amp;id={id}">Delete</a>]</td>
+    </tr>
+    </xsl:for-each> 
+    <tr>
+        <td colspan="5" height="40" align="center">
+            <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png"/></a>
+            Page 1 of 1 
+            <a href=""> <img src="{//path_prefix}s/themes/grey/images/btn_right.png"/></a>
+        </td>
+    </tr>
 </table>
 </form>
 </xsl:template>

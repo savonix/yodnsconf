@@ -27,7 +27,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <form method="post" action="soa_edit.php" name="myform" enctype="multipart/form-data">
 <table width="100%">
   <tr>
-
     <td>Origin:</td>
     <td>
         <input name="origin" type="text" class="text" value="{//soa_get_by_id/origin}" size="30" maxlength="255"/>
@@ -39,7 +38,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input name="ns" type="text" class="text" value="{//soa_get_by_id/ns}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-
     <td>Admin Email:</td>
     <td>
         <input name="mbox" type="text" class="text" value="{//soa_get_by_id/mbox}" size="30" maxlength="255"/></td>
@@ -50,7 +48,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input name="serial" type="text" class="text" value="{//soa_get_by_id/ttl}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-
     <td>Refresh:</td>
     <td>
         <input name="refresh" type="text" class="text" value="{//soa_get_by_id/refresh}" size="30" maxlength="255"/></td>
@@ -60,7 +57,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td><input name="retry" type="text" class="text" value="{//soa_get_by_id/retry}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-
     <td>Expire:</td>
     <td>
         <input name="expire" type="text" class="text" value="{//soa_get_by_id/expire}" size="30" maxlength="255"/></td>
@@ -71,7 +67,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input name="minimum" type="text" class="text" value="{//soa_get_by_id/minimum}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-
     <td>TTL:</td>
     <td>
         <input name="ttl" type="text" class="text" value="{//soa_get_by_id/ttl}" size="30" maxlength="255"/></td>
@@ -86,10 +81,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Zone Transfers:</td>
     <td><input name="xfer" type="text" class="text" value="" size="30" maxlength="255"/></td>
-  </tr>  <tr>
-    <td></td>
-    <td></td>
-
   </tr>
   <tr>
     <td></td>

@@ -1,0 +1,13 @@
+<record_types>
+    <type>A</type>
+    <type>AAAA</type>
+    <type>ALIAS</type>
+    <type>CNAME</type>
+    <type>HINFO</type>
+    <type>MX</type>
+    <type>NS</type>
+    <type>PTR</type>
+    <type>RP</type>
+    <type>SRV</type>
+    <type>TXT</type>
+</record_types>
