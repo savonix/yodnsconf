@@ -25,52 +25,49 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 <form method="post" action="rr_edit.php" name="myform" enctype="multipart/form-data">
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<table width="100%">
   <tr>
-    <td width="126" class="frmText11">Name:</td>
-    <td width="366" class="frmText11">
-        <input name="name" type="text" class="text" value="1" size="30" maxlength="255"/></td>
+    <td>Name:</td>
+    <td>
+        <input name="name" type="text" class="text" value="{//record_get_by_id/name}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Type:</td>
-    <td width="366" class="frmText11">
+    <td>Type:</td>
+    <td>
                 <select name="type" class="text">
-                        <option value='A'>A</option>
-                        <option value='AAAA'>AAAA</option>
-                        <option value='ALIAS'>ALIAS</option>
-                        <option value='CNAME'>CNAME</option>
-                        <option value='HINFO'>HINFO</option>
-                        <option value='MX'>MX</option>
-                        <option value='NS'>NS</option>
-                        <option value='PTR'>PTR</option>
-                        <option value='RP'>RP</option>
-                        <option value='SRV'>SRV</option>
-                        <option value='TXT'>TXT</option>
+                        <option value="A">A</option>
+                        <option value="AAAA">AAAA</option>
+                        <option value="ALIAS">ALIAS</option>
+                        <option value="CNAME">CNAME</option>
+                        <option value="HINFO">HINFO</option>
+                        <option value="MX">MX</option>
+                        <option value="NS">NS</option>
+                        <option value="PTR">PTR</option>
+                        <option value="RP">RP</option>
+                        <option value="SRV">SRV</option>
+                        <option value="TXT">TXT</option>
                 </select>
         </td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Data:</td>
-    <td width="366" class="frmText11">
-        <input name="data" type="text" class="text" value="www.dddddf.com." size="30" maxlength="255"/></td>
+    <td>Data:</td>
+    <td>
+        <input name="data" type="text" class="text" value="{//record_get_by_id/data}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
 
-    <td width="126" class="frmText11">Preference/Priority:</td>
-    <td width="366" class="frmText11"><input name="aux" type="text" class="text" value="0" size="30" maxlength="255"/></td>
+    <td>Preference/Priority:</td>
+    <td><input name="aux" type="text" class="text" value="{//record_get_by_id/aux}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">TTL:</td>
-    <td width="366" class="frmText11"><input name="ttl" type="text" class="text" value="86400" size="30" maxlength="255"/></td>
-  </tr>  <tr>
-
-    <td class="frmText11"></td>
-    <td class="frmText11"></td>
+    <td>TTL:</td>
+    <td><input name="ttl" type="text" class="text" value="{//record_get_by_id/ttl}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td></td>
-    <td><input name="btn_save" type="submit" class="button" value="Save"/>
-      <input name="btn_cancel" type="button" class="button" value="Cancel" onClick="window.location.href='{//link_prefix}records&amp;zone={//_get/zone}'"/>
+    <td><input name="btn_save" type="submit" class="button" value="Save"/>&#160;
+      <input name="btn_cancel" type="button" class="button" value="Cancel"
+        onClick="window.location.href='{//link_prefix}records&amp;zone={//_get/zone}'"/>
     </td>
   </tr>
 </table></form>

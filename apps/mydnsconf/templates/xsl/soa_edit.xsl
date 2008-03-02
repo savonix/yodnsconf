@@ -25,76 +25,77 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 <form method="post" action="soa_edit.php" name="myform" enctype="multipart/form-data">
-<table width="500" border="0" cellspacing="0" cellpadding="2">
+<table width="100%">
   <tr>
 
-    <td width="126" class="frmText11">Origin:</td>
-    <td width="366" class="frmText11">
+    <td>Origin:</td>
+    <td>
         <input name="origin" type="text" class="text" value="{//soa_get_by_id/origin}" size="30" maxlength="255"/>
     </td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Name Server:</td>
-    <td width="366" class="frmText11">
+    <td>Name Server:</td>
+    <td>
         <input name="ns" type="text" class="text" value="{//soa_get_by_id/ns}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
 
-    <td width="126" class="frmText11">Admin Email:</td>
-    <td width="366" class="frmText11">
+    <td>Admin Email:</td>
+    <td>
         <input name="mbox" type="text" class="text" value="{//soa_get_by_id/mbox}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Serial No.:</td>
-    <td width="366" class="frmText11">
+    <td>Serial No.:</td>
+    <td>
         <input name="serial" type="text" class="text" value="{//soa_get_by_id/ttl}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
 
-    <td width="126" class="frmText11">Refresh:</td>
-    <td width="366" class="frmText11">
+    <td>Refresh:</td>
+    <td>
         <input name="refresh" type="text" class="text" value="{//soa_get_by_id/refresh}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Retry:</td>
-    <td width="366" class="frmText11"><input name="retry" type="text" class="text" value="{//soa_get_by_id/retry}" size="30" maxlength="255"/></td>
+    <td>Retry:</td>
+    <td><input name="retry" type="text" class="text" value="{//soa_get_by_id/retry}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
 
-    <td width="126" class="frmText11">Expire:</td>
-    <td width="366" class="frmText11">
+    <td>Expire:</td>
+    <td>
         <input name="expire" type="text" class="text" value="{//soa_get_by_id/expire}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Minimum TTL:</td>
-    <td width="366" class="frmText11">
+    <td>Minimum TTL:</td>
+    <td>
         <input name="minimum" type="text" class="text" value="{//soa_get_by_id/minimum}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
 
-    <td width="126" class="frmText11">TTL:</td>
-    <td width="366" class="frmText11">
+    <td>TTL:</td>
+    <td>
         <input name="ttl" type="text" class="text" value="{//soa_get_by_id/ttl}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
-    <td width="126" class="frmText11" valign="top">Active:</td>
-    <td width="366" class="frmText11"><input name='active[]' type='radio' value='Y' /> Yes<br/>
-<input name='active[]' type='radio' value='N'/> No<br/>
-
-</td>
+    <td valign="top">Active:</td>
+    <td>
+        <input name="active[]" type="radio" value="Y" /> Yes<br/>
+        <input name="active[]" type="radio" value="N"/> No<br/>
+    </td>
   </tr>
   <tr>
-    <td width="126" class="frmText11">Zone Transfers:</td>
-    <td width="366" class="frmText11"><input name="xfer" type="text" class="text" value="" size="30" maxlength="255"/></td>
+    <td>Zone Transfers:</td>
+    <td><input name="xfer" type="text" class="text" value="" size="30" maxlength="255"/></td>
   </tr>  <tr>
-    <td class="frmText11"></td>
-    <td class="frmText11"></td>
+    <td></td>
+    <td></td>
 
   </tr>
   <tr>
     <td></td>
-    <td><input name="btn_save" type="submit" class="button" value="Save"/>
-      <input name="btn_cancel" type="button" class="button" value="Cancel" onClick="window.location.href='{//link_prefix}index'"/>
+    <td><input name="btn_save" type="submit" class="button" value="Save"/>&#160;
+      <input name="btn_cancel" type="button" class="button" value="Cancel"
+        onClick="window.location.href='{//link_prefix}index'"/>
     </td>
   </tr>
 </table>

@@ -22,7 +22,7 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="records_get_by_id">
+<query name="record_get_by_id">
     <connection>mydnsconf</connection>
     <params>
         <param name="//_get/id" type="integer"/>
