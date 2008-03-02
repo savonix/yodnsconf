@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <params>
 	</params>
     <sql>
-        SELECT * FROM soa
+        SELECT * FROM &prefix;soa
         LIMIT 0,10
     </sql>
 </query>
