@@ -31,15 +31,29 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
+    <link href="{//path_prefix}s/themes/grey/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <xsl:for-each select="//pre_body_content">
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
-<a href="{//link_prefix}index">Index</a>
-    <xsl:call-template name="content"/>
-
+<div id="main-menu">
+    <a href="{//link_prefix}index">Zones</a>
+    <a href="{//link_prefix}soa-edit">New Zone</a>
+    <xsl:if test="//_get/zone">
+    <a href="{//link_prefix}soa-edit&amp;zone={//_get/zone}" class="sub"><xsl:value-of select="//soa_get_by_id/origin"/></a>
+    <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">Records</a>
+    <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">New Record</a>
+    </xsl:if>
+    <select name="zone" style="">
+    <option>Select</option>
+    </select>
+</div>
+<hr/>
+<div style="padding: 10px;">
+<xsl:call-template name="content"/>
+</div>
 <xsl:for-each select="//footer">
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>

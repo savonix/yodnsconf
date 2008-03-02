@@ -23,14 +23,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
-<xsl:template name="content"><div class="frmTextHead">Records</div>
-<input style="float: right; margin-top: -20px" type="button" value="Add New Record" onClick="location.href='rr_edit.php'" />
+<xsl:template name="content">
+
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
   <tr>
     <td class="tblHead">Name</td>
     <td class="tblHead">Type</td>
     <td class="tblHead">Data</td>
-
     <td class="tblHead">Preference/Priority</td>
     <td class="tblHead">TTL</td>
     <td class="tblHead"></td>
@@ -71,7 +70,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
           <td colspan="6" height="40" align="center" class="tblFooter">
             <a href="">
-            <img src="../themes/grey/images/btn_left.png" border="0"/></a>   Page 1 of 1 <a href=""> 
+            <img src="{//path_prefix}s/themes/grey/images/btn_left.png" border="0"/></a>   Page 1 of 1 <a href=""> 
             <img src="../themes/grey/images/btn_right.png" border="0"/></a></td>
   </tr>
 </table>

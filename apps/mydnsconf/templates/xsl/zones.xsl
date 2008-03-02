@@ -25,8 +25,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 <form method="post" action="soa_list.php" name="myform" enctype="multipart/form-data">
-<div class="frmTextHead">Zones (SOA)</div>
-<input style="float: right; margin-top: -20px" type="button" value="Add New Zone" onClick="location.href='soa_edit.php'" />
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 
   <tr>
@@ -53,18 +51,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
   
   <xsl:for-each select="//soa_get_all">
     <tr bgcolor="#EEEEEE">
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="origin"/></a></td>
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="ns"/></a></td>
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="ttl"/></a></td>
-    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;id={id}" class="frmText11"><xsl:value-of select="active"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="origin"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="ns"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="ttl"/></a></td>
+    <td class="frmText11"><a href="{//link_prefix}soa-edit&amp;zone={id}" class="frmText11"><xsl:value-of select="active"/></a></td>
     <td class="frmText11" align="right">[<a href="{//link_prefix}delete&amp;id={id}" class="frmText11">Delete</a>]</td>
   </tr>
 </xsl:for-each> 
   
   <tr>
           <td colspan="5" height="40" align="center" class="tblFooter">
-              <a href=""><img src="../themes/grey/images/btn_left.png" border="0"/></a>Page 1 of 1 
-              <a href="soa_list.php?page=0"> <img src="../themes/grey/images/btn_right.png" border="0"/></a>
+              <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png" border="0"/></a>Page 1 of 1 
+              <a href="soa_list.php?page=0"> <img src="{//path_prefix}s/themes/grey/images/btn_right.png" border="0"/></a>
           </td>
   </tr>
 </table>

@@ -1,6 +1,6 @@
 <!--
 Program: MyDNSConf
-Component: zones.xsl
+Component: soa_edit.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -25,24 +25,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 <form method="post" action="soa_edit.php" name="myform" enctype="multipart/form-data">
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
-    <tr>
-    <td class="frmTextHead"><div style="float:left;"><b>SOA</b></div></td>
-  </tr>
-    <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-	    <td width="2" class="frmTab"></td>
-        <td width="100" align="center" class="frmTabSelected"><a href="" class="frmText11">SOA</a></td>
-        <td width="2" class="frmTab"></td>
-        <td width="100" class="frmTabDefault"><a href="{//link_prefix}records&amp;zone={//_get/id}" class="frmText11">Records</a></td>
-        <td width="2" class="frmTab"></td>
-        <td class="frmTab"></td>
-      </tr>
-    </table></td>
-  </tr>
-    <tr>
-    <td>
 <table width="500" border="0" cellspacing="0" cellpadding="2">
   <tr>
 
@@ -115,9 +97,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <input name="btn_cancel" type="button" class="button" value="Cancel" onClick="window.location.href='{//link_prefix}index'"/>
     </td>
   </tr>
-</table></td></tr>
 </table>
-
 </form>
 </xsl:template>
 </xsl:stylesheet>

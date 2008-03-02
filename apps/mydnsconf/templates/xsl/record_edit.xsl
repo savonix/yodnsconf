@@ -26,23 +26,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <form method="post" action="rr_edit.php" name="myform" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
-    <tr>
-    <td class="frmTextHead"><div style="float:left;"><b>Record</b></div></td>
-  </tr>
-    <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-	    <td width="2" class="frmTab"></td>
-        <td width="100" align="center" class="frmTabSelected">
-            <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="frmText11">Record</a></td>
-        <td width="2" class="frmTab"></td>
-        <td class="frmTab"></td>
-      </tr>
-    </table></td>
-  </tr>
-    <tr>
-    <td>
-		<table width="500" border="0" cellspacing="0" cellpadding="2">
   <tr>
     <td width="126" class="frmText11">Name:</td>
     <td width="366" class="frmText11">
@@ -90,7 +73,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <input name="btn_cancel" type="button" class="button" value="Cancel" onClick="window.location.href='{//link_prefix}records&amp;zone={//_get/zone}'"/>
     </td>
   </tr>
-</table>
-</td></tr></table></form>
+</table></form>
 </xsl:template>
 </xsl:stylesheet>
