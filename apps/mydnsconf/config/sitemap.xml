@@ -2,6 +2,7 @@
     <map:prepend>
     </map:prepend>
     <map:gate name="welcome">
+        <map:query src="data/sql/soa_get_all.xml"/>
         <map:xsl src="templates/xsl/zones.xsl"/>
     </map:gate>
 </map:sitemap>
