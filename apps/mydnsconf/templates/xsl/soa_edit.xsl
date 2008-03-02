@@ -24,7 +24,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
-<form method="post" action="soa_edit.php" name="myform" enctype="multipart/form-data">
+<form method="post">
+<input type="hidden" name="zone" value="{//_get/zone}"/>
 <table width="100%">
   <tr>
     <td>Origin:</td>
