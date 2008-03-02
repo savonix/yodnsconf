@@ -46,12 +46,12 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">Records</a>
     <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">New Record</a>
     </xsl:if>
-    <select name="zone" style="">
+    <select name="zone">
     <option>Select</option>
     </select>
 </div>
 <hr/>
-<div style="padding: 10px;">
+<div id="primary-workspace">
 <xsl:call-template name="content"/>
 </div>
 <xsl:for-each select="//footer">

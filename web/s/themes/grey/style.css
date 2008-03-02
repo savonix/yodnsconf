@@ -45,6 +45,10 @@ textarea,input.text,select,option{
     right: 5px; position: fixed; margin-top: -6px;
 }
 
+#primary-workspace { 
+    padding: 10px;
+}
+
 
 
 .error {
