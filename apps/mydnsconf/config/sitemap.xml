@@ -1,6 +1,7 @@
 <map:sitemap xmlns:map="http://www.nexista.org/sitemap"> 
     <map:prepend>
         <map:script src="lib/php/runtime.php"/>
+        <map:xml src="i18n/en_US/yodnsconf.xml"/>
     </map:prepend>
     <map:gate name="index">
         <map:query src="data/sql/zones_get_all.xml"/>

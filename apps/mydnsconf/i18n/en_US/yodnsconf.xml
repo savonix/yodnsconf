@@ -1,0 +1,8 @@
+<i18n>
+    <label key="zones">
+        <value>Zones</value>
+    </label>
+    <label key="new_zone">
+        <value>New Zone</value>
+    </label>
+</i18n>

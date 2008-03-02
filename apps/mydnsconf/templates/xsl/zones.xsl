@@ -1,5 +1,5 @@
 <!--
-Program: MyDNSConf
+Program: YoDNSConf
 Component: zones.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV

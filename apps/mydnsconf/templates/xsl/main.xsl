@@ -1,5 +1,5 @@
 <!--
-Program: MyDNSConf
+Program: YoDNSConf
 Component: main.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -39,8 +39,8 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
 <div id="main-menu">
-    <a href="{//link_prefix}index">Zones</a>
-    <a href="{//link_prefix}zone-edit">New Zone</a>
+    <a href="{//link_prefix}index"><xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/></a>
+    <a href="{//link_prefix}zone-edit"><xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/></a>
     <xsl:if test="//_get/zone">
     <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub"><xsl:value-of select="//zone_get_by_id/origin"/></a>
     <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">Records</a>
