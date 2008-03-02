@@ -29,6 +29,14 @@
         <map:xsl src="templates/xsl/records.xsl"/>
     </map:gate>
     <map:gate name="record-edit">
+        <map:if name="//_post">
+            <map:true>
+                <map:query src="data/sql/record_update.xml"/>
+                <map:action type="redirect" params="{//link_prefix}record-edit&amp;id={//_post/id}&amp;zone={//_post/zone}"/>
+            </map:true>
+            <map:false>
+            </map:false>
+        </map:if>
         <map:xml src="data/xml/dns_record_types.xml"/>
         <map:query src="data/sql/zone_get_by_id.xml"/>
         <map:query src="data/sql/record_get_by_id.xml"/>
