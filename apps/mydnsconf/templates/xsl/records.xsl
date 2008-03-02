@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <select name="type" class="text">
         <xsl:for-each select="//record_types/type">
             <xsl:variable name="this_type"><xsl:value-of select="."/></xsl:variable>
-            <option value="{type}">
+            <option value="{.}">
                 <xsl:if test="//record_get_by_id/type=$this_type">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                 </xsl:if>
