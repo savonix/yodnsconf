@@ -37,6 +37,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
+<a href="{//link_prefix}index">Index</a>
     <xsl:call-template name="content"/>
 
 <xsl:for-each select="//footer">

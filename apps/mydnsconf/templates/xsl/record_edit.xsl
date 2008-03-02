@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <tr>
 	    <td width="2" class="frmTab"></td>
         <td width="100" align="center" class="frmTabSelected">
-            <a href="" class="frmText11">Record</a></td>
+            <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="frmText11">Record</a></td>
         <td width="2" class="frmTab"></td>
         <td class="frmTab"></td>
       </tr>
