@@ -74,7 +74,7 @@ used for a single or several applications. -->
 
         <prepend>&includepath;plugins/nx-cache.php</prepend>
         <!-- enter a gate name for missing when there is no match -->
-        <missing>welcome</missing>
+        <missing>index</missing>
         <!-- this needs the relative url, not the gate -->
         <default>index.php?nid=welcome</default>
         <query>nid</query>
