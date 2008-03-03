@@ -76,7 +76,6 @@ used for a single or several applications. -->
         <!-- enter a gate name for missing when there is no match -->
         <missing>index</missing>
         <!-- this needs the relative url, not the gate -->
-        <default>index.php?nid=welcome</default>
         <query>nid</query>
     </build>
 
@@ -92,6 +91,11 @@ used for a single or several applications. -->
         <nx_auth>
             <placement>prepend</placement>
             <source>&includepath;plugins/nx_auth.php</source>
+        </nx_auth>
+        <nx_auth>
+            <placement>prepend</placement>
+            <source>&includepath;plugins/nx_auth.php</source>
+            <login>index.php?nid=login</login>
         </nx_auth>
     </plugins>
 </config>
