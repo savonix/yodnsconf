@@ -1,3 +1,4 @@
+
 function validateCompleteForm(objForm,strErrorClass){
 return _validateInternal(objForm,strErrorClass,0);
 };
@@ -342,6 +343,8 @@ return !(!value||value==0||value=="0"||value=="false");
 };
 function _checkRegExp(regx,value){
 switch(regx){
+case "JSVAL_RX_EMAIL":
+return((/^[a-zA-ZüöäßÄÖÜ]+([\.-]?[a-zA-ZüöäßÄÖÜ]+)*@[a-zA-ZüöäßÄÖÜ]+([\.-]?[a-zA-ZüöäßÄÖÜ]+)*(\.\w{2,5})+$/).test(value));
 case "JSVAL_RX_TEL":
 return((/^1?[\-]?\(?\d{3}\)?[\-]?\d{3}[\-]?\d{4}$/).test(value));
 case "JSVAL_RX_PC":
