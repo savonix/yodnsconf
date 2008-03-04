@@ -12,10 +12,12 @@
     <map:gate name="zone-edit" role="yodnsuser">
         <map:switch name="//_post/action">
             <map:case value="edit">
+                <map:plugin type="serial" params="{//_post/serial}"/>
                 <map:query src="data/sql/zone_update.xml"/>
                 <map:action type="redirect" params="{//link_prefix}zone-edit&amp;zone={//_post/zone}"/>
             </map:case>
             <map:case value="create">
+                <map:plugin type="serial" params="{//_post/serial}"/>
                 <map:query src="data/sql/zone_create.xml"/>
                 <map:action type="redirect" params="{//link_prefix}zones"/>
             </map:case>

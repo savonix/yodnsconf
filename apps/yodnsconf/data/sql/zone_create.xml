@@ -28,13 +28,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="//_post/origin" type="text"/>
         <param name="//_post/ns" type="text"/>
         <param name="//_post/mbox" type="text" />
-        <param name="//_post/refresh" type="integer" default="86400"/>
-        <param name="//_post/retry" type="integer" default="86400"/>
+        <param name="//_post/refresh" type="integer" default="28800"/>
+        <param name="//_post/retry" type="integer" default="7200"/>
+        <param name="//_post/minimum" type="integer" default="14400"/>
+        <param name="//_post/ttl" type="integer" default="86400"/>
+        <param name="//_post/expire" type="integer" default="604800"/>
+        <param name="//_post/active" type="text"/>
+        <param name="//_post/xfer" type="integer"/>
+        <param name="serial" type="integer"/>
 	</params>
     <sql>
         INSERT INTO &prefix;soa 
-        (origin,ns,mbox,refresh,retry) 
+        (origin,ns,mbox,refresh,retry,minimum,ttl,expire,active,xfer,serial) 
         VALUES
-        (?,?,?,?,?)
+        (?,?,?,?,?,?,?,?,?,?,?)
     </sql>
 </query>

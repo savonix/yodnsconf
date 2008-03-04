@@ -37,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Name:</td>
     <td>
-        <input name="name" type="text" class="text" value="{//record_get_by_id/name}" size="30" maxlength="255"/></td>
+        <input name="name" type="text" class="text" value="{//record_get_by_id/name}"/></td>
   </tr>
   <tr>
     <td>Type:</td>
@@ -58,15 +58,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Data:</td>
     <td>
-        <input name="data" type="text" class="text" value="{//record_get_by_id/data}" size="30" maxlength="255"/></td>
+        <input name="data" type="text" class="text" value="{//record_get_by_id/data}"/></td>
   </tr>
   <tr>
     <td>Preference/Priority:</td>
-    <td><input name="aux" type="text" class="text" value="{//record_get_by_id/aux}" size="30" maxlength="255"/></td>
+    <td><input name="aux" type="text" class="text" value="{//record_get_by_id/aux}"/></td>
   </tr>
   <tr>
     <td>TTL:</td>
-    <td><input name="ttl" type="text" class="text" value="{//record_get_by_id/ttl}" size="30" maxlength="255"/></td>
+    <td><input name="ttl" type="text" class="text" value="{//record_get_by_id/ttl}"/></td>
   </tr>
   <tr>
     <td></td>

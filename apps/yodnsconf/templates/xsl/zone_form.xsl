@@ -45,12 +45,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Serial No.:</td>
     <td>
-        <input name="serial" type="text" value="{//*[local-name()=$zone_prefix]/ttl}" required="1" /></td>
+        <input name="serial" type="text" value="{//*[local-name()=$zone_prefix]/serial}" readonly="readonly" /></td>
   </tr>
   <tr>
     <td>Refresh:</td>
     <td>
-        <input name="refresh" type="text" value="{//*[local-name()=$zone_prefix]/refresh}"/></td>
+        <input name="refresh" type="text" value="{//*[local-name()=$zone_prefix]/refresh}" required="1"/></td>
   </tr>
   <tr>
     <td>Retry:</td>

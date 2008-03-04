@@ -1,11 +1,11 @@
 <config>
     <defaults>
-        <ttl>14400</ttl>
+        <ttl>86400</ttl>
         <ns>ns.example.com.</ns>
         <mbox>email.emample.com.</mbox>
-        <refresh>14400</refresh>
-        <retry>14400</retry>
-        <expire>14400</expire>
+        <refresh>28800</refresh>
+        <retry>7200</retry>
+        <expire>604800</expire>
         <minimum>14400</minimum>
         <active>Y</active>
     </defaults>
