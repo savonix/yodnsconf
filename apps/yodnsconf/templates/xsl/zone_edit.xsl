@@ -23,6 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
+<xsl:include href="zone_form.xsl"/>
 <xsl:template name="content">
 <script language="javascript" src="{//path_prefix}s/js/jsval.js"></script>
 <script language="javascript">
@@ -40,81 +41,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
 ]]>
 </script>
 <form method="post" onSubmit="return validateStandard(this);" name="myform">
-<input type="hidden" name="zone" value="{//_get/zone}"/>
 <xsl:if test="//_get/zone">
+    <input type="hidden" name="zone" value="{//_get/zone}"/>
     <input type="hidden" name="action" value="edit"/>
+    <xsl:call-template name="zone-form">
+        <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
+    </xsl:call-template>
 </xsl:if>
 <xsl:if test="not(//_get/zone)">
     <input type="hidden" name="action" value="create"/>
+    <xsl:call-template name="zone-form">
+        <xsl:with-param name="zone_prefix">defaults</xsl:with-param>
+    </xsl:call-template>
 </xsl:if>
-
-<table width="100%">
-  <tr>
-    <td>Origin:</td>
-    <td>
-        <input name="origin" type="text" value="{//zone_get_by_id/origin}"/>
-        (example.com.)
-    </td>
-  </tr>
-  <tr>
-    <td>Name Server:</td>
-    <td>
-        <input name="ns" type="text" value="{//zone_get_by_id/ns}"/></td>
-  </tr>
-  <tr>
-    <td>Admin Email:</td>
-    <td>
-        <input name="mbox" type="text" value="{//zone_get_by_id/mbox}"/></td>
-  </tr>
-  <tr>
-    <td>Serial No.:</td>
-    <td>
-        <input name="serial" type="text" value="{//zone_get_by_id/ttl}" required="1" /></td>
-  </tr>
-  <tr>
-    <td>Refresh:</td>
-    <td>
-        <input name="refresh" type="text" value="{//zone_get_by_id/refresh}"/></td>
-  </tr>
-  <tr>
-    <td>Retry:</td>
-    <td><input name="retry" type="text" value="{//zone_get_by_id/retry}"/></td>
-  </tr>
-  <tr>
-    <td>Expire:</td>
-    <td>
-        <input name="expire" type="text" value="{//zone_get_by_id/expire}"/></td>
-  </tr>
-  <tr>
-    <td>Minimum TTL:</td>
-    <td>
-        <input name="minimum" type="text" value="{//zone_get_by_id/minimum}"/></td>
-  </tr>
-  <tr>
-    <td>TTL:</td>
-    <td>
-        <input name="ttl" type="text" value="{//zone_get_by_id/ttl}"/></td>
-  </tr>
-  <tr>
-    <td valign="top">Active:</td>
-    <td>
-        <input name="active" type="radio" value="Y"><xsl:if test="//zone_get_by_id/active='Y'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> Yes<br/>
-        <input name="active" type="radio" value="N"><xsl:if test="//zone_get_by_id/active='N'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> No<br/>
-    </td>
-  </tr>
-  <tr>
-    <td>Zone Transfers:</td>
-    <td><input name="xfer" type="text" value="{//zone_get_by_id/xfer}"/></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-      <input name="btn_cancel" type="button" class="button" value="Cancel"
-        onClick="window.location.href='{//link_prefix}index'"/>
-    </td>
-  </tr>
-</table>
 </form>
+
 <script language="javascript">
     initValidation();
 </script>

@@ -1,6 +1,12 @@
 <config>
     <defaults>
-        <default_ttl>14400</default_ttl>
+        <ttl>14400</ttl>
+        <ns>ns.example.com.</ns>
+        <mbox>email.emample.com.</mbox>
+        <refresh>14400</refresh>
+        <retry>14400</retry>
+        <expire>14400</expire>
+        <minimum>14400</minimum>
     </defaults>
     
 </config>

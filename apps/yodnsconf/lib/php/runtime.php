@@ -35,4 +35,8 @@ $runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
 Nexista_Flow::add("runtime",$runtime,false);
 
 
+$defaults = Nexista_Config::getSection('defaults');
+
+Nexista_Flow::add("defaults",$defaults,false);
+
 ?>
