@@ -30,14 +30,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
     function initValidation()
     {
         var objForm = document.forms["record"];
-        objForm.name.required = 1;
-        objForm.name.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+        objForm.name.required = 0;
+        objForm.name.regexp = /^[A-Za-z0-9\-]*$/;
         objForm.data.required = 1;
-        objForm.data.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+        if(objForm.type.value=='A') {
+            objForm.data.regexp = /^[0-9\-]+(\.[0-9\-]+)+$/;
+        } else { 
+            objForm.data.regexp = /^[A-Za-z0-9\-]*$/;
+        }
     }
 ]]>
 </script>
-<form method="post" name="record">
+<form method="post" name="record"  onSubmit="return validateStandard(this);">
 <input type="hidden" name="id" value="{//_get/id}"/>
 <input type="hidden" name="zone" value="{//_get/zone}"/>
 <input type="hidden" name="serial" value="{//zone_get_by_id/serial}"/>
@@ -51,12 +55,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Name:</td>
     <td>
-        <input name="name" type="text" class="text" value="{//record_get_by_id/name}"/></td>
+        <input name="name" type="text" value="{//record_get_by_id/name}"/></td>
   </tr>
   <tr>
     <td>Type:</td>
     <td>
-    <select name="type" class="text">
+    <select name="type" onchange="initValidation();">
     <xsl:for-each select="//record_types/type">
         <xsl:variable name="this_type"><xsl:value-of select="."/></xsl:variable>
         <option value="{.}">
@@ -72,15 +76,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Data:</td>
     <td>
-        <input name="data" type="text" class="text" value="{//record_get_by_id/data}"/></td>
+        <input name="data" type="text" value="{//record_get_by_id/data}"/></td>
   </tr>
   <tr>
     <td>Preference/Priority:</td>
-    <td><input name="aux" type="text" class="text" value="{//record_get_by_id/aux}"/></td>
+    <td><input name="aux" type="text" value="{//record_get_by_id/aux}"/></td>
   </tr>
   <tr>
     <td>TTL:</td>
-    <td><input name="ttl" type="text" class="text" value="{//record_get_by_id/ttl}"/></td>
+    <td><input name="ttl" type="text" value="{//record_get_by_id/ttl}"/></td>
   </tr>
   <tr>
     <td></td>
