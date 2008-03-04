@@ -23,15 +23,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
+<xsl:include href="pager.xsl"/>
 <xsl:template name="content">
+<xsl:call-template name="jquery-setup-simple">
+    <xsl:with-param name="my-table">myzones</xsl:with-param>
+</xsl:call-template>
 <form method="post" name="myform" enctype="multipart/form-data">
-<table width="100%">
+<table width="100%" class="tablesorter" id="myzones">
+    <thead>
     <tr>
-        <td>Origin</td>
-        <td>Name Server</td>
-        <td>TTL</td>
-        <td>Active</td>
-        <td></td>
+        <th>Origin</th>
+        <th>Name Server</th>
+        <th>TTL</th>
+        <th>Active</th>
+        <th></th>
     </tr>
     <tr>
         <td><input type="text" name="search_origin" value="" class="text" /></td>
@@ -45,6 +50,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
         <td align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
     </tr>
+    </thead>
+    <tbody>
     <xsl:for-each select="//zones_get_all">
     <tr>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
@@ -53,7 +60,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
         <td align="right">[<a href="{//link_prefix}delete&amp;id={id}">Delete</a>]</td>
     </tr>
-    </xsl:for-each> 
+    </xsl:for-each>
+    </tbody>
     <tr>
         <td colspan="5" height="40" align="center">
             <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png"/></a>
