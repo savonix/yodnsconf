@@ -27,6 +27,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:template match="/">
 <html>
 <head>
+<title>YoDNSConf</title>
 <xsl:for-each select="//in_head">
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
