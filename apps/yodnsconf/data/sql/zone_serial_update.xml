@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: record_create.xml
+Component: zone_serial_update.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,20 +22,15 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="record_create">
+<query name="zone_serial_update">
     <connection>&connection;</connection>
     <params>
-        <param name="//_post/name" type="text"/>
-        <param name="//_post/type" type="text"/>
-        <param name="//_post/data" type="text"/>
-        <param name="//_post/aux" type="integer"/>
-        <param name="//_post/ttl" type="integer" default="14400"/>
+        <param name="serial" type="integer"/>
         <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>
-        INSERT INTO &prefix;rr 
-        (name,type,data,aux,ttl,zone) 
-        VALUES
-        (?,?,?,?,?,?)
+        UPDATE &prefix;soa 
+        SET serial=?
+        WHERE id = ? 
     </sql>
 </query>

@@ -24,9 +24,23 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
-<form method="post">
+<script language="javascript" src="{//path_prefix}s/js/jsval.js"></script>
+<script language="javascript">
+<![CDATA[
+    function initValidation()
+    {
+        var objForm = document.forms["record"];
+        objForm.name.required = 1;
+        objForm.name.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+        objForm.data.required = 1;
+        objForm.data.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+    }
+]]>
+</script>
+<form method="post" name="record">
 <input type="hidden" name="id" value="{//_get/id}"/>
 <input type="hidden" name="zone" value="{//_get/zone}"/>
+<input type="hidden" name="serial" value="{//zone_get_by_id/serial}"/>
 <xsl:if test="//_get/id">
     <input type="hidden" name="action" value="edit"/>
 </xsl:if>
@@ -76,5 +90,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </td>
   </tr>
 </table></form>
+<script language="javascript">
+    initValidation();
+</script>
 </xsl:template>
 </xsl:stylesheet>
