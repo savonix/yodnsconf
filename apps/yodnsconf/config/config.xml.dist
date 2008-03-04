@@ -7,6 +7,7 @@
         <retry>14400</retry>
         <expire>14400</expire>
         <minimum>14400</minimum>
+        <active>Y</active>
     </defaults>
     
 </config>

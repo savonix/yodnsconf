@@ -40,47 +40,47 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Admin Email:</td>
     <td>
-        <input name="mbox" type="text" value="{//zone_get_by_id/mbox}"/></td>
+        <input name="mbox" type="text" value="{//*[local-name()=$zone_prefix]/mbox}"/></td>
   </tr>
   <tr>
     <td>Serial No.:</td>
     <td>
-        <input name="serial" type="text" value="{//zone_get_by_id/ttl}" required="1" /></td>
+        <input name="serial" type="text" value="{//*[local-name()=$zone_prefix]/ttl}" required="1" /></td>
   </tr>
   <tr>
     <td>Refresh:</td>
     <td>
-        <input name="refresh" type="text" value="{//zone_get_by_id/refresh}"/></td>
+        <input name="refresh" type="text" value="{//*[local-name()=$zone_prefix]/refresh}"/></td>
   </tr>
   <tr>
     <td>Retry:</td>
-    <td><input name="retry" type="text" value="{//zone_get_by_id/retry}"/></td>
+    <td><input name="retry" type="text" value="{//*[local-name()=$zone_prefix]/retry}"/></td>
   </tr>
   <tr>
     <td>Expire:</td>
     <td>
-        <input name="expire" type="text" value="{//zone_get_by_id/expire}"/></td>
+        <input name="expire" type="text" value="{//*[local-name()=$zone_prefix]/expire}"/></td>
   </tr>
   <tr>
     <td>Minimum TTL:</td>
     <td>
-        <input name="minimum" type="text" value="{//zone_get_by_id/minimum}"/></td>
+        <input name="minimum" type="text" value="{//*[local-name()=$zone_prefix]/minimum}"/></td>
   </tr>
   <tr>
     <td>TTL:</td>
     <td>
-        <input name="ttl" type="text" value="{//zone_get_by_id/ttl}"/></td>
+        <input name="ttl" type="text" value="{//*[local-name()=$zone_prefix]/ttl}"/></td>
   </tr>
   <tr>
     <td valign="top">Active:</td>
     <td>
-        <input name="active" type="radio" value="Y"><xsl:if test="//zone_get_by_id/active='Y'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> Yes<br/>
-        <input name="active" type="radio" value="N"><xsl:if test="//zone_get_by_id/active='N'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> No<br/>
+        <input name="active" type="radio" value="Y"><xsl:if test="//*[local-name()=$zone_prefix]/active='Y'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> Yes<br/>
+        <input name="active" type="radio" value="N"><xsl:if test="//*[local-name()=$zone_prefix]/active='N'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> No<br/>
     </td>
   </tr>
   <tr>
     <td>Zone Transfers:</td>
-    <td><input name="xfer" type="text" value="{//zone_get_by_id/xfer}"/></td>
+    <td><input name="xfer" type="text" value="{//*[local-name()=$zone_prefix]/xfer}"/></td>
   </tr>
   <tr>
     <td></td>
