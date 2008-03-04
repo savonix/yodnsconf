@@ -42,11 +42,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td>
         <input name="mbox" type="text" value="{//*[local-name()=$zone_prefix]/mbox}"/></td>
   </tr>
+  <xsl:if test="//_get/zone">
   <tr>
     <td>Serial No.:</td>
     <td>
         <input name="serial" type="text" value="{//*[local-name()=$zone_prefix]/serial}" readonly="readonly" /></td>
   </tr>
+  </xsl:if>
   <tr>
     <td>Refresh:</td>
     <td>
