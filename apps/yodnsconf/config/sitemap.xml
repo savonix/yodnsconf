@@ -42,7 +42,7 @@
         <map:switch name="//_post/action">
             <map:case value="edit">
                 <map:query src="data/sql/record_update.xml"/>
-                <map:action type="redirect" params="{//link_prefix}records-edit&amp;id={//_post/id}&amp;zone={//_post/zone}"/>
+                <map:action type="redirect" params="{//link_prefix}record-edit&amp;id={//_post/id}&amp;zone={//_post/zone}"/>
             </map:case>
             <map:case value="create">
                 <map:query src="data/sql/record_create.xml"/> 

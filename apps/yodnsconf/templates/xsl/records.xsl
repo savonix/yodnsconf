@@ -23,15 +23,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
+<xsl:include href="pager.xsl"/>
 <xsl:template name="content">
-<table width="100%" border="0" cellspacing="0" cellpadding="4">
+<xsl:call-template name="jquery-setup-simple">
+    <xsl:with-param name="my-table">records_table</xsl:with-param>
+</xsl:call-template>
+<table width="100%" class="tablesorter" id="records_table">
+    <thead>
     <tr>
-        <td>Name</td>
-        <td>Type</td>
-        <td>Data</td>
-        <td>Preference/Priority</td>
-        <td>TTL</td>
-        <td></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Data</th>
+        <th>Preference/Priority</th>
+        <th>TTL</th>
+        <th></th>
     </tr>
     <tr>
         <td><input type="text" name="search_name" value="" class="text" /></td>
@@ -55,6 +60,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input name="Filter" type="button" id="Filter" value="Filter" onClick="changeTab('rr');"/>
         </td>
     </tr>
+    </thead>
+    <tbody>
     <xsl:for-each select="//records_get_by_id">
     <tr>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="name"/></a></td>
@@ -65,6 +72,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td align="right">[<a href="">Delete</a>]</td>
     </tr>
     </xsl:for-each>
+    </tbody>
+    <!--
     <tr>
         <td colspan="6" height="40" align="center">
         <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png" border="0"/></a>   
@@ -72,6 +81,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_right.png" border="0"/></a>
         </td>
     </tr>
+    -->
 </table>
 </xsl:template>
 </xsl:stylesheet>
