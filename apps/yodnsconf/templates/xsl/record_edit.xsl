@@ -27,6 +27,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <form method="post">
 <input type="hidden" name="id" value="{//_get/id}"/>
 <input type="hidden" name="zone" value="{//_get/zone}"/>
+<xsl:if test="//_get/id">
+    <input type="hidden" name="action" value="edit"/>
+</xsl:if>
+<xsl:if test="not(//_get/id)">
+    <input type="hidden" name="action" value="create"/>
+</xsl:if>
 <table width="100%">
   <tr>
     <td>Name:</td>

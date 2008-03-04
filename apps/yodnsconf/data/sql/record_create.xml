@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zone_create.xml
+Component: record_create.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,19 +22,20 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_create">
+<query name="record_create">
     <connection>&connection;</connection>
     <params>
-        <param name="//_post/origin" type="text"/>
-        <param name="//_post/ns" type="text"/>
-        <param name="//_post/mbox" type="text" />
-        <param name="//_post/refresh" type="integer" default="86400"/>
-        <param name="//_post/retry" type="integer" default="86400"/>
+        <param name="//_post/name" type="text"/>
+        <param name="//_post/type" type="text"/>
+        <param name="//_post/data" type="integer"/>
+        <param name="//_post/aux" type="integer"/>
+        <param name="//_post/ttl" type="integer"/>
+        <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>
-        INSERT INTO &prefix;soa 
-        (origin,ns,mbox,refresh,retry) 
+        INSERT INTO &prefix;rr 
+        (name,type,data,aux,ttl,zone) 
         VALUES
-        (?,?,?,?,?)
+        (?,?,?,?,?,?)
     </sql>
 </query>

@@ -1,0 +1,6 @@
+<config>
+    <defaults>
+        <default_ttl>14400</default_ttl>
+    </defaults>
+    
+</config>

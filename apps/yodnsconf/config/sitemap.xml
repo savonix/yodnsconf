@@ -10,14 +10,18 @@
     </map:gate>
 
     <map:gate name="zone-edit" role="yodnsuser">
-        <map:if name="//_post">
-            <map:true>
+        <map:switch name="//_post/action">
+            <map:case value="edit">
                 <map:query src="data/sql/zone_update.xml"/>
                 <map:action type="redirect" params="{//link_prefix}zone-edit&amp;zone={//_post/zone}"/>
-            </map:true>
-            <map:false>
-            </map:false>
-        </map:if>
+            </map:case>
+            <map:case value="create">
+                <map:query src="data/sql/zone_create.xml"/>
+                <map:action type="redirect" params="{//link_prefix}zones"/>
+            </map:case>
+            <map:default>
+            </map:default>
+        </map:switch>
         <map:query src="data/sql/zone_get_by_id.xml"/>
         <map:xsl src="templates/xsl/zone_edit.xsl"/>
     </map:gate>
@@ -35,14 +39,18 @@
     </map:gate>
 
     <map:gate name="record-edit" role="yodnsuser">
-        <map:if name="//_post">
-            <map:true>
+        <map:switch name="//_post/action">
+            <map:case value="edit">
                 <map:query src="data/sql/record_update.xml"/>
-                <map:action type="redirect" params="{//link_prefix}record-edit&amp;id={//_post/id}&amp;zone={//_post/zone}"/>
-            </map:true>
-            <map:false>
-            </map:false>
-        </map:if>
+                <map:action type="redirect" params="{//link_prefix}records-edit&amp;id={//_post/id}&amp;zone={//_post/zone}"/>
+            </map:case>
+            <map:case value="create">
+                <map:query src="data/sql/record_create.xml"/> 
+                <map:action type="redirect" params="{//link_prefix}records&amp;zone={//_post/zone}"/>
+            </map:case>
+            <map:default>
+            </map:default>
+        </map:switch>
         <map:xml src="data/xml/dns_record_types.xml"/>
         <map:query src="data/sql/zone_get_by_id.xml"/>
         <map:query src="data/sql/record_get_by_id.xml"/>

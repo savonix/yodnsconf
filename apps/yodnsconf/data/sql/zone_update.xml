@@ -30,11 +30,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="//_post/mbox" type="text"/>
         <param name="//_post/refresh" type="integer"/>
         <param name="//_post/retry" type="integer"/>
+        <param name="//_post/minimum" type="integer"/>
+        <param name="//_post/ttl" type="integer"/>
+        <param name="//_post/active" type="text"/>
+        <param name="//_post/xfer" type="integer"/>
         <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>
         UPDATE &prefix;soa 
-        SET origin=?, ns=?, mbox=?, refresh=?, retry=?
+        SET origin=?, ns=?, mbox=?, refresh=?, retry=?, minimum=?,ttl=?,active=?,xfer=?
         WHERE id = ? 
     </sql>
 </query>

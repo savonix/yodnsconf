@@ -26,6 +26,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <form method="post">
 <input type="hidden" name="zone" value="{//_get/zone}"/>
+<xsl:if test="//_get/zone">
+    <input type="hidden" name="action" value="edit"/>
+</xsl:if>
+<xsl:if test="not(//_get/zone)">
+    <input type="hidden" name="action" value="create"/>
+</xsl:if>
+
 <table width="100%">
   <tr>
     <td>Origin:</td>
@@ -75,13 +82,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td valign="top">Active:</td>
     <td>
-        <input name="active[]" type="radio" value="Y" /> Yes<br/>
-        <input name="active[]" type="radio" value="N"/> No<br/>
+        <input name="active" type="radio" value="Y"><xsl:if test="//zone_get_by_id/active='Y'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> Yes<br/>
+        <input name="active" type="radio" value="N"><xsl:if test="//zone_get_by_id/active='N'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> No<br/>
     </td>
   </tr>
   <tr>
     <td>Zone Transfers:</td>
-    <td><input name="xfer" type="text" class="text" value="" size="30" maxlength="255"/></td>
+    <td><input name="xfer" type="text" class="text" value="{//zone_get_by_id/xfer}" size="30" maxlength="255"/></td>
   </tr>
   <tr>
     <td></td>
