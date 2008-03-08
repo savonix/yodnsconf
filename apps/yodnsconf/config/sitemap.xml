@@ -32,6 +32,9 @@
         <map:query src="data/sql/zone_delete.xml"/>
         <map:action type="redirect" params="index"/>
     </map:gate>
+    <map:gate name="x-zone-delete" role="yodnsuser">
+        <map:query src="data/sql/zone_delete.xml"/>
+    </map:gate>
 
     <map:gate name="records" role="yodnsuser">
         <map:xml src="data/xml/dns_record_types.xml"/>

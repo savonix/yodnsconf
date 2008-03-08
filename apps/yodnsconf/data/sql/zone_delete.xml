@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zones_get_all.xml
+Component: zone_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,11 +22,13 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zones_get_all">
+<query name="zone_delete">
     <connection>&connection;</connection>
     <params>
+        <param name="//_post/zone_id" type="integer"/>
 	</params>
     <sql>
-        SELECT * FROM &prefix;soa
+        DELETE FROM &prefix;soa 
+        WHERE id = ?
     </sql>
 </query>

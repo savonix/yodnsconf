@@ -25,9 +25,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
-<xsl:call-template name="jquery-setup-simple">
+<xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">myzones</xsl:with-param>
 </xsl:call-template>
+<script type="text/javascript">
+function delete_zone(zone_id,row) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone_id="+zone_id, {'zone_id': zone_id}, 
+    function (data){
+    });
+    myTable = document.getElementById("myzones");
+    myTable.deleteRow(row);
+    }
+}
+</script>
 <form method="post" name="myform" enctype="multipart/form-data">
 <table width="100%" class="tablesorter" id="myzones">
     <thead>
@@ -58,18 +69,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
-        <td align="right">[<a href="{//link_prefix}delete&amp;id={id}">Delete</a>]</td>
+        <td align="right">[<a href="{//link_prefix}delete&amp;id={id}" 
+        onclick="delete_zone({id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
     </tr>
     </xsl:for-each>
     </tbody>
-    <tr>
-        <td colspan="5" height="40" align="center">
-            <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png"/></a>
-            Page 1 of 1 
-            <a href=""> <img src="{//path_prefix}s/themes/grey/images/btn_right.png"/></a>
-        </td>
-    </tr>
 </table>
+<xsl:call-template name="pager"/>
 </form>
 </xsl:template>
 </xsl:stylesheet>

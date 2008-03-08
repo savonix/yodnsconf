@@ -62,18 +62,23 @@ $(document).ready(function()
 </xsl:template>
 
 <xsl:template name="pager">
-<div id="pager" class="pager">
-		<img src="{/__ROOT__/runtime/path_prefix}s/js/blue/first.png" class="first"/>
-		<img src="{/__ROOT__/runtime/path_prefix}s/js/blue/prev.png" class="prev"/>
-		<input type="text" class="pagedisplay"/>
-		<img src="{/__ROOT__/runtime/path_prefix}s/js/blue/next.png" class="next"/>
-		<img src="{/__ROOT__/runtime/path_prefix}s/js/blue/last.png" class="last"/>
-		<select class="pagesize">
-			<option selected="selected"  value="10">10</option>
-			<option value="20">20</option>
-			<option value="30">30</option>
-			<option  value="40">40</option>
-		</select>
+<div id="pager" class="pager" style="margin-top: 20px;">
+    <table>
+        <tr>
+        <td>
+		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/first.png" class="first"/>
+		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/prev.png" class="prev"/>
+		</td>
+        <td>
+        <input type="text" class="pagedisplay" size="10" readonly="readonly"/>
+        </td>
+        <td>
+		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/next.png" class="next"/>
+		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/last.png" class="last"/>
+        </td>
+        </tr>
+    </table>
+    <input class="pagesize" type="hidden" name="pagesize" value="10"/>
 </div>
 </xsl:template> 
 </xsl:stylesheet>
