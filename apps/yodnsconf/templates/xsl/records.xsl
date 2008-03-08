@@ -25,9 +25,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
-<xsl:call-template name="jquery-setup-simple">
+<xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">records_table</xsl:with-param>
 </xsl:call-template>
+<script type="text/javascript">
+function delete_record(record_id,row) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id, {'record_id': record_id}, 
+    function (data){
+    });
+    myTable = document.getElementById("records_table");
+    myTable.deleteRow(row);
+    }
+}
+</script>
 <table width="100%" class="tablesorter" id="records_table">
     <thead>
     <tr>
@@ -39,26 +50,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <th></th>
     </tr>
     <tr>
-        <td><input type="text" name="search_name" value="" class="text" /></td>
-        <td>
-        <select name="type" class="text">
-        <xsl:for-each select="//record_types/type">
-            <xsl:variable name="this_type"><xsl:value-of select="."/></xsl:variable>
-            <option value="{.}">
-                <xsl:if test="//record_get_by_id/type=$this_type">
-                    <xsl:attribute name="selected">selected</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="."/>
-            </option>
-        </xsl:for-each>
-        </select>
-        </td>
-        <td><input type="text" name="search_data" value="" class="text" /></td>
-        <td><input type="text" name="search_aux" value="" class="text" /></td>
-        <td><input type="text" name="search_ttl" value="" class="text" /></td>
+        <form method="get">
+        <input type="hidden" name="nid" value="{//_get/nid}"/>
+        <input type="hidden" name="zone" value="{//_get/zone}"/>
+        <td><input type="text" name="name" value="{//_get/name}" /></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td align="right">
-        <input name="Filter" type="button" id="Filter" value="Filter" onClick="changeTab('rr');"/>
+        <input name="Filter"  type="submit" id="Filter" value="Filter"/>
         </td>
+        </form>
     </tr>
     </thead>
     <tbody>
@@ -69,19 +72,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="data"/></a></td>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="aux"/></a></td>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="ttl"/></a></td>
-        <td align="right">[<a href="">Delete</a>]</td>
+        <td align="right">[<a href="{//link_prefix}x-record-delete&amp;record_id={id}" onclick="delete_record({id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
     </tr>
     </xsl:for-each>
     </tbody>
-    <!--
-    <tr>
-        <td colspan="6" height="40" align="center">
-        <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_left.png" border="0"/></a>   
-        Page 1 of 1 
-        <a href=""><img src="{//path_prefix}s/themes/grey/images/btn_right.png" border="0"/></a>
-        </td>
-    </tr>
-    -->
 </table>
+<xsl:call-template name="pager"/>
 </xsl:template>
 </xsl:stylesheet>

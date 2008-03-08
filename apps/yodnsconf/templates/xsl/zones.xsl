@@ -39,7 +39,6 @@ function delete_zone(zone_id,row) {
     }
 }
 </script>
-<form method="post" name="myform" enctype="multipart/form-data">
 <table width="100%" class="tablesorter" id="myzones">
     <thead>
     <tr>
@@ -50,16 +49,14 @@ function delete_zone(zone_id,row) {
         <th></th>
     </tr>
     <tr>
-        <td><input type="text" name="search_origin" value="" class="text" /></td>
-        <td><input type="text" name="search_ns" value="" class="text" /></td>
-        <td><input type="text" name="search_ttl" value="" class="text" /></td>
+        <form method="get">
+        <td><input type="text" name="origin" value="{//_get/origin}" /></td>
+        <td></td>
+        <td></td>
         <td>
-            <select name="search_active" onChange="document.myform.submit();"><option value=""></option>
-            <option value='Y'>Yes</option>
-            <option value='N'>No</option>
-            </select>
         </td>
         <td align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
+        </form>
     </tr>
     </thead>
     <tbody>
@@ -69,13 +66,12 @@ function delete_zone(zone_id,row) {
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
-        <td align="right">[<a href="{//link_prefix}delete&amp;id={id}" 
+        <td align="right">[<a href="{//link_prefix}x-zone-delete&amp;id={id}" 
         onclick="delete_zone({id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
     </tr>
     </xsl:for-each>
     </tbody>
 </table>
 <xsl:call-template name="pager"/>
-</form>
 </xsl:template>
 </xsl:stylesheet>

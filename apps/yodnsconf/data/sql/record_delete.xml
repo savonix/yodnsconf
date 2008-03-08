@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: records_get_by_soa_id.xml
+Component: record_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,14 +22,13 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="records_get_by_id">
+<query name="record_delete">
     <connection>&connection;</connection>
     <params>
-        <param name="//_get/zone" type="integer"/>
-        <param name="//_get/name" type="text" default="%"/>
+        <param name="//_post/record_id" type="integer"/>
 	</params>
     <sql>
-        SELECT * FROM rr where zone = ? 
-        AND name LIKE ? 
+        DELETE FROM &prefix;rr 
+        WHERE id = ? 
     </sql>
 </query>

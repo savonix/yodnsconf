@@ -25,8 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="zones_get_all">
     <connection>&connection;</connection>
     <params>
+        <param name="_get/origin" type="text" default="%"/>
 	</params>
     <sql>
         SELECT * FROM &prefix;soa
+        WHERE origin LIKE ?
     </sql>
 </query>
