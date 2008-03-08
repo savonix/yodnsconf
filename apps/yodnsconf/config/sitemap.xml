@@ -65,6 +65,9 @@
     </map:gate>
     <map:gate name="x-record-delete" role="yodnsuser">
         <map:query src="data/sql/record_delete.xml"/>
+        <map:query src="data/sql/zone_get_by_id.xml"/>
+        <map:plugin type="serial" params="{//zone_get_by_id/serial}"/>
+        <map:query src="data/sql/zone_serial_update.xml"/>
     </map:gate>
     
 </map:sitemap>

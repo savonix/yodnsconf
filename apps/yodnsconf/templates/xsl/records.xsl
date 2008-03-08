@@ -29,9 +29,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table">records_table</xsl:with-param>
 </xsl:call-template>
 <script type="text/javascript">
-function delete_record(record_id,row) {
+function delete_record(record_id,zone,row) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id, {'record_id': record_id}, 
+    $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id, 
+    {
+        'record_id': record_id,
+        'zone': zone
+    }, 
     function (data){
     });
     myTable = document.getElementById("records_table");
@@ -72,7 +76,8 @@ function delete_record(record_id,row) {
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="data"/></a></td>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="aux"/></a></td>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="ttl"/></a></td>
-        <td align="right">[<a href="{//link_prefix}x-record-delete&amp;record_id={id}" onclick="delete_record({id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
+        <td align="right">[<a href="{//link_prefix}x-record-delete&amp;record_id={id}" 
+            onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
     </tr>
     </xsl:for-each>
     </tbody>

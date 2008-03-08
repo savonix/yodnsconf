@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="zone_delete">
     <connection>&connection;</connection>
     <params>
-        <param name="//_post/zone_id" type="integer"/>
+        <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>
         DELETE FROM &prefix;soa 

@@ -28,16 +28,27 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">myzones</xsl:with-param>
 </xsl:call-template>
+<script type="text/javascript" src="{//path_prefix}s/js/jquery.uitablefilter.js"></script>
 <script type="text/javascript">
-function delete_zone(zone_id,row) {
+function delete_zone(zone,row) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone_id="+zone_id, {'zone_id': zone_id}, 
+    $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone="+zone, 
+    {
+        'zone': zone
+    },
     function (data){
     });
     myTable = document.getElementById("myzones");
     myTable.deleteRow(row);
     }
 }
+function filter_table(phrase,column)
+{ 
+$.uiTableFilter( $("#myzones"), phrase, column)
+}
+</script>
+<script type="text/javascript">
+
 </script>
 <table width="100%" class="tablesorter" id="myzones">
     <thead>
@@ -50,7 +61,7 @@ function delete_zone(zone_id,row) {
     </tr>
     <tr>
         <form method="get">
-        <td><input type="text" name="origin" value="{//_get/origin}" /></td>
+        <td><input type="text" name="origin" value="{//_get/origin}" onkeyup="filter_table(this.value,'Origin')"/></td>
         <td></td>
         <td></td>
         <td>
@@ -59,7 +70,6 @@ function delete_zone(zone_id,row) {
         </form>
     </tr>
     </thead>
-    <tbody>
     <xsl:for-each select="//zones_get_all">
     <tr>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
@@ -70,7 +80,6 @@ function delete_zone(zone_id,row) {
         onclick="delete_zone({id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
     </tr>
     </xsl:for-each>
-    </tbody>
 </table>
 <xsl:call-template name="pager"/>
 </xsl:template>
