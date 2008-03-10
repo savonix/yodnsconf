@@ -30,5 +30,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <sql>
         DELETE FROM &prefix;rr 
         WHERE id = ? 
+        LIMIT 1
     </sql>
 </query>

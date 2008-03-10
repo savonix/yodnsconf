@@ -34,7 +34,8 @@ $(document).ready(function()
     { 
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter({widgets: ['zebra']})
-        .tablesorterPager({container: $("#pager")}); 
+        .tablesorterPager(
+            {container: $("#pager"), size: 16}); 
     } 
 ); 
 </script>
@@ -63,6 +64,7 @@ $(document).ready(function()
 
 <xsl:template name="pager">
 <div id="pager" class="pager" style="margin-top: 20px;">
+    <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
     <table>
         <tr>
         <td>
@@ -78,7 +80,6 @@ $(document).ready(function()
         </td>
         </tr>
     </table>
-    <input class="pagesize" type="hidden" name="pagesize" value="10"/>
 </div>
 </xsl:template> 
 </xsl:stylesheet>
