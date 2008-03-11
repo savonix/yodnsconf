@@ -2,7 +2,7 @@
     <defaults>
         <ttl>86400</ttl>
         <ns>ns.example.com.</ns>
-        <mbox>email.emample.com.</mbox>
+        <mbox>email.example.com.</mbox>
         <refresh>28800</refresh>
         <retry>7200</retry>
         <expire>604800</expire>
