@@ -1,8 +1,5 @@
 <?php
 
-include('xdump/xdump.php');
-
-//echo xDump::dump($_SESSION);
 
 Nexista_Flow::add("pun_config",$pun_config,false);
 
