@@ -88,10 +88,11 @@ used for a single or several applications. -->
     
     
     <plugins>
-        <nx_auth>
+    
+        <dev_buffer>
             <placement>prepend</placement>
-            <source>&includepath;plugins/nx_auth.php</source>
-        </nx_auth>
+            <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
+        </dev_buffer> 
         <nx_auth>
             <placement>prepend</placement>
             <source>&includepath;plugins/nx_auth.php</source>

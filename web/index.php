@@ -2,7 +2,7 @@
 
 // Configuration 
 // Where is nexista? This path should be to a folder containing the nexista source 
-$nexista_path = "/usr/share/pbooks/nexista/";
+$nexista_path = "/var/www/virtual/dev-50.savonix.com/dev/nexista/";
 
 // Bad hack
 if(!strpos($_SERVER['REQUEST_URI'],'.php')) { 

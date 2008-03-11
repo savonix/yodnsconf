@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zone_update.xml
+Component: zone_create_default_dns_records.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,27 +22,18 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_update">
+<query name="zone_create_default_dns_records" loop="//default_dns_records/ns">
     <connection>&connection;</connection>
     <params>
-        <param name="//_post/origin" type="text"/>
-        <param name="//_post/ns" type="text"/>
-        <param name="//_post/mbox" type="text"/>
-        <param name="//_post/refresh" type="integer"/>
-        <param name="//_post/retry" type="integer"/>
-        <param name="//_post/minimum" type="integer"/>
-        <param name="//_post/ttl" type="integer"/>
-        <param name="//_post/expire" type="integer" default="604800"/>
-        <param name="//_post/active" type="text"/>
-        <param name="//_post/xfer" type="integer"/>
-        <param name="serial" type="integer"/>
+        <param array="//default_dns_records/ns" type="text"/>
+        <param name="//_post/aux" type="integer" default=""/>
+        <param name="//_post/ttl" type="integer" default="86400"/>
         <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>
-        UPDATE &prefix;soa 
-        SET origin=?, ns=?, mbox=?, refresh=?, retry=?, minimum=?, ttl=?, 
-        expire=?, active=?,xfer=?, serial=?
-        WHERE id = ? 
-        LIMIT 1
+        INSERT INTO &prefix;rr 
+        (name,type,data,aux,ttl,zone) 
+        VALUES
+        ('','NS',?,?,?,?)
     </sql>
 </query>

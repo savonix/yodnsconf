@@ -42,6 +42,15 @@ function delete_record(record_id,zone,row) {
     myTable.deleteRow(row);
     }
 }
+
+function create_default_dns_records(zone) { 
+    $.post("<xsl:value-of select="//link_prefix"/>zone-create-default-dns-records&amp;zone="+zone, 
+    {
+        'zone': zone
+    }, 
+    function (data){
+    });
+}
 </script>
 <table width="100%" class="tablesorter" id="records_table">
     <thead>
@@ -83,5 +92,10 @@ function delete_record(record_id,zone,row) {
     </tbody>
 </table>
 <xsl:call-template name="pager"/>
+
+<a href="{//link_prefix}zone-create-default-dns-records&amp;zone={//_get/zone}"
+    onclick="create_default_dns_records({//_get/zone}); return false;">
+    Create Default DNS Records
+</a>
 </xsl:template>
 </xsl:stylesheet>
