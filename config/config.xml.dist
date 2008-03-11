@@ -25,8 +25,8 @@ used for a single or several applications. -->
     <session>
 		<active>1</active>
         <cookieLifetime>0</cookieLifetime>
-        <cacheLimiter>private</cacheLimiter>
-        <cacheExpires>120000</cacheExpires>
+        <cacheLimiter></cacheLimiter>
+        <cacheExpires></cacheExpires>
     </session>
 	
     <!-- FLOW -->
@@ -95,7 +95,7 @@ used for a single or several applications. -->
         <nx_auth>
             <placement>prepend</placement>
             <source>&includepath;plugins/nx_auth.php</source>
-            <login>index.php?nid=login</login>
+            <login>auth.php?nid=login</login>
         </nx_auth>
     </plugins>
 </config>
