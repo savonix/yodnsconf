@@ -76,6 +76,8 @@
             <map:true>
                 <map:xml src="config/default_dns_records.xml"/>
                 <map:query src="data/sql/zone_create_default_dns_records.xml"/>
+                <map:plugin type="serial" params="{//_post/serial}"/>
+                <map:query src="data/sql/zone_serial_update.xml"/>
             </map:true>
             <map:false>
             </map:false>

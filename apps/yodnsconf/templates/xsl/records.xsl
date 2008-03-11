@@ -49,6 +49,7 @@ function create_default_dns_records(zone) {
         'zone': zone
     }, 
     function (data){
+        window.location.reload(true);
     });
 }
 </script>

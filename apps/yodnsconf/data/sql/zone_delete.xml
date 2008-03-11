@@ -30,6 +30,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <sql>
         DELETE FROM &prefix;soa 
         WHERE id = ?
-        LIMI 1
+        LIMIT 1
     </sql>
 </query>

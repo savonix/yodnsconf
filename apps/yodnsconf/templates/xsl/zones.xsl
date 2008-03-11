@@ -39,12 +39,16 @@ function delete_zone(zone,row) {
     function (data){
     });
     myTable = document.getElementById("myzones");
-    myTable.deleteRow(row);
+    myTable.deleteRow(row.parentNode.parentNode.rowIndex);
     }
 }
 function filter_table(phrase,column)
 { 
 $.uiTableFilter( $("#myzones"), phrase, column)
+}
+function check_alert(mytd)
+{
+    alert(mytd.parentNode.parentNode.rowIndex);
 }
 </script>
 <script type="text/javascript">
@@ -73,11 +77,18 @@ $.uiTableFilter( $("#myzones"), phrase, column)
     <xsl:for-each select="//zones_get_all">
     <tr>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
+        <xsl:if test="verbose='true'">
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
+        </xsl:if>
+        <xsl:if test="not(verbose)">
+        <td><xsl:value-of select="ns"/></td>
+        <td><xsl:value-of select="ttl"/></td>
+        <td><xsl:value-of select="active"/></td>
+        </xsl:if>
         <td align="right">[<a href="{//link_prefix}x-zone-delete&amp;id={id}" 
-        onclick="delete_zone({id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
+        onclick="delete_zone({id},this); return false;">Delete</a>]</td>
     </tr>
     </xsl:for-each>
 </table>
