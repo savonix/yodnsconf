@@ -14,14 +14,18 @@ $path_prefix = dirname($path)."/";
 //$app_prefix = "acc/".APP_NAME."/";
 //$link_prefix = $path."?nid=".$app_prefix;
 $link_prefix = $path."?nid=";
-$right_now = date('Y-m-d H:i:s');
+$right_now = gmdate('Y-m-d H:i:s');
 
 
+$defaults = Nexista_Config::getSection('defaults');
+
+Nexista_Flow::add("defaults",$defaults,false);
 
 $runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
                 'path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
                 'right_now'=>$right_now,
+                'ns_filter'=>$ns_filter,
                 'username'=>$_SESSION['NX_AUTH']['username'],
                 'user_id'=>$_SESSION['NX_AUTH']['user_id'],
                 'group_id'=>$_SESSION['NX_AUTH']['group_id'],
@@ -35,8 +39,5 @@ $runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
 Nexista_Flow::add("runtime",$runtime,false);
 
 
-$defaults = Nexista_Config::getSection('defaults');
-
-Nexista_Flow::add("defaults",$defaults,false);
 
 ?>
