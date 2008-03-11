@@ -33,5 +33,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         WHERE 
         origin LIKE ?
         AND ns LIKE ?
+        ORDER BY origin
     </sql>
 </query>

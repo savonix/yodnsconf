@@ -58,16 +58,22 @@ function check_alert(mytd)
     <thead>
     <tr>
         <th>Origin</th>
+        <xsl:if test="verbose='true'">
         <th>Name Server</th>
+        </xsl:if>
         <th>TTL</th>
+        <xsl:if test="verbose='true'">
         <th>Active</th>
+        </xsl:if>
         <th></th>
     </tr>
     <tr>
         <form method="get">
         <td><input type="text" name="origin" value="{//_get/origin}" onkeyup="filter_table(this.value,'Origin')"/></td>
+        <xsl:if test="verbose='true'">
         <td></td>
         <td></td>
+        </xsl:if>
         <td>
         </td>
         <td align="right"><input name="Filter" type="submit" id="Filter" value="Filter"/></td>
@@ -83,9 +89,7 @@ function check_alert(mytd)
         <td><a href="{//link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
         </xsl:if>
         <xsl:if test="not(verbose)">
-        <td><xsl:value-of select="ns"/></td>
         <td><xsl:value-of select="ttl"/></td>
-        <td><xsl:value-of select="active"/></td>
         </xsl:if>
         <td align="right">[<a href="{//link_prefix}x-zone-delete&amp;id={id}" 
         onclick="delete_zone({id},this); return false;">Delete</a>]</td>
