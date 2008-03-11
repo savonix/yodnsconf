@@ -4,7 +4,7 @@
         <map:xml src="i18n/en_US/yodnsconf.xml"/>
     </map:prepend>
 
-    <map:gate name="index" role="yodnsuser">
+    <map:gate name="index" role="yodnsuser" cache="600" client_cache="300">
         <map:action type="like" params="//_get/origin"/>
         <map:query src="data/sql/zones_get_all.xml"/>
         <map:xsl src="templates/xsl/zones.xsl"/>
