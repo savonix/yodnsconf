@@ -8,6 +8,7 @@
         <expire>604800</expire>
         <minimum>14400</minimum>
         <active>Y</active>
+        <ns_filter>%</ns_filter>
     </defaults>
     
 </config>

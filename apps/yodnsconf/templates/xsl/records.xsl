@@ -95,7 +95,7 @@ function create_default_dns_records(zone) {
 <xsl:call-template name="pager"/>
 
 <a href="{//link_prefix}zone-create-default-dns-records&amp;zone={//_get/zone}"
-    onclick="create_default_dns_records({//_get/zone}); return false;">
+    onclick="confirm('Are you sure?'); create_default_dns_records({//_get/zone}); return false;">
     Create Default DNS Records
 </a>
 </xsl:template>
