@@ -83,5 +83,11 @@
             </map:false>
         </map:if>
     </map:gate>
-    
+
+
+    <map:gate name="tools-query" role="yodnsuser">
+        <map:plugin type="net_dns" params="docunext.com,4.2.2.1"/>
+        <map:xsl src="templates/xsl/tools_query.xsl"/>
+    </map:gate>
+
 </map:sitemap>
