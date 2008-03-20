@@ -31,7 +31,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     {
         var objForm = document.forms["record"];
         objForm.name.required = 0;
-        objForm.name.regexp = /^[A-Za-z0-9\-]*$/;
+        objForm.name.regexp = /^[A-Za-z0-9\-\.]*$/;
         objForm.data.required = 1;
         if(objForm.type.value=='A') {
             objForm.data.regexp = /^[0-9\-]+(\.[0-9\-]+)+$/;
