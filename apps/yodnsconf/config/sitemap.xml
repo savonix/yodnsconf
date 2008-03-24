@@ -86,7 +86,7 @@
 
 
     <map:gate name="tools-query" role="yodnsuser">
-        <map:plugin type="net_dns" params="docunext.com,4.2.2.1"/>
+        <map:plugin type="net_dns" params="{//_get/hostname},{//defaults/dig_target},{//_get/type}"/>
         <map:xsl src="templates/xsl/tools_query.xsl"/>
     </map:gate>
 

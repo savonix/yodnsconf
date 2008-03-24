@@ -61,6 +61,7 @@ function create_default_dns_records(zone) {
         <th>Data</th>
         <th>Preference/Priority</th>
         <th>TTL</th>
+        <th>Dig</th>
         <th></th>
     </tr>
     <tr>
@@ -68,6 +69,7 @@ function create_default_dns_records(zone) {
         <input type="hidden" name="nid" value="{//_get/nid}"/>
         <input type="hidden" name="zone" value="{//_get/zone}"/>
         <td><input type="text" name="name" value="{//_get/name}" /></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -86,6 +88,9 @@ function create_default_dns_records(zone) {
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="data"/></a></td>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="aux"/></a></td>
         <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="ttl"/></a></td>
+        <td>
+            <a href="{//link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">Dig</a>
+        </td>
         <td align="right">[<a href="{//link_prefix}x-record-delete&amp;record_id={id}" 
             onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
     </tr>

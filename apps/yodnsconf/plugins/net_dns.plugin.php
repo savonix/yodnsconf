@@ -34,8 +34,9 @@ class Nexista_Net_dnsAction extends Nexista_Action
      */
 
     protected  $params = array(
-        'zone' => '', // optional
-        'dns' => '' // optional
+        'zone' => '', // required
+        'dns' => '', // required,
+        'type' => '' // optional
         );
 
 
@@ -51,6 +52,11 @@ class Nexista_Net_dnsAction extends Nexista_Action
         require_once 'Net/DNS.php';
         $my_zone = $this->params['zone'];
         $yo_dns = $this->params['dns'];
+        $my_type = $this->params['type'];
+        
+        if($my_type=="CNAME") { 
+            $my_type = "A";
+        }
 
         $resolver = new Net_DNS_Resolver();
         $resolver->debug = 1; 
@@ -59,7 +65,7 @@ class Nexista_Net_dnsAction extends Nexista_Action
                                    $yo_dns
                                    );
         ob_start();
-        $resolver->query($my_zone);
+        $resolver->rawquery($my_zone,$my_type);
         $response = ob_get_clean();
         Nexista_Flow::add("net_dns_response", $response);
         return true;
