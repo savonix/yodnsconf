@@ -98,10 +98,11 @@ function create_default_dns_records(zone) {
     </tbody>
 </table>
 <xsl:call-template name="pager"/>
-
+<div style="float: right">
 <a href="{//link_prefix}zone-create-default-dns-records&amp;zone={//_get/zone}"
     onclick="confirm('Are you sure?'); create_default_dns_records({//_get/zone}); return false;">
     Create Default DNS Records
 </a>
+</div>
 </xsl:template>
 </xsl:stylesheet>
