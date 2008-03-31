@@ -1,7 +1,31 @@
-<map:sitemap xmlns:map="http://www.nexista.org/sitemap"> 
+<!--
+Program: YoDNSConf
+Component: sitemap.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<map:sitemap xmlns:map="http://www.nexista.org/sitemap">
     <map:prepend>
         <map:script src="lib/php/runtime.php"/>
         <map:xml src="i18n/en_US/yodnsconf.xml"/>
+        <map:set name="theme" value="default"/>
     </map:prepend>
 
     <map:gate name="index" role="yodnsuser" cache="600" client_cache="300">
@@ -88,6 +112,15 @@
     <map:gate name="tools-query" role="yodnsuser">
         <map:plugin type="net_dns" params="{//_get/hostname},{//defaults/dig_target},{//_get/type}"/>
         <map:xsl src="templates/xsl/tools_query.xsl"/>
+    </map:gate>
+
+    <map:gate name="themed-css" cache="0">
+        <map:action type="header" params="Content-Type,text/css"/>
+        <map:raw src="templates/themes/{//theme}/default.css" />
+    </map:gate>
+    <map:gate name="license" cache="0">
+        <map:action type="header" params="Content-Type,text/plain"/>
+        <map:raw src="LICENSE" />
     </map:gate>
 
 </map:sitemap>
