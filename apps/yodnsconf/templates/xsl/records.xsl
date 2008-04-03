@@ -35,7 +35,7 @@ function delete_record(record_id,zone,row) {
     {
         'record_id': record_id,
         'zone': zone
-    }, 
+    },
     function (data){
     });
     myTable = document.getElementById("records_table");
@@ -47,7 +47,7 @@ function create_default_dns_records(zone) {
     $.post("<xsl:value-of select="//link_prefix"/>zone-create-default-dns-records&amp;zone="+zone, 
     {
         'zone': zone
-    }, 
+    },
     function (data){
         window.location.reload(true);
     });

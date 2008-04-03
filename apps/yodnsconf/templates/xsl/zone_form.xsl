@@ -76,8 +76,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td valign="top">Active:</td>
     <td>
-        <input name="active" type="radio" value="Y"><xsl:if test="//*[local-name()=$zone_prefix]/active='Y'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> Yes<br/>
-        <input name="active" type="radio" value="N"><xsl:if test="//*[local-name()=$zone_prefix]/active='N'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input> No<br/>
+        <input name="active" type="radio" value="Y">
+            <xsl:if test="//*[local-name()=$zone_prefix]/active='Y'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+            </xsl:if>
+        </input> Yes<br/>
+        <input name="active" type="radio" value="N">
+            <xsl:if test="//*[local-name()=$zone_prefix]/active='N'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+            </xsl:if>
+        </input> No<br/>
     </td>
   </tr>
   <tr>
