@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="//_get/id" type="integer"/>
 	</params>
     <sql>
-        SELECT * FROM rr where id = ?
+        SELECT * FROM &prefix;rr where id = ?
     </sql>
 </query>

@@ -40,9 +40,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	</params>
     <sql>
         UPDATE &prefix;soa
-        SET origin=?, ns=?, mbox=?, refresh=?, retry=?, minimum=?, ttl=?, 
-        expire=?, active=?,xfer=?, serial=?
-        WHERE id = ? 
-        LIMIT 1
+        SET 
+        origin = ?, ns = ?, mbox = ?, refresh = ?, retry = ?, minimum = ?,
+        ttl = ?, expire = ?, active = ?, xfer = ?, serial = ?
+        WHERE id = ?
     </sql>
 </query>

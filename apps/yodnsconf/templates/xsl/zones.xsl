@@ -46,10 +46,6 @@ function filter_table(phrase,column)
 { 
 $.uiTableFilter( $("#myzones"), phrase, column)
 }
-function check_alert(mytd)
-{
-    alert(mytd.parentNode.parentNode.rowIndex);
-}
 </script>
 <script type="text/javascript">
 

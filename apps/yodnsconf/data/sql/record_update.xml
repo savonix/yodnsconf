@@ -33,9 +33,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="//_post/id" type="integer"/>
 	</params>
     <sql>
-        UPDATE &prefix;rr 
-        SET name=?,type=?,data=?,aux=?,ttl=?
-        WHERE id = ? 
+        UPDATE &prefix;rr
+        SET
+        name = ?, type = ?, data = ?, aux = ?, ttl = ?
+        WHERE id = ?
         LIMIT 1
     </sql>
 </query>
