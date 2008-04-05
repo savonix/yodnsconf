@@ -23,6 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
+<xsl:include href="pager.xsl"/>
 <xsl:include href="zone_form.xsl"/>
 <xsl:template name="content">
 <script language="javascript" src="{//path_prefix}s/js/jsval.js"></script>
@@ -40,6 +41,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     }
 ]]>
 </script>
+<div style="float: left;">
 <form method="post" onSubmit="return validateStandard(this);" name="myform">
 <xsl:if test="//_get/zone">
     <input type="hidden" name="zone" value="{//_get/zone}"/>
@@ -55,7 +57,43 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
 </xsl:if>
 </form>
+</div>
 
+<div style="float: right;">
+<xsl:call-template name="jquery-setup">
+    <xsl:with-param name="my-table">records_table</xsl:with-param>
+</xsl:call-template>
+<table width="100%" class="tablesorter" id="records_table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Data</th>
+        <th>Dig</th>
+    </tr>
+    </thead>
+    <tbody>
+    <xsl:for-each select="//records_get_by_id">
+    <tr>
+        <td>
+            <a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+                <xsl:value-of select="name"/>
+            </a>
+        </td>
+        <td>
+            <a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+                <xsl:value-of select="data"/>
+            </a>
+        </td>
+        <td>
+            <a href="{//link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">
+                Dig
+            </a>
+        </td>
+    </tr>
+    </xsl:for-each>
+    </tbody>
+</table>
+</div>
 <script language="javascript">
     initValidation();
 </script>
