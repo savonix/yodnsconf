@@ -93,6 +93,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
+
+<xsl:call-template name="pager"/>
 </div>
 <script language="javascript">
     initValidation();

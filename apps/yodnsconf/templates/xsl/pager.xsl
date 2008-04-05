@@ -33,7 +33,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 $(document).ready(function()
     {
         $("#<xsl:value-of select="$my-table"/>")
-        .tablesorter({widgets: ['zebra']})
+        .tablesorter(
+        {
+            widthFixed: true,
+            widgets: ['zebra'],
+            headers: {
+            2: {
+                sorter: false
+            }
+        } 
+        })
         .tablesorterPager(
             {container: $("#pager"), size: 16});
     }
