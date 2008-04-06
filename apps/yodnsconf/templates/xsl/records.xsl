@@ -91,8 +91,8 @@ function create_default_dns_records(zone) {
         <td>
             <a href="{//link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">Dig</a>
         </td>
-        <td align="right">[<a href="{//link_prefix}x-record-delete&amp;record_id={id}" 
-            onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a>]</td>
+        <td align="right"><a href="{//link_prefix}x-record-delete&amp;record_id={id}" 
+            onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a></td>
     </tr>
     </xsl:for-each>
     </tbody>
