@@ -87,8 +87,8 @@ $.uiTableFilter( $("#myzones"), phrase, column)
         <xsl:if test="not(verbose)">
         <td><xsl:value-of select="ttl"/></td>
         </xsl:if>
-        <td align="right">[<a href="{//link_prefix}x-zone-delete&amp;id={id}" 
-        onclick="delete_zone({id},this); return false;">Delete</a>]</td>
+        <td align="right"><a href="{//link_prefix}x-zone-delete&amp;id={id}"
+        onclick="delete_zone({id},this); return false;">Delete</a></td>
     </tr>
     </xsl:for-each>
 </table>

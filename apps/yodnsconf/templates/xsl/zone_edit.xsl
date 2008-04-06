@@ -81,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
         <td>
             <a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
-                <xsl:value-of select="data"/>
+                <xsl:value-of select="substring(data,0,30)"/>
             </a>
         </td>
         <td>
