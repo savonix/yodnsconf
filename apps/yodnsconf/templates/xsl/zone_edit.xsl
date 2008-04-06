@@ -63,7 +63,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">records_table</xsl:with-param>
 </xsl:call-template>
-<table width="100%" class="tablesorter" id="records_table">
+<table style="width: 420px;" class="tablesorter" id="records_table">
     <thead>
     <tr>
         <th>Name</th>
