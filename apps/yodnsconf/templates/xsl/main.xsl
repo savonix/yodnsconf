@@ -44,10 +44,20 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <a href="{//link_prefix}index"><xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/></a>
     <a href="{//link_prefix}zone-edit"><xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/></a>
     <xsl:if test="//_get/zone">
-    <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub"><xsl:value-of select="//zone_get_by_id/origin"/></a>
-    <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">Records</a>
-    <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">New Record</a>
-    <a href="http://www.{//origin}" class="sub" target="_blank">Visit</a>
+    <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub">
+        <span style="color: red; font-weight: bold;">
+            <xsl:value-of select="//zone_get_by_id/origin"/>
+        </span>
+    </a>
+    <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">
+        Records
+    </a>
+    <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">
+        New Record
+    </a>
+    <a href="http://www.{//origin}" class="sub" target="_blank">
+        Visit
+    </a>
     </xsl:if>
     <select name="zone">
     <option>Select</option>
