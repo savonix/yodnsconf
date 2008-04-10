@@ -47,6 +47,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub"><xsl:value-of select="//zone_get_by_id/origin"/></a>
     <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">Records</a>
     <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">New Record</a>
+    <a href="http://www.{//origin}" class="sub" target="_blank">Visit</a>
     </xsl:if>
     <select name="zone">
     <option>Select</option>

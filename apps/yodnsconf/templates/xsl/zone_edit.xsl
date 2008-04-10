@@ -101,6 +101,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:if test="count(//records_get_by_id) &gt; 10">
     <xsl:call-template name="pager"/>
 </xsl:if>
+<iframe src="http://www.{//origin}"></iframe>
 </div>
 <script language="javascript">
     initValidation();
