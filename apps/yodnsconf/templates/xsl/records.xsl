@@ -27,6 +27,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">records_table</xsl:with-param>
+    <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
+    <xsl:with-param name="no-sort-column">,
+        headers: { 
+            5: {sorter: false},
+            6: {sorter: false}
+        }
+    </xsl:with-param>
 </xsl:call-template>
 <script type="text/javascript">
 function delete_record(record_id,zone,row) {

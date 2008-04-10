@@ -27,38 +27,49 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- This template is used by pages which use the tablesorter and the table paginator -->
 <xsl:template name="jquery-setup">
 <xsl:param name="my-table"/>
+<xsl:param name="my-table-div"/>
+<xsl:param name="my-sort-column"/>
+<xsl:param name="no-sort-column"/>
 <xsl:call-template name="jquery-links"/>
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}s/js/jquery.tablesorter.pager.js">&#160;</script>
+<script type="text/javascript"
+    src="{__ROOT__/runtime/path_prefix}/s/js/jquery.tablesorter.pager.js">&#160;</script>
 <script type="text/javascript">
 $(document).ready(function()
-    {
+    { 
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter(
-        {
-            widthFixed: true,
-            widgets: ['zebra'],
-            headers: {
-            2: {
-                sorter: false
+            {
+                widgets: ['zebra']
+                <xsl:value-of select="$my-sort-column"/>
+                <xsl:value-of select="$no-sort-column"/>
             }
-        } 
-        })
+        )
         .tablesorterPager(
             {container: $("#pager"), size: 16});
+        
+        document.getElementById('<xsl:value-of select="$my-table-div"/>').style.visibility = 'visible';
     }
-);
+); 
 </script>
 </xsl:template>
 
 <!-- This template is used by pages which only use the tablesorter, not the paginator-->
 <xsl:template name="jquery-setup-simple">
 <xsl:param name="my-table"/>
+<xsl:param name="my-sort-column"/>
+<xsl:param name="no-sort-column"/>
 <xsl:call-template name="jquery-links"/>
 <script type="text/javascript">
-$(document).ready(function()
+$(document).ready(function() 
     {
         $("#<xsl:value-of select="$my-table"/>")
-        .tablesorter({widgets: ['zebra']});
+        .tablesorter(
+            {
+                widgets: ['zebra']
+                <xsl:value-of select="$my-sort-column"/>
+                <xsl:value-of select="$no-sort-column"/>
+            }
+        );
     }
 );
 </script>

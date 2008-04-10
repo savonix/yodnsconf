@@ -27,6 +27,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">myzones</xsl:with-param>
+    <xsl:with-param name="my-table-div">my-zones-div</xsl:with-param>
+    <xsl:with-param name="no-sort-column">,
+        headers: { 2: {sorter: false} }
+    </xsl:with-param>
 </xsl:call-template>
 <script type="text/javascript" src="{//path_prefix}s/js/jquery.uitablefilter.js"></script>
 <script type="text/javascript">
@@ -44,11 +48,12 @@ function delete_zone(zone,row) {
 }
 function filter_table(phrase,column)
 { 
-$.uiTableFilter( $("#myzones"), phrase, column)
+    $.uiTableFilter( $("#myzones"), phrase, column)
 }
 </script>
+<div id="my-zones-div">
 <script type="text/javascript">
-
+    document.getElementById('my-zones-div').style.visibility = 'hidden';
 </script>
 <table width="100%" class="tablesorter" id="myzones">
     <thead>
@@ -92,6 +97,7 @@ $.uiTableFilter( $("#myzones"), phrase, column)
     </tr>
     </xsl:for-each>
 </table>
+</div>
 <xsl:call-template name="pager"/>
 </xsl:template>
 </xsl:stylesheet>
