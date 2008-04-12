@@ -31,15 +31,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:param name="my-sort-column"/>
 <xsl:param name="no-sort-column"/>
 <xsl:call-template name="jquery-links"/>
-<script type="text/javascript"
-    src="{__ROOT__/runtime/path_prefix}/s/js/jquery.tablesorter.pager.js">&#160;</script>
 <script type="text/javascript">
 $(document).ready(function()
     { 
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter(
             {
-                widgets: ['zebra']
+                widgets:['zebra','cookie'],
+                widgetCookie: {sortList: [[5,1]]}
                 <xsl:value-of select="$my-sort-column"/>
                 <xsl:value-of select="$no-sort-column"/>
             }
@@ -65,7 +64,8 @@ $(document).ready(function()
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter(
             {
-                widgets: ['zebra']
+                widgets:['zebra','cookie'],
+                widgetCookie: {sortList: [[5,1]]}
                 <xsl:value-of select="$my-sort-column"/>
                 <xsl:value-of select="$no-sort-column"/>
             }
@@ -79,8 +79,6 @@ $(document).ready(function()
 <xsl:template name="jquery-links">
 <link rel="stylesheet" href="{__ROOT__/runtime/path_prefix}s/js/blue/style.css"
     type="text/css" media="print, projection, screen" />
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}s/js/jquery.js">&#160;</script>
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}s/js/jquery.tablesorter.min.js">&#160;</script>
 </xsl:template>
 
 <xsl:template name="pager">
@@ -102,5 +100,5 @@ $(document).ready(function()
         </tr>
     </table>
 </div>
-</xsl:template> 
+</xsl:template>
 </xsl:stylesheet>
