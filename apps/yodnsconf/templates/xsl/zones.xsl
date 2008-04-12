@@ -98,6 +98,8 @@ function filter_table(phrase,column)
     </xsl:for-each>
 </table>
 </div>
-<xsl:call-template name="pager"/>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">myzones</xsl:with-param>
+</xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>

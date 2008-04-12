@@ -30,6 +30,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:param name="my-table-div"/>
 <xsl:param name="my-sort-column"/>
 <xsl:param name="no-sort-column"/>
+<xsl:param name="my-page-num">0</xsl:param>
 <xsl:call-template name="jquery-links"/>
 <script type="text/javascript">
 $(document).ready(function()
@@ -37,15 +38,18 @@ $(document).ready(function()
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter(
             {
-                widgets:['zebra','cookie'],
-                widgetCookie: {sortList: [[5,1]]}
+                widgets:['zebra','cookie']
                 <xsl:value-of select="$my-sort-column"/>
                 <xsl:value-of select="$no-sort-column"/>
             }
         )
         .tablesorterPager(
-            {container: $("#pager"), size: 16});
-        
+            {
+                container: $("#<xsl:value-of select="$my-table"/>-pager"),
+                size: 16
+            }
+        );
+
         document.getElementById('<xsl:value-of select="$my-table-div"/>').style.visibility = 'visible';
     }
 ); 
@@ -65,7 +69,6 @@ $(document).ready(function()
         .tablesorter(
             {
                 widgets:['zebra','cookie'],
-                widgetCookie: {sortList: [[5,1]]}
                 <xsl:value-of select="$my-sort-column"/>
                 <xsl:value-of select="$no-sort-column"/>
             }
@@ -82,7 +85,8 @@ $(document).ready(function()
 </xsl:template>
 
 <xsl:template name="pager">
-<div id="pager" class="pager" style="margin-top: 20px;">
+<xsl:param name="my-table"/>
+<div id="{$my-table}-pager" class="pager" style="margin-top: 20px;">
     <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
     <table>
         <tr>
