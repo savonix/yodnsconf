@@ -23,16 +23,27 @@
         id: 'cookie',
         format: function(table) {
             var sortList = table.config.sortList;
+            var pageNum = table.config.page;
             var tablesorterCookieJar = $.cookieJar('tablesorter', {
-	        cookie: {
+                cookie: {
                     path: '/'
-		}
-	    });
+                }
+            });
             if ( sortList.length > 0) {
-                tablesorterCookieJar.set($(table).attr('id'), sortList);
+                tablesorterCookieJar.set($(table).attr('id')+'-sort', sortList);
             } else {
-               var sortList = tablesorterCookieJar.get($(table).attr('id'));
+               var sortList = tablesorterCookieJar.get($(table).attr('id')+'-sort');
                if (sortList && sortList.length > 0) {
+                    jQuery(table).trigger('sorton', [sortList]);
+               }
+            }
+            
+            if ( pageNum > 0 ) {
+                tablesorterCookieJar.set($(table).attr('id')+'-page', pageNum);
+            } else {
+               var pageNum = tablesorterCookieJar.get($(table).attr('id')+'-page');
+               if (pageNum && pageNum > 1) {
+                   table.config.page = pageNum;
                     jQuery(table).trigger('sorton', [sortList]);
                }
             }
