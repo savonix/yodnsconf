@@ -44,7 +44,7 @@
                var pageNum = tablesorterCookieJar.get($(table).attr('id')+'-page');
                if (pageNum && pageNum > 1) {
                    table.config.page = pageNum;
-                    jQuery(table).trigger('sorton', [sortList]);
+                    jQuery(table).trigger('sorton',[0,0]);
                }
             }
         }
