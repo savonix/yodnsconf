@@ -95,12 +95,25 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:plugin type="serial" params="{//zone_get_by_id/serial}"/>
         <map:query src="data/sql/zone_serial_update.xml"/>
     </map:gate>
-    
+
     <map:gate name="zone-create-default-dns-records" role="yodnsuser">
         <map:if name="//_post">
             <map:true>
                 <map:xml src="config/default_dns_records.xml"/>
                 <map:query src="data/sql/zone_create_default_dns_records.xml"/>
+                <map:plugin type="serial" params="{//_post/serial}"/>
+                <map:query src="data/sql/zone_serial_update.xml"/>
+            </map:true>
+            <map:false>
+            </map:false>
+        </map:if>
+    </map:gate>
+    
+    <map:gate name="zone-create-default-a-records" role="yodnsuser">
+        <map:if name="//_post">
+            <map:true>
+                <map:xml src="config/default_a_records.xml"/>
+                <map:query src="data/sql/zone_create_default_a_records.xml"/>
                 <map:plugin type="serial" params="{//_post/serial}"/>
                 <map:query src="data/sql/zone_serial_update.xml"/>
             </map:true>
