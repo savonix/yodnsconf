@@ -1,0 +1,7 @@
+<default_dns_records>
+    <ns>ns1.example.com.</ns>
+    <ns>ns2.example.com.</ns>
+    <ns>ns3.example.com.</ns>
+    <ns>ns4.example.com.</ns>
+    <a>255.255.255.255</a>
+</default_dns_records>
