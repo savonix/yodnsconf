@@ -22,10 +22,10 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_create_default_dns_records" loop="//default_dns_records/ns">
+<query name="zone_create_default_dns_records" loop="//default_zone_records/ns">
     <connection>&connection;</connection>
     <params>
-        <param array="//default_dns_records/ns" type="text"/>
+        <param array="//default_zone_records/ns" type="text"/>
         <param name="//_post/aux" type="integer" default=""/>
         <param name="//_post/ttl" type="integer" default="86400"/>
         <param name="//_post/zone" type="integer"/>
