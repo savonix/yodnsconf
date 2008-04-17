@@ -99,7 +99,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tbody>
 </table>
 <xsl:if test="count(//records_get_by_id) &gt; 10">
-    <xsl:call-template name="pager"/>
+    <xsl:call-template name="pager">
+        <xsl:with-param name="my-table">records_table</xsl:with-param>
+    </xsl:call-template>
 </xsl:if>
 <iframe src="http://www.{//origin}"></iframe>
 </div>

@@ -112,7 +112,8 @@ function create_default_a_records(zone) {
     </tr>
     </xsl:for-each>
     </tbody>
-</table><xsl:call-template name="pager">
+</table>
+<xsl:call-template name="pager">
     <xsl:with-param name="my-table">records_table</xsl:with-param>
 </xsl:call-template>
 <div style="float: right">
