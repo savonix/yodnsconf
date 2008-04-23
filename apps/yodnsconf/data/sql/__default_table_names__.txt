@@ -13,3 +13,4 @@
 <!ENTITY pb_accounts "&prefix;soa">
 <!ENTITY pb_account_groups "&prefix;rr">
 <!ENTITY connection "yodnsconf">
+<!ENTITY connection "yodnsconf_read">

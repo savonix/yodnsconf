@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="records_get_by_id">
-    <connection>&connection;</connection>
+    <connection>&connection_read;</connection>
     <params>
         <param name="//_get/zone" type="integer"/>
         <param name="//_get/name" type="text" default="%"/>
