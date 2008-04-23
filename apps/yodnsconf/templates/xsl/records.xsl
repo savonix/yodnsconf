@@ -31,7 +31,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="no-sort-column">,
         headers: { 
             5: {sorter: false},
-            6: {sorter: false}
+            6: {sorter: false},
+            7: {sorter: false}
         }
     </xsl:with-param>
 </xsl:call-template>
@@ -79,6 +80,7 @@ function create_default_a_records(zone) {
         <th>TTL</th>
         <th>Dig</th>
         <th></th>
+        <th>+</th>
     </tr>
     <tr>
         <form method="get">
@@ -93,22 +95,26 @@ function create_default_a_records(zone) {
         <td align="right">
         <input name="Filter"  type="submit" id="Filter" value="Filter"/>
         </td>
+        <td></td>
         </form>
     </tr>
     </thead>
     <tbody>
     <xsl:for-each select="//records_get_by_id">
     <tr>
-        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="name"/></a></td>
-        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="type"/></a></td>
-        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="data"/></a></td>
-        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="aux"/></a></td>
-        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}"><xsl:value-of select="ttl"/></a></td>
+        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit"><xsl:value-of select="name"/></a></td>
+        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit"><xsl:value-of select="type"/></a></td>
+        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit"><xsl:value-of select="data"/></a></td>
+        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit"><xsl:value-of select="aux"/></a></td>
+        <td><a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit"><xsl:value-of select="ttl"/></a></td>
         <td>
             <a href="{//link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">Dig</a>
         </td>
         <td align="right"><a href="{//link_prefix}x-record-delete&amp;record_id={id}" 
             onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a></td>
+        <td>
+            <a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>
+        </td>
     </tr>
     </xsl:for-each>
     </tbody>

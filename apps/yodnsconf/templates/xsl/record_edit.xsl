@@ -46,8 +46,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <input type="hidden" name="id" value="{//_get/id}"/>
 <input type="hidden" name="zone" value="{//_get/zone}"/>
 <input type="hidden" name="serial" value="{//zone_get_by_id/serial}"/>
-<xsl:if test="//_get/id">
+<xsl:if test="//_get/action='edit'">
     <input type="hidden" name="action" value="edit"/>
+</xsl:if>
+<xsl:if test="//_get/action='copy'">
+    <input type="hidden" name="action" value="create"/>
 </xsl:if>
 <xsl:if test="not(//_get/id)">
     <input type="hidden" name="action" value="create"/>
