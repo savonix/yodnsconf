@@ -49,7 +49,11 @@ class Nexista_Net_dnsAction extends Nexista_Action
     protected  function main()
     {
 
-        require_once 'Net/DNS.php';
+        if(!@include_once('Net/DNS.php')) {
+            Nexista_Flow::add("net_dns_response", 
+                "This feature requires the PEAR Net_DNS Package.");
+            return false;
+        }
         $my_zone = $this->params['zone'];
         $yo_dns = $this->params['dns'];
         $my_type = $this->params['type'];
