@@ -22,33 +22,8 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="html" indent="yes" encoding="UTF-8" omit-xml-declaration="no"
-doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
-doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
-<xsl:template match="/">
-<html>
-<head>
-<title>YoDNSConf</title>
-<xsl:for-each select="//in_head">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
-    <link rel="stylesheet" type="text/css" href="{//link_prefix}themed-css"/>
-    <script type="text/javascript" src="{//path_prefix}/s/js/jquery/jquery.js"></script>
-    <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
-    <script type="text/javascript" src="{//path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
-    <script type="text/javascript" src="{//path_prefix}/s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
-    <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
-    <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
-    <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
-    <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
-    <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
-</head>
-<body>
-<xsl:for-each select="//pre_body_content">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
+<xsl:include href="html_shell.xsl"/>
+<xsl:template name="main">
 <div id="main-menu">
     <a href="{//link_prefix}index"><xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/></a>
     <a href="{//link_prefix}zone-edit"><xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/></a>
@@ -76,11 +51,5 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <div id="primary-workspace">
 <xsl:call-template name="content"/>
 </div>
-<xsl:for-each select="//footer">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
-</body>
-</html>
 </xsl:template>
 </xsl:stylesheet>
