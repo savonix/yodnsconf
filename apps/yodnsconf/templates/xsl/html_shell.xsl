@@ -39,10 +39,10 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
-<xsl:for-each select="//in_head">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
+    <xsl:for-each select="//in_head">
+        <xsl:sort select="priority"/>
+        <xsl:value-of select="string" disable-output-escaping="yes"/>
+    </xsl:for-each>
 </head>
 <body>
 <xsl:for-each select="//pre_body_content">
