@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         }
     </xsl:with-param>
 </xsl:call-template>
-<table style="width: 420px;" class="tablesorter" id="records_table">
+<table style="width: 60em;" class="tablesorter" id="records_table">
     <thead>
     <tr>
         <th>Name</th>
@@ -103,7 +103,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:with-param name="my-table">records_table</xsl:with-param>
     </xsl:call-template>
 </xsl:if>
-<iframe src="http://www.{//origin}"></iframe>
+<iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 100%"></iframe>
 </div>
 <script language="javascript">
     initValidation();
