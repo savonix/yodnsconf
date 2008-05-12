@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: main.xsl
+Component: main_menu.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,15 +22,29 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:include href="html_shell.xsl"/>
-<xsl:include href="footer.xsl"/>
-<xsl:include href="main_menu.xsl"/>
-<xsl:template name="main">
-
-<xsl:call-template name="main_menu"/>
-
-<div id="primary-workspace">
-<xsl:call-template name="content"/>
+<xsl:template name="main_menu">
+<div id="main-menu">
+    <a href="{//link_prefix}index"><xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/></a>
+    <a href="{//link_prefix}zone-edit"><xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/></a>
+    <xsl:if test="//_get/zone">
+    <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub">
+        <span style="color: red; font-weight: bold;">
+            <xsl:value-of select="//zone_get_by_id/origin"/>
+        </span>
+    </a>
+    <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">
+        Records
+    </a>
+    <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">
+        New Record
+    </a>
+    <a href="http://www.{//origin}" class="sub" target="_blank">
+        Visit
+    </a>
+    </xsl:if>
+    <select name="zone">
+    <option>Select</option>
+    </select>
 </div>
 </xsl:template>
 </xsl:stylesheet>

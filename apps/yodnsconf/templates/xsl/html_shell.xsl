@@ -28,7 +28,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:template match="/">
 <html>
 <head>
-    <title><xsl:value-of select="/__ROOT__/i18n/labels/label[key='default_page_title']/value"/></title>
+    <title>Web DNS Configuration</title>
     <link rel="stylesheet" type="text/css" href="{//link_prefix}themed-css" ></link>
     <script type="text/javascript" src="{//path_prefix}/s/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
