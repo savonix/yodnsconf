@@ -23,28 +23,22 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-# This wacky path builder is required due to mod_rewrite situations
 $path = $_SERVER['REQUEST_URI'];
-Nexista_Flow::add("request_uri",$path);
 $path = dirname($path)."/".basename($_SERVER['SCRIPT_NAME']);
 $path_prefix = dirname($path)."/";
 $link_prefix = $path."?nid=";
-$right_now = gmdate('Y-m-d H:i:s');
+
+$utcdate = gmdate('Y-m-d H:i:s');
 
 
 $defaults = Nexista_Config::getSection('defaults');
-
 Nexista_Flow::add("defaults",$defaults,false);
 
-$runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
+$runtime = array(
                 'path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
-                'right_now'=>$right_now,
+                'utcdate'=>$utcdate,
                 'ns_filter'=>$ns_filter,
-                'username'=>$_SESSION['NX_AUTH']['username'],
-                'user_id'=>$_SESSION['NX_AUTH']['user_id'],
-                'group_id'=>$_SESSION['NX_AUTH']['group_id'],
-                'admin'=>1,
                 'db_version'=>$db_version,
                 'timestamp'=>time());
 
