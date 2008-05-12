@@ -22,8 +22,6 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:output method="html" omit-xml-declaration="yes"/> 
-
 <!-- This template is used by pages which use the tablesorter and the table paginator -->
 <xsl:template name="jquery-setup">
 <xsl:param name="my-table"/>
