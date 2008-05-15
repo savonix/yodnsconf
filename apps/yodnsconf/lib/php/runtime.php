@@ -34,16 +34,23 @@ $utcdate = gmdate('Y-m-d H:i:s');
 $defaults = Nexista_Config::getSection('defaults');
 Nexista_Flow::add("defaults",$defaults,false);
 
+
+/* Subversion revision */
+if(is_file('../revision')) { 
+    $svn_revision = file_get_contents('../revision');
+} else {
+
+}
+
 $runtime = array(
                 'path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
                 'utcdate'=>$utcdate,
+                'svn_revision' => $svn_revision,
                 'ns_filter'=>$ns_filter,
-                'db_version'=>$db_version,
-                'timestamp'=>time());
+                'db_version'=>$db_version
+                );
 
 Nexista_Flow::add("runtime",$runtime,false);
-
-
 
 ?>
