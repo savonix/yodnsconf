@@ -109,7 +109,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </map:false>
         </map:if>
     </map:gate>
-    
+
     <map:gate name="zone-create-default-a-records" role="yodnsuser">
         <map:if name="//_post">
             <map:true>
@@ -127,6 +127,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:gate name="tools-query" role="yodnsuser">
         <map:plugin type="net_dns" params="{//_get/hostname},{//defaults/dig_target},{//_get/type}"/>
         <map:xsl src="templates/xsl/tools_query.xsl"/>
+    </map:gate>
+
+
+
+    <map:gate name="iframe-viewer" cache="0">
+        <map:xsl src="templates/xsl/iframe_viewer.xsl"/>
     </map:gate>
 
     <map:gate name="themed-css" cache="0">
