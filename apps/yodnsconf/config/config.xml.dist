@@ -14,7 +14,7 @@
         <dev_buffer>
             <placement>prepend</placement>
             <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
-            <excludes>themed-css,xml-sitemap,license</excludes>
+            <excludes>themed-css,dynamic-css,xml-sitemap,license,readme,license</excludes>
         </dev_buffer>
         <nx_auth>
             <placement>prepend</placement>
