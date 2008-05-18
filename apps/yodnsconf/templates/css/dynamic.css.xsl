@@ -28,5 +28,6 @@ a
 {
     color: red;
 }
+
 </xsl:template>
 </xsl:stylesheet>
