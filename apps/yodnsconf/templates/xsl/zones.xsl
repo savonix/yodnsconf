@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         headers: { 2: {sorter: false} }
     </xsl:with-param>
 </xsl:call-template>
-<script type="text/javascript" src="{//path_prefix}s/js/jquery.uitablefilter.js"></script>
 <script type="text/javascript">
 function delete_zone(zone,row) {
     if(confirm('Are you sure?')){
