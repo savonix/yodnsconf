@@ -1,6 +1,6 @@
 <!--
     Program: YoDNSConf
-    Component: html_shell.xsl
+    Component: header.xsl
     Copyright: Savonix Corporation
     Author: Albert L. Lash, IV
     License: Gnu Affero Public License version 3
@@ -22,29 +22,9 @@
     Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="html" indent="yes" encoding="UTF-8" omit-xml-declaration="no"
-doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
-doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
-<xsl:template match="/">
-<html>
-<xsl:call-template name="head"/>
-<body>
-<xsl:for-each select="//pre_body_content">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
+<xsl:template name="header">
 
 
-<xsl:call-template name="main"/>
 
-
-<xsl:call-template name="footer"/>
-
-<xsl:for-each select="//footer">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
-</body>
-</html>
 </xsl:template>
 </xsl:stylesheet>
