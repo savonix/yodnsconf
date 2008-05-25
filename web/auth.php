@@ -1,6 +1,6 @@
 <?php
 
-// Configuration 
+// Configuration
 // Where is nexista? This path should be to a folder containing the nexista source 
 $nexista_path = "/var/www/dev/nexista/";
 
@@ -19,11 +19,7 @@ define('APP_NAME','auth');
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
 
-    
-    
-    
-
-if(!include($nexista_path.'/plugins/builder.php')) {
+if(!include($nexista_path.'/extensions/nx_builder.php')) {
     echo "Error: Unable to load server loader or builder.";
     exit;
 }
@@ -33,10 +29,9 @@ if(!include($nexista_path.'/plugins/builder.php')) {
 
 // Loader not there or manually getting rebuilt? Build it!
 if(!file_exists($server_init) || isset($_GET['nxbin'])) {
-    build_it_now();
+    nexista_build_it_now();
 } else { // Loader is there, check freshness, then either rebuild or include it.
-    check_freshness();
-        include($server_init);
-        exit;
+    nexista_check_freshness();
+    include($server_init);
+    exit;
 }
-
