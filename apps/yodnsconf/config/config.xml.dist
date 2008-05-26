@@ -10,7 +10,7 @@
         <active>Y</active>
         <ns_filter>%</ns_filter>
     </defaults>
-    <plugins>
+    <extensions>
         <dev_buffer>
             <placement>prepend</placement>
             <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
@@ -21,5 +21,5 @@
             <source>&includepath;plugins/nx_auth.php</source>
             <login>auth.php?nid=login</login>
         </nx_auth>
-    </plugins>
+    </extensions>
 </config>

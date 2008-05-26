@@ -23,7 +23,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <map:sitemap xmlns:map="http://www.nexista.org/sitemap">
     <map:prepend>
-        <map:action type="server"/>
         <map:script src="lib/php/runtime.php"/>
         <map:xml src="i18n/en_US/yodnsconf.xml"/>
         <map:set name="theme" value="default"/>

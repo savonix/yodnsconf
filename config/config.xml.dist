@@ -14,10 +14,10 @@ used for a single or several applications. -->
         <database>pbooks</database>
         <username>username</username>
         <password>password</password>
-    </datasource>	
+    </datasource>
 
     <!-- AUTHENTICATION-->
-    <auth>       
+    <auth>
         <expire>0</expire>
         <idle>0</idle>
     </auth>
@@ -28,18 +28,16 @@ used for a single or several applications. -->
         <cacheLimiter></cacheLimiter>
         <cacheExpires></cacheExpires>
     </session>
-	
+
     <!-- FLOW -->
     <flow name="www">
-        <globals>PG</globals>
-        <request>PGFR</request>
+        <request>PGFSV</request>
     </flow>
     <flow name="dev">
-        <globals>PGC</globals>   
-        <request>PGFR</request>
+        <request>PGFSV</request>
     </flow>
-	
-	
+
+
 	<modes>
 		<dev/>
 	</modes>
@@ -60,11 +58,6 @@ used for a single or several applications. -->
         <applications>&project_root;/apps/&app_name;/</applications>
         <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
 		<cache>&project_root;/cache/&server_name;/cache/</cache>
-        
-        <tmp>/tmp/php/</tmp>
-        <logs>/usr/share/pbooks/log/</logs>
-
-		<home>/index.php</home>
     </path>
 
     <!-- BUILD SETTINGS -->
@@ -85,18 +78,17 @@ used for a single or several applications. -->
         <cache>0</cache>
         <debug>0</debug>
     </runtime>
-    
-    
-    <plugins>
-    
+
+
+    <extensions>
         <dev_buffer>
             <placement>prepend</placement>
-            <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
-        </dev_buffer> 
+            <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
+        </dev_buffer>
         <nx_auth>
             <placement>prepend</placement>
-            <source>&includepath;plugins/nx_auth.php</source>
+            <source>&includepath;extensions/nx_auth.php</source>
             <login>auth.php?nid=login</login>
         </nx_auth>
-    </plugins>
+    </extensions>
 </config>
