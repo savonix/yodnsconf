@@ -28,27 +28,31 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:call-template>
 
 <div id="main-menu">
-    <a href="{//link_prefix}index"><xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/></a>
-    <a href="{//link_prefix}zone-edit"><xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/></a>
+
+    <div id="main-menu-buttons">
+    <a href="{//link_prefix}index" class="menu-button">
+        <xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/>
+    </a>
+    <a href="{//link_prefix}zone-edit" class="menu-button">
+        <xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/>
+    </a>
     <xsl:if test="//_get/zone">
-    <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="sub">
+    <a href="{//link_prefix}zone-edit&amp;zone={//_get/zone}" class="menu-button">
         <span style="color: red; font-weight: bold;">
             <xsl:value-of select="//zone_get_by_id/origin"/>
         </span>
     </a>
-    <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="sub">
+    <a href="{//link_prefix}records&amp;zone={//_get/zone}" class="menu-button">
         Records
     </a>
-    <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="sub">
+    <a href="{//link_prefix}record-edit&amp;zone={//_get/zone}" class="menu-button">
         New Record
     </a>
-    <a href="http://www.{//origin}" class="sub" target="_blank">
+    <a href="http://www.{//origin}" class="menu-button" target="_blank">
         Visit
     </a>
     </xsl:if>
-    <select name="zone">
-    <option>Select</option>
-    </select>
+    </div>
 </div>
 <xsl:call-template name="source_spacer">
     <xsl:with-param name="section_end">main_menu</xsl:with-param>

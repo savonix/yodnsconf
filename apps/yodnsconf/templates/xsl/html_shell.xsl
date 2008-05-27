@@ -38,7 +38,6 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:call-template name="main"/>
 
 
-<xsl:call-template name="footer"/>
 
 <xsl:for-each select="//footer">
     <xsl:sort select="priority"/>

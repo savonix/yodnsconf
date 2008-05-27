@@ -33,62 +33,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="typography"/>
 <xsl:call-template name="layout"/>
 <xsl:call-template name="colors"/>
-a
-{
-    color: red;
-}
 
-
-body {
-    font-family: sans-serif;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    margin-top: 0;
-	font-size: small;
-}
-
-img {
-    border: 0;
-}
-textarea,input.text,select,option{
-	color:#000;
-	font-family: CourierNew, Courier, monospace;
+textarea,input.text,option {
 	background-color:#FCFCFC;
-	font-size: 120%;
 	border: 1 solid ##BFCBD9;
 	position: relative;
 }
-.button {
-	border-color: #666699;
-	border-width: 1px;
-    color: #000;
-	background-color: #FFF;
-}
 
-#main-menu {
-	font-size: small;
-}
-#main-menu a {
-	padding: .3em 1em .3em 1em;
-	background-color: #DEE4F2;
-	border: 1px solid #C0CCDA;
-    color: black;
-    margin-left: .4em;
-}
-
-#main-menu a.sub {
-	background-color: #FFF;
-}
-
-#main-menu select {
-    right: .4em; position: fixed; margin-top: -.5em;
-}
-
-#primary-workspace {
-    padding: 1em;
-    min-height: 30em;
-}
 #footer {
     padding: 1em;
     padding-top: 2em;

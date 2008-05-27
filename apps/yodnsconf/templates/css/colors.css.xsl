@@ -24,7 +24,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="colors">
-
+.menu-button {
+	padding: .3em 1em .3em 1em;
+	background-color: #DEE4F2;
+	border: 1px solid #C0CCDA;
+    color: black;
+    margin-left: .4em;
+}
 
 </xsl:template>
 </xsl:stylesheet>

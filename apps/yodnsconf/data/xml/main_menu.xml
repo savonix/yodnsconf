@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: layout.css.xsl
+Component: main_menu.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,29 +21,12 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
-<xsl:template name="layout">
-#main {
-    width: 980px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#content {
-    padding: .5em;
-}
-
-#main-menu {
-    background-color: blue;
-	font-size: small;
-    padding: 2px;
-}
-.menu-button {
-	padding: .3em 1em .3em 1em;
-}
-
-
-</xsl:template>
-</xsl:stylesheet>
+<menu>
+	<item>
+        <key>index</key>
+        <item>
+            <key>index</key>
+            <url>index</url>
+        </item>
+    </item>
+</menu>

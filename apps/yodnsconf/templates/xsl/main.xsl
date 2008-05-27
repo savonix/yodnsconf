@@ -30,10 +30,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="source_spacer.xsl"/>
 <xsl:template name="main">
 
-<xsl:call-template name="main_menu"/>
 
-<div id="primary-workspace">
-<xsl:call-template name="content"/>
+<div id="main">
+<xsl:call-template name="main_menu"/>
+    <div id="content">
+        <xsl:call-template name="content"/>
+    </div>
+    
+<xsl:call-template name="footer"/>
 </div>
 </xsl:template>
 </xsl:stylesheet>

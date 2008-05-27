@@ -122,7 +122,7 @@ function create_default_a_records(zone) {
 <xsl:call-template name="pager">
     <xsl:with-param name="my-table">records_table</xsl:with-param>
 </xsl:call-template>
-<div style="float: right">
+<div style="float: right;">
 <a href="{//link_prefix}zone-create-default-dns-records&amp;zone={//_get/zone}"
     onclick="confirm('Are you sure?'); create_default_dns_records({//_get/zone}); return false;">
     Create Default DNS Records

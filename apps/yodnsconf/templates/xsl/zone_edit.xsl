@@ -41,7 +41,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     }
 ]]>
 </script>
-<div style="float: left;">
 <form method="post" onSubmit="return validateStandard(this);" name="myform">
 <xsl:if test="//_get/zone">
     <input type="hidden" name="zone" value="{//_get/zone}"/>
@@ -57,7 +56,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
 </xsl:if>
 </form>
-</div>
 
 <div style="float: right; width: 60%">
 <xsl:call-template name="jquery-setup">
