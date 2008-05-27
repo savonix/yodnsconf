@@ -25,6 +25,55 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="base">
 
+body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol {
+    list-style:none;
+}
+
+h1, h2, h3, h4, h5, h6, pre, code {
+    font-size: 1em;
+}
+
+img {
+    border: 0;
+}
+
+a {
+    outline: none;
+}
+
+table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td
+{
+    text-align: left;
+    font-weight: normal;
+}
+
+input.text
+{
+    padding: 2px;
+    border: 1px solid #999999;
+}
+
+input.textarea
+{
+    padding: 2px;
+    border: 1px solid #999999;
+}
 
 </xsl:template>
 </xsl:stylesheet>
