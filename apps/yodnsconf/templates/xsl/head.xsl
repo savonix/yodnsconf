@@ -26,6 +26,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
 
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">head</xsl:with-param>
+</xsl:call-template>
 <head>
     <title>Web DNS Configuration</title>
     <link rel="stylesheet" type="text/css" href="{//link_prefix}dynamic-css" ></link>
@@ -45,5 +48,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
 </head>
 
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">head</xsl:with-param>
+</xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>

@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="header.xsl"/>
 <xsl:include href="footer.xsl"/>
 <xsl:include href="main_menu.xsl"/>
+<xsl:include href="source_spacer.xsl"/>
 <xsl:template name="main">
 
 <xsl:call-template name="main_menu"/>

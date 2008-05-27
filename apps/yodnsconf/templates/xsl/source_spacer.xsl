@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: html_shell.xsl
+Component: source_spacer.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -19,32 +19,24 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301 USA
+Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="html" indent="yes" encoding="UTF-8" omit-xml-declaration="no"
-doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
-doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
-<xsl:template match="/">
-<html>
-<xsl:call-template name="head"/>
-<body>
-<xsl:for-each select="//pre_body_content">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
+<xsl:template name="source_spacer">
+<xsl:param name="section_start"></xsl:param>
+<xsl:param name="section_end"></xsl:param>
+<xsl:text>
+</xsl:text>
+<xsl:if test="not($section_end='')">
+<xsl:comment><xsl:value-of select="$section_end"/> end</xsl:comment>
+</xsl:if>
+<xsl:text>
 
-
-<xsl:call-template name="main"/>
-
-
-<xsl:call-template name="footer"/>
-
-<xsl:for-each select="//footer">
-    <xsl:sort select="priority"/>
-    <xsl:value-of select="string" disable-output-escaping="yes"/>
-</xsl:for-each>
-</body>
-</html>
+</xsl:text>
+<xsl:if test="not($section_start='')">
+<xsl:comment><xsl:value-of select="$section_start"/> start</xsl:comment>
+</xsl:if>
+<xsl:text>
+</xsl:text>
 </xsl:template>
 </xsl:stylesheet>

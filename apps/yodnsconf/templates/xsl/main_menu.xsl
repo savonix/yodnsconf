@@ -23,6 +23,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template name="main_menu">
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">main_menu</xsl:with-param>
+</xsl:call-template>
+
 <div id="main-menu">
     <a href="{//link_prefix}index"><xsl:value-of select="/__ROOT__/i18n/label[@key='zones']"/></a>
     <a href="{//link_prefix}zone-edit"><xsl:value-of select="/__ROOT__/i18n/label[@key='new_zone']"/></a>
@@ -46,5 +50,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <option>Select</option>
     </select>
 </div>
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_end">main_menu</xsl:with-param>
+</xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>
