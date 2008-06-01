@@ -29,7 +29,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <html>
 <xsl:call-template name="head"/>
 <body>
-<xsl:for-each select="//pre_body_content">
+<xsl:for-each select="/_R_/pre_body_content">
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
@@ -39,7 +39,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 
 
 
-<xsl:for-each select="//footer">
+<xsl:for-each select="/_R_/footer">
     <xsl:sort select="priority"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>

@@ -42,7 +42,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td>
         <input name="mbox" type="text" value="{//*[local-name()=$zone_prefix]/mbox}"/></td>
   </tr>
-  <xsl:if test="//_get/zone">
+  <xsl:if test="/_R_/_get/zone">
   <tr>
     <td>Serial No.:</td>
     <td>
@@ -96,7 +96,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td></td>
     <td><input name="btn_save" type="submit" class="button" value="Save"/>&#160;
       <input name="btn_cancel" type="button" class="button" value="Cancel"
-        onClick="window.location.href='{//link_prefix}index'"/>
+        onClick="window.location.href='{/_R_/runtime/link_prefix}index'"/>
     </td>
   </tr>
 </table>

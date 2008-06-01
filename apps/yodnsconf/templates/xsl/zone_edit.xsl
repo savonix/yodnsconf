@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="pager.xsl"/>
 <xsl:include href="zone_form.xsl"/>
 <xsl:template name="content">
-<script language="javascript" src="{//path_prefix}s/js/jsval.js"></script>
+<script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
 <script language="javascript">
 <![CDATA[
     function initValidation()
@@ -42,14 +42,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 ]]>
 </script>
 <form method="post" onSubmit="return validateStandard(this);" name="myform">
-<xsl:if test="//_get/zone">
-    <input type="hidden" name="zone" value="{//_get/zone}"/>
+<xsl:if test="/_R_/_get/zone">
+    <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
     <input type="hidden" name="action" value="edit"/>
     <xsl:call-template name="zone-form">
         <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
     </xsl:call-template>
 </xsl:if>
-<xsl:if test="not(//_get/zone)">
+<xsl:if test="not(/_R_/_get/zone)">
     <input type="hidden" name="action" value="create"/>
     <xsl:call-template name="zone-form">
         <xsl:with-param name="zone_prefix">defaults</xsl:with-param>
@@ -75,20 +75,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tr>
     </thead>
     <tbody>
-    <xsl:for-each select="//records_get_by_id">
+    <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
     <tr>
         <td>
-            <a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+            <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
                 <xsl:value-of select="name"/>
             </a>
         </td>
         <td>
-            <a href="{//link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+            <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
                 <xsl:value-of select="substring(data,0,30)"/>
             </a>
         </td>
         <td>
-            <a href="{//link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">
+            <a href="{/_R_/runtime/link_prefix}tools-query&amp;hostname={name}.{/_R_/zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">
                 Dig
             </a>
         </td>
@@ -96,7 +96,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
-<xsl:if test="count(//records_get_by_id) &gt; 10">
+<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
     <xsl:call-template name="pager">
         <xsl:with-param name="my-table">records_table</xsl:with-param>
     </xsl:call-template>

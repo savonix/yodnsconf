@@ -27,8 +27,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <div id="footer">
 <a href="http://www.yodnsconf.docunext.com/blog/">Yo DNS Conf</a>
-<xsl:if test="//runtime/svn_revision">
-Revision <xsl:value-of select="//svn_revision"/>
+<xsl:if test="/_R_/runtime/svn_revision">
+Revision <xsl:value-of select="/_R_/svn_revision"/>
 </xsl:if>, 
 Copyright Savonix Corporation. License: Affero GPL
 </div>

@@ -78,7 +78,7 @@ $(document).ready(function()
 
 <!-- load the javascript -->
 <xsl:template name="jquery-links">
-<link rel="stylesheet" href="{__ROOT__/runtime/path_prefix}s/js/blue/style.css"
+<link rel="stylesheet" href="{/_R_/runtime/path_prefix}/s/js/blue/style.css"
     type="text/css" media="print, projection, screen" />
 </xsl:template>
 
@@ -89,15 +89,15 @@ $(document).ready(function()
     <table>
         <tr>
         <td>
-		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/first.png" class="first"/>
-		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/prev.png" class="prev"/>
+		<img src="{/_R_/runtime/path_prefix}/s/js/blue/first.png" class="first"/>
+		<img src="{/_R_/runtime/path_prefix}/s/js/blue/prev.png" class="prev"/>
 		</td>
         <td>
         <input type="text" class="pagedisplay" size="10" readonly="readonly"/>
         </td>
         <td>
-		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/next.png" class="next"/>
-		<img src="{/__ROOT__/runtime/path_prefix}/s/js/blue/last.png" class="last"/>
+		<img src="{/_R_/runtime/path_prefix}/s/js/blue/next.png" class="next"/>
+		<img src="{/_R_/runtime/path_prefix}/s/js/blue/last.png" class="last"/>
         </td>
         </tr>
     </table>
