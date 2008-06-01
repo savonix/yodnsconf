@@ -32,9 +32,11 @@ used for a single or several applications. -->
     <!-- FLOW -->
     <flow name="www">
         <request>PGFSV</request>
+        <my_doc_root>_R_</my_doc_root>
     </flow>
     <flow name="dev">
         <request>PGFSV</request>
+        <my_doc_root>_R_</my_doc_root>
     </flow>
 
 
@@ -77,18 +79,4 @@ used for a single or several applications. -->
         <debug>0</debug>
     </runtime>
 
-    <extensions>
-        <nexista_cache>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/nexista_cache.php</source>
-            <directory>&project_root;/cache/&server_name;/cache/</directory>
-            <active>1</active>
-            <compress>0</compress>
-        </nexista_cache>
-        <nexista_auth>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/nexista_auth.php</source>
-            <login>auth.php?nid=login</login>
-        </nexista_auth>
-    </extensions>
 </config>

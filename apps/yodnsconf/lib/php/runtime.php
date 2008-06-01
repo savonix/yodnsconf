@@ -23,8 +23,7 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-$path = $_SERVER['REQUEST_URI'];
-$path = dirname($path)."/".basename($_SERVER['SCRIPT_NAME']);
+$path = $_SERVER['SCRIPT_NAME'];
 $path_prefix = dirname($path)."/";
 $link_prefix = $path."?nid=";
 
@@ -43,12 +42,12 @@ if(is_file('../revision')) {
 }
 
 $runtime = array(
-                'path_prefix'=>$path_prefix,
-                'link_prefix'=>$link_prefix,
-                'utcdate'=>$utcdate,
+                'path_prefix' => $path_prefix,
+                'link_prefix' => $link_prefix,
+                'utcdate' => $utcdate,
                 'svn_revision' => $svn_revision,
-                'ns_filter'=>$ns_filter,
-                'db_version'=>$db_version
+                'ns_filter' => $ns_filter,
+                'db_version' => $db_version
                 );
 
 Nexista_Flow::add("runtime",$runtime,false);
