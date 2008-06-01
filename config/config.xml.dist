@@ -63,7 +63,7 @@ used for a single or several applications. -->
     <!-- BUILD SETTINGS -->
     <build>
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
-        <sitemap>&project_root;/apps/&app_name;/config/sitemap.xml</sitemap>
+        <sitemap>&project_root;/apps/&app_name;sitemap.xml</sitemap>
 
         <prepend>&includepath;plugins/nx-cache.php</prepend>
         <!-- enter a gate name for missing when there is no match -->
