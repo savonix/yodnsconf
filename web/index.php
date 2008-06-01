@@ -19,8 +19,7 @@ define('APP_NAME','yodnsconf');
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
 
-
-if(!include($nexista_path.'/extensions/nx_builder.php')) {
+if(!include($nexista_path.'/extensions/nexista_builder.php')) {
     echo "Error: Unable to load server loader or builder.";
     exit;
 }
@@ -29,7 +28,7 @@ if(!include($nexista_path.'/extensions/nx_builder.php')) {
 
 
 // Loader not there or manually getting rebuilt? Build it!
-if(!file_exists($server_init) || isset($_GET['nxbin'])) {
+if(!file_exists($server_init) || isset($_POST['x--dev--rebuild'])) {
     nexista_build_it_now();
 } else { // Loader is there, check freshness, then either rebuild or include it.
     nexista_check_freshness();

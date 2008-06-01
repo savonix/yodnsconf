@@ -63,7 +63,7 @@ used for a single or several applications. -->
     <!-- BUILD SETTINGS -->
     <build>
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
-        <sitemap>&project_root;/apps/&app_name;sitemap.xml</sitemap>
+        <sitemap>&project_root;/apps/&app_name;/sitemap.xml</sitemap>
 
         <prepend>&includepath;plugins/nx-cache.php</prepend>
         <!-- enter a gate name for missing when there is no match -->
@@ -74,21 +74,21 @@ used for a single or several applications. -->
 
 	<!-- 0 = false, anything else = true -->
     <runtime>
-        <development_console>0</development_console>
-        <cache>0</cache>
         <debug>0</debug>
     </runtime>
 
-
     <extensions>
-        <dev_buffer>
+        <nexista_cache>
             <placement>prepend</placement>
-            <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
-        </dev_buffer>
-        <nx_auth>
+            <source>&includepath;extensions/nexista_cache.php</source>
+            <directory>&project_root;/cache/&server_name;/cache/</directory>
+            <active>1</active>
+            <compress>0</compress>
+        </nexista_cache>
+        <nexista_auth>
             <placement>prepend</placement>
-            <source>&includepath;extensions/nx_auth.php</source>
+            <source>&includepath;extensions/nexista_auth.php</source>
             <login>auth.php?nid=login</login>
-        </nx_auth>
+        </nexista_auth>
     </extensions>
 </config>
