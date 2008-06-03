@@ -1,37 +1,41 @@
 <?php
 
-// Configuration 
-// Where is nexista? This path should be to a folder containing the nexista source 
-$nexista_path = "/var/www/dev/nexista/";
+
+// Where is nexista? This path should be to a folder containing nexista
+// This is the only thing you may need to edit:
+define('NX_PATH_BASE', "/var/www/dev/nexista/");
+
+
+
+/* Probably don't need to edit anything under this line. */
 
 // Bad hack
-if(!strpos($_SERVER['REQUEST_URI'],'.php')) { 
+if(!strpos($_SERVER['REQUEST_URI'],'.php')) {
     header("Location: ".$_SERVER['REQUEST_URI']."index.php");
     exit;
 }
+
 $server_name = $_SERVER['SERVER_NAME'];
-define('SERVER_NAME',$server_name);
+define('SERVER_NAME', $server_name);
 $project_root = dirname(dirname(__FILE__));
-define('PROJECT_ROOT',$project_root);
-define('PROJECT_NAME','yodnsconf');
-define('APP_NAME','yodnsconf');
+$project_root = str_replace('\\', '/', $project_root);
+define('NX_PATH_CORE', NX_PATH_BASE."kernel/");
+define('PROJECT_ROOT', $project_root);
+define('PROJECT_NAME', 'yodnsconf');
+define('APP_NAME', 'yodnsconf');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
-
-if(!include($nexista_path.'/extensions/nexista_builder.php')) {
+if(!include(NX_PATH_BASE.'extensions/nexista_builder.php')) {
     echo "Error: Unable to load server loader or builder.";
     exit;
 }
 
-
-
-
 // Loader not there or manually getting rebuilt? Build it!
 if(!file_exists($server_init) || isset($_POST['x--dev--rebuild'])) {
-    nexista_build_it_now();
+    nexista_build_it_now($server_init);
 } else { // Loader is there, check freshness, then either rebuild or include it.
-    nexista_check_freshness();
+    nexista_check_freshness($server_init);
     include($server_init);
     exit;
 }
