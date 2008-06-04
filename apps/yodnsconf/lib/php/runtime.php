@@ -23,22 +23,20 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-$path = $_SERVER['SCRIPT_NAME'];
+$path        = $_SERVER['SCRIPT_NAME'];
 $path_prefix = dirname($path)."/";
-$link_prefix = $path."?nid=";
+$link_prefix = $path . "?nid=";
 
 $utcdate = gmdate('Y-m-d H:i:s');
 
 
 $defaults = Nexista_Config::getSection('defaults');
-Nexista_Flow::add("defaults",$defaults,false);
+Nexista_Flow::add("defaults", $defaults, false);
 
 
 /* Subversion revision */
-if(is_file('../revision')) { 
+if (is_file('../revision')) {
     $svn_revision = file_get_contents('../revision');
-} else {
-
 }
 
 $runtime = array(
@@ -50,6 +48,6 @@ $runtime = array(
                 'db_version' => $db_version
                 );
 
-Nexista_Flow::add("runtime",$runtime,false);
+Nexista_Flow::add("runtime", $runtime, false);
 
 ?>
