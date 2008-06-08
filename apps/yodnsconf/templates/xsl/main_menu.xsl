@@ -22,40 +22,43 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:template name="main_menu">
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_start">main_menu</xsl:with-param>
-</xsl:call-template>
+  <xsl:template name="main_menu">
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_start">main_menu</xsl:with-param>
+    </xsl:call-template>
+    <xsl:variable name="link_prefix">
+      <xsl:value-of select="/_R_/runtime/link_prefix"/>
+    </xsl:variable>
 
-<div id="main-menu">
+    <div id="main-menu">
 
-    <div id="main-menu-buttons">
-    <a href="{/_R_/runtime/link_prefix}index" class="menu-button">
-        <xsl:value-of select="/_R_/i18n/label[@key='zones']"/>
-    </a>
-    <a href="{/_R_/runtime/link_prefix}zone-edit" class="menu-button">
-        <xsl:value-of select="/_R_/i18n/label[@key='new_zone']"/>
-    </a>
-    <xsl:if test="/_R_/_get/zone">
-    <a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={/_R_/_get/zone}" class="menu-button">
-        <span style="color: red; font-weight: bold;">
-            <xsl:value-of select="//zone_get_by_id/origin"/>
-        </span>
-    </a>
-    <a href="{/_R_/runtime/link_prefix}records&amp;zone={/_R_/_get/zone}" class="menu-button">
-        Records
-    </a>
-    <a href="{/_R_/runtime/link_prefix}record-edit&amp;zone={/_R_/_get/zone}" class="menu-button">
-        New Record
-    </a>
-    <a href="http://www.{//origin}" class="menu-button" target="_blank">
-        Visit
-    </a>
-    </xsl:if>
+      <div id="main-menu-buttons">
+        <a href="{$link_prefix}index" class="menu-button">
+          <xsl:value-of select="/_R_/i18n/zones"/>
+        </a>
+        <a href="{$link_prefix}zone-edit" class="menu-button">
+          <xsl:value-of select="/_R_/i18n/new_zone"/>
+        </a>
+        <xsl:if test="/_R_/_get/zone">
+          <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}" class="menu-button">
+            <span style="color: red; font-weight: bold;">
+              <xsl:value-of select="//zone_get_by_id/origin"/>
+            </span>
+          </a>
+          <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}" class="menu-button">
+            Records
+          </a>
+          <a href="{$link_prefix}record-edit&amp;zone={/_R_/_get/zone}" class="menu-button">
+            New Record
+          </a>
+          <a href="http://www.{//origin}" class="menu-button" target="_blank">
+            Visit
+          </a>
+        </xsl:if>
+      </div>
     </div>
-</div>
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_end">main_menu</xsl:with-param>
-</xsl:call-template>
-</xsl:template>
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_end">main_menu</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>

@@ -5,4 +5,6 @@
     <label key="new_zone">
         <value>New Zone</value>
     </label>
+    <zones>Zones</zones>
+    <new_zone>New Zone</new_zone>
 </i18n>
