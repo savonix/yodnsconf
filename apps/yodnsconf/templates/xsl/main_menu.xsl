@@ -40,15 +40,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <xsl:value-of select="/_R_/i18n/new_zone"/>
         </a>
         <xsl:if test="/_R_/_get/zone">
-          <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}" class="menu-button">
+          <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}"
+            class="menu-button">
             <span style="color: red; font-weight: bold;">
               <xsl:value-of select="//zone_get_by_id/origin"/>
             </span>
           </a>
-          <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}" class="menu-button">
+          <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}"
+            class="menu-button">
             Records
           </a>
-          <a href="{$link_prefix}record-edit&amp;zone={/_R_/_get/zone}" class="menu-button">
+          <a href="{$link_prefix}record-edit&amp;zone={/_R_/_get/zone}"
+            class="menu-button">
             New Record
           </a>
           <a href="http://www.{//origin}" class="menu-button" target="_blank">
