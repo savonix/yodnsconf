@@ -100,7 +100,7 @@ function create_default_a_records(zone) {
     </tr>
     </thead>
     <tbody>
-    <xsl:for-each select="//records_get_by_id">
+    <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
     <tr>
         <td>
             <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
