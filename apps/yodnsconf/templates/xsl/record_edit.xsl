@@ -46,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <input type="hidden" name="id" value="{/_R_/_get/id}"/>
 <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
 <input type="hidden" name="serial" value="{/_R_/zone_get_by_id/zone_get_by_idserial}"/>
-<xsl:if test="/_R_/_get/action='edit'">
+<xsl:if test="/_R_/_get/nid='record-edit'">
     <input type="hidden" name="action" value="edit"/>
 </xsl:if>
 <xsl:if test="/_R_/_get/action='copy'">
