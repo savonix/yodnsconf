@@ -71,6 +71,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:xsl src="templates/xsl/redirects.xsl"/>
     </map:gate>
     <map:gate name="redirect-edit" role="yodnsuser" cache="600" client_cache="300">
+      <map:if name="//_post/http_host">
+        <map:true>
+          <map:query src="data/sql/redirect_delete.xml"/>
+          <map:query src="data/sql/redirect_create.xml"/>
+          <map:action type="redirect" params="{//link_prefix}redirects"/>
+        </map:true>
+        <map:false>
+        </map:false>
+      </map:if>
         <map:query src="data/sql/redirects_get_all.xml"/>
         <map:xsl src="templates/xsl/redirect_edit.xsl"/>
     </map:gate>
