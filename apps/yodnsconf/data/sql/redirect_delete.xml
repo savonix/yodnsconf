@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: redirects_get_all.xml
+Component: redirect_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,16 +22,15 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="redirects_get_all">
-    <connection>&connection_read;</connection>
+<query name="redirect_delete">
+    <connection>&connection;</connection>
     <params>
-        <param name="_get/http_host" type="text" default="%"/>
+        <param name="_post/http_host" type="text" default="0"/>
 	</params>
     <sql>
-        SELECT *
+        DELETE
         FROM &prefix;redirects
         WHERE
-        http_host LIKE ?
-        ORDER BY http_host
+        http_host = ?
     </sql>
 </query>

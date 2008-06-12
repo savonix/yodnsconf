@@ -26,35 +26,31 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup">
-    <xsl:with-param name="my-table">myzones</xsl:with-param>
-    <xsl:with-param name="my-table-div">my-zones-div</xsl:with-param>
+    <xsl:with-param name="my-table">myredirects</xsl:with-param>
+    <xsl:with-param name="my-table-div">my-redirects-div</xsl:with-param>
     <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
     </xsl:with-param>
 </xsl:call-template>
 <script type="text/javascript">
-function delete_zone(zone,row) {
+function delete_redirect(http_host,row) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>x-zone-delete&amp;zone="+zone, 
+    $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>x--redirect-delete&amp;http_host="+http_host,
     {
-        'zone': zone
+        'http_host': http_host
     },
     function (data){
     });
-    myTable = document.getElementById("myzones");
+    myTable = document.getElementById("myredirects");
     myTable.deleteRow(row.parentNode.parentNode.rowIndex);
     }
 }
-function filter_table(phrase,column)
-{ 
-    $.uiTableFilter( $("#myzones"), phrase, column)
-}
 </script>
-<div id="my-zones-div">
+<div id="my-redirects-div">
 <script type="text/javascript">
-    document.getElementById('my-zones-div').style.visibility = 'hidden';
+    document.getElementById('my-redirects-div').style.visibility = 'hidden';
 </script>
-<table width="100%" class="tablesorter" id="myzones">
+<table width="100%" class="tablesorter" id="myredirects">
     <thead>
     <tr>
         <th>Origin</th>
@@ -82,16 +78,16 @@ function filter_table(phrase,column)
     </thead>
     <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
     <tr>
-        <td><a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="http_host"/></a></td>
-        <td><a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="redirect"/></a></td>
-        <td align="right"><a href="{/_R_/runtime/link_prefix}x-zone-delete&amp;id={id}"
-        onclick="delete_zone({id},this); return false;">Delete</a></td>
+        <td><a href="{/_R_/runtime/link_prefix}redirect-edit&amp;http_host={http_host}"><xsl:value-of select="http_host"/></a></td>
+        <td><a href="{/_R_/runtime/link_prefix}redirect-edit&amp;http_host={http_host}"><xsl:value-of select="redirect"/></a></td>
+        <td align="right"><a href="{/_R_/runtime/link_prefix}x--redirect-delete&amp;http_host={http_host}"
+        onclick="delete_redirect('{http_host}',this); return false;">Delete</a></td>
     </tr>
     </xsl:for-each>
 </table>
 </div>
 <xsl:call-template name="pager">
-    <xsl:with-param name="my-table">myzones</xsl:with-param>
+    <xsl:with-param name="my-table">myredirects</xsl:with-param>
 </xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>
