@@ -39,6 +39,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <a href="{$link_prefix}zone-edit" class="menu-button">
           <xsl:value-of select="/_R_/i18n/new_zone"/>
         </a>
+        <a href="{$link_prefix}redirects" class="menu-button">
+          <xsl:value-of select="/_R_/i18n/redirects"/>
+        </a>
         <xsl:if test="/_R_/_get/zone">
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}"
             class="menu-button">
