@@ -65,7 +65,8 @@ function delete_redirect(http_host,row) {
     </tr>
     <tr>
         <form method="get">
-        <td><input type="text" name="origin" value="{/_R_/_get/origin}" onkeyup="filter_table(this.value,'Origin')"/></td>
+        <input type="hidden" name="nid" value="redirects"/>
+        <td><input type="text" name="http_host" value="{/_R_/_get/http_host}"/></td>
         <xsl:if test="verbose='true'">
         <td></td>
         <td></td>
@@ -89,5 +90,8 @@ function delete_redirect(http_host,row) {
 <xsl:call-template name="pager">
     <xsl:with-param name="my-table">myredirects</xsl:with-param>
 </xsl:call-template>
+<div style="text-align: right">
+<a href="{/_R_/runtime/link_prefix}x--redirects-export">Export</a>
+</div>
 </xsl:template>
 </xsl:stylesheet>
