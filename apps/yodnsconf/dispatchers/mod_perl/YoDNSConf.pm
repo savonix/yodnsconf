@@ -6,10 +6,11 @@ use DateTime;
 
 
 my $tree = Apache2::Directive::conftree();
-my $srv_cfg = $tree->lookup('AorticaServerConfigFile');
 
 my $app_node = $tree->lookup('Location', '/yodnsconf');
-my $app_cfg = $app_node->{ AppConfigFile };
+my $srv_cfg  = $app_node->{ AorticaServerConfigFile };
+my $app_cfg  = $app_node->{ AppConfigFile };
+
 our $doc;
 
 
