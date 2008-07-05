@@ -25,7 +25,9 @@ my $fence = Apache2::Aortica::Kernel::Fence->instance();
 $fence->set_fence($fence_file, 'yodnsconf');
 
 Apache2::Aortica::Kernel::Init->instance('yodnsconf');
-
+Apache2::Aortica::Modules::Handlers::QueryHandler->instance('yodnsconf');
+Apache2::Aortica::Modules::Handlers::XmlHandler->instance('yodnsconf');
+Apache2::Aortica::Modules::Handlers::XslHandler->instance('yodnsconf');
 
 sub handler {
 
@@ -43,7 +45,7 @@ sub handler {
     my $gate_content_type = undef;
 
     # Create Gatekeeper
-    my $init = Apache2::Aortica::Kernel::Init->instance();
+    my $init = Apache2::Aortica::Kernel::Init->instance('yodnsconf');
 
 
     $init->start();
