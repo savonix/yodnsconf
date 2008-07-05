@@ -5,8 +5,7 @@ use Data::Dumper;
 use DateTime;
 
 
-my $tree = Apache2::Directive::conftree();
-
+my $tree     = Apache2::Directive::conftree();
 my $app_node = $tree->lookup('Location', '/yodnsconf');
 my $srv_cfg  = $app_node->{ AorticaServerConfigFile };
 my $app_cfg  = $app_node->{ AppConfigFile };
@@ -17,13 +16,15 @@ our $doc;
 
 
 # Create config
-my $config = Apache2::Aortica::Kernel::Config->instance($srv_cfg, $app_cfg);
+my $config = Apache2::Aortica::Kernel::Config->instance();
+$config->configure($srv_cfg, $app_cfg, 'yodnsconf');
 
 # Create fence
-my $fence_file = $config->{ CONFIG }->{build}->{sitemap};
-Apache2::Aortica::Kernel::Fence->instance($fence_file);
+my $fence_file = $config->{ CONFIG }->{ yodnsconf }->{build}->{sitemap};
+my $fence = Apache2::Aortica::Kernel::Fence->instance();
+$fence->set_fence($fence_file, 'yodnsconf');
 
-Apache2::Aortica::Kernel::Init->instance();
+Apache2::Aortica::Kernel::Init->instance('yodnsconf');
 
 
 sub handler {
@@ -53,7 +54,7 @@ sub handler {
     $duration = $init->stop();
     $duration = sprintf("%.3f", $duration);
     {
-        if ( $gate_content_type = $init->{ GATE }->{ $nid }->{ CONTENT_TYPE } ) {
+        if ( $gate_content_type = $init->{ yodnsconf }->{ GATE }->{ $nid }->{ CONTENT_TYPE } ) {
             # Memory leak???
             #unless($gate_content_type eq 'text/html') {
             $r->content_type($gate_content_type);
