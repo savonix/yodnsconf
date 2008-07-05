@@ -12,22 +12,23 @@ my $app_cfg  = $app_node->{ AppConfigFile };
 
 our $doc;
 
+my $app_name = 'yodnsconf';
 
 
 
 # Create config
 my $config = Apache2::Aortica::Kernel::Config->instance();
-$config->configure($srv_cfg, $app_cfg, 'yodnsconf');
+$config->configure($srv_cfg, $app_cfg, $app_name);
 
 # Create fence
-my $fence_file = $config->{ CONFIG }->{ yodnsconf }->{build}->{sitemap};
+my $fence_file = $config->{ CONFIG }->{ $app_name }->{build}->{sitemap};
 my $fence = Apache2::Aortica::Kernel::Fence->instance();
-$fence->set_fence($fence_file, 'yodnsconf');
+$fence->set_fence($fence_file, $app_name);
 
-Apache2::Aortica::Kernel::Init->instance('yodnsconf');
-Apache2::Aortica::Modules::Handlers::QueryHandler->instance('yodnsconf');
-Apache2::Aortica::Modules::Handlers::XmlHandler->instance('yodnsconf');
-Apache2::Aortica::Modules::Handlers::XslHandler->instance('yodnsconf');
+Apache2::Aortica::Kernel::Init->instance($app_name);
+Apache2::Aortica::Modules::Handlers::QueryHandler->instance($app_name);
+Apache2::Aortica::Modules::Handlers::XmlHandler->instance($app_name);
+Apache2::Aortica::Modules::Handlers::XslHandler->instance($app_name);
 
 sub handler {
 
@@ -57,10 +58,7 @@ sub handler {
     $duration = sprintf("%.3f", $duration);
     {
         if ( $gate_content_type = $init->{ yodnsconf }->{ GATE }->{ $nid }->{ CONTENT_TYPE } ) {
-            # Memory leak???
-            #unless($gate_content_type eq 'text/html') {
             $r->content_type($gate_content_type);
-            #}
         }
     }
 
