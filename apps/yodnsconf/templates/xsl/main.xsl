@@ -22,22 +22,27 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:include href="html_shell.xsl"/>
-<xsl:include href="head.xsl"/>
-<xsl:include href="header.xsl"/>
-<xsl:include href="footer.xsl"/>
-<xsl:include href="main_menu.xsl"/>
-<xsl:include href="source_spacer.xsl"/>
-<xsl:template name="main">
+  <xsl:include href="html_shell.xsl"/>
+  <xsl:include href="head.xsl"/>
+  <xsl:include href="header.xsl"/>
+  <xsl:include href="footer.xsl"/>
+  <xsl:include href="main_menu.xsl"/>
+  <xsl:include href="source_spacer.xsl"/>
+  <xsl:template name="main">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
 
 
-<div id="main">
-<xsl:call-template name="main_menu"/>
-    <div id="content">
-        <xsl:call-template name="content"/>
+    <div id="main">
+      <xsl:call-template name="main_menu"/>
+      <div id="content">
+        <xsl:call-template name="content">
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
+        </xsl:call-template>
+      </div>
+
+      <xsl:call-template name="footer"/>
     </div>
-    
-<xsl:call-template name="footer"/>
-</div>
-</xsl:template>
+  </xsl:template>
 </xsl:stylesheet>

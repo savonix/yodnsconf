@@ -21,13 +21,13 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:include href="main.xsl"/>
-<xsl:include href="pager.xsl"/>
-<xsl:include href="zone_form.xsl"/>
-<xsl:template name="content">
-<script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
-<script language="javascript">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:include href="main.xsl"/>
+  <xsl:include href="pager.xsl"/>
+  <xsl:include href="zone_form.xsl"/>
+  <xsl:template name="content">
+    <script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
+    <script language="javascript">
 <![CDATA[
     function initValidation()
     {
@@ -41,72 +41,72 @@ Fifth Floor, Boston, MA 02110-1301  USA
     }
 ]]>
 </script>
-<form method="post" onSubmit="return validateStandard(this);" name="myform">
-<xsl:if test="/_R_/_get/zone">
-    <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
-    <input type="hidden" name="action" value="edit"/>
-    <xsl:call-template name="zone-form">
-        <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
-    </xsl:call-template>
-</xsl:if>
-<xsl:if test="not(/_R_/_get/zone)">
-    <input type="hidden" name="action" value="create"/>
-    <xsl:call-template name="zone-form">
-        <xsl:with-param name="zone_prefix">defaults</xsl:with-param>
-    </xsl:call-template>
-</xsl:if>
-</form>
+    <form method="post" onSubmit="return validateStandard(this);" name="myform">
+      <xsl:if test="/_R_/_get/zone">
+        <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
+        <input type="hidden" name="action" value="edit"/>
+        <xsl:call-template name="zone-form">
+          <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="not(/_R_/_get/zone)">
+        <input type="hidden" name="action" value="create"/>
+        <xsl:call-template name="zone-form">
+          <xsl:with-param name="zone_prefix">defaults</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+    </form>
 
-<div style="float: right; width: 60%">
-<xsl:call-template name="jquery-setup">
-    <xsl:with-param name="my-table">records_table</xsl:with-param>
-    <xsl:with-param name="no-sort-column">,
+    <div style="float: right; width: 60%">
+      <xsl:call-template name="jquery-setup">
+        <xsl:with-param name="my-table">records_table</xsl:with-param>
+        <xsl:with-param name="no-sort-column">,
         headers: { 
             2: {sorter: false}
         }
     </xsl:with-param>
-</xsl:call-template>
-<table style="width: 100%" class="tablesorter" id="records_table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Data</th>
-        <th>Dig</th>
-    </tr>
-    </thead>
-    <tbody>
-    <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
-    <tr>
-        <td>
-            <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
-                <xsl:value-of select="name"/>
-            </a>
-        </td>
-        <td>
-            <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
-                <xsl:value-of select="substring(data,0,30)"/>
-            </a>
-        </td>
-        <td>
-            <a href="{/_R_/runtime/link_prefix}tools-query&amp;hostname={name}.{/_R_/zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">
+      </xsl:call-template>
+      <table style="width: 100%" class="tablesorter" id="records_table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Data</th>
+            <th>Dig</th>
+          </tr>
+        </thead>
+        <tbody>
+          <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
+            <tr>
+              <td>
+                <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+                  <xsl:value-of select="name"/>
+                </a>
+              </td>
+              <td>
+                <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+                  <xsl:value-of select="substring(data,0,30)"/>
+                </a>
+              </td>
+              <td>
+                <a href="{/_R_/runtime/link_prefix}tools-query&amp;hostname={name}.{/_R_/zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">
                 Dig
             </a>
-        </td>
-    </tr>
-    </xsl:for-each>
-    </tbody>
-</table>
-<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
-    <xsl:call-template name="pager">
-        <xsl:with-param name="my-table">records_table</xsl:with-param>
-    </xsl:call-template>
-</xsl:if>
-<xsl:if test="//origin">
-<iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
-</xsl:if>
-</div>
-<script language="javascript">
+              </td>
+            </tr>
+          </xsl:for-each>
+        </tbody>
+      </table>
+      <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
+        <xsl:call-template name="pager">
+          <xsl:with-param name="my-table">records_table</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="//origin">
+        <iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
+      </xsl:if>
+    </div>
+    <script language="javascript">
     initValidation();
 </script>
-</xsl:template>
+  </xsl:template>
 </xsl:stylesheet>
