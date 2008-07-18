@@ -35,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <script type="text/javascript">
 function delete_zone(zone,row) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>x-zone-delete&amp;zone="+zone, 
+    $.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone, 
     {
         'zone': zone
     },
@@ -82,16 +82,16 @@ function filter_table(phrase,column)
     </thead>
     <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
     <tr>
-        <td><a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
+        <td><a href="{$link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="origin"/></a></td>
         <xsl:if test="verbose='true'">
-        <td><a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
-        <td><a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
-        <td><a href="{/_R_/runtime/link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
+        <td><a href="{$link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ns"/></a></td>
+        <td><a href="{$link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="ttl"/></a></td>
+        <td><a href="{$link_prefix}zone-edit&amp;zone={id}"><xsl:value-of select="active"/></a></td>
         </xsl:if>
         <xsl:if test="not(verbose)">
         <td><xsl:value-of select="ttl"/></td>
         </xsl:if>
-        <td align="right"><a href="{/_R_/runtime/link_prefix}x-zone-delete&amp;id={id}"
+        <td align="right"><a href="{$link_prefix}x-zone-delete&amp;id={id}"
         onclick="delete_zone({id},this); return false;">Delete</a></td>
     </tr>
     </xsl:for-each>
