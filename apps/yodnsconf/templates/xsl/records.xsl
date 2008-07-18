@@ -25,6 +25,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">records_table</xsl:with-param>
       <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
@@ -39,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <script type="text/javascript">
 function delete_record(record_id,zone,row) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>x-record-delete&amp;record_id="+record_id, 
+    $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id, 
     {
         'record_id': record_id,
         'zone': zone
@@ -52,7 +54,7 @@ function delete_record(record_id,zone,row) {
 }
 
 function create_default_dns_records(zone) { 
-    $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>zone-create-default-dns-records&amp;zone="+zone, 
+    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone, 
     {
         'zone': zone
     },
@@ -61,7 +63,7 @@ function create_default_dns_records(zone) {
     });
 }
 function create_default_a_records(zone) { 
-    $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>zone-create-default-a-records&amp;zone="+zone, 
+    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone, 
     {
         'zone': zone
     },
@@ -105,39 +107,39 @@ function create_default_a_records(zone) {
         <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
           <tr>
             <td>
-              <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="name"/>
               </a>
             </td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="type"/>
               </a>
             </td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="data"/>
               </a>
             </td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="aux"/>
               </a>
             </td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="ttl"/>
               </a>
             </td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">Dig</a>
+              <a href="{$link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">Dig</a>
             </td>
             <td align="right">
-              <a href="{/_R_/runtime/link_prefix}x-record-delete&amp;record_id={id}"
+              <a href="{$link_prefix}x-record-delete&amp;record_id={id}"
                   onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a>
             </td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>
             </td>
           </tr>
         </xsl:for-each>
@@ -147,13 +149,13 @@ function create_default_a_records(zone) {
       <xsl:with-param name="my-table">records_table</xsl:with-param>
     </xsl:call-template>
     <div style="float: right;">
-      <a href="{/_R_/runtime/link_prefix}zone-create-default-dns-records&amp;zone={/_R_/_get/zone}"
+      <a href="{$link_prefix}zone-create-default-dns-records&amp;zone={/_R_/_get/zone}"
           onclick="confirm('Are you sure?'); create_default_dns_records({/_R_/_get/zone}); return false;">
     Create Default DNS Records
 </a>
       <br/>
       <br/>
-      <a href="{/_R_/runtime/link_prefix}zone-create-default-a-records&amp;zone={/_R_/_get/zone}"
+      <a href="{$link_prefix}zone-create-default-a-records&amp;zone={/_R_/_get/zone}"
           onclick="confirm('Are you sure?'); create_default_a_records({/_R_/_get/zone}); return false;">
     Create Default A Records
 </a>
