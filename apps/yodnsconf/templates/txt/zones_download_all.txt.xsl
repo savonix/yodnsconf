@@ -23,22 +23,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
-<xsl:template match="/">$ORIGIN <xsl:value-of select="//zone_get_by_id/origin"/>
-$TTL 12h
-<xsl:value-of select="//zone_get_by_id/origin"/>  IN  SOA  <xsl:value-of select="//zone_get_by_id/ns"/><xsl:text> </xsl:text><xsl:value-of select="//zone_get_by_id/mbox"/> (
-              <xsl:value-of select="//zone_get_by_id/serial"/><xsl:text>
-              </xsl:text><xsl:value-of select="//zone_get_by_id/refresh"/><xsl:text>
-              </xsl:text><xsl:value-of select="//zone_get_by_id/retry"/><xsl:text>
-              </xsl:text><xsl:value-of select="//zone_get_by_id/expire"/><xsl:text>
-              </xsl:text><xsl:value-of select="//zone_get_by_id/minimum"/>
-              )
-<xsl:for-each select="/_R_/records_get_by_id/records_get_by_id"><xsl:text>
-</xsl:text>
-<xsl:value-of select="name"/><xsl:text> </xsl:text><xsl:value-of select="type"/><xsl:if test="type='MX'"><xsl:text> </xsl:text><xsl:value-of select="aux"/></xsl:if><xsl:text> </xsl:text><xsl:if test="type='TXT'">"</xsl:if><xsl:value-of select="data"/><xsl:if test="type='TXT'">"</xsl:if>
-</xsl:for-each><xsl:text>
-</xsl:text>
-
-
+<xsl:template match="/">
+<xsl:for-each select="/_R_/zones_get_all/zones_get_all">
+wget -O <xsl:value-of select="origin"/>zone http://dev-101.savonix.com/a/dev/yodnsconf/index.php?nid=x-zone-export\&amp;zone=<xsl:value-of select="id"/></xsl:for-each>
 
 </xsl:template>
 </xsl:stylesheet>
