@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-open FILE, "get_docs.txt" or die $!;
+open FILE, "command_list.txt" or die $!;
 
 while (<FILE>) {
     system("$_");
