@@ -37,7 +37,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:variable name="my18n" select="document('../../i18n/en_US/yodnsconf.xml')/i18n"/>
 
     <html>
-      <xsl:call-template name="head"/>
+      <xsl:call-template name="head">
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
+        </xsl:call-template>
       <body>
         <xsl:for-each select="/_R_/pre_body_content">
           <xsl:sort select="priority"/>
