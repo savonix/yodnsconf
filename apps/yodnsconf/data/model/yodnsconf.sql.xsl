@@ -39,6 +39,7 @@ CREATE TABLE `soa` (
   `ttl` int(10) unsigned NOT NULL default '86400',
   `active` enum('Y','N') NOT NULL,
   `xfer` char(255) NOT NULL,
+  `notes` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `origin` (`origin`),
   KEY `active` (`active`)
@@ -53,6 +54,7 @@ CREATE TABLE `rr` (
   `data` char(128) NOT NULL,
   `aux` int(10) unsigned NOT NULL,
   `ttl` int(10) unsigned NOT NULL default '86400',
+  `notes` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `rr` (`zone`,`name`,`type`,`data`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
