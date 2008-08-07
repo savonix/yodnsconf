@@ -60,6 +60,14 @@ CREATE TABLE `rr` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
+CREATE TABLE `ip` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `data` char(128) NOT NULL,
+  `notes` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`),
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>zone_metadata` (
     `zone_id` int(11) NOT NULL auto_increment,
     `meta_key` varchar(100) NULL,
