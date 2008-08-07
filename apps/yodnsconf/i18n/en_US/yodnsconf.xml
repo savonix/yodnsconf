@@ -5,6 +5,7 @@
     <label key="new_zone">
         <value>New Zone</value>
     </label>
+    <ip>IP Addresses</ip>
     <zones>Zones</zones>
     <new_zone>New Zone</new_zone>
     <redirects>Redirects</redirects>
