@@ -53,9 +53,9 @@ CREATE TABLE `rr` (
   `type` enum('A','AAAA','CNAME','HINFO','MX','NAPTR','NS','PTR','RP','SRV','TXT') default NULL,
   `data` char(256) NOT NULL,
   `aux` int(10) unsigned NOT NULL,
+  `ttl` int(10) unsigned NOT NULL default '86400',
   `weight` int(10) unsigned NOT NULL,
   `port` int(10) unsigned NOT NULL,
-  `ttl` int(10) unsigned NOT NULL default '86400',
   `notes` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `rr` (`zone`,`name`,`type`,`data`)

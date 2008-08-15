@@ -101,6 +101,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td><input name="ttl" type="text" value="{/_R_/record_get_by_id/record_get_by_id/ttl}"/></td>
   </tr>
   <tr>
+    <td>Notes:</td>
+    <td><input name="notes" type="text" value="{/_R_/record_get_by_id/record_get_by_id/notes}"/></td>
+  </tr>
+  <tr>
     <td></td>
     <td><input name="btn_save" type="submit" class="button" value="Save"/>&#160;
       <input name="btn_cancel" type="button" class="button" value="Cancel"
