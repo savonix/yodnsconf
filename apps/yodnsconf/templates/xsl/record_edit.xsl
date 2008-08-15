@@ -86,7 +86,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td>Preference/Priority:</td>
     <td><input name="aux" type="text" value="{/_R_/record_get_by_id/record_get_by_id/aux}"/></td>
   </tr>
-  <!--
+  <xsl:if test="/_R_/record_get_by_id/record_get_by_id/type='SRV'">
   <tr>
     <td>Weight:</td>
     <td><input name="weight" type="text" value="{/_R_/record_get_by_id/record_get_by_id/weight}"/></td>
@@ -95,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <td>Port:</td>
     <td><input name="port" type="text" value="{/_R_/record_get_by_id/record_get_by_id/port}"/></td>
   </tr>
-  -->
+  </xsl:if>
   <tr>
     <td>TTL:</td>
     <td><input name="ttl" type="text" value="{/_R_/record_get_by_id/record_get_by_id/ttl}"/></td>
