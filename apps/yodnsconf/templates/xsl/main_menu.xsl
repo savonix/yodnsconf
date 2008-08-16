@@ -66,6 +66,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:if test="not(/_R_/_get/zone)">
 				<!-- to do: match selection -->
 				<form action="{$link_prefix}index" method="get" style="padding-left: 10em; display: inline;">
+				<input type="hidden" name="nid" value="index"/>
 				<select name="ns_filter">
 					<option value="%">Select All</option>
 					<option value="ns1.savonix.com.">ns1.savonix.com.</option>
