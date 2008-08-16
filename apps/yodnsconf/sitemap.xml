@@ -214,8 +214,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:raw src="LICENSE" />
     </map:gate>
     <map:gate name="dynamic-database-model">
-        <map:set name="table_prefix" value="infx_"/>
-		<map:set name="engine" value="mysqli"/>
+        <map:set name="table_prefix" value=""/>
+				<map:set name="engine" value="mysqli"/>
         <map:action type="header" params="Content-type,text/plain"/>
         <map:xsl src="data/model/infonomix_data_model.sql.xsl"/>
     </map:gate>
