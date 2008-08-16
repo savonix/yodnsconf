@@ -63,10 +63,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
             Visit
           </a>
         </xsl:if>
+				<select name="ns">
+					<option>Select</option>
+				</select>
       </div>
-			<select name="ns">
-				<option>Select</option>
-			</select>
     </div>
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_end">main_menu</xsl:with-param>
