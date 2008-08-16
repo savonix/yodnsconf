@@ -217,6 +217,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:set name="table_prefix" value=""/>
 				<map:set name="engine" value="mysqli"/>
         <map:action type="header" params="Content-type,text/plain"/>
-        <map:xsl src="data/model/infonomix_data_model.sql.xsl"/>
+        <map:xsl src="data/model/yodnsconf.sql.xsl"/>
     </map:gate>
 </map:sitemap>
