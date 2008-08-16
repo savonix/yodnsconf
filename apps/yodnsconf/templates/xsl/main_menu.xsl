@@ -64,7 +64,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </a>
         </xsl:if>
 				<select name="ns">
-					<option>Select</option>
+					<option value="%">Select All</option>
+					<option value="ns1.savonix.com.">ns1.savonix.com.</option>
+					<option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
 				</select>
       </div>
     </div>
