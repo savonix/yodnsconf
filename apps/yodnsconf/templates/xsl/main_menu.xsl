@@ -64,7 +64,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </a>
         </xsl:if>
         <xsl:if test="not(/_R_/_get/zone)">
-				<span style="text-align: right; display: inline;">
+				<span style="padding-left: 10em; display: inline;">
 				<select name="ns">
 					<option value="%">Select All</option>
 					<option value="ns1.savonix.com.">ns1.savonix.com.</option>
