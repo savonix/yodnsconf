@@ -64,15 +64,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </a>
         </xsl:if>
         <xsl:if test="not(/_R_/_get/zone)">
-				<form action="{$link_prefix}index" method="get">
-				<span style="padding-left: 10em; display: inline;">
+				<form action="{$link_prefix}index" method="get" style="padding-left: 10em; display: inline;">
 				<select name="ns_filter">
 					<option value="%">Select All</option>
 					<option value="ns1.savonix.com.">ns1.savonix.com.</option>
 					<option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
 				</select>
 				<input type="submit" value="Go"/>
-				</span>
 				</form>
 				</xsl:if>
       </div>
