@@ -92,6 +92,11 @@ function filter_table(phrase,column)
                 <xsl:value-of select="origin"/>
               </a>
             </td>
+            <td>
+              <a href="{$link_prefix}zone-edit&amp;zone={id}">
+                <xsl:value-of select="domain_expires"/>
+              </a>
+            </td>
             <xsl:if test="verbose='true'">
               <td>
                 <a href="{$link_prefix}zone-edit&amp;zone={id}">

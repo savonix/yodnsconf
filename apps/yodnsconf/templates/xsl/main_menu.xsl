@@ -64,6 +64,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </a>
         </xsl:if>
         <xsl:if test="not(/_R_/_get/zone)">
+				<!-- to do: match selection -->
 				<form action="{$link_prefix}index" method="get" style="padding-left: 10em; display: inline;">
 				<select name="ns_filter">
 					<option value="%">Select All</option>
