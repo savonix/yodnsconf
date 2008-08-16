@@ -124,7 +124,8 @@ function filter_table(phrase,column)
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
     </xsl:call-template>
-		<br/>
-		Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
+		<div style="float: right">
+			Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
+		</div>
   </xsl:template>
 </xsl:stylesheet>
