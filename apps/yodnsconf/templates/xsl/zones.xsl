@@ -60,6 +60,7 @@ function filter_table(phrase,column)
         <thead>
           <tr>
             <th>Origin</th>
+            <th>Expires</th>
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
             </xsl:if>
