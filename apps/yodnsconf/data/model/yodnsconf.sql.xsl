@@ -74,14 +74,14 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>zone_metadata
     `zone_id` int(11) NOT NULL auto_increment,
     `meta_key` varchar(100) NULL,
     `meta_value` varchar(100) NULL,
-    PRIMARY KEY `static_file_index` (`static_file_id`)
+    PRIMARY KEY `zone_index` (`zone_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>record_metadata` (
-    `zone_id` int(11) NOT NULL auto_increment,
+    `record_id` int(11) NOT NULL auto_increment,
     `meta_key` varchar(100) NULL,
     `meta_value` varchar(100) NULL,
-    PRIMARY KEY `static_file_index` (`static_file_id`)
+    PRIMARY KEY `record_index` (`record_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>options` (
