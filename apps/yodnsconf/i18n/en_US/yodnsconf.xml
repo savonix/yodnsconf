@@ -6,6 +6,7 @@
         <value>New Zone</value>
     </label>
     <ip>IP Addresses</ip>
+    <hosts>Hosts</hosts>
     <zones>Zones</zones>
     <new_zone>New Zone</new_zone>
     <redirects>Redirects</redirects>
