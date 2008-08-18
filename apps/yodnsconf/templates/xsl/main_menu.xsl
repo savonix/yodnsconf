@@ -48,7 +48,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <a href="{$link_prefix}hosts" class="menu-button">
           <xsl:value-of select="/_R_/i18n/hosts"/>
         </a>
-        <a href="{$link_prefix}options" class="menu-button">
+        <a href="{$link_prefix}yodns-options" class="menu-button">
           <xsl:value-of select="/_R_/i18n/options"/>
         </a>
 				</xsl:if>
