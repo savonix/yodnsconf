@@ -1,6 +1,7 @@
 <!ELEMENT query (connection,params,sql)>
 <!ATTLIST query name CDATA #IMPLIED>
 <!ATTLIST query loop CDATA #IMPLIED>
+<!ATTLIST query default CDATA #IMPLIED>
 <!ELEMENT connection      (#PCDATA)>
 <!ELEMENT params      (param*)>
 <!ELEMENT param      (#PCDATA)>
