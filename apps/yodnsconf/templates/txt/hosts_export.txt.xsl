@@ -25,8 +25,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
-    <xsl:value-of select="http_host"/><xsl:text>&#160;</xsl:text><xsl:value-of select="redirect"/>
+  <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
+    <xsl:value-of select="ip"/><xsl:text>&#160;</xsl:text><xsl:value-of select="host"/>
     <xsl:text>&#10;</xsl:text>
   </xsl:for-each>
 
