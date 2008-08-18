@@ -15,3 +15,4 @@
 <!ENTITY pb_account_groups "&prefix;rr">
 <!ENTITY connection "yodnsconf">
 <!ENTITY connection_read "yodnsconf_read">
+<!ENTITY yodns_options "yodns_options">
