@@ -55,14 +55,8 @@ function delete_host(http_host,row) {
       <table width="100%" class="tablesorter" id="myhosts">
         <thead>
           <tr>
-            <th>Hostname</th>
-            <xsl:if test="verbose='true'">
-              <th>Name Server</th>
-            </xsl:if>
             <th>Address</th>
-            <xsl:if test="verbose='true'">
-              <th>Active</th>
-            </xsl:if>
+            <th>Hostname</th>
             <th></th>
           </tr>
           <tr>
@@ -71,10 +65,6 @@ function delete_host(http_host,row) {
               <td>
                 <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
               </td>
-              <xsl:if test="verbose='true'">
-                <td></td>
-                <td></td>
-              </xsl:if>
               <td></td>
               <td align="right">
                 <input name="Filter" type="submit" id="Filter" value="Filter"/>
@@ -86,7 +76,7 @@ function delete_host(http_host,row) {
           <tr>
             <td>
               <a href="{$link_prefix}host-edit&amp;http_host={http_host}">
-                <xsl:value-of select="http_host"/>
+                <xsl:value-of select="ip"/>
               </a>
             </td>
             <td>
