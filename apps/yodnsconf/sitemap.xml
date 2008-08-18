@@ -208,7 +208,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:action type="header" params="Content-Type,text/plain"/>
         <map:query src="data/sql/hosts_get_all.xml"/>
         <map:action type="pad" params="//hosts_get_all/hosts_get_all/http_host,30, "/>
-        <map:xsl src="templates/txt/hosts_export.xsl"/>
+        <map:xsl src="templates/txt/hosts_export.txt.xsl"/>
     </map:gate>
     <map:gate name="x--host-delete" role="yodnsuser">
         <map:action type="header" params="Content-Type,text/xml"/>
