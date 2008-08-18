@@ -55,11 +55,11 @@ function delete_host(http_host,row) {
       <table width="100%" class="tablesorter" id="myhosts">
         <thead>
           <tr>
-            <th>Origin</th>
+            <th>Hostname</th>
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
             </xsl:if>
-            <th>TTL</th>
+            <th>Address</th>
             <xsl:if test="verbose='true'">
               <th>Active</th>
             </xsl:if>
