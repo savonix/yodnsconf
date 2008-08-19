@@ -15,7 +15,7 @@
             <placement>prepend</placement>
             <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
             <sitemap>&includepath;extensions/dev_buffer/sitemap.xml</sitemap>
-            <excludes>themed-css,dynamic-css,xml-sitemap,license,readme,license</excludes>
+            <excludes>x--,themed-css,dynamic-css,xml-sitemap,license,readme,license</excludes>
         </dev_buffer>
         <nexista_auth>
             <placement>prepend</placement>
