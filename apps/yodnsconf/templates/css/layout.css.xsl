@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="layout">
 #main {
     width: 980px;
+		min-height: 800px;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -36,11 +37,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
 }
 
 #main-menu {
-    background-color: blue;
-	font-size: small;
+    background-color: gray;
+	  font-size: small;
     padding: 2px;
+		display: block;
 }
-.menu-button {
+#main-menu-buttons {
+	padding: 2px;
+	background-color: #CCC;
+}
+#main-menu-buttons a {
+	line-height: 2em;
+  margin-left: .4em;
 	padding: .3em 1em .3em 1em;
 }
 

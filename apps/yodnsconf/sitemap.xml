@@ -198,8 +198,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <map:query src="data/sql/host_create.xml"/>
           <map:action type="redirect" params="{//link_prefix}hosts"/>
         </map:true>
-        <map:false>
-        </map:false>
       </map:if>
         <map:query src="data/sql/hosts_get_all.xml"/>
         <map:xsl src="templates/xsl/host_edit.xsl"/>
@@ -214,6 +212,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:action type="header" params="Content-Type,text/xml"/>
         <map:query src="data/sql/host_delete.xml"/>
     </map:gate>
+
+
+    <map:gate name="ip" role="yodnsuser" cache="600" client_cache="300">
+        <map:xsl src="templates/xsl/ip_addresses.xsl"/>
+    </map:gate>
+
+
+
+
 
     <map:gate name="tools-query" role="yodnsuser">
         <map:plugin type="net_dns" params="{//_get/hostname},{//defaults/dig_target},{//_get/type}"/>
