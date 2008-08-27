@@ -76,7 +76,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <tr>
     <td>Notes:</td>
     <td>
-        <input name="ttl" type="text" value="{//*[local-name()=$zone_prefix]/notes}"/></td>
+        <input name="notes" type="text" value="{//*[local-name()=$zone_prefix]/notes}"/></td>
+  </tr>
+  <tr>
+    <td>Expiration Date:</td>
+    <td>
+        <input name="expiration_date" type="text" value="{//*[local-name()=$zone_prefix]/expiration_date}"/></td>
   </tr>
   <tr>
     <td valign="top">Active:</td>
