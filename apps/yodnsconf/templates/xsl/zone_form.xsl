@@ -74,6 +74,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input name="ttl" type="text" value="{//*[local-name()=$zone_prefix]/ttl}"/></td>
   </tr>
   <tr>
+    <td>Notes:</td>
+    <td>
+        <input name="ttl" type="text" value="{//*[local-name()=$zone_prefix]/notes}"/></td>
+  </tr>
+  <tr>
     <td valign="top">Active:</td>
     <td>
         <input name="active" type="radio" value="Y">
