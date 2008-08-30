@@ -47,13 +47,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tr>
           <td>From Host:</td>
           <td>
-            <input name="http_host" type="text" value="{/_R_/redirects_get_all/redirects_get_all/http_host}"/>
+            <input name="http_host" type="text" value="{/_R_/_get/http_host}"/>
           </td>
         </tr>
         <tr>
           <td>To URL:</td>
           <td>
-            <input name="redirect" type="text" value="{/_R_/redirects_get_all/redirects_get_all/redirect}"/>
+            <input name="redirect" type="text" value="{/_R_/redirects_get_all/redirects_get_all[http_host=/_R_/_get/http_host]/redirect}"/>
           </td>
         </tr>
         <tr>

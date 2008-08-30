@@ -95,6 +95,7 @@ function delete_redirect(http_host,row) {
       <xsl:with-param name="my-table">myredirects</xsl:with-param>
     </xsl:call-template>
     <div style="text-align: right">
+      <a href="{$link_prefix}redirect-edit">New</a>
       <a href="{$link_prefix}x--redirects-export">Export</a>
     </div>
   </xsl:template>
