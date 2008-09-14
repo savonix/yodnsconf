@@ -22,10 +22,10 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_create">
+<query name="zone_create" loop="//_post/origin" default="1">
 	<connection>&connection;</connection>
 	<params>
-		<param name="//_post/origin" type="text"/>
+		<param array="//_post/origin" type="text"/>
 		<param name="//_post/ns" type="text"/>
 		<param name="//_post/mbox" type="text"/>
 		<param name="//_post/refresh" type="integer" default="28800"/>

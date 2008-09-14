@@ -39,8 +39,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         (example.com.)
 			</xsl:if>
 			<xsl:if test="not(//*[local-name()=$zone_prefix]/origin)">
-				<textarea name="origin" style="width: 20em; height: 4em;"/>
-				(one per line)
+        <input name="origin" type="text"/><br/>
+        <input name="origin" type="text"/><br/>
+        <input name="origin" type="text"/><br/>
+        <input name="origin" type="text"/>
 			</xsl:if>
     </td>
   </tr>
