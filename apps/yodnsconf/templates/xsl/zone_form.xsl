@@ -26,7 +26,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:param name="zone_prefix"/>
 <table width="100%">
   <tr>
-    <td>Origin:</td>
+    <td>
+			Origin:
+			<xsl:if test="not(//*[local-name()=$zone_prefix]/origin)">
+				<br/>
+				(one per line)
+			</xsl:if>
+		</td>
     <td>
 			<xsl:if test="//*[local-name()=$zone_prefix]/origin">
         <input name="origin" type="text" value="{//*[local-name()=$zone_prefix]/origin}"/>
