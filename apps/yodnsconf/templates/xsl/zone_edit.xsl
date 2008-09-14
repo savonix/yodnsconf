@@ -107,7 +107,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </div>
     <br/><a href="{//link_prefix}x-zone-export&amp;zone={//id}">Export</a>
     <script language="javascript">
-    initValidation();
-</script>
+    	initValidation();
+		</script>
   </xsl:template>
 </xsl:stylesheet>
