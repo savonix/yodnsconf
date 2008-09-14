@@ -39,10 +39,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         (example.com.)
 			</xsl:if>
 			<xsl:if test="not(//*[local-name()=$zone_prefix]/origin)">
-        <input name="origin" type="text"/><br/>
-        <input name="origin" type="text"/><br/>
-        <input name="origin" type="text"/><br/>
-        <input name="origin" type="text"/>
+        <input name="origin[]" type="text"/><br/>
+        <input name="origin[]" type="text"/><br/>
+        <input name="origin[]" type="text"/><br/>
+        <input name="origin[]" type="text"/>
 			</xsl:if>
     </td>
   </tr>
