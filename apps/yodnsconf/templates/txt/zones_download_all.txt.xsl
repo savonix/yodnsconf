@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: redirects_export.xsl
+Component: zones_download_all.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3

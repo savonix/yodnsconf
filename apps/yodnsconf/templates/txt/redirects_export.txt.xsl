@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: redirects_export.xsl
+Component: redirects_export.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
