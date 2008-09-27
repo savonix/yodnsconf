@@ -24,8 +24,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
-<xsl:for-each select="/_R_/zones_get_all/zones_get_all">www.<xsl:value-of select="origin"/>,
-</xsl:for-each>
+<xsl:for-each select="/_R_/zones_get_all/zones_get_all">www.<xsl:value-of select="origin"/>,</xsl:for-each>
 
 </xsl:template>
 </xsl:stylesheet>
