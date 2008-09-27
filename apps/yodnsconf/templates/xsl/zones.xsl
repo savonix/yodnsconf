@@ -132,6 +132,8 @@ function filter_table(phrase,column)
     </xsl:call-template>
 		<div style="float: right">
 			Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
+			<br/>
+		<a href="{$link_prefix}x-zones-export-csv&amp;ns_filter=ns1.savonix.com.">CSV Zone Export</a>
 		</div>
   </xsl:template>
 </xsl:stylesheet>
