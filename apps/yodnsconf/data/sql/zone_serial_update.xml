@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="zone_serial_update">
     <connection>&connection;</connection>
     <params>
-        <param name="serial" type="integer"/>
+        <param name="new_serial" type="integer"/>
         <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>

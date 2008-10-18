@@ -44,17 +44,20 @@ class Nexista_SerialAction extends Nexista_Action
      * @return  boolean success
      */
 
-    protected  function main()
+    protected function main()
     {
-	$my_serial = Nexista_Flow::getByPath($this->params['srl']);
+        $my_serial = Nexista_Flow::getByPath($this->params['srl']);
         // increase serial
         $serial_date = substr($my_serial, 0, 8);
         $count = intval(substr($my_serial, 8, 2));
         $current_date = intval(date("Ymd"));
         if($serial_date >= $current_date){
             $count++;
-            $count = str_pad($count, 2, "0", STR_PAD_LEFT);
-            $new_serial = $serial_date.$count;
+            if($count < 10) {
+                $new_serial = $serial_date."0".$count;
+            } else {
+                $new_serial = $serial_date.$count;
+            }
         } else {
             $new_serial = $current_date.'01';
         }
