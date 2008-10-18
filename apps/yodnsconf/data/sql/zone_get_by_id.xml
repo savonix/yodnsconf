@@ -19,7 +19,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="zone_get_by_id">
@@ -29,9 +29,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="//_post/zone" type="integer"/>
 	</params>
     <sql>
-        SELECT * FROM &prefix;soa 
-        WHERE 
-        id = ? 
+        SELECT * FROM &prefix;soa
+        WHERE
+        id = ?
         OR
         id = ?
     </sql>
