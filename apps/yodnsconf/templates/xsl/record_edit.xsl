@@ -45,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <form method="post" name="record"  onSubmit="return validateStandard(this);">
 <input type="hidden" name="id" value="{/_R_/_get/id}"/>
 <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
-<input type="hidden" name="serial" value="{/_R_/zone_get_by_id/zone_get_by_idserial}"/>
+<input type="hidden" name="serial" value="{/_R_/zone_get_by_id/zone_get_by_id/serial}"/>
 <xsl:if test="/_R_/_get/nid='record-edit'">
     <input type="hidden" name="action" value="edit"/>
 </xsl:if>
