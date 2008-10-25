@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zones_download_all.txt.xsl
+Component: ip_get_all.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,11 +21,14 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
-<xsl:template match="/">
-<xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-wget -O <xsl:value-of select="origin"/>zone http://dev-48.savonix.com/a/dev/yodnsconf/index.php?nid=x-zone-export\&amp;zone=<xsl:value-of select="id"/></xsl:for-each>
-
-</xsl:template>
-</xsl:stylesheet>
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="ip_get_all">
+	<connection>&connection_read;</connection>
+	<params>
+	</params>
+	<sql>
+			SELECT *
+			FROM &prefix;ip
+			WHERE
+	</sql>
+</query>
