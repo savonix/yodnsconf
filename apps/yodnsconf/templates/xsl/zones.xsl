@@ -72,6 +72,7 @@ function filter_table(phrase,column)
           </tr>
           <tr>
             <form method="get">
+						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
                 <input type="text" name="origin" value="{/_R_/_get/origin}" onkeyup="filter_table(this.value,'Origin')"/>
               </td>
