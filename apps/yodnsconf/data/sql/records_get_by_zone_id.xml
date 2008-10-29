@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: records_get_by_soa_id.xml
+Component: records_get_by_zone_id.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3

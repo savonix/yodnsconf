@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -64,6 +64,15 @@ function create_default_dns_records(zone) {
 }
 function create_default_a_records(zone) { 
     $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone, 
+    {
+        'zone': zone
+    },
+    function (data){
+        window.location.reload(true);
+    });
+}
+function zone_apply_profile(zone) { 
+    $.post("<xsl:value-of select="$link_prefix"/>zone-apply-profile&amp;zone="+zone, 
     {
         'zone': zone
     },
@@ -152,13 +161,19 @@ function create_default_a_records(zone) {
       <a href="{$link_prefix}zone-create-default-dns-records&amp;zone={/_R_/_get/zone}"
           onclick="confirm('Are you sure?'); create_default_dns_records({/_R_/_get/zone}); return false;">
     Create Default DNS Records
-</a>
+			</a>
       <br/>
       <br/>
       <a href="{$link_prefix}zone-create-default-a-records&amp;zone={/_R_/_get/zone}"
           onclick="confirm('Are you sure?'); create_default_a_records({/_R_/_get/zone}); return false;">
     Create Default A Records
-</a>
+			</a>
+			<br/>
+      <br/>
+      <a href="{$link_prefix}zone-apply-profile&amp;zone={/_R_/_get/zone}"
+          onclick="confirm('Are you sure?'); zone_apply_profile({/_R_/_get/zone}); return false;">
+    	Apply Zone Profile
+			</a>
     </div>
   </xsl:template>
 </xsl:stylesheet>

@@ -123,7 +123,10 @@ function filter_table(phrase,column)
             </xsl:if>
             <td align="right">
               <a href="{$link_prefix}x-zone-delete&amp;id={id}" onclick="delete_zone({id},this); return false;">Delete</a>
-            </td>
+							| <a href="{$link_prefix}zone-clone&amp;zone={id}">
+								Clone
+							</a>
+						</td>
           </tr>
         </xsl:for-each>
       </table>
