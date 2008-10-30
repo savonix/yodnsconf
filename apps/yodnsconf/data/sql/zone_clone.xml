@@ -28,8 +28,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param array="//records_get_by_id/records_get_by_id/data" type="text"/>
 		<param array="//records_get_by_id/records_get_by_id/name" type="text" default=""/>
 		<param array="//records_get_by_id/records_get_by_id/type" type="text"/>
-		<param name="//records_get_by_id/records_get_by_id/aux" type="integer" default=""/>
-		<param name="//records_get_by_id/records_get_by_id/ttl" type="integer" default="86400"/>
+		<param array="//records_get_by_id/records_get_by_id/aux" type="integer" default=""/>
+		<param array="//records_get_by_id/records_get_by_id/ttl" type="integer" default="86400"/>
 		<param name="//zone_get_by_origin/id" type="integer"/>
 	</params>
 	<sql>
