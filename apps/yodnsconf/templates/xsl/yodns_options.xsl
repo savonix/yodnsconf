@@ -27,26 +27,35 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myredirects</xsl:with-param>
       <xsl:with-param name="my-table-div">my-redirects-div</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
-    </xsl:with-param>
+			</xsl:with-param>
     </xsl:call-template>
     <form method="post">
       <table>
-        <xsl:for-each select="//yodns_options/option">
+      <xsl:for-each select="//yodns_options/option">
           <xsl:variable name="my_option">
             <xsl:value-of select="option_key"/>
           </xsl:variable>
-          <tr>
-            <td>
-              <xsl:value-of select="/_R_/i18n/*[local-name()=$my_option]/value"/>: </td>
-            <td>
-              <input type="text" name="{option_key}" value="{//option_get[option_key=$my_option]/option_value}"/>
-            </td>
-          </tr>
+          <xsl:if test="@set=//option_set">
+            <tr>
+              <td>
+                <xsl:value-of select="/_R_/i18n/*[local-name()=$my_option]"/>:
+              </td>
+              <td>
+                <input type="text" name="{option_key}"
+                value="{//option_get[option_key=$my_option]/option_value}"/>
+              </td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="not(@set=//option_set)">
+            <input type="hidden" name="{option_key}"
+            value="{//option_get[option_key=$my_option]/option_value}"/>
+          </xsl:if>
         </xsl:for-each>
       </table>
       <input type="submit"/>

@@ -256,6 +256,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 	<map:gate name="yodns-options" role="yodnsuser">
+		<map:set name="option_set" value="options_profiles"/>
 		<map:xml src="data/xml/yodns_options.xml"/>
 		<map:if name="//_post">
 			<map:true>

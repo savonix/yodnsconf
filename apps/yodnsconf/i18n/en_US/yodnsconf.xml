@@ -11,4 +11,6 @@
     <zones>Zones</zones>
     <new_zone>New Zone</new_zone>
     <redirects>Redirects</redirects>
+    <profiles>Profiles</profiles>
+		<nameservers>Name Servers</nameservers>
 </i18n>
