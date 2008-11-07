@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="//_post/name" type="text"/>
         <param name="//_post/type" type="text"/>
         <param name="//_post/data" type="text"/>
-        <param name="//_post/aux" type="text" default="NULL"/>
+        <param name="//_post/aux" type="integer" default="NULL"/>
         <param name="//_post/ttl" type="integer" default="14400"/>
         <param name="//_post/weight" type="integer" default="NULL"/>
         <param name="//_post/port" type="integer" default="NULL"/>
