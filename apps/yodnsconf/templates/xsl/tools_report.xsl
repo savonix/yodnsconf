@@ -24,6 +24,41 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
-
+<table width="100%" class="tablesorter" id="records_table">
+	<thead>
+		<tr>
+			<th>Category</th>
+			<th>Status</th>
+			<th>Test</th>
+			<th>Info</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Parent</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>NS</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>MX</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>WWW</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 </xsl:template>
 </xsl:stylesheet>

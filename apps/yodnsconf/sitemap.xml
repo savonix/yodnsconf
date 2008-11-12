@@ -254,6 +254,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/tools_query.xsl"/>
 	</map:gate>
 
+	<map:gate name="tools-report" role="yodnsuser">
+		<map:plugin type="net_dns" params="{//_get/hostname},{//defaults/dig_target},{//_get/type}"/>
+		<map:xsl src="templates/xsl/tools_report.xsl"/>
+	</map:gate>
+
 
 	<map:gate name="yodns-options" role="yodnsuser">
 		<map:set name="option_set" value="options_profiles"/>
