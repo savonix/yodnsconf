@@ -174,7 +174,7 @@ function zone_apply_profile(zone) {
         <select name="profile_id">
             <option>Select</option>
             <xsl:for-each select="//zone_profile">
-                <option value="{id}"><xsl:value-of select="profile_name"/></option>
+                <option value="{@id}"><xsl:value-of select="@profile_name"/></option>
             </xsl:for-each>
         </select>
       <a href="{$link_prefix}zone-apply-profile&amp;zone={/_R_/_get/zone}"
