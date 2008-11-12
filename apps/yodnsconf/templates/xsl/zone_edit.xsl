@@ -42,14 +42,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 ]]>
 </script>
     <form method="post" onSubmit="return validateStandard(this);" name="myform">
-      <xsl:if test="/_R_/_get/zone">
-        <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
+      <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
+        <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
         <input type="hidden" name="action" value="edit"/>
         <xsl:call-template name="zone-form">
           <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <xsl:if test="not(/_R_/_get/zone)">
+      <xsl:if test="not(/_R_/_get/zone) and not(/_R_/_get/origin)">
         <input type="hidden" name="action" value="create"/>
         <xsl:call-template name="zone-form">
           <xsl:with-param name="zone_prefix">defaults</xsl:with-param>

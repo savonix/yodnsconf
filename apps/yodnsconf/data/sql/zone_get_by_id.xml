@@ -27,12 +27,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <params>
         <param name="//_get/zone" type="integer"/>
         <param name="//_post/zone" type="integer" default="0"/>
+        <param name="//_get/origin" type="text"/>
 	</params>
     <sql>
         SELECT * FROM &prefix;soa
         WHERE
-        id = ?
+        (id = ?
         OR
-        id = ?
+        id = ?)
+        OR origin = ?
+
     </sql>
 </query>
