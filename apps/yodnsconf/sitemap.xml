@@ -134,7 +134,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 	<map:gate name="records" role="yodnsuser">
 		<map:xml src="config/default_zone_records.xml"/>
-		<map:if name="//_get/origin">
+		<map:xml src="config/zone_profile_sample.xml"/>
+        <map:if name="//_get/origin">
 			<map:true>
 				<map:action type="concat" params="%,{//_get/name},//_get/name"/>
 				<map:action type="concat" params="{//_get/name},%,//_get/name"/>

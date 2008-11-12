@@ -170,10 +170,18 @@ function zone_apply_profile(zone) {
 			</a>
 			<br/>
       <br/>
+    <form>
+        <select name="profile_id">
+            <option>Select</option>
+            <xsl:for-each select="//zone_profile">
+                <option value="{id}"><xsl:value-of select="profile_name"/></option>
+            </xsl:for-each>
+        </select>
       <a href="{$link_prefix}zone-apply-profile&amp;zone={/_R_/_get/zone}"
           onclick="confirm('Are you sure?'); zone_apply_profile({/_R_/_get/zone}); return false;">
     	Apply Zone Profile
 			</a>
+    </form>
     </div>
   </xsl:template>
 </xsl:stylesheet>
