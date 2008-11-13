@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
 function delete_record(record_id,zone,row) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id, 
+    $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id,
     {
         'record_id': record_id,
         'zone': zone
@@ -53,8 +53,8 @@ function delete_record(record_id,zone,row) {
     }
 }
 
-function create_default_dns_records(zone) { 
-    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone, 
+function create_default_dns_records(zone) {
+    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone,
     {
         'zone': zone
     },
@@ -62,8 +62,8 @@ function create_default_dns_records(zone) {
         window.location.reload(true);
     });
 }
-function create_default_a_records(zone) { 
-    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone, 
+function create_default_a_records(zone) {
+    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone,
     {
         'zone': zone
     },
@@ -71,8 +71,8 @@ function create_default_a_records(zone) {
         window.location.reload(true);
     });
 }
-function zone_apply_profile(zone) { 
-    $.post("<xsl:value-of select="$link_prefix"/>zone-apply-profile&amp;zone="+zone, 
+function zone_apply_profile(zone) {
+    $.post("<xsl:value-of select="$link_prefix"/>zone-apply-profile&amp;zone="+zone,
     {
         'zone': zone
     },
@@ -141,7 +141,7 @@ function zone_apply_profile(zone) {
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/origin}&amp;type={type}">Dig</a>
+              <a href="{$link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">Dig</a>
             </td>
             <td align="right">
               <a href="{$link_prefix}x-record-delete&amp;record_id={id}"
@@ -170,18 +170,17 @@ function zone_apply_profile(zone) {
 			</a>
 			<br/>
       <br/>
-    <form>
+			<form>
+				<input type="hidden" name="nid" value="{//_get/nid}"/>
+				<input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
         <select name="profile_id">
             <option>Select</option>
             <xsl:for-each select="//zone_profile">
                 <option value="{@id}"><xsl:value-of select="@profile_name"/></option>
             </xsl:for-each>
         </select>
-      <a href="{$link_prefix}zone-apply-profile&amp;zone={/_R_/_get/zone}"
-          onclick="confirm('Are you sure?'); zone_apply_profile({/_R_/_get/zone}); return false;">
-    	Apply Zone Profile
-			</a>
-    </form>
+    		<input type="submit" value="Apply Zone Profile"/>
+			</form>
     </div>
   </xsl:template>
 </xsl:stylesheet>
