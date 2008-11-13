@@ -170,13 +170,13 @@ function zone_apply_profile(zone) {
 			</a>
 			<br/>
       <br/>
-			<form>
+			<form method="post" action="{$link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
 				<input type="hidden" name="nid" value="{//_get/nid}"/>
 				<input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
         <select name="profile_id">
             <option>Select</option>
-            <xsl:for-each select="//zone_profile">
-                <option value="{@id}"><xsl:value-of select="@profile_name"/></option>
+            <xsl:for-each select="//zone_get_profiles/zone_get_profiles">
+                <option value="{id}"><xsl:value-of select="origin"/></option>
             </xsl:for-each>
         </select>
     		<input type="submit" value="Apply Zone Profile"/>

@@ -23,19 +23,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="zone_get_by_id">
-    <connection>&connection_read;</connection>
-    <params>
-        <param name="//_get/zone" type="integer"/>
-        <param name="//_post/zone" type="integer" default="0"/>
-        <param name="//_get/origin" type="text"/>
+	<connection>&connection_read;</connection>
+	<params>
+		<param name="//_get/zone" type="integer"/>
+		<param name="//_post/zone" type="integer" default="0"/>
+		<param name="//_get/origin" type="text"/>
 	</params>
-    <sql>
-        SELECT * FROM &prefix;soa
-        WHERE
-        (id = ?
-        OR
-        id = ?)
-        OR origin = ?
-
-    </sql>
+	<sql>
+		SELECT * FROM &prefix;soa
+		WHERE
+		(id = ?
+		OR
+		id = ?)
+		OR origin = ?
+	</sql>
 </query>
