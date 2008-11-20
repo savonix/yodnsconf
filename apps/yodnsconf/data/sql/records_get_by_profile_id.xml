@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zone_create_default_dns_records.xml
+Component: records_get_by_zone_id.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -18,24 +18,17 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_apply_profile" loop="//records_get_by_profile_id/records_get_by_profile_id">
-	<connection>&connection;</connection>
+<query name="records_get_by_profile_id">
+	<connection>&connection_read;</connection>
 	<params>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/data" type="text"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/name" type="text"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/type" type="text"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/aux" type="integer" default="NULL"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/ttl" type="integer"/>
-		<param name="//_post/zone" type="integer"/>
+		<param name="//_post/profile_id" type="integer"/>
 	</params>
 	<sql>
-		INSERT INTO &prefix;rr
-		(data,name,type,aux,ttl,zone)
-		VALUES
-		(?,?,?,?,?,?)
+		SELECT * FROM &prefix;rr
+		WHERE zone = ?
 	</sql>
 </query>

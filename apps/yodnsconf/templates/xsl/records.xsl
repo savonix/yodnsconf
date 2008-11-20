@@ -57,22 +57,13 @@ function create_default_dns_records(zone) {
     $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone,
     {
         'zone': zone
-    },
+		},
     function (data){
         window.location.reload(true);
     });
 }
 function create_default_a_records(zone) {
     $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone,
-    {
-        'zone': zone
-    },
-    function (data){
-        window.location.reload(true);
-    });
-}
-function zone_apply_profile(zone) {
-    $.post("<xsl:value-of select="$link_prefix"/>zone-apply-profile&amp;zone="+zone,
     {
         'zone': zone
     },
@@ -170,8 +161,7 @@ function zone_apply_profile(zone) {
 			</a>
 			<br/>
       <br/>
-			<form method="post" action="{$link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
-				<input type="hidden" name="nid" value="{//_get/nid}"/>
+			<form method="post" action="{$link_prefix}zone-apply-profile&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
 				<input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
         <select name="profile_id">
             <option>Select</option>

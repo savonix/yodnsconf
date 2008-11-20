@@ -1,10 +1,10 @@
 <!--
 Program: YoDNSConf
-Component: zone_create_default_dns_records.xml
+Component: zone_get_by_id.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses
+http://www.gnu.org/licenses 
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -22,20 +22,13 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_apply_profile" loop="//records_get_by_profile_id/records_get_by_profile_id">
-	<connection>&connection;</connection>
+<query name="zone_get_profiles">
+	<connection>&connection_read;</connection>
 	<params>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/data" type="text"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/name" type="text"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/type" type="text"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/aux" type="integer" default="NULL"/>
-		<param array="//records_get_by_profile_id/records_get_by_profile_id/ttl" type="integer"/>
-		<param name="//_post/zone" type="integer"/>
 	</params>
 	<sql>
-		INSERT INTO &prefix;rr
-		(data,name,type,aux,ttl,zone)
-		VALUES
-		(?,?,?,?,?,?)
+		SELECT * FROM &prefix;soa
+		WHERE
+		notes='profile'
 	</sql>
 </query>
