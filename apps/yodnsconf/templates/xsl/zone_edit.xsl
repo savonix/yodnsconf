@@ -26,8 +26,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="pager.xsl"/>
   <xsl:include href="zone_form.xsl"/>
   <xsl:template name="content">
-    <script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
-    <script language="javascript">
+    <script type="text/javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
+    <script type="text/javascript">
 <![CDATA[
     function initValidation()
     {
@@ -57,15 +57,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </xsl:if>
     </form>
 
+      <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 5">
+
     <div style="float: right; width: 60%">
       <xsl:call-template name="jquery-setup">
         <xsl:with-param name="my-table">records_table</xsl:with-param>
         <xsl:with-param name="no-sort-column">,
-        headers: { 
+        headers: {
             2: {sorter: false}
         }
-    </xsl:with-param>
+				</xsl:with-param>
       </xsl:call-template>
+
       <table style="width: 100%" class="tablesorter" id="records_table">
         <thead>
           <tr>
@@ -96,6 +99,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </xsl:for-each>
         </tbody>
       </table>
+
+    </div>
+			</xsl:if>
       <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
         <xsl:call-template name="pager">
           <xsl:with-param name="my-table">records_table</xsl:with-param>
@@ -104,9 +110,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 4">
         <iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
       </xsl:if>
-    </div>
     <br/><a href="{//link_prefix}x-zone-export&amp;zone={//id}">Export</a>
-    <script language="javascript">
+    <script type="text/javascript">
     	initValidation();
 		</script>
   </xsl:template>

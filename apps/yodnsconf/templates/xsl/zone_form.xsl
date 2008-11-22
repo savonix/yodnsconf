@@ -24,6 +24,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="zone-form">
 <xsl:param name="zone_prefix"/>
+<script type="text/javascript">
+<![CDATA[
+function add_element () {
+	$("#origin").after("<br/><input name='origin[]' type='text'/> <span style='font-size: 1.5em; cursor: pointer;' onclick='remove_element();>x</span>");
+}
+function remove_element () {
+	alert('Not functional yet.');
+}
+]]>
+</script>
 <table width="100%">
   <tr>
     <td>
@@ -39,11 +49,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         (example.com.)
 			</xsl:if>
 			<xsl:if test="not(//*[local-name()=$zone_prefix]/origin)">
-        <input name="origin[]" type="text"/><br/>
-        <input name="origin[]" type="text"/><br/>
-        <input name="origin[]" type="text"/><br/>
-        <input name="origin[]" type="text"/>
+        <input name="origin[]" type="text"/> 
+				<span style="cursor: pointer; font-weight: bold; font-size: 1.5em;" id="origin" onclick="add_element(); return false;">+</span>
 			</xsl:if>
+			<br/><br/>
     </td>
   </tr>
   <tr>
