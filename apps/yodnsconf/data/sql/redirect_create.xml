@@ -18,19 +18,17 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="redirect_create">
-    <connection>&connection;</connection>
-    <params>
-        <param name="_post/http_host" type="text" default="0"/>
-        <param name="_post/redirect" type="text" default="0"/>
-    </params>
-    <sql>
-        INSERT
-        INTO &prefix;redirects
-        (http_host,redirect) VALUES (?,?)
-    </sql>
+  <connection>&connection;</connection>
+  <params>
+    <param name="_post/http_host" type="text" default="0"/>
+    <param name="_post/redirect" type="text" default="0"/>
+  </params>
+  <sql>
+    INSERT INTO &prefix;redirects (http_host,redirect) VALUES (?,?)
+  </sql>
 </query>

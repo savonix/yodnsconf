@@ -18,18 +18,16 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="record_delete">
-    <connection>&connection;</connection>
-    <params>
-        <param name="//_post/record_id" type="integer"/>
-	</params>
-    <sql>
-        DELETE FROM &prefix;rr
-        WHERE id = ?
-        LIMIT 1
-    </sql>
+  <connection>&connection;</connection>
+  <params>
+    <param name="//_post/record_id" type="integer"/>
+  </params>
+  <sql>
+    DELETE FROM &prefix;rr WHERE id = ?
+  </sql>
 </query>
