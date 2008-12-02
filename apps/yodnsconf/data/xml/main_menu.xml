@@ -18,15 +18,15 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <menu>
-	<item>
-        <key>index</key>
-        <item>
-            <key>index</key>
-            <url>index</url>
-        </item>
+  <item>
+    <key>index</key>
+    <item>
+      <key>index</key>
+      <url>index</url>
     </item>
+  </item>
 </menu>

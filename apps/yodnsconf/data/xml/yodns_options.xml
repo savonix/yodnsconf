@@ -18,14 +18,14 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <yodns_options>
-    <option active="1" set="options_profiles">
-        <option_key>profiles</option_key>
-    </option>
-    <option active="1" set="options_nameservers">
-        <option_key>nameservers</option_key>
-    </option>
+  <option active="1" set="options_profiles">
+    <option_key>profiles</option_key>
+  </option>
+  <option active="1" set="options_nameservers">
+    <option_key>nameservers</option_key>
+  </option>
 </yodns_options>
