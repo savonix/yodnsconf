@@ -1,5 +1,5 @@
 <!--
-Program: YoDNSConf
+Program: YoDNSConf - http://www.yodnsconf.com/
 Component: groups_and_tags.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -24,6 +24,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
-	
+
   </xsl:template>
 </xsl:stylesheet>
