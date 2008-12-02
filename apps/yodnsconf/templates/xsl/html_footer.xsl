@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: footer.xsl
+Component: html_footer.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -18,22 +18,19 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:template name="footer">
+  <xsl:template name="footer">
 
+    <div id="footer">
+      <a href="http://www.yodnsconf.docunext.com/blog/">Yo DNS Conf</a>
+      <xsl:if test="/_R_/runtime/svn_revision">
+      Revision <xsl:value-of select="/_R_/svn_revision"/>
+      </xsl:if>, 
+      Copyright Savonix Corporation. License: Affero GPL
+    </div>
 
-<div id="footer">
-<a href="http://www.yodnsconf.docunext.com/blog/">Yo DNS Conf</a>
-<xsl:if test="/_R_/runtime/svn_revision">
-Revision <xsl:value-of select="/_R_/svn_revision"/>
-</xsl:if>, 
-Copyright Savonix Corporation. License: Affero GPL
-</div>
-
-
-
-</xsl:template>
+  </xsl:template>
 </xsl:stylesheet>

@@ -18,23 +18,23 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
     <script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
     <script language="javascript">
-<![CDATA[
-    function initValidation()
-    {
-        var objForm = document.forms["redirect"];
-        objForm.http_host.required = 1;
-        objForm.redirect.required = 1;
-    }
-]]>
-</script>
+    <![CDATA[
+        function initValidation()
+        {
+            var objForm = document.forms["redirect"];
+            objForm.http_host.required = 1;
+            objForm.redirect.required = 1;
+        }
+    ]]>
+    </script>
     <form method="post" name="redirect" onSubmit="return validateStandard(this);">
       <input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
       <xsl:if test="/_R_/_get/nid='ip-address-edit'">
@@ -60,14 +60,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <td></td>
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-      <input name="btn_cancel" type="button" class="button" value="Cancel"
+            <input name="btn_cancel" type="button" class="button" value="Cancel"
                 onClick="window.location.href='{/_R_/runtime/link_prefix}redirects'"/>
           </td>
         </tr>
       </table>
     </form>
     <script language="javascript">
-    initValidation();
-</script>
+      initValidation();
+    </script>
   </xsl:template>
 </xsl:stylesheet>

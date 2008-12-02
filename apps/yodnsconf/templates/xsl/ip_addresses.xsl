@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -35,23 +35,23 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-function delete_ip(ip_address,row) {
-    if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="$link_prefix"/>x--ip-delete&amp;ip_address="+ip_address,
-    {
-        'ip_address': ip_address
-    },
-    function (data){
-    });
-    myTable = document.getElementById("myip_addresses");
-    myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+    function delete_ip(ip_address,row) {
+        if(confirm('Are you sure?')){
+        $.post("<xsl:value-of select="$link_prefix"/>x--ip-delete&amp;ip_address="+ip_address,
+        {
+            'ip_address': ip_address
+        },
+        function (data){
+        });
+        myTable = document.getElementById("myip_addresses");
+        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+        }
     }
-}
-</script>
+    </script>
     <div id="my-ip_addresses-div">
       <script type="text/javascript">
-    document.getElementById('my-ip_addresses-div').style.visibility = 'hidden';
-</script>
+        document.getElementById('my-ip_addresses-div').style.visibility = 'hidden';
+      </script>
       <table width="100%" class="tablesorter" id="myip_addresses">
         <thead>
           <tr>

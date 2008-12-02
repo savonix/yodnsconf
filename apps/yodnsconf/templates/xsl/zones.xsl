@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -35,27 +35,27 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-function delete_zone(zone,row) {
-    if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone, 
-    {
-        'zone': zone
-    },
-    function (data){
-    });
-    myTable = document.getElementById("myzones");
-    myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+    function delete_zone(zone,row) {
+        if(confirm('Are you sure?')){
+        $.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone,
+        {
+            'zone': zone
+        },
+        function (data){
+        });
+        myTable = document.getElementById("myzones");
+        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+        }
     }
-}
-function filter_table(phrase,column)
-{ 
-    $.uiTableFilter( $("#myzones"), phrase, column)
-}
-</script>
+    function filter_table(phrase,column)
+    {
+        $.uiTableFilter( $("#myzones"), phrase, column)
+    }
+    </script>
     <div id="my-zones-div">
       <script type="text/javascript">
-    document.getElementById('my-zones-div').style.visibility = 'hidden';
-</script>
+        document.getElementById('my-zones-div').style.visibility = 'hidden';
+      </script>
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
@@ -137,7 +137,7 @@ function filter_table(phrase,column)
 		<div style="float: right">
 			Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
 			<br/>
-		<a href="{$link_prefix}x-zones-export-csv&amp;ns_filter=ns1.savonix.com.">CSV Zone Export</a>
+      <a href="{$link_prefix}x-zones-export-csv&amp;ns_filter=ns1.savonix.com.">CSV Zone Export</a>
 		</div>
   </xsl:template>
 </xsl:stylesheet>

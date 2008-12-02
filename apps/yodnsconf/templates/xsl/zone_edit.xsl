@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -28,19 +28,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <script type="text/javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
     <script type="text/javascript">
-<![CDATA[
-    function initValidation()
-    {
-        var objForm = document.forms["myform"];
-        objForm.origin.required = 1;
-        objForm.origin.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
-        objForm.ns.required = 1;
-        objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
-        objForm.ttl.required = 1;
-        objForm.ttl.regexp = /^[0-9]+$/;
-    }
-]]>
-</script>
+    <![CDATA[
+        function initValidation()
+        {
+            var objForm = document.forms["myform"];
+            objForm.origin.required = 1;
+            objForm.origin.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+            objForm.ns.required = 1;
+            objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+            objForm.ttl.required = 1;
+            objForm.ttl.regexp = /^[0-9]+$/;
+        }
+    ]]>
+    </script>
     <form method="post" onSubmit="return validateStandard(this);" name="myform">
       <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
         <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>

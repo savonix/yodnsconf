@@ -18,17 +18,19 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
-<xsl:template match="/">
+  <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
+  <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
-    <xsl:value-of select="http_host"/><xsl:text>&#160;</xsl:text><xsl:value-of select="redirect"/>
-    <xsl:text>&#10;</xsl:text>
-  </xsl:for-each>
+    <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
+      <xsl:value-of select="http_host"/>
+      <xsl:text>&#160;</xsl:text>
+      <xsl:value-of select="redirect"/>
+      <xsl:text>&#10;</xsl:text>
+    </xsl:for-each>
 
-</xsl:template>
+  </xsl:template>
 </xsl:stylesheet>

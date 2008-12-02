@@ -39,39 +39,39 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-function delete_record(record_id,zone,row) {
-    if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id,
-    {
-        'record_id': record_id,
-        'zone': zone
-    },
-    function (data){
-    });
-    myTable = document.getElementById("records_table");
-    myTable.deleteRow(row);
+    function delete_record(record_id,zone,row) {
+        if(confirm('Are you sure?')){
+        $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id,
+        {
+          'record_id': record_id,
+          'zone': zone
+        },
+        function (data){
+        });
+          myTable = document.getElementById("records_table");
+          myTable.deleteRow(row);
+        }
     }
-}
 
-function create_default_dns_records(zone) {
-    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone,
-    {
-        'zone': zone
-		},
-    function (data){
-        window.location.reload(true);
-    });
-}
-function create_default_a_records(zone) {
-    $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone,
-    {
-        'zone': zone
-    },
-    function (data){
-        window.location.reload(true);
-    });
-}
-</script>
+    function create_default_dns_records(zone) {
+        $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone,
+        {
+          'zone': zone
+        },
+        function (data){
+          window.location.reload(true);
+        });
+    }
+    function create_default_a_records(zone) {
+        $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone,
+        {
+          'zone': zone
+        },
+        function (data){
+          window.location.reload(true);
+        });
+    }
+    </script>
     <table width="100%" class="tablesorter" id="records_table">
       <thead>
         <tr>
@@ -150,14 +150,14 @@ function create_default_a_records(zone) {
     </xsl:call-template>
     <div style="float: right;">
       <a href="{$link_prefix}zone-create-default-dns-records&amp;zone={/_R_/_get/zone}"
-          onclick="confirm('Are you sure?'); create_default_dns_records({/_R_/_get/zone}); return false;">
-    Create Default DNS Records
+        onclick="confirm('Are you sure?'); create_default_dns_records({/_R_/_get/zone}); return false;">
+        Create Default DNS Records
 			</a>
       <br/>
       <br/>
       <a href="{$link_prefix}zone-create-default-a-records&amp;zone={/_R_/_get/zone}"
-          onclick="confirm('Are you sure?'); create_default_a_records({/_R_/_get/zone}); return false;">
-    Create Default A Records
+        onclick="confirm('Are you sure?'); create_default_a_records({/_R_/_get/zone}); return false;">
+        Create Default A Records
 			</a>
 			<br/>
       <br/>
