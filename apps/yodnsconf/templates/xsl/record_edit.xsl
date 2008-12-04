@@ -122,13 +122,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td></td>
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-      <input name="btn_cancel" type="button" class="button" value="Cancel" onClick="window.location.href='{/_R_/runtime/link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
+      <input name="btn_cancel" type="button" class="button" value="Cancel"
+				onClick="window.location.href='{/_R_/runtime/link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
           </td>
         </tr>
       </table>
     </form>
     <script language="javascript">
-      initValidation();
+		initValidation();
     </script>
   </xsl:template>
 </xsl:stylesheet>

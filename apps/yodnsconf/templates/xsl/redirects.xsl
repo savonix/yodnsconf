@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myredirects</xsl:with-param>
       <xsl:with-param name="my-table-div">my-redirects-div</xsl:with-param>
@@ -39,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         if(confirm('Are you sure?')){
         $.post("<xsl:value-of select="$link_prefix"/>x--redirect-delete&amp;http_host="+http_host,
         {
-            'http_host': http_host
+					'http_host': http_host
         },
         function (data){
         });
@@ -50,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
     <div id="my-redirects-div">
       <script type="text/javascript">
-        document.getElementById('my-redirects-div').style.visibility = 'hidden';
+			document.getElementById('my-redirects-div').style.visibility = 'hidden';
       </script>
       <table width="100%" class="tablesorter" id="myredirects">
         <thead>

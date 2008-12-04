@@ -50,7 +50,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
     <div id="my-ip_addresses-div">
       <script type="text/javascript">
-        document.getElementById('my-ip_addresses-div').style.visibility = 'hidden';
+			document.getElementById('my-ip_addresses-div').style.visibility = 'hidden';
       </script>
       <table width="100%" class="tablesorter" id="myip_addresses">
         <thead>

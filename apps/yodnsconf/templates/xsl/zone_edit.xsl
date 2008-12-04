@@ -26,19 +26,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="pager.xsl"/>
   <xsl:include href="zone_form.xsl"/>
   <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <script type="text/javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
     <script type="text/javascript">
     <![CDATA[
-        function initValidation()
-        {
-            var objForm = document.forms["myform"];
-            objForm.origin.required = 1;
-            objForm.origin.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
-            objForm.ns.required = 1;
-            objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
-            objForm.ttl.required = 1;
-            objForm.ttl.regexp = /^[0-9]+$/;
-        }
+		function initValidation()
+		{
+			var objForm = document.forms["myform"];
+			objForm.origin.required = 1;
+			objForm.origin.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+			objForm.ns.required = 1;
+			objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
+			objForm.ttl.required = 1;
+			objForm.ttl.regexp = /^[0-9]+$/;
+		}
     ]]>
     </script>
     <form method="post" onSubmit="return validateStandard(this);" name="myform">
@@ -57,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
     </form>
 
-      <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 5">
+		<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 5">
 
     <div style="float: right; width: 60%">
       <xsl:call-template name="jquery-setup">
@@ -81,38 +84,38 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
             <tr>
               <td>
-                <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+                <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
                   <xsl:value-of select="name"/>
                 </a>
               </td>
               <td>
-                <a href="{/_R_/runtime/link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
+                <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
                   <xsl:value-of select="substring(data,0,30)"/>
                 </a>
               </td>
               <td>
-                <a href="{/_R_/runtime/link_prefix}tools-query&amp;hostname={name}.{/_R_/zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">
+                <a href="{$link_prefix}tools-query&amp;hostname={name}.{/_R_/zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">
                 Dig
-            </a>
+								</a>
               </td>
             </tr>
           </xsl:for-each>
         </tbody>
       </table>
-
     </div>
-			</xsl:if>
-      <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
-        <xsl:call-template name="pager">
-          <xsl:with-param name="my-table">records_table</xsl:with-param>
-        </xsl:call-template>
-      </xsl:if>
-      <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 4">
-        <iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
-      </xsl:if>
-    <br/><a href="{//link_prefix}x-zone-export&amp;zone={//id}">Export</a>
+		</xsl:if>
+		<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
+			<xsl:call-template name="pager">
+				<xsl:with-param name="my-table">records_table</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>
+		<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 4">
+			<iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
+		</xsl:if>
+    <br/>
+		<a href="{$link_prefix}x-zone-export&amp;zone={//id}">Export</a>
     <script type="text/javascript">
-    	initValidation();
+		initValidation();
 		</script>
   </xsl:template>
 </xsl:stylesheet>

@@ -36,25 +36,25 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
     <script type="text/javascript">
     function delete_zone(zone,row) {
-        if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone,
-        {
-            'zone': zone
-        },
-        function (data){
-        });
-        myTable = document.getElementById("myzones");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
-        }
+			if(confirm('Are you sure?')){
+			$.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone,
+			{
+					'zone': zone
+			},
+			function (data){
+			});
+			myTable = document.getElementById("myzones");
+			myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+			}
     }
     function filter_table(phrase,column)
     {
-        $.uiTableFilter( $("#myzones"), phrase, column)
+			$.uiTableFilter( $("#myzones"),phrase,column)
     }
     </script>
     <div id="my-zones-div">
       <script type="text/javascript">
-        document.getElementById('my-zones-div').style.visibility = 'hidden';
+			document.getElementById('my-zones-div').style.visibility = 'hidden';
       </script>
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
@@ -74,7 +74,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <form method="get">
 						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
-                <input type="text" name="origin" value="{/_R_/_get/origin}" onkeyup="filter_table(this.value,'Origin')"/>
+                <input type="text" name="origin" value="{/_R_/_get/origin}"
+									onkeyup="filter_table(this.value,'Origin')"/>
               </td>
               <xsl:if test="verbose='true'">
                 <td></td>
@@ -122,7 +123,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </xsl:if>
             <td align="right">
-              <a href="{$link_prefix}x-zone-delete&amp;id={id}" onclick="delete_zone({id},this); return false;">Delete</a>
+              <a href="{$link_prefix}x-zone-delete&amp;id={id}"
+								onclick="delete_zone({id},this); return false;">Delete</a>
 							| <a href="{$link_prefix}zone-clone&amp;zone={id}">
 								Clone
 							</a>

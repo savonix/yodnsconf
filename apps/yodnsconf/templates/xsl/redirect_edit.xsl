@@ -24,15 +24,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
-    <script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
+    <script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
     <script language="javascript">
     <![CDATA[
-        function initValidation()
-        {
-            var objForm = document.forms["redirect"];
-            objForm.http_host.required = 1;
-            objForm.redirect.required = 1;
-        }
+		function initValidation()
+		{
+				var objForm = document.forms["redirect"];
+				objForm.http_host.required = 1;
+				objForm.redirect.required = 1;
+		}
     ]]>
     </script>
     <form method="post" name="redirect" onSubmit="return validateStandard(this);">
@@ -61,13 +64,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
             <input name="btn_cancel" type="button" class="button" value="Cancel"
-                onClick="window.location.href='{/_R_/runtime/link_prefix}redirects'"/>
+							onClick="window.location.href='{$link_prefix}redirects'"/>
           </td>
         </tr>
       </table>
     </form>
     <script language="javascript">
-      initValidation();
+		initValidation();
     </script>
   </xsl:template>
 </xsl:stylesheet>

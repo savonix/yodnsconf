@@ -55,7 +55,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:if test="/_R_/_get/zone">
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
             <span style="color: #8C2323; font-weight: bold;">
-              <xsl:value-of select="//zone_get_by_id/origin"/>
+              <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
             </span>
           </a>
           <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}">
@@ -68,16 +68,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
             Visit
           </a>
         </xsl:if>
-				<form action="{$link_prefix}index" method="get" style="padding-left: 10em; display: inline;">
+				<form action="{$link_prefix}index" method="get"
+					style="padding-left: 10em; display: inline;">
         <xsl:if test="not(/_R_/_get/zone)">
-				<!-- to do: match selection -->
-				<input type="hidden" name="nid" value="index"/>
-				<select name="ns_filter">
-					<option value="%">Select All</option>
-					<option value="ns1.savonix.com.">ns1.savonix.com.</option>
-					<option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
-				</select>
-				<input type="submit" value="Go"/>
+					<!-- to do: match selection -->
+					<input type="hidden" name="nid" value="index"/>
+					<select name="ns_filter">
+						<option value="%">Select All</option>
+						<option value="ns1.savonix.com.">ns1.savonix.com.</option>
+						<option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
+					</select>
+					<input type="submit" value="Go"/>
 				</xsl:if>
 				</form>
       </div>

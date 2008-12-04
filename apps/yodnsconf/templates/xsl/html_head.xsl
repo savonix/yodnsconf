@@ -26,15 +26,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
 
-
-
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">head</xsl:with-param>
     </xsl:call-template>
     <head>
       <title>Web DNS:
         <xsl:if test="/_R_/_get/zone">
-              <xsl:value-of select="//zone_get_by_id/origin"/>
+              <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
         </xsl:if>
      </title>
       <link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
