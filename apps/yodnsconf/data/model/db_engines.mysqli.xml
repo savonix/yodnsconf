@@ -1,0 +1,57 @@
+<!--
+Program: YoDNSConf
+Component: db_engines.mysqli.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+-->
+<db_engines>
+  <engine_default_timestamp>
+    <text>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</text>
+  </engine_default_timestamp>
+
+  <engine_auto_increment>
+			<text>int(11) NOT NULL auto_increment</text>
+  </engine_auto_increment>
+
+  <engine_increment_start>
+    <text>AUTO_INCREMENT=1</text>
+  </engine_increment_start>
+
+  <engine_auto_increment_b>
+      <text>, PRIMARY KEY (category_id)</text>
+  </engine_auto_increment_b>
+
+  <innodb_engine>
+			<text>ENGINE=InnoDB</text>
+    </innodb_engine>
+
+  <myisam_engine>
+        <text>ENGINE=MyISAM</text>
+  </myisam_engine>
+
+  <if_not_exists>
+			<text>IF NOT EXISTS </text>
+  </if_not_exists>
+
+  <integer>
+      <text>int(10)</text>
+  </integer>
+
+</db_engines>
