@@ -169,7 +169,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <option value="{id}"><xsl:value-of select="origin"/></option>
             </xsl:for-each>
         </select>
-    		<input type="submit" value="Apply Zone Profile"/>
+    		<input type="submit" value="Apply Zone Profile" style="cursor: pointer;"/>
 			</form>
     </div>
   </xsl:template>
