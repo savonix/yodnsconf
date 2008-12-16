@@ -29,6 +29,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:value-of select="ip"/><xsl:text>&#160;</xsl:text><xsl:value-of select="host"/>
     <xsl:text>&#10;</xsl:text>
   </xsl:for-each>
-
+<!-- string-length(ip) -->
 </xsl:template>
 </xsl:stylesheet>

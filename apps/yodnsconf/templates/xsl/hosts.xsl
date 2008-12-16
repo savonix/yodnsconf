@@ -32,14 +32,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table-div">my-hosts-div</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
-    </xsl:with-param>
+			</xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-    function delete_host(http_host,row) {
+    function delete_host(id,row) {
         if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x--host-delete&amp;http_host="+http_host,
+        $.post("<xsl:value-of select="$link_prefix"/>x--host-delete&amp;host_id="+id,
         {
-            'http_host': http_host
+					'host_id': id
         },
         function (data){
         });
@@ -75,17 +75,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
           <tr>
             <td>
-              <a href="{$link_prefix}host-edit&amp;http_host={http_host}">
+              <a href="{$link_prefix}host-edit&amp;host_id={id}">
                 <xsl:value-of select="ip"/>
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}host-edit&amp;http_host={http_host}">
-                <xsl:value-of select="host"/>
+              <a href="{$link_prefix}host-edit&amp;host_id={id}">
+                <xsl:value-of select="substring(host,0,90)"/>
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--host-delete&amp;http_host={http_host}" onclick="delete_host('{http_host}',this); return false;">Delete</a>
+              <a href="{$link_prefix}x--host-delete&amp;host_id={id}"
+								onclick="delete_host('{id}',this); return false;">
+								Delete
+							</a>
             </td>
           </tr>
         </xsl:for-each>

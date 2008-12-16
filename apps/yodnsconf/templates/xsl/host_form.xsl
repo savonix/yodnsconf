@@ -43,21 +43,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:if test="/_R_/_get/nid='host-edit'">
         <input type="hidden" name="action" value="edit"/>
       </xsl:if>
-      <xsl:if test="not(/_R_/_get/http_host)">
+      <xsl:if test="not(/_R_/_get/http_id)">
         <input type="hidden" name="action" value="create"/>
       </xsl:if>
-      <table width="100%">
+      <table width="100%" class="simple-table">
         <tr>
-          <td>From Host:</td>
+          <td>IP:</td>
           <td>
-            <input name="http_host" type="text" value="{/_R_/_get/http_host}"/>
+            <input name="ip" type="text" style="width: 12em;"
+							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip}"/>
           </td>
         </tr>
         <tr>
-          <td>To URL:</td>
+          <td>Hosts:</td>
           <td>
-            <input name="redirect" type="text"
-							value="{/_R_/redirects_get_all/redirects_get_all[http_host=/_R_/_get/http_host]/redirect}"/>
+            <input name="host" type="text" style="width: 60em;"
+							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/host}"/>
           </td>
         </tr>
         <tr>
@@ -65,7 +66,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
             <input name="btn_cancel" type="button" class="button" value="Cancel"
-							onClick="window.location.href='{$link_prefix}redirects'"/>
+							onClick="window.location.href='{$link_prefix}hosts'"/>
           </td>
         </tr>
       </table>
