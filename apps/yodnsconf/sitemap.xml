@@ -219,9 +219,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<map:gate name="host-edit" role="yodnsuser">
 		<map:if name="//_post/host_id">
 			<map:true>
-				<map:query src="data/sql/host_delete.xml"/>
-				<map:query src="data/sql/host_create.xml"/>
-				<map:action type="redirect" params="{//link_prefix}hosts"/>
+				<map:query src="data/sql/host_update.xml"/>
 			</map:true>
 			<map:false></map:false>
 		</map:if>
