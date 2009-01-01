@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="footer">
 
     <div id="footer">
-      <a href="http://www.yodnsconf.docunext.com/blog/">Yo DNS Conf</a>
+      <a href="http://www.yodnsconf.com/blog/">Yo DNS Conf</a>
       <xsl:if test="/_R_/runtime/svn_revision">
       Revision <xsl:value-of select="/_R_/svn_revision"/>
       </xsl:if>, 
