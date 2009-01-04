@@ -227,6 +227,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:query src="data/sql/hosts_get_all.xml"/>
 		<map:xsl src="templates/xsl/host_form.xsl"/>
 	</map:gate>
+	<map:gate name="host-create" role="yodnsuser">
+		<map:if name="//_post">
+			<map:true>
+				<map:query src="data/sql/host_create.xml"/>
+				<map:action type="redirect" params="{//link_prefix}hosts"/>
+			</map:true>
+			<map:false></map:false>
+		</map:if>
+		<map:xsl src="templates/xsl/host_form.xsl"/>
+	</map:gate>
 	<map:gate name="x--hosts-export" content_type="text/plain">
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:query src="data/sql/hosts_get_all.xml"/>

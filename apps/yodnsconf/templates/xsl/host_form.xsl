@@ -39,8 +39,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     ]]>
     </script>
     <form method="post" name="redirect" onSubmit="return validateStandard(this);">
-      <input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
       <xsl:if test="/_R_/_get/host_id">
+      	<input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
         <input type="hidden" name="host_id" value="{/_R_/_get/host_id}"/>
       </xsl:if>
       <table width="100%" class="simple-table">
