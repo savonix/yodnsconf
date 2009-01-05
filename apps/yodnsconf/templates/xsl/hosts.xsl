@@ -81,7 +81,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <td>
               <a href="{$link_prefix}host-edit&amp;host_id={id}">
-                <xsl:value-of select="substring(host,0,90)"/>
+									<xsl:if test="string-length(host) &gt; 80">
+										<xsl:attribute name="title">
+											<xsl:value-of select="host"/>
+										</xsl:attribute>
+									</xsl:if>
+									<xsl:value-of select="substring(host,0,80)"/>
+									<xsl:if test="string-length(host) &gt; 80">
+										<xsl:text>...</xsl:text>
+									</xsl:if>
               </a>
             </td>
             <td align="right">
