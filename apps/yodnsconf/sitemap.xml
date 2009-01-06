@@ -315,4 +315,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xsl src="data/model/yodnsconf.sql.xsl"/>
 	</map:gate>
+	<map:gate name="x--sitetest" content_type="text/plain" cache="0">
+		<map:action type="header" params="Content-type,text/plain"/>
+		<map:xml src="sitemap.xml"/>
+		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
+	</map:gate>
 </map:sitemap>

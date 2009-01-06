@@ -1,6 +1,6 @@
 <!--
-Program: YoDNSConf - http://www.yodnsconf.com/
-Component: html_footer.xsl
+Program: YoDNSConf
+Component: sitetest.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,15 +22,21 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template name="footer">
-
-    <div id="footer">
-      <a href="http://www.yodnsconf.com/web/">Yo DNS Conf</a>
-      <xsl:if test="/_R_/runtime/svn_revision">
-      Revision <xsl:value-of select="/_R_/svn_revision"/>
-      </xsl:if>, 
-      Copyright Savonix Corporation. License: Affero GPL
-    </div>
-		<div id="test-token" style="display:none;"></div>
+  <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes" />
+  <xsl:template match="/">
+      <xsl:for-each select="//*[name()='map:gate']">
+				<xsl:if test="@role='yodnsuser'">
+				<tr>
+					<td>open</td>
+					<td>/yodnsconf/index.php?nid=<xsl:value-of select="@name"/></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>assertElementPresent</td>
+					<td>//div[@class='test-token']</td>
+					<td></td>
+				</tr>
+				</xsl:if>
+      </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
