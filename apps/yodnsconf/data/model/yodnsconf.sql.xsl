@@ -65,7 +65,8 @@ CREATE TABLE `hosts` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `ip` int(10) unsigned NOT NULL,
   `host` varchar(255) NOT NULL,
-  `notes` varchar(255) NOT NULL,
+  `priority` varchar(255) NOT NULL default 10,
+  `notes` int(10) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `hosts` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

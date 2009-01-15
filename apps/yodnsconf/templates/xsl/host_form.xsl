@@ -53,10 +53,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <input name="ip" type="text" style="width: 12em;"
 							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip}"/>
           </td>
+          <td>Order:</td>
+          <td>
+            <input name="priority" type="text" style="width: 4em;margin-right:100%;"
+							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority}"/>
+          </td>
         </tr>
         <tr>
           <td>Hosts:</td>
-          <td>
+          <td colspan="3">
             <input name="host" type="text" style="width: 60em;"
 							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/host}"/>
           </td>

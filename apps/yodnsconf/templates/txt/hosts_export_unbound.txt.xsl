@@ -24,9 +24,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
-
+<xsl:text>
+server:
+	verbosity: 1
+	interface: 0.0.0.0
+	do-ip4: yes
+	do-ip6: no
+	access-control: 192.168.0.0/16 allow
+	chroot: ""</xsl:text>
   <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-    <xsl:text>local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>A<xsl:text> </xsl:text><xsl:value-of select="ip"/><xsl:text>"</xsl:text>
+    <xsl:text>local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>
+		<xsl:if test="priority &gt;= 0">A</xsl:if>
+		<xsl:if test="priority &lt; 0">PTR</xsl:if>
+		<xsl:text> </xsl:text><xsl:value-of select="ip"/><xsl:text>"</xsl:text>
     <xsl:text>
 </xsl:text>
   </xsl:for-each>
