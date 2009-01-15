@@ -86,7 +86,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}">
+              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
 								<xsl:if test="string-length(host) &gt; 80">
 									<xsl:attribute name="title">
 										<xsl:value-of select="host"/>
@@ -99,18 +99,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}">
+              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
 								Edit
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--host-delete&amp;host_id={id}"
+              <a href="{$link_prefix}x--host-delete&amp;host_id={id}&amp;cloner=0"
 								onclick="delete_host('{id}',this); return false;">
 								Delete
 							</a>
             </td>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true">
+              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true&amp;cloner=1">
 								Clone
               </a>
             </td>

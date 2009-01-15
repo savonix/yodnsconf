@@ -56,7 +56,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td>Order:</td>
           <td>
             <input name="priority" type="text" style="width: 4em;margin-right:100%;"
-							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority}"/>
+							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority + //_get/cloner}"/>
           </td>
         </tr>
         <tr>
