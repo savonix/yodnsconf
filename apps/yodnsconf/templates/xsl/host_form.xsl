@@ -67,6 +67,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
         </tr>
         <tr>
+          <td>Create PTR:</td>
+          <td colspan="3">
+            <input name="create_ptr_record" type="checkbox" />
+          </td>
+        </tr>
+        <tr>
           <td></td>
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;

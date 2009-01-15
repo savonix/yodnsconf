@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: host_create.xml
+Component: host_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,14 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="host_create">
+<query name="host_delete_ptr">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/ip" type="text"/>
-		<param name="_post/host" type="text"/>
-		<param name="_post/priority" type="text"/>
+		<param name="//_post/host" type="text"/>
 	</params>
 	<sql>
-	INSERT INTO &prefix;hosts (ip,host,priority) VALUES (?,?,?)
+	DELETE FROM &prefix;hosts WHERE ip=? AND priority &lt; 0 LIMIT 2
 	</sql>
 </query>

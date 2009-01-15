@@ -217,6 +217,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/hosts.xsl"/>
 	</map:gate>
 	<map:gate name="host-edit" role="yodnsuser">
+		<map:block name="ptr_record">
+			<map:if name="//_post/create_ptr_record">
+				<map:true>
+					<map:plugin type="ptr" params="//_post/ip"/>
+					<map:query src="data/sql/host_delete_ptr.xml"/>
+					<map:query src="data/sql/host_create_ptr.xml"/>
+				</map:true>
+				<map:false>
+				</map:false>
+			</map:if>
+		</map:block>
 		<map:if name="//_post/clone">
 			<map:true>
 				<map:query src="data/sql/host_create.xml"/>
@@ -236,6 +247,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/host_form.xsl"/>
 	</map:gate>
 	<map:gate name="host-create" role="yodnsuser">
+		<map:insert name="ptr_record"/>
 		<map:if name="//_post">
 			<map:true>
 				<map:query src="data/sql/host_create.xml"/>

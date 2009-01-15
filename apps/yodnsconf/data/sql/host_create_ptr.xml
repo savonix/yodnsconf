@@ -22,14 +22,13 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="host_create">
+<query name="host_create_ptr">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/ip" type="text"/>
 		<param name="_post/host" type="text"/>
-		<param name="_post/priority" type="text"/>
+		<param name="//ptr_record" type="text"/>
 	</params>
 	<sql>
-	INSERT INTO &prefix;hosts (ip,host,priority) VALUES (?,?,?)
+	INSERT INTO &prefix;hosts (ip,host,priority) VALUES (?,?,-10)
 	</sql>
 </query>
