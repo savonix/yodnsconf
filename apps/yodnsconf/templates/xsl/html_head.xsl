@@ -30,9 +30,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="section_start">head</xsl:with-param>
     </xsl:call-template>
     <head>
-      <title>Web DNS:
+      <title>Web DNS <xsl:value-of select="/_R_/i18n/*[name()=//_get/nid]/."/>
         <xsl:if test="/_R_/_get/zone">
-              <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
+					:<xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
+        </xsl:if>
+        <xsl:if test="/_R_/_get/host_id">
+					:<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip"/>
         </xsl:if>
      </title>
       <link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
