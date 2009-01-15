@@ -25,9 +25,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-    <xsl:value-of select="ip"/><xsl:text>&#160;</xsl:text><xsl:value-of select="host"/>
-    <xsl:text>&#10;</xsl:text>
+  <xsl:for-each select="/_R_/hosts_get_distinct_ip/hosts_get_distinct_ip">
+		<xsl:variable name="myp"><xsl:value-of select="plain_ip"/></xsl:variable>
+    <xsl:value-of select="ip"/>
+		<xsl:for-each select="/_R_/hosts_get_all/hosts_get_all[plain_ip=$myp]/host">
+			<xsl:text> </xsl:text><xsl:value-of select="."/>
+		</xsl:for-each>
+    <xsl:text>
+</xsl:text>
   </xsl:for-each>
 <!-- string-length(ip) -->
 </xsl:template>

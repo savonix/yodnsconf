@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: hosts_get_all.xml
+Component: hosts_get_distinct_ip.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,12 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="hosts_get_all">
+<query name="hosts_get_distinct_ip">
 	<connection>&connection_read;</connection>
 	<params>
 		<param name="_get/host_id" type="text" default="%"/>
 	</params>
 	<sql>
-	SELECT id, ip, host, ip AS plain_ip, ip FROM &prefix;hosts WHERE id LIKE ? ORDER BY host
+	SELECT DISTINCT ip, ip AS plain_ip FROM &prefix;hosts WHERE id LIKE ? ORDER BY ip
 	</sql>
 </query>

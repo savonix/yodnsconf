@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: hosts_get_all.xml
+Component: hosts_export.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -18,16 +18,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation, Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301 USA
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="hosts_get_all">
-	<connection>&connection_read;</connection>
-	<params>
-		<param name="_get/host_id" type="text" default="%"/>
-	</params>
-	<sql>
-	SELECT id, ip, host, ip AS plain_ip, ip FROM &prefix;hosts WHERE id LIKE ? ORDER BY host
-	</sql>
-</query>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
+<xsl:template match="/">
+
+  <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
+    <xsl:text>local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>A<xsl:text> </xsl:text><xsl:value-of select="ip"/><xsl:text>"</xsl:text>
+    <xsl:text>
+</xsl:text>
+  </xsl:for-each>
+<!-- string-length(ip) -->
+</xsl:template>
+</xsl:stylesheet>
