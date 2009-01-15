@@ -57,7 +57,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr>
             <th>Address</th>
             <th>Hostname</th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Clone</th>
           </tr>
           <tr>
             <form method="get">
@@ -69,6 +71,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <td align="right">
                 <input name="Filter" type="submit" id="Filter" value="Filter"/>
               </td>
+							<td>
+							</td>
+							<td>
+							</td>
             </form>
           </tr>
         </thead>
@@ -81,15 +87,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <td>
               <a href="{$link_prefix}host-edit&amp;host_id={id}">
-									<xsl:if test="string-length(host) &gt; 80">
-										<xsl:attribute name="title">
-											<xsl:value-of select="host"/>
-										</xsl:attribute>
-									</xsl:if>
-									<xsl:value-of select="substring(host,0,80)"/>
-									<xsl:if test="string-length(host) &gt; 80">
-										<xsl:text>...</xsl:text>
-									</xsl:if>
+								<xsl:if test="string-length(host) &gt; 80">
+									<xsl:attribute name="title">
+										<xsl:value-of select="host"/>
+									</xsl:attribute>
+								</xsl:if>
+								<xsl:value-of select="substring(host,0,80)"/>
+								<xsl:if test="string-length(host) &gt; 80">
+									<xsl:text>...</xsl:text>
+								</xsl:if>
+              </a>
+            </td>
+            <td>
+              <a href="{$link_prefix}host-edit&amp;host_id={id}">
+								Edit
               </a>
             </td>
             <td align="right">
@@ -97,6 +108,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								onclick="delete_host('{id}',this); return false;">
 								Delete
 							</a>
+            </td>
+            <td>
+              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true">
+								Clone
+              </a>
             </td>
           </tr>
         </xsl:for-each>
