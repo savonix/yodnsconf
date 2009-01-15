@@ -31,9 +31,10 @@ server:
 	do-ip4: yes
 	do-ip6: no
 	access-control: 192.168.0.0/16 allow
-	chroot: ""</xsl:text>
+	chroot: ""
+</xsl:text>
   <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-    <xsl:text>local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>
+    <xsl:text>	local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>
 		<xsl:if test="priority &gt;= 0">A</xsl:if>
 		<xsl:if test="priority &lt; 0">PTR</xsl:if>
 		<xsl:text> </xsl:text><xsl:value-of select="ip"/><xsl:text>"</xsl:text>
