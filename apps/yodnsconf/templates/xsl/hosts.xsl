@@ -81,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
           <tr>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}">
+              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
                 <xsl:value-of select="ip"/>
               </a>
             </td>
