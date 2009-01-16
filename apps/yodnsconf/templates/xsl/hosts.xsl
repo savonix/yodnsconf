@@ -48,7 +48,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
     }
     </script>
-    <div id="my-hosts-div">
+    <div id="my-hosts-div" style="min-height: 440px;">
       <script type="text/javascript">
         document.getElementById('my-hosts-div').style.visibility = 'hidden';
       </script>

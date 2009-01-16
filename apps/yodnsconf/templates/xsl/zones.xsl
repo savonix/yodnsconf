@@ -52,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			$.uiTableFilter( $("#myzones"),phrase,column)
     }
     </script>
-    <div id="my-zones-div">
+    <div id="my-zones-div" style="min-height: 440px;">
       <script type="text/javascript">
 			document.getElementById('my-zones-div').style.visibility = 'hidden';
       </script>
