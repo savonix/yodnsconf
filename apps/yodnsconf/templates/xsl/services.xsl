@@ -56,8 +56,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table width="100%" class="tablesorter" id="myservices">
         <thead>
           <tr>
-            <th>Address</th>
-            <th>Hostname</th>
+            <th>Service</th>
             <th>Edit</th>
             <th>Delete</th>
             <th>Clone</th>
@@ -83,17 +82,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr>
             <td>
               <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;cloner=0">
-                <xsl:value-of select="ip"/>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;cloner=0">
 								<xsl:if test="string-length(service) &gt; 80">
 									<xsl:attribute name="title">
 										<xsl:value-of select="service"/>
 									</xsl:attribute>
 								</xsl:if>
-								<xsl:value-of select="substring(service,0,80)"/>
+								<xsl:value-of select="substring(name,0,80)"/>
 								<xsl:if test="string-length(service) &gt; 80">
 									<xsl:text>...</xsl:text>
 								</xsl:if>
