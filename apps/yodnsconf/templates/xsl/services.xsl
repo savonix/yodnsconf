@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:include href="main.xsl"/>                
+  <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
@@ -81,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/services_get_all/services_get_all">
           <tr>
             <td>
-              <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}service-edit&amp;service_id={id}">
 								<xsl:if test="string-length(service) &gt; 80">
 									<xsl:attribute name="title">
 										<xsl:value-of select="service"/>
@@ -94,18 +94,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}service-edit&amp;service_id={id}">
 								Edit
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--service-delete&amp;service_id={id}&amp;cloner=0"
+              <a href="{$link_prefix}x--service-delete&amp;service_id={id}"
 								onclick="delete_service('{id}',this); return false;">
 								Delete
 							</a>
             </td>
             <td>
-              <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;clone=true&amp;cloner=1">
+              <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;clone=true">
 								Clone
               </a>
             </td>
