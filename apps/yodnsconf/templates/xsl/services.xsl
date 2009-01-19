@@ -117,10 +117,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">myservices</xsl:with-param>
     </xsl:call-template>
     <div style="text-align: right">
-      <a href="{$link_prefix}x--services-export">Export</a> - <a href="{$link_prefix}x--services-export-unbound">Unbound Export</a>
-    </div>
-    <div style="text-align: right">
-      <a href="{$link_prefix}service-create">New Host</a>
+      <a href="{$link_prefix}service-edit">New Service</a>
     </div>
   </xsl:template>
 </xsl:stylesheet>

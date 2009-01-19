@@ -27,8 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-    <form method="post" name="redirect" onSubmit="return validateStandard(this);">
+    <form method="post" name="redirect">
 			<xsl:if test="//_get/clone='true'">
 				<input type="hidden" name="clone" value="true"/>
 			</xsl:if>

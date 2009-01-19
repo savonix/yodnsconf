@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="service_create">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/name" type="integer"/>
+		<param name="_post/name" type="text"/>
 	</params>
 	<sql>
 	INSERT INTO &prefix;services (name) VALUES (?)

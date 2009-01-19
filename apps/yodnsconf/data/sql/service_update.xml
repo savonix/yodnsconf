@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="service_update">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/name" type="integer"/>
+		<param name="_post/name" type="text"/>
 		<param name="_post/service_id" type="integer"/>
 	</params>
 	<sql>
