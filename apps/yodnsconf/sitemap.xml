@@ -302,6 +302,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/ip_addresses.xsl"/>
 	</map:gate>
 
+	<map:gate name="services" role="yodnsuser">
+		<map:xsl src="templates/xsl/services.xsl"/>
+	</map:gate>
+
 
 
 	<map:gate name="yodns-groups-and-tags" role="yodnsuser">
