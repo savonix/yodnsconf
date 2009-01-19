@@ -303,10 +303,26 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 	<map:gate name="services" role="yodnsuser">
-				<map:query src="data/sql/services_get_all.xml"/>
+		<map:query src="data/sql/services_get_all.xml"/>
 		<map:xsl src="templates/xsl/services.xsl"/>
 	</map:gate>
-
+	<map:gate name="service-edit" role="yodnsuser">
+		<map:if name="//_post/clone">
+			<map:true>
+				<map:query src="data/sql/service_create.xml"/>
+				<map:action type="redirect" params="{//link_prefix}services"/>
+			</map:true>
+			<map:false>
+			</map:false>
+		</map:if>
+		<map:if name="//_post/service_id">
+			<map:true>
+				<map:query src="data/sql/service_update.xml"/>
+				<map:action type="redirect" params="{//link_prefix}services"/>
+			</map:true>
+			<map:false></map:false>
+		</map:if>
+	</map:gate>
 
 
 	<map:gate name="yodns-groups-and-tags" role="yodnsuser">
