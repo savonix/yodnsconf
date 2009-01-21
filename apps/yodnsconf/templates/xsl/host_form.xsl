@@ -46,9 +46,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
       	<input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
         <input type="hidden" name="host_id" value="{/_R_/_get/host_id}"/>
       </xsl:if>
-      <table width="100%" class="simple-table">
+      <table width="100%" class="simple-table bottom-edge">
         <tr>
-          <td>IP:</td>
+          <td style="width: 10em;">IP:</td>
           <td>
             <input name="ip" type="text" style="width: 12em;"
 							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip}"/>
@@ -72,6 +72,25 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <input name="create_ptr_record" type="checkbox" />
           </td>
         </tr>
+				<xsl:if test="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority=0">
+        <tr>
+          <td style="vertical-align: top">Applications:</td>
+          <td colspan="3">
+						<table class="simple-table">
+							<xsl:for-each select="/_R_/services_get_all/services_get_all">
+							<tr style="border-bottom: 0;">
+								<td>
+									<input name="application_id" type="checkbox" value="{id}"/>
+								</td>
+								<td>
+									<xsl:value-of select="name"/>
+								</td>
+							</tr>
+							</xsl:for-each>
+						</table>
+          </td>
+        </tr>
+				</xsl:if>
         <tr>
           <td></td>
           <td>
