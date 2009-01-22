@@ -37,7 +37,10 @@ node basenode {
 			</xsl:variable>
 node '<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[plain_ip=$myp][position()=1]/host"/>' inherits basenode {
 	<xsl:if test="/_R_/host_services_get_all/host_services_get_all[host_id=$myhostid]">
-		include <xsl:for-each select="/_R_/host_services_get_all/host_services_get_all[host_id=$myhostid]"><xsl:value-of select="name"/><xsl:text> </xsl:text></xsl:for-each>
+		include <xsl:for-each select="/_R_/host_services_get_all/host_services_get_all[host_id=$myhostid]">
+			<xsl:value-of select="name"/>
+			<xsl:if test="not(position()=last())"><xsl:text>,</xsl:text></xsl:if>
+		</xsl:for-each>
 	</xsl:if>
 }
 <xsl:text>
