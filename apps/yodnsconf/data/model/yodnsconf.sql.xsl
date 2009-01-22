@@ -72,6 +72,19 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hosts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroups` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL,
+  `notes` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>host_hostgroups` (
+  `host_id` int(11) unsigned NOT NULL,
+  `hostgroup_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
+
+
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>services` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
