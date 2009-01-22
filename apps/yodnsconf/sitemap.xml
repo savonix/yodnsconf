@@ -248,7 +248,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<map:query src="data/sql/host_services_delete.xml"/>
 				<map:query src="data/sql/host_services_update.xml"/>
 				<map:query src="data/sql/host_update.xml"/>
-				<map:action type="redirect" params="{//link_prefix}hosts"/>
 			</map:true>
 			<map:false></map:false>
 		</map:if>

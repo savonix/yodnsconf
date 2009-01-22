@@ -80,7 +80,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:for-each select="/_R_/services_get_all/services_get_all">
 							<tr style="border-bottom: 0;">
 								<td>
-									<input name="service_id" type="checkbox" value="{id}">
+									<input name="service_id[]" type="checkbox" value="{id}">
 										<xsl:if test="/_R_/host_services_get_all/host_services_get_all/service_id=id">
 											<xsl:attribute name="checked">checked</xsl:attribute>
 										</xsl:if>
