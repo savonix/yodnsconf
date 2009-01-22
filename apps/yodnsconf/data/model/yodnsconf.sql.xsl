@@ -79,6 +79,13 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>services` (
   PRIMARY KEY  (`id`),
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>host_services` (
+  `host_id` int(10) unsigned NOT NULL,
+  `service_id` int(10) unsigned NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
+
+
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>ip` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `data` char(128) NOT NULL,

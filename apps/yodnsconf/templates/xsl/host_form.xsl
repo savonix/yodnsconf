@@ -74,13 +74,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tr>
 				<xsl:if test="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority=0">
         <tr>
-          <td style="vertical-align: top">Applications:</td>
+          <td style="vertical-align:top;">Applications:</td>
           <td colspan="3">
 						<table class="simple-table">
 							<xsl:for-each select="/_R_/services_get_all/services_get_all">
 							<tr style="border-bottom: 0;">
 								<td>
-									<input name="application_id" type="checkbox" value="{id}"/>
+									<input name="service_id" type="checkbox" value="{id}">
+										<xsl:if test="/_R_/host_services_get_all/host_services_get_all/service_id=id">
+											<xsl:attribute name="checked">checked</xsl:attribute>
+										</xsl:if>
+									</input>
 								</td>
 								<td>
 									<xsl:value-of select="name"/>
