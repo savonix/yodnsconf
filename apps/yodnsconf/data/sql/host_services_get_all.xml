@@ -25,9 +25,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="host_services_get_all">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_get/host_id" type="integer"/>
+		<param name="_get/host_id" type="text" default="%"/>
 	</params>
 	<sql>
-	SELECT * FROM &prefix;host_services WHERE host_id=?
+	SELECT &prefix;host_services.*,&prefix;services.name  FROM &prefix;host_services, &prefix;services
+	WHERE &prefix;host_services.host_id LIKE ?
+	AND &prefix;services.id=&prefix;host_services.service_id
 	</sql>
 </query>

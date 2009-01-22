@@ -31,10 +31,14 @@ node basenode {
 
   <xsl:for-each select="/_R_/hosts_get_distinct_ip/hosts_get_distinct_ip">
 			<xsl:variable name="myp"><xsl:value-of select="plain_ip"/></xsl:variable>
+			<xsl:variable name="myhostid"><xsl:value-of select="id"/></xsl:variable>
 			<xsl:variable name="host_type">
 				<xsl:value-of select="substring(/_R_/hosts_get_all/hosts_get_all[plain_ip=$myp][position()=1]/host,1,3)"/>
 			</xsl:variable>
 node '<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[plain_ip=$myp][position()=1]/host"/>' inherits basenode {
+	<xsl:if test="/_R_/host_services_get_all/host_services_get_all[host_id=$myhostid]">
+		include <xsl:for-each select="/_R_/host_services_get_all/host_services_get_all[host_id=$myhostid]"><xsl:value-of select="name"/><xsl:text> </xsl:text></xsl:for-each>
+	</xsl:if>
 }
 <xsl:text>
 </xsl:text>

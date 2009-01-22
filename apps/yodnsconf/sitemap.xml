@@ -290,6 +290,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:query src="data/sql/hosts_get_distinct_ip.xml"/>
 		<map:query src="data/sql/hosts_get_all.xml"/>
+		<map:query src="data/sql/host_services_get_all.xml"/>
 		<map:action type="pad" params="//hosts_get_distinct_ip/hosts_get_distinct_ip/ip,16, "/>
 		<map:xsl src="templates/txt/hosts_export_puppet.txt.xsl"/>
 	</map:gate>
