@@ -66,6 +66,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hosts` (
   `ip` int(10) unsigned NOT NULL,
   `host` varchar(255) NOT NULL,
   `priority` varchar(255) NOT NULL default 10,
+  `macaddr` int(10) NOT NULL,
   `notes` int(10) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `hosts` (`ip`)

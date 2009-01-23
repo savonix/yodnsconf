@@ -74,6 +74,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tr>
 				<xsl:if test="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority=0">
         <tr>
+          <td>MAC Address:</td>
+          <td colspan="3">
+            <input name="macaddr" type="text" style="width: 30em;"
+							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/macaddr}"/>
+          </td>
+        </tr>
+				<tr>
           <td style="vertical-align:top;">Applications:</td>
           <td colspan="3">
 						<table class="simple-table">
