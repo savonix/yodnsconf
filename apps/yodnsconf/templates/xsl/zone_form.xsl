@@ -135,12 +135,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</td>
 			</tr>
 			<tr>
-				<td>Zone Transfers:</td>
-				<td>
-					<input name="xfer" type="text" value="{//*[local-name()=$zone_prefix]/xfer}"/>
-				</td>
-			</tr>
-			<tr>
 				<td></td>
 				<td>
 					<input name="btn_save" type="submit" class="button" value="Save"/>&#160;

@@ -36,24 +36,27 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:value-of select="/_R_/i18n/zones"/>
         </a>
         <xsl:if test="not(/_R_/_get/zone)">
-        <a href="{$link_prefix}zone-edit">
-          <xsl:value-of select="/_R_/i18n/new_zone"/>
-        </a>
-        <a href="{$link_prefix}redirects">
-          <xsl:value-of select="/_R_/i18n/redirects"/>
-        </a>
-        <a href="{$link_prefix}ip">
-          <xsl:value-of select="/_R_/i18n/ip"/>
-        </a>
-        <a href="{$link_prefix}hosts">
-          <xsl:value-of select="/_R_/i18n/hosts"/>
-        </a>
-        <a href="{$link_prefix}services">
-          <xsl:value-of select="/_R_/i18n/services"/>
-        </a>
-        <a href="{$link_prefix}yodns-options">
-          <xsl:value-of select="/_R_/i18n/options"/>
-        </a>
+					<a href="{$link_prefix}zone-edit">
+						<xsl:value-of select="/_R_/i18n/new_zone"/>
+					</a>
+					<a href="{$link_prefix}redirects">
+						<xsl:value-of select="/_R_/i18n/redirects"/>
+					</a>
+					<a href="{$link_prefix}rewrites">
+						<xsl:value-of select="/_R_/i18n/rewrites"/>
+					</a>
+					<a href="{$link_prefix}ip">
+						<xsl:value-of select="/_R_/i18n/ip"/>
+					</a>
+					<a href="{$link_prefix}hosts">
+						<xsl:value-of select="/_R_/i18n/hosts"/>
+					</a>
+					<a href="{$link_prefix}services">
+						<xsl:value-of select="/_R_/i18n/services"/>
+					</a>
+					<a href="{$link_prefix}yodns-options">
+						<xsl:value-of select="/_R_/i18n/options"/>
+					</a>
 				</xsl:if>
         <xsl:if test="/_R_/_get/zone">
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">

@@ -73,6 +73,14 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hosts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>redirects` (
+  `http_host` varchar(255) NOT NULL,
+  `redirect` varchar(255) NOT NULL,
+  PRIMARY KEY  (`http_host`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroups` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,

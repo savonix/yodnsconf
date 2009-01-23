@@ -50,7 +50,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
     <div id="my-hostgroups-div" style="min-height: 440px;">
       <script type="text/javascript">
-        document.getElementById('my-hostgroups-div').style.visibility = 'hidden';
+			document.getElementById('my-hostgroups-div').style.visibility = 'hidden';
       </script>
       <table width="100%" class="tablesorter" id="myhostgroups">
         <thead>

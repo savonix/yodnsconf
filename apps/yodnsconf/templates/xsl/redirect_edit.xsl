@@ -60,6 +60,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
         </tr>
         <tr>
+          <td>Rewrite Type:</td>
+          <td>
+            <input name="rewrite_type" type="text" value="{/_R_/redirects_get_all/redirects_get_all[http_host=/_R_/_get/http_host]/rewrite_type}"/>
+          </td>
+        </tr>
+        <tr>
           <td></td>
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
