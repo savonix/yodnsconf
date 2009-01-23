@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_post/ip" type="text"/>
 		<param name="_post/host" type="text"/>
 		<param name="_post/priority" type="integer"/>
-		<param name="_post/macaddr" type="text"/>
+		<param name="_post/macaddr" type="text" default="NULL"/>
 		<param name="_post/host_id" type="integer"/>
 	</params>
 	<sql>

@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 	</params>
 	<sql>
-	SELECT DISTINCT id, ip, ip AS plain_ip FROM &prefix;hosts WHERE LENGTH(ip) &lt; 17 
+	SELECT DISTINCT ip, ip AS plain_ip FROM &prefix;hosts WHERE LENGTH(ip) &lt; 17
 	ORDER BY ip
 	</sql>
 </query>
