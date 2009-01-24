@@ -27,18 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-    <script language="javascript">
-    <![CDATA[
-		function initValidation()
-		{
-			var objForm = document.forms["redirect"];
-			objForm.http_host.required = 1;
-			objForm.redirect.required = 1;
-		}
-    ]]>
-    </script>
-    <form method="post" name="redirect" onSubmit="return validateStandard(this);">
+    <form method="post">
 			<xsl:if test="//_get/clone='true'">
 				<input type="hidden" name="clone" value="true"/>
 			</xsl:if>
@@ -49,16 +38,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td style="width: 10em;">Hostgroup:</td>
           <td>
-            <input name="ip" type="text" style="width: 12em;"
+            <input name="name" type="text" style="width: 12em;"
 							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/name}"/>
           </td>
         </tr>
         <tr>
           <td>Hosts:</td>
           <td colspan="2">
-						<select name="hosts[]" multiple="multiple" style="height: 8em; width: 14em;">
+						<select name="host_id[]" multiple="multiple" style="height: 8em; width: 14em;">
 							<xsl:for-each select="//hosts_get_all/hosts_get_all[priority=0]">
-								<option value="{id}"><xsl:value-of select="host"/></option>
+								<option value="{id}">
+									<xsl:if test="//hostgroup_get_hosts[hostgroup_id=/_R_/_get/hostgroup_id]/host_id=id">
+										<xsl:attribute name="selected">selected</xsl:attribute>
+									</xsl:if>
+									<xsl:value-of select="host"/>
+									<xsl:value-of select="id"/>
+								</option>
 							</xsl:for-each>
 						</select>
           </td>
