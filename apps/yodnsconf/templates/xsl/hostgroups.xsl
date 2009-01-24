@@ -64,23 +64,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/hostgroups_get_all/hostgroups_get_all">
           <tr>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
                 <xsl:value-of select="name"/>
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
 								Edit
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--host-delete&amp;host_id={id}&amp;cloner=0"
+              <a href="{$link_prefix}x--hostgroup-delete&amp;hostgroup_id={id}&amp;cloner=0"
 								onclick="delete_host('{id}',this); return false;">
 								Delete
 							</a>
             </td>
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true&amp;cloner=1">
+              <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;clone=true&amp;cloner=1">
 								Clone
               </a>
             </td>

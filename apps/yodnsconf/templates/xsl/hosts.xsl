@@ -127,5 +127,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <div style="text-align: right">
       <a href="{$link_prefix}host-create">New Host</a>
     </div>
+    <div style="text-align: right">
+      <a href="{$link_prefix}hostgroups">Hostgroups</a>
+    </div>
   </xsl:template>
 </xsl:stylesheet>
