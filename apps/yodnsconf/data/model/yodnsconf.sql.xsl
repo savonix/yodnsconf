@@ -67,7 +67,8 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hosts` (
   `host` varchar(255) NOT NULL,
   `priority` varchar(255) NOT NULL default 10,
   `macaddr` int(10) NOT NULL,
-  `notes` int(10) NOT NULL,
+  `notes` varchar(255) NOT NULL,
+  `hostgroup_id` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `hosts` (`ip`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -88,6 +89,12 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroups` (
   `notes` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroup_parents` (
+  `hostgroup_id` int(11) unsigned NOT NULL,
+  `parent_id` int(11) unsigned NOT NULL,
+  KEY  (`hostgroup_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroup_hosts` (
   `hostgroup_id` int(11) NOT NULL,
