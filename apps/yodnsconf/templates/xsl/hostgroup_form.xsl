@@ -43,7 +43,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<input type="hidden" name="clone" value="true"/>
 			</xsl:if>
       <xsl:if test="/_R_/_get/hostgroup_id">
-      	<input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
         <input type="hidden" name="hostgroup_id" value="{/_R_/_get/hostgroup_id}"/>
       </xsl:if>
       <table width="100%" class="simple-table bottom-edge">
@@ -51,18 +50,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td style="width: 10em;">Hostgroup:</td>
           <td>
             <input name="ip" type="text" style="width: 12em;"
-							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/ip}"/>
-          </td>
-          <td>Order:</td>
-          <td>
-            <input name="priority" type="text" style="width: 4em;margin-right:100%;"
-							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/priority + //_get/cloner}"/>
+							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/name}"/>
           </td>
         </tr>
         <tr>
           <td>Hosts:</td>
-          <td colspan="3">
-						<select name="hosts" multiple="multiple" style="height: 8em; width: 14em;">
+          <td colspan="2">
+						<select name="hosts[]" multiple="multiple" style="height: 8em; width: 14em;">
 							<xsl:for-each select="//hosts_get_all/hosts_get_all[priority=0]">
 								<option value="{id}"><xsl:value-of select="host"/></option>
 							</xsl:for-each>

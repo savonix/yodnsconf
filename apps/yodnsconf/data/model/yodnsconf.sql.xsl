@@ -88,9 +88,10 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroups` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-CREATE TABLE `<xsl:value-of select="//table_prefix"/>host_hostgroups` (
-  `host_id` int(11) unsigned NOT NULL,
-  `hostgroup_id` int(11) NOT NULL
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroup_hosts` (
+  `hostgroup_id` int(11) NOT NULL,
+  `host_id` int(11) NOT NULL,
+  PRIMARY KEY  (`hostgroup_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
 

@@ -239,6 +239,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</map:if>
 		<map:query src="data/sql/hosts_get_all.xml"/>
 		<map:query src="data/sql/hostgroups_get_all.xml"/>
+		<map:query src="data/sql/hostgroups_get_hosts.xml"/>
 		<map:xsl src="templates/xsl/hostgroup_form.xsl"/>
 	</map:gate>
 	<map:gate name="x--hostgroup-delete" role="yodnsuser">
