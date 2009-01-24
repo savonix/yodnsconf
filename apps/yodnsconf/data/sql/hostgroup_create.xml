@@ -25,9 +25,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="hostgroup_create">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/name" type="text" default="Untitled Hostgroup"/>
+		<param name="_post/name" type="text" default="untitled_hostgroup"/>
+		<param name="_post/alias" type="text" default="Untitled Hostgroup"/>
 	</params>
 	<sql>
-	INSERT INTO &prefix;hostgroups (name) VALUES (?)
+	INSERT INTO &prefix;hostgroups (name,alias) VALUES (?,?)
 	</sql>
 </query>

@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>redirects` (
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroups` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL,
   `notes` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -98,7 +99,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hostgroup_hosts` (
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>services` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
-  `notes` int(10) NOT NULL,
+  `notes` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`),
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

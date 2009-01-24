@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: hostgroup_update.xml
+Component: hostgroups_get_all.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,14 +22,15 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="hostgroup_update">
+<query name="hostgroups_get_all_hosts">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/name" type="text" default="untitled"/>
-		<param name="_post/alias" type="text" default="Untitled"/>
-		<param name="_post/hostgroup_id" type="integer"/>
+		<param name="_get/hostgroup_id" type="text" default="%"/>
 	</params>
 	<sql>
-	UPDATE &prefix;hostgroups SET name=?, alias=? WHERE id = ?
+	SELECT h.host,hgs.id FROM &prefix;hostgroups AS hgs,&prefix;hostgroup_hosts AS hgh,&prefix;hosts AS h
+	WHERE hgs.id LIKE ?
+	AND hgs.id=hgh.hostgroup_id
+	AND hgh.host_id=h.id
 	</sql>
 </query>

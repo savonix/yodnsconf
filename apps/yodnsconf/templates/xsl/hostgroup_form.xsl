@@ -41,7 +41,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <input name="name" type="text" style="width: 12em;"
 							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/name}"/>
           </td>
-          <td></td>
+          <td>
+            <input name="alias" type="text" style="width: 12em;"
+							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/alias}"/>
+          </td>
         </tr>
         <tr>
           <td valign="top">Hosts:</td>

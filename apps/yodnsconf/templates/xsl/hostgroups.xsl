@@ -92,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
     </xsl:call-template>
     <div style="text-align: right">
-      <a href="{$link_prefix}x--hostgroups-export">Export</a> - <a href="{$link_prefix}x--hostgroups-export-unbound">Unbound Export</a>
+      <a href="{$link_prefix}x--hostgroups-export">Nagios3 Export</a>
     </div>
     <div style="text-align: right">
       <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>

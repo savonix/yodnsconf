@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_get/hostgroup_id" type="text" default="%"/>
 	</params>
 	<sql>
-	SELECT * FROM &prefix;hostgroups WHERE id LIKE ?
+	SELECT * FROM &prefix;hostgroups AS hgs WHERE hgs.id LIKE ?
 	</sql>
 </query>
