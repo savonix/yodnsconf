@@ -122,8 +122,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">myhosts</xsl:with-param>
     </xsl:call-template>
     <div style="text-align: right">
-      <a href="{$link_prefix}x--hosts-export">Export</a> - <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>
+      <a href="{$link_prefix}x--hosts-export">/etc/hosts Export</a> - <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>
     </div>
+    <div style="text-align: right">
+			<a href="{$link_prefix}x--hosts-export-unbound">Puppet Export</a> - <a href="{$link_prefix}x--hosts-export-nagios">Nagios3 Export</a>
+		</div>
     <div style="text-align: right">
       <a href="{$link_prefix}host-create">New Host</a>
     </div>
