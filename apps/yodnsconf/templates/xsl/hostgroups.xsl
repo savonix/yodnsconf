@@ -95,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <a href="{$link_prefix}x--hostgroups-export">Export</a> - <a href="{$link_prefix}x--hostgroups-export-unbound">Unbound Export</a>
     </div>
     <div style="text-align: right">
-      <a href="{$link_prefix}host-create">New Host</a>
+      <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
     </div>
   </xsl:template>
 </xsl:stylesheet>

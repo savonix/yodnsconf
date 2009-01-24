@@ -235,7 +235,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</map:if>
 		<map:if name="//_post">
 			<map:true>
-				<map:query src="data/sql/host_update.xml"/>
+				<map:query src="data/sql/hostgroup_create.xml"/>
+				<map:query src="data/sql/hostgroup_delete_hosts.xml"/>
+				<map:query src="data/sql/hostgroup_update_hosts.xml"/>
+				<map:action type="redirect" params="{//link_prefix}hostgroups"/>
 			</map:true>
 			<map:false></map:false>
 		</map:if>

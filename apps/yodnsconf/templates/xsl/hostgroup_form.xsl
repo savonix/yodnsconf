@@ -41,22 +41,41 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <input name="name" type="text" style="width: 12em;"
 							value="{/_R_/hostgroups_get_all/hostgroups_get_all[id=/_R_/_get/hostgroup_id]/name}"/>
           </td>
+          <td></td>
         </tr>
         <tr>
-          <td>Hosts:</td>
-          <td colspan="2">
-						<select name="host_id[]" multiple="multiple" style="height: 8em; width: 14em;">
+          <td valign="top">Hosts:</td>
+          <th style="text-indent: 4px; width: 18em; background-color: #DDD">All Hosts</th>
+          <td></td>
+					<th style="width: 20em; background-color: #DDD">Active Hosts</th>
+				</tr>
+				<tr>
+          <td></td>
+					<td>
+						<select name="host_id[]" multiple="multiple" style="height: 10em; width:20em; padding-left:2px;">
 							<xsl:for-each select="//hosts_get_all/hosts_get_all[priority=0]">
-								<option value="{id}">
+								<xsl:sort select="host"/>
+								<option value="{id}" style="padding: 1px;">
 									<xsl:if test="//hostgroup_get_hosts[hostgroup_id=/_R_/_get/hostgroup_id]/host_id=id">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
 									<xsl:value-of select="host"/>
-									<xsl:value-of select="id"/>
 								</option>
 							</xsl:for-each>
 						</select>
           </td>
+          <td></td>
+          <td>
+						<select name="display_only" multiple="multiple" style="height: 10em; width:20em; padding-left:2px;">
+							<xsl:for-each select="//hosts_get_all/hosts_get_all[id=//hostgroup_get_hosts[hostgroup_id=/_R_/_get/hostgroup_id]/host_id]">
+								<xsl:sort select="host"/>
+								<option value="{id}" style="padding: 1px;" disabled="disabled">
+									<xsl:value-of select="host"/>
+								</option>
+							</xsl:for-each>
+						</select>
+          </td>
+          <td></td>
         </tr>
         <tr>
           <td></td>
@@ -65,12 +84,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <input name="btn_cancel" type="button" class="button" value="Cancel"
 							onClick="window.location.href='{$link_prefix}hosts'"/>
           </td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
     </form>
-    <script language="javascript">
-		initValidation();
-    </script>
     <div style="text-align: right">
       <a href="{$link_prefix}hostgroups">Hostgroups</a>
     </div>
