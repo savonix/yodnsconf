@@ -42,9 +42,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<a href="{$link_prefix}redirects">
 						<xsl:value-of select="/_R_/i18n/redirects"/>
 					</a>
-					<a href="{$link_prefix}rewrites">
-						<xsl:value-of select="/_R_/i18n/rewrites"/>
-					</a>
 					<a href="{$link_prefix}ip">
 						<xsl:value-of select="/_R_/i18n/ip"/>
 					</a>

@@ -24,6 +24,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
     <script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
     <script language="javascript">
     <![CDATA[
@@ -59,7 +61,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td>Name:</td>
           <td>
-            <input name="name" type="text" value="{/_R_/record_get_by_id/record_get_by_id/name}"/>
+            <input name="name" type="text"
+							value="{/_R_/record_get_by_id/record_get_by_id/name}"/>
           </td>
         </tr>
         <tr>
@@ -67,9 +70,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td>
             <select name="type" onchange="initValidation();">
               <xsl:for-each select="//record_types/type">
-                <xsl:variable name="this_type">
-                  <xsl:value-of select="."/>
-                </xsl:variable>
+                <xsl:variable name="this_type" select="."/>
                 <option value="{.}">
                   <xsl:if test="/_R_/record_get_by_id/record_get_by_id/type=$this_type">
                     <xsl:attribute name="selected">selected</xsl:attribute>
@@ -83,47 +84,53 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td>Data:</td>
           <td>
-            <input name="data" type="text" value="{/_R_/record_get_by_id/record_get_by_id/data}"/>
+            <input name="data" type="text"
+							value="{/_R_/record_get_by_id/record_get_by_id/data}"/>
           </td>
         </tr>
         <tr>
           <td>Preference/Priority:</td>
           <td>
-            <input name="aux" type="text" value="{/_R_/record_get_by_id/record_get_by_id/aux}"/>
+            <input name="aux" type="text"
+							value="{/_R_/record_get_by_id/record_get_by_id/aux}"/>
           </td>
         </tr>
         <xsl:if test="/_R_/record_get_by_id/record_get_by_id/type='SRV'">
           <tr>
             <td>Weight:</td>
             <td>
-              <input name="weight" type="text" value="{/_R_/record_get_by_id/record_get_by_id/weight}"/>
+              <input name="weight" type="text"
+								value="{/_R_/record_get_by_id/record_get_by_id/weight}"/>
             </td>
           </tr>
           <tr>
             <td>Port:</td>
             <td>
-              <input name="port" type="text" value="{/_R_/record_get_by_id/record_get_by_id/port}"/>
+              <input name="port" type="text"
+								value="{/_R_/record_get_by_id/record_get_by_id/port}"/>
             </td>
           </tr>
         </xsl:if>
         <tr>
           <td>TTL:</td>
           <td>
-            <input name="ttl" type="text" value="{/_R_/record_get_by_id/record_get_by_id/ttl}"/>
+            <input name="ttl" type="text"
+							value="{/_R_/record_get_by_id/record_get_by_id/ttl}"/>
           </td>
         </tr>
         <tr>
           <td>Notes:</td>
           <td>
-            <input name="notes" type="text" value="{/_R_/record_get_by_id/record_get_by_id/notes}"/>
+            <input name="notes" type="text"
+							value="{/_R_/record_get_by_id/record_get_by_id/notes}"/>
           </td>
         </tr>
         <tr>
           <td></td>
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-      <input name="btn_cancel" type="button" class="button" value="Cancel"
-				onClick="window.location.href='{/_R_/runtime/link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
+						<input name="btn_cancel" type="button" class="button" value="Cancel"
+							onClick="window.location.href='{$link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
           </td>
         </tr>
       </table>

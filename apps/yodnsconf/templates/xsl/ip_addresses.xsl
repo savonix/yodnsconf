@@ -85,7 +85,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--ip-delete&amp;ip_address={ip_address}" onclick="delete_ip('{ip_address}',this); return false;">Delete</a>
+              <a href="{$link_prefix}x--ip-delete&amp;ip_address={ip_address}"
+								onclick="delete_ip('{ip_address}',this); return false;">Delete</a>
             </td>
           </tr>
         </xsl:for-each>
