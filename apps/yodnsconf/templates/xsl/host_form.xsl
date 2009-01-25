@@ -115,5 +115,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script language="javascript">
 		initValidation();
     </script>
+    <div style="text-align: right">
+			<a href="{$link_prefix}x--hosts-export-puppet&amp;host_id={//_get/host_id}">Puppet Export</a>
+		</div>
   </xsl:template>
 </xsl:stylesheet>

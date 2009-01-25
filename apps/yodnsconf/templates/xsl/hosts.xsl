@@ -125,7 +125,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <a href="{$link_prefix}x--hosts-export">/etc/hosts Export</a> - <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>
     </div>
     <div style="text-align: right">
-			<a href="{$link_prefix}x--hosts-export-unbound">Puppet Export</a> - <a href="{$link_prefix}x--hosts-export-nagios">Nagios3 Export</a>
+			<a href="{$link_prefix}x--hosts-export-puppet">Puppet Export</a> - <a href="{$link_prefix}x--hosts-export-nagios">Nagios3 Export</a>
 		</div>
     <div style="text-align: right">
       <a href="{$link_prefix}host-create">New Host</a>
