@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template match="/">
 
   <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
-    if ($host = <xsl:value-of select="http_host"/>) {
+    if ($host = "<xsl:value-of select="http_host"/>") {
 		    rewrite ^ http://<xsl:value-of select="redirect"/> permanent;
 		}
   </xsl:for-each>
