@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: hosts_export.txt.xsl
+Component: redirects_export.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -24,25 +24,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
-<xsl:text>
-server:
-	verbosity: 1
-	interface: 0.0.0.0
-	do-ip4: yes
-	do-ip6: no
-	access-control: 192.168.0.0/16 allow
-	access-control: 172.20.0.184/32 allow
-	access-control: 192.168.134.22/32 allow
-	chroot: ""
-</xsl:text>
-  <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-    <xsl:text>	local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>
-		<xsl:if test="priority &gt;= 0">A</xsl:if>
-		<xsl:if test="priority &lt; 0">PTR</xsl:if>
-		<xsl:text> </xsl:text><xsl:value-of select="ip"/><xsl:text>"</xsl:text>
-    <xsl:text>
-</xsl:text>
+
+  <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
+    if ($host = <xsl:value-of select="http_host"/>) {
+		    rewrite ^ http://<xsl:value-of select="redirect"/> permanent;
+		}
   </xsl:for-each>
-<!-- string-length(ip) -->
+
 </xsl:template>
 </xsl:stylesheet>
