@@ -135,8 +135,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<map:gate name="x--redirects-export-nginx" role="yodnsuser">
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:query src="data/sql/redirects_get_all.xml"/>
-		<map:action type="pad" params="//redirects_get_all/redirects_get_all/http_host,60, "/>
-		<map:xsl src="templates/xsl/redirects_export_nginx.txt.xsl"/>
+		<map:xsl src="templates/txt/redirects_export_nginx.txt.xsl"/>
 	</map:gate>
 	<map:gate name="x--redirect-delete" role="yodnsuser">
 		<map:action type="header" params="Content-Type,text/xml"/>
