@@ -21,7 +21,9 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
@@ -47,14 +49,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			myTable.deleteRow(row.parentNode.parentNode.rowIndex);
 			}
     }
-    function filter_table(phrase,column)
-    {
-			$.uiTableFilter( $("#myzones"),phrase,column)
-    }
     </script>
     <div id="my-zones-div" style="min-height: 440px;">
       <script type="text/javascript">
-			document.getElementById('my-zones-div').style.visibility = 'hidden';
+				document.getElementById('my-zones-div').style.visibility = 'hidden';
       </script>
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
@@ -88,6 +86,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </form>
           </tr>
         </thead>
+				<tbody>
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
           <tr>
             <td>
@@ -131,6 +130,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
           </tr>
         </xsl:for-each>
+				</tbody>
       </table>
     </div>
     <xsl:call-template name="pager">

@@ -21,7 +21,9 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
@@ -34,24 +36,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         headers: { 2: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
-    <script type="text/javascript">
-    function delete_host(id,row) {
-        if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x--host-delete&amp;host_id="+id,
-        {
-					'host_id': id
-        },
-        function (data){
-        });
-        myTable = document.getElementById("myhosts");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
-        }
-    }
-    </script>
+
     <div id="my-hosts-div" style="min-height: 440px;">
-      <script type="text/javascript">
-        document.getElementById('my-hosts-div').style.visibility = 'hidden';
-      </script>
       <table width="100%" class="tablesorter" id="myhosts">
         <thead>
           <tr>
@@ -78,6 +64,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </form>
           </tr>
         </thead>
+				<tbody>
         <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
           <tr>
             <td>
@@ -116,6 +103,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
           </tr>
         </xsl:for-each>
+				</tbody>
       </table>
     </div>
     <xsl:call-template name="pager">

@@ -21,7 +21,9 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:include href="zone_form.xsl"/>
@@ -31,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
     <script type="text/javascript">
-    <![CDATA[
+		<xsl:comment>
 		function initValidation()
 		{
 			var objForm = document.forms["myform"];
@@ -42,7 +44,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			objForm.ttl.required = 1;
 			objForm.ttl.regexp = /^[0-9]+$/;
 		}
-    ]]>
+		</xsl:comment>
     </script>
     <form method="post" onSubmit="return validateStandard(this);" name="myform">
       <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">

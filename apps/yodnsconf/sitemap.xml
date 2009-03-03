@@ -421,6 +421,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/iframe_viewer.xsl"/>
 	</map:gate>
 
+	<map:gate name="x--javascript" content_type="application/javascript" cache="0">
+		<map:action type="header" params="Content-type,application/javascript"/>
+		<map:xsl src="templates/txt/js_functions.txt.xsl"/>
+	</map:gate>
 	<map:gate name="themed-css" cache="0">
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:raw src="templates/themes/{//theme}/css/style.css" />
