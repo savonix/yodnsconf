@@ -52,9 +52,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     }
     </script>
     <div id="my-redirects-div">
-      <script type="text/javascript">
-			document.getElementById('my-redirects-div').style.visibility = 'hidden';
-      </script>
       <table width="100%" class="tablesorter" id="myredirects">
         <thead>
           <tr>
