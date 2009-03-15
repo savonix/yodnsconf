@@ -40,18 +40,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     function delete_redirect(http_host,row) {
         if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x--redirect-delete&amp;http_host="+http_host,
-        {
-					'http_host': http_host
-        },
-        function (data){
-        });
-        myTable = document.getElementById("myredirects");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+					$.post("<xsl:value-of select="$link_prefix"/>x--redirect-delete&amp;http_host="+http_host,
+					{
+						'http_host': http_host
+					},
+					function (data){
+					});
+					$("#"+http_host).remove();
         }
     }
     </script>
-    <div id="my-redirects-div">
+    <div id="my-redirects-div" style="min-height: 480px;">
       <table width="100%" class="tablesorter" id="myredirects">
         <thead>
           <tr>
@@ -74,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </thead>
 				<tbody>
         <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
-          <tr>
+          <tr id="{http_host}">
             <td>
               <a href="{$link_prefix}redirect-edit&amp;http_host={http_host}">
                 <xsl:value-of select="http_host"/>
@@ -86,7 +85,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--redirect-delete&amp;http_host={http_host}" onclick="delete_redirect('{http_host}',this); return false;">Delete</a>
+              <a href="{$link_prefix}x--redirect-delete&amp;http_host={http_host}"
+								onclick="delete_redirect('{http_host}',this); return false;">Delete</a>
             </td>
           </tr>
         </xsl:for-each>

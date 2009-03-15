@@ -42,16 +42,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
      </title>
       <link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/jquery.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.cookiejar.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.dimensions.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.date_input.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.cookie.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.json.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
-      <script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/thickbox.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.min.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
+      <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"></script>
       <script type="text/javascript" src="{$link_prefix}x--javascript"></script>
       <xsl:for-each select="/_R_/in_head">
         <xsl:sort select="priority"/>

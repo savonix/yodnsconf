@@ -50,7 +50,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			}
     }
     </script>
-    <div id="my-zones-div" style="min-height: 440px;">
+    <div id="my-zones-div" style="min-height: 480px;">
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
