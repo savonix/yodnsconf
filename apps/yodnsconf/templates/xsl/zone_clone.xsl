@@ -37,8 +37,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		function initValidation()
 		{
 				var objForm = document.forms["myform"];
-				objForm.origin.required = 1;
-				objForm.origin.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
 				objForm.ns.required = 1;
 				objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
 				objForm.ttl.required = 1;

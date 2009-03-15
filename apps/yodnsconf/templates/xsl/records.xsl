@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-    function delete_record(record_id,zone,row) {
+    function delete_record(record_id,zone) {
         if(confirm('Are you sure?')){
         $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id,
         {
@@ -50,8 +50,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         },
         function (data){
         });
-          myTable = document.getElementById("records_table");
-          myTable.deleteRow(row);
+					$("#"+record_id).remove();
         }
     }
 
@@ -107,7 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </thead>
       <tbody>
         <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
-          <tr>
+          <tr id="{id}">
             <td>
               <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="name"/>
@@ -138,7 +137,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <td align="right">
               <a href="{$link_prefix}x-record-delete&amp;record_id={id}"
-                  onclick="delete_record({id},{zone},this.parentNode.parentNode.rowIndex); return false;">Delete</a>
+                  onclick="delete_record({id},{zone}); return false;">Delete</a>
             </td>
             <td>
               <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>

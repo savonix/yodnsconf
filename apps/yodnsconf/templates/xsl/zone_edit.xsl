@@ -33,18 +33,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
     <script type="text/javascript">
-		<xsl:comment>
+		<![CDATA[
 		function initValidation()
 		{
 			var objForm = document.forms["myform"];
-			objForm.origin.required = 1;
-			objForm.origin.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
 			objForm.ns.required = 1;
 			objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
 			objForm.ttl.required = 1;
 			objForm.ttl.regexp = /^[0-9]+$/;
 		}
-		</xsl:comment>
+		]]>
     </script>
     <form method="post" onSubmit="return validateStandard(this);" name="myform">
       <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
