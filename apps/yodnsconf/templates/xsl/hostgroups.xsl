@@ -37,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-    function delete_host(id,row) {
+    function delete_host(id) {
         if(confirm('Are you sure?')){
         $.post("<xsl:value-of select="$link_prefix"/>x--hostgroup-delete&amp;hostgroup_id="+id,
         {
@@ -45,12 +45,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
         },
         function (data){
         });
-        myTable = document.getElementById("myhostgroups");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
+        $("#h_"+id).remove();
         }
     }
     </script>
-    <div id="my-hostgroups-div" style="min-height: 440px;">
+    <div id="my-hostgroups-div" style="height: 440px; background-color: #eee;">
       <table width="100%" class="tablesorter" id="myhostgroups">
         <thead>
           <tr>
@@ -60,8 +59,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <th>Clone</th>
           </tr>
         </thead>
+				<tbody>
         <xsl:for-each select="/_R_/hostgroups_get_all/hostgroups_get_all">
-          <tr>
+          <tr id="h_{id}">
             <td>
               <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
                 <xsl:value-of select="name"/>
@@ -85,16 +85,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
           </tr>
         </xsl:for-each>
+				</tbody>
       </table>
+    </div>
+		<br/>
+    <div style="float: right">
+      <a href="{$link_prefix}x--hostgroups-export">Nagios3 Export</a>
+    </div>
+    <div style="float: right">
+      <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
     </div>
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
     </xsl:call-template>
-    <div style="text-align: right">
-      <a href="{$link_prefix}x--hostgroups-export">Nagios3 Export</a>
-    </div>
-    <div style="text-align: right">
-      <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
-    </div>
   </xsl:template>
 </xsl:stylesheet>

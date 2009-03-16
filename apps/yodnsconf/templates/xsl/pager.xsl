@@ -83,7 +83,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
   <xsl:template name="pager">
     <xsl:param name="my-table"/>
-    <div id="{$my-table}-pager" class="pager" style="margin-top: 20px;">
       <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
       <table>
         <tr>
@@ -100,6 +99,5 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
         </tr>
       </table>
-    </div>
   </xsl:template>
 </xsl:stylesheet>
