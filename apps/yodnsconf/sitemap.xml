@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:set name="theme" value="default"/>
 	</map:prepend>
 
-	<map:gate name="index" role="yodnsuser" cache="600" client_cache="300">
+	<map:gate name="index" role="yodnsuser">
 		<map:if name="//_get/origin">
 			<map:true>
 				<map:action type="concat" params="%,{//_get/origin},//_get/origin"/>
@@ -40,6 +40,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</map:if>
 		<map:query src="data/sql/zones_get_all.xml"/>
 		<map:xsl src="templates/xsl/zones.xsl"/>
+	</map:gate>
+	<map:gate name="index-rows" role="yodnsuser">
+		<map:if name="//_get/origin">
+			<map:true>
+				<map:action type="concat" params="%,{//_get/origin},//_get/origin"/>
+				<map:action type="concat" params="{//_get/origin},%,//_get/origin"/>
+			</map:true>
+			<map:false></map:false>
+		</map:if>
+		<map:query src="data/sql/zones_get_all.xml"/>
+		<map:xsl src="templates/xsl/zones_rows.xsl"/>
 	</map:gate>
 
 	<map:gate name="x-zones-export" content_type="text/plain">

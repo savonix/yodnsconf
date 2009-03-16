@@ -29,9 +29,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+		<xsl:variable name="pagenum" select="//tablesorter/myzones-page"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
-      <xsl:with-param name="my-table-div">my-zones-div</xsl:with-param>
+      <xsl:with-param name="my_page"><xsl:value-of select="$pagenum"/></xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
     </xsl:with-param>
@@ -49,8 +50,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			myTable.deleteRow(row.parentNode.parentNode.rowIndex);
 			}
     }
+		<![CDATA[
+			$(document).ready(function() {
+			});
+		]]>
     </script>
-    <div id="my-zones-div" style="min-height: 480px;">
+    <div id="my_zones_div" style="min-height: 500px;">
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
@@ -65,7 +70,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </xsl:if>
             <th></th>
           </tr>
-          <tr>
+          <tr style="display: none;">
             <form method="get">
 						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
@@ -83,8 +88,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </form>
           </tr>
         </thead>
-				<tbody>
+				<tbody id="myzonesbody">
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
+					<xsl:if test="position() &gt; 100000">
           <tr>
             <td>
               <a href="{$link_prefix}zone-edit&amp;zone={id}">
@@ -126,10 +132,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</a>
 						</td>
           </tr>
+					</xsl:if>
         </xsl:for-each>
 				</tbody>
       </table>
     </div>
+		<textarea><xsl:value-of select="//tablesorter/*"/></textarea>
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
     </xsl:call-template>

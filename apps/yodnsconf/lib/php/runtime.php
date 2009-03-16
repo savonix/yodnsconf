@@ -1,5 +1,5 @@
 <?php
-/*
+/* <!--
 Program: YoDNSConf
 Component: runtime.php
 Copyright: Savonix Corporation
@@ -21,6 +21,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
+-->
 */
 
 $path        = $_SERVER['SCRIPT_NAME'];
@@ -30,6 +31,7 @@ $link_prefix = $path . "?nid=";
 $utcdate = gmdate('Y-m-d H:i:s');
 
 
+$tablesorter = json_decode(rawurldecode($_COOKIE['jqCookieJar_tablesorter']),true);
 $defaults = Nexista_Config::getSection('defaults');
 Nexista_Flow::add("defaults", $defaults, false);
 
@@ -40,14 +42,16 @@ if (is_file('../revision')) {
 }
 
 $runtime = array(
-                'path_prefix' => $path_prefix,
-                'link_prefix' => $link_prefix,
-                'utcdate' => $utcdate,
-                'svn_revision' => $svn_revision,
-                'ns_filter' => $ns_filter,
-                'db_version' => $db_version
-                );
+        'path_prefix' => $path_prefix,
+        'link_prefix' => $link_prefix,
+        'utcdate' => $utcdate,
+        'ns_filter' => $ns_filter,
+        'db_version' => $db_version
+        );
 
 Nexista_Flow::add("runtime", $runtime, false);
-
+Nexista_Flow::add("tablesorter", $tablesorter, false);
+/*
+{"myzones-page":1,"myredirects-sort":[[0,0]],"myredirects-page":8,"records_table-page":1,"myposts-page":1,"my-template-table-page":1,"myhosts-page":9}
+*/
 ?>

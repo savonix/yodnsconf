@@ -31,13 +31,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myhosts</xsl:with-param>
-      <xsl:with-param name="my-table-div">my-hosts-div</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
-
-    <div id="my-hosts-div" style="min-height: 440px;">
+		<script type="text/javascript">
+		<![CDATA[
+			$(document).ready(function() {
+				$('#my_hosts_div').hide();
+				$('#my_hosts_div').show();
+			});
+		]]>
+		</script>
+    <div id="my_hosts_div" style="min-height: 440px;">
       <table width="100%" class="tablesorter" id="myhosts">
         <thead>
           <tr>

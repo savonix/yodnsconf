@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!-- This template is used by pages which use the tablesorter and the table paginator -->
   <xsl:template name="jquery-setup">
     <xsl:param name="my-table"/>
+		<xsl:param name="my_page"/>
     <xsl:param name="my-table-div"/>
     <xsl:param name="my-sort-column"/>
     <xsl:param name="no-sort-column"/>
@@ -35,21 +36,49 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     $(document).ready(function()
         {
-            $("#<xsl:value-of select="$my-table"/>")
-            .tablesorter(
-                {
-                    widgets:['zebra','cookie']
-                    <xsl:value-of select="$my-sort-column"/>
-                    <xsl:value-of select="$no-sort-column"/>
-                }
-            )
-            .tablesorterPager(
-                {
-                    container: $("#<xsl:value-of select="$my-table"/>-pager"),
-                    size: 16
-                }
-            );
+					 
+					 $.get("/a/dev/yodnsconf/index.php?nid=index-rows&amp;pagenum=<xsl:value-of select="$my_page"/>", {}, function(html) {
+							$("#<xsl:value-of select="$my-table"/>body").append(html);
+							$("#<xsl:value-of select="$my-table"/>").trigger("update");
+
+
+							$("#<xsl:value-of select="$my-table"/>").tablesorter(
+									{
+											widgets:['zebra','cookie'],
+											widthFixed: true,
+											debug: false
+											<xsl:value-of select="$my-sort-column"/>
+											<xsl:value-of select="$no-sort-column"/>
+									}
+							).tablesorterPager(
+												{
+														container: $("#<xsl:value-of select="$my-table"/>-pager"),
+														totalRows: 526,
+														size: 16
+												}
+							);
+							$("#<xsl:value-of select="$my-table"/>").trigger("update");
+							$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgets");
+					},"text");
+
+					$('.prev').click(function() {
+							var blah = parseInt($('#pagenum').val()) - 1;
+						 $.get("/a/dev/yodnsconf/index.php?nid=index-rows&amp;pagenum="+blah, {}, function(html) {
+								$("#<xsl:value-of select="$my-table"/>body").append(html);
+								$("#<xsl:value-of select="$my-table"/>").trigger("update");
+								$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgets");
+						},"text");
+					});
+					$('.next').click(function() {
+							var blah = parseInt($('#pagenum').val()) + 1;
+						 $.get("/a/dev/yodnsconf/index.php?nid=index-rows&amp;pagenum="+blah, {}, function(html) {
+								$("#<xsl:value-of select="$my-table"/>body").append(html);
+								$("#<xsl:value-of select="$my-table"/>").trigger("update");
+								$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgets");
+						},"text");
+					});
         }
+
     );
     </script>
   </xsl:template>
@@ -61,7 +90,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="no-sort-column"/>
     <xsl:call-template name="jquery-links"/>
     <script type="text/javascript">
-    $(document).ready(function() 
+    $(document).ready(function()
         {
             $("#<xsl:value-of select="$my-table"/>")
             .tablesorter(
@@ -78,26 +107,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
   <!-- load the javascript -->
   <xsl:template name="jquery-links">
-    <link rel="stylesheet" href="{/_R_/runtime/path_prefix}/s/js/blue/style.css" type="text/css" media="print, projection, screen" />
+    <link rel="stylesheet" href="{/_R_/runtime/path_prefix}s/js/blue/style.css" type="text/css" media="print, projection, screen" />
   </xsl:template>
 
   <xsl:template name="pager">
     <xsl:param name="my-table"/>
+			<div id="{$my-table}-pager" class="pager" style="margin-top: 60px;">
       <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
+      <input id="pagenum" class="pagenum" type="text" name="pagenum" value="1"/>
       <table>
         <tr>
           <td>
-            <img src="{/_R_/runtime/path_prefix}/s/js/blue/first.png" class="first"/>
-            <img src="{/_R_/runtime/path_prefix}/s/js/blue/prev.png" class="prev"/>
+            <img src="{/_R_/runtime/path_prefix}s/js/blue/first.png" class="first"/>
+            <img src="{/_R_/runtime/path_prefix}s/js/blue/prev.png" class="prev"/>
           </td>
           <td>
             <input type="text" class="pagedisplay" size="10" readonly="readonly"/>
           </td>
           <td>
-            <img src="{/_R_/runtime/path_prefix}/s/js/blue/next.png" class="next"/>
-            <img src="{/_R_/runtime/path_prefix}/s/js/blue/last.png" class="last"/>
+            <img src="{/_R_/runtime/path_prefix}s/js/blue/next.png" class="next"/>
+            <img src="{/_R_/runtime/path_prefix}s/js/blue/last.png" class="last"/>
           </td>
         </tr>
       </table>
+			</div>
   </xsl:template>
 </xsl:stylesheet>
