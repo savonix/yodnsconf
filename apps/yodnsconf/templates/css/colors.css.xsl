@@ -33,5 +33,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 .bottom-edge tr {
 	border-color: #DDD;
 }
+#footer a {
+		color: red;
+}
 </xsl:template>
 </xsl:stylesheet>

@@ -35,15 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         headers: { 2: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
-		<script type="text/javascript">
-		<![CDATA[
-			$(document).ready(function() {
-				$('#my_hosts_div').hide();
-				$('#my_hosts_div').show();
-			});
-		]]>
-		</script>
-    <div id="my_hosts_div" style="min-height: 440px;">
+    <div id="my_hosts_div" class="tableframe">
       <table width="100%" class="tablesorter" id="myhosts">
         <thead>
           <tr>
@@ -115,6 +107,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myhosts</xsl:with-param>
     </xsl:call-template>
+		<div  class="prefoot">
     <div style="text-align: right">
       <a href="{$link_prefix}x--hosts-export">/etc/hosts Export</a> - <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>
     </div>
@@ -127,5 +120,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <div style="text-align: right">
       <a href="{$link_prefix}hostgroups">Hostgroups</a>
     </div>
+		</div>
   </xsl:template>
 </xsl:stylesheet>

@@ -3,7 +3,8 @@
 		tablesorterPager: new function() {
 			
 			function updatePageDisplay(c) {
-				var s = $(c.cssPageDisplay,c.container).val((c.page+1) + c.seperator + c.totalPages);	
+				var s = $(c.cssPageDisplay,c.container).val((c.page+1) + c.seperator + c.totalPages);
+				var s = $(c.cssPageNum,c.container).val((c.page));	
 			}
 			
 			function setPageSize(table,size) {
@@ -47,6 +48,7 @@
 				if(c.page >= (c.totalPages-1)) {
 					c.page = (c.totalPages-1);
 				}
+
 				moveToPage(table);
 			}
 			
@@ -115,7 +117,9 @@
 				var c = table.config;
 				
 				c.rowsCopy = rows;
-				c.totalRows = rows.length;
+                if(c.totalRows == 0) {
+                    c.totalRows = rows.length;
+                }
 				c.totalPages = Math.ceil(c.totalRows / c.size);
 				
 				renderTable(table,rows);
@@ -133,6 +137,7 @@
 				cssFirst: '.first',
 				cssLast: '.last',
 				cssPageDisplay: '.pagedisplay',
+				cssPageNum: '.pagenum',
 				cssPageSize: '.pagesize',
 				seperator: "/",
 				positionFixed: true,

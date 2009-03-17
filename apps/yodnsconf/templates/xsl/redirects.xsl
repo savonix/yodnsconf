@@ -50,7 +50,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
     }
     </script>
-    <div id="my-redirects-div" style="min-height: 480px;">
+    <div id="my-redirects-div" class="tableframe">
       <table width="100%" class="tablesorter" id="myredirects">
         <thead>
           <tr>
@@ -96,7 +96,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myredirects</xsl:with-param>
     </xsl:call-template>
-    <div style="text-align: right">
+    <div style="text-align: right" class="prefoot">
       <a href="{$link_prefix}redirect-edit">New</a>&#160;
       <a href="{$link_prefix}x--redirects-export">Export</a>
     </div>

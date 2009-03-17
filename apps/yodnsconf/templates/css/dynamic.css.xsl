@@ -40,11 +40,8 @@ textarea,input.text,option {
 	position: relative;
 }
 
-#footer {
-    padding: 1em;
-    padding-top: 2em;
-    font-size: small;
-}
+
+
 
 .error {
 	font-family: Verdana, Arial, Helvetica, sans-serif;

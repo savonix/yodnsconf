@@ -672,10 +672,14 @@
 			};
 			
 			this.clearTableBody = function(table) {
-				function empty() {
-					while ( this.firstChild ) this.removeChild( this.firstChild );
+				if($.browser.msie) {
+					function empty() {
+						while ( this.firstChild ) this.removeChild( this.firstChild );
+					}
+					empty.apply(table.tBodies[0]);
+				} else {
+					table.tBodies[0].innerHTML = "";
 				}
-				empty.apply(table.tBodies[0]);
 			};
 		}
 	});

@@ -51,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
     }
     </script>
-    <div id="my-services-div" style="min-height: 440px;">
+    <div id="my-services-div" class="tableframe">
       <table width="100%" class="tablesorter" id="myservices">
         <thead>
           <tr>
@@ -117,7 +117,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myservices</xsl:with-param>
     </xsl:call-template>
-    <div style="text-align: right">
+    <div style="text-align: right" class="prefoot">
       <a href="{$link_prefix}service-edit">New Service</a>
     </div>
   </xsl:template>

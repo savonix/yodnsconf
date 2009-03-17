@@ -29,16 +29,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-		<xsl:variable name="pagenum" select="//tablesorter/myzones-page"/>
+		<xsl:variable name="pagenum" select="//tablesorter/myzones-page - 1"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
       <xsl:with-param name="my_page"><xsl:value-of select="$pagenum"/></xsl:with-param>
       <xsl:with-param name="no-sort-column">,
-        headers: { 2: {sorter: false} }
+        headers: { 1: {sorter: false}, 2: {sorter: false} }
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-    function delete_zone(zone,row) {
+		// zone delete
+    function zd(zone,row) {
 			if(confirm('Are you sure?')){
 			$.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone,
 			{
@@ -49,28 +50,54 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			myTable = document.getElementById("myzones");
 			myTable.deleteRow(row.parentNode.parentNode.rowIndex);
 			}
+			return false;
     }
-		<![CDATA[
-			$(document).ready(function() {
-			});
-		]]>
+		function fixup_rows() {
+			if($(".zc:first").text()=="") {
+				$(".zc,.zd,.ze").css("cursor","pointer");
+				$(".zd").click( function () { 
+					zd($(this).parent().parent().attr("id"));
+				}
+				);
+				$(".zd").text("Delete");
+				$(".zd").after(" | ");
+				$(".zc").text("Clone");
+				$(".zc").click( function () { 
+					location.href="<xsl:value-of select="//link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id"); 
+				}
+				);
+				$(".ze").click( function () { 
+					location.href="<xsl:value-of select="//link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id"); 
+				}
+				);
+			}
+		}
+    $(document).ready(function()
+        {
+					fixup_rows();
+					//$(".prev,.next").click(function() { fixup_rows(); });
+					//$("table").change(function() { fixup_rows(); });
+					$(".header").bind("mouseleave", function(e) { fixup_rows(); });
+					$(".prev,.next").bind("click", function(e) { fixup_rows(); });
+				}
+		);
     </script>
-    <div id="my_zones_div" style="min-height: 500px;">
+		
+    <div id="my_zones_div" class="tableframe">
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
-            <th>Origin</th>
-            <th>Expires</th>
+            <th id="barf" width="700">Origin</th>
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
             </xsl:if>
-            <th>TTL</th>
+            <th width="100">TTL</th>
             <xsl:if test="verbose='true'">
               <th>Active</th>
             </xsl:if>
-            <th></th>
+            <th width="100"></th>
           </tr>
-          <tr style="display: none;">
+          <tr>
             <form method="get">
 						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
@@ -81,7 +108,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <td></td>
                 <td></td>
               </xsl:if>
-              <td></td>
               <td align="right">
                 <input name="Filter" type="submit" id="Filter" value="Filter"/>
               </td>
@@ -89,34 +115,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </tr>
         </thead>
 				<tbody id="myzonesbody">
+
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-					<xsl:if test="position() &gt; 100000">
-          <tr>
+          <tr id="{id}">
             <td>
-              <a href="{$link_prefix}zone-edit&amp;zone={id}">
+              <span class="ze">
                 <xsl:value-of select="origin"/>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}zone-edit&amp;zone={id}">
-                <xsl:value-of select="domain_expires"/>
-              </a>
+              </span>
             </td>
             <xsl:if test="verbose='true'">
               <td>
-                <a href="{$link_prefix}zone-edit&amp;zone={id}">
                   <xsl:value-of select="ns"/>
-                </a>
               </td>
               <td>
-                <a href="{$link_prefix}zone-edit&amp;zone={id}">
                   <xsl:value-of select="ttl"/>
-                </a>
               </td>
               <td>
-                <a href="{$link_prefix}zone-edit&amp;zone={id}">
                   <xsl:value-of select="active"/>
-                </a>
               </td>
             </xsl:if>
             <xsl:if test="not(verbose)">
@@ -124,24 +139,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="ttl"/>
               </td>
             </xsl:if>
-            <td align="right">
-              <a href="{$link_prefix}x-zone-delete&amp;id={id}"
-								onclick="delete_zone({id},this); return false;">Delete</a>
-							| <a href="{$link_prefix}zone-clone&amp;zone={id}">
-								Clone
-							</a>
+            <td>
+              <span class="zd"/>
+							<span class="zc"/>
 						</td>
           </tr>
-					</xsl:if>
         </xsl:for-each>
 				</tbody>
       </table>
     </div>
-		<textarea><xsl:value-of select="//tablesorter/*"/></textarea>
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
     </xsl:call-template>
-		<div style="float: right">
+		<div class="prefoot" style="float: right">
 			Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
 			<br/>
       <a href="{$link_prefix}x-zones-export-csv&amp;ns_filter=ns1.savonix.com.">CSV Zone Export</a>

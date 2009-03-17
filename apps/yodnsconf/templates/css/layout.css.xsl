@@ -26,7 +26,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="layout">
 #main {
     width: 980px;
-		min-height: 800px;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -51,7 +50,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
   margin-left: .4em;
 	padding: .3em 1em .3em 1em;
 }
-
+.prefoot {
+		position: absolute;
+		bottom: 3px;
+		right: 100px;
+}
+#footer {
+		position: absolute;
+		bottom: 0px;
+}
 .simple-table tr td {
 	padding: 2px;
 	border: 0;
@@ -62,5 +69,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	border-bottom: 1px;
 	border-style: solid;
 }
+
+.tableframe
+{
+  position: absolute;
+  top: 40px;
+  left: 100px;
+  right: 100px;
+  bottom: 40px;
+  border: 1px solid #999999;
+  background-color: #F9F9F9;
+  overflow: auto;
+  /* css hack for IE */
+  width: expression((parseInt(document.documentElement.clientWidth)-230)+'px');
+  height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
+}
+
 </xsl:template>
 </xsl:stylesheet>

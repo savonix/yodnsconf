@@ -36,47 +36,38 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     $(document).ready(function()
         {
-					 
-					 $.get("/a/dev/yodnsconf/index.php?nid=index-rows&amp;pagenum=<xsl:value-of select="$my_page"/>", {}, function(html) {
+					<!-- WOrking ajax
+					$("#<xsl:value-of select="$my-table"/>").tablesorter(
+						{widgets:['zebra'],widthFixed: true
+							<xsl:value-of select="$no-sort-column"/>});
+					 $.ajax( {
+					 			type: "GET",
+					 			url: "/a/dev/yodnsconf/index.php?nid=index-rows",
+								dataType: "html",
+								ifModified: true,
+								success: function(html) {
 							$("#<xsl:value-of select="$my-table"/>body").append(html);
 							$("#<xsl:value-of select="$my-table"/>").trigger("update");
-
-
-							$("#<xsl:value-of select="$my-table"/>").tablesorter(
-									{
-											widgets:['zebra','cookie'],
-											widthFixed: true,
-											debug: false
-											<xsl:value-of select="$my-sort-column"/>
-											<xsl:value-of select="$no-sort-column"/>
-									}
-							).tablesorterPager(
-												{
-														container: $("#<xsl:value-of select="$my-table"/>-pager"),
-														totalRows: 526,
-														size: 16
-												}
+							$("#<xsl:value-of select="$my-table"/>").tablesorterPager(
+										{
+												container: $("#<xsl:value-of select="$my-table"/>-pager"),
+												positionFixed: false,
+												size: 30
+										}
 							);
 							$("#<xsl:value-of select="$my-table"/>").trigger("update");
-							$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgets");
-					},"text");
-
-					$('.prev').click(function() {
-							var blah = parseInt($('#pagenum').val()) - 1;
-						 $.get("/a/dev/yodnsconf/index.php?nid=index-rows&amp;pagenum="+blah, {}, function(html) {
-								$("#<xsl:value-of select="$my-table"/>body").append(html);
-								$("#<xsl:value-of select="$my-table"/>").trigger("update");
-								$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgets");
-						},"text");
-					});
-					$('.next').click(function() {
-							var blah = parseInt($('#pagenum').val()) + 1;
-						 $.get("/a/dev/yodnsconf/index.php?nid=index-rows&amp;pagenum="+blah, {}, function(html) {
-								$("#<xsl:value-of select="$my-table"/>body").append(html);
-								$("#<xsl:value-of select="$my-table"/>").trigger("update");
-								$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgets");
-						},"text");
-					});
+							$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgetId",['zebra']);
+					} });
+					-->
+					$("#<xsl:value-of select="$my-table"/>").tablesorter(
+						{widgets:['zebra'],widthFixed: true
+							<xsl:value-of select="$no-sort-column"/>}).tablesorterPager(
+										{
+												container: $("#<xsl:value-of select="$my-table"/>-pager"),
+												positionFixed: false,
+												size: 30
+										}
+							);
         }
 
     );
@@ -112,9 +103,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
   <xsl:template name="pager">
     <xsl:param name="my-table"/>
-			<div id="{$my-table}-pager" class="pager" style="margin-top: 60px;">
-      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
-      <input id="pagenum" class="pagenum" type="text" name="pagenum" value="1"/>
+			<div id="{$my-table}-pager" class="pager" style="position: absolute; left: 100px; bottom: 20px;">
+      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="30"/>
       <table>
         <tr>
           <td>
