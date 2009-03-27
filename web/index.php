@@ -3,8 +3,13 @@
 ini_set('display_errors',true);
 error_reporting(E_ALL ^ E_NOTICE);
 
-ini_set('default_mimetype','application/xhtml+xml');
-
+// MSIE won't work with application/xhtml+xml
+if(strstr($_SERVER['HTTP_USER_AGENT'],"MSIE")) {
+    ini_set('default_mimetype','text/html');
+} else {
+    ini_set('default_mimetype','application/xhtml+xml');
+}
+//
 // Where is nexista? This path should be to a folder containing nexista
 // This is the only thing you may need to edit:
 if(file_exists("../nexista/")) {
