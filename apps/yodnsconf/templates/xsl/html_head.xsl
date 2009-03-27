@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					:<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip"/>
         </xsl:if>
      </title>
-      <link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
+      <link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
       <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.min.js"></script>
       <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
@@ -55,11 +55,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!--
       <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"></script>
 -->
-      <script type="text/javascript" src="{$link_prefix}x--javascript"></script>
-      <xsl:for-each select="/_R_/in_head">
-        <xsl:sort select="priority"/>
-        <xsl:value-of select="string" disable-output-escaping="yes"/>
-      </xsl:for-each>
+      <script type="text/javascript" src="{$link_prefix}x-javascript"></script>
+      <script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
+      <xsl:for-each select="//head_nodes">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
+			</xsl:for-each>
     </head>
 
     <xsl:call-template name="source_spacer">

@@ -434,7 +434,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/iframe_viewer.xsl"/>
 	</map:gate>
 
-	<map:gate name="x--javascript" content_type="application/javascript" cache="0">
+	<map:gate name="x-javascript" content_type="application/javascript" cache="0">
 		<map:action type="header" params="Content-type,application/javascript"/>
 		<map:xsl src="templates/txt/js_functions.txt.xsl"/>
 	</map:gate>
@@ -442,7 +442,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:raw src="templates/themes/{//theme}/css/style.css" />
 	</map:gate>
-	<map:gate name="dynamic-css"
+	<map:gate name="x-dynamic-css"
 			cache="0"
 			nosession="true"
 			content_type="text/css"
@@ -463,6 +463,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xml src="sitemap.xml"/>
 		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
+	</map:gate>
+	<map:gate name="x-xhtml2dom-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
+    <map:xml src="data/xhtml/footer.xhtml"/>
+    <map:xml src="data/xhtml/header.xhtml"/>
+    <map:xsl src="templates/js/xhtml2dom.js.xsl"/>
 	</map:gate>
 	
 	<map:gate name="firewall-rules">
