@@ -25,11 +25,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="footer">
-
+  <div id="nofooter"/>
+  <!--
     <div id="footer">
       <a href="http://www.yodnsconf.com/web/">Yo DNS Conf</a>
       Copyright Savonix Corporation. License: Affero GPL
     </div>
 		<div id="test-token" style="display:none;"></div>
+  -->
   </xsl:template>
 </xsl:stylesheet>
