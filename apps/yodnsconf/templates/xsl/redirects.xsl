@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myredirects</xsl:with-param>
-      <xsl:with-param name="my-table-div">my-redirects-div</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
     </xsl:with-param>
@@ -50,7 +49,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
     }
     </script>
-    <div id="my-redirects-div" class="tableframe">
+    <div class="tableframe">
       <table width="100%" class="tablesorter" id="myredirects">
         <thead>
           <tr>

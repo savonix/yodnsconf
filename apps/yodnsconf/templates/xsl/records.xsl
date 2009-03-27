@@ -31,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">records_table</xsl:with-param>
-      <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: {
             5: {sorter: false},

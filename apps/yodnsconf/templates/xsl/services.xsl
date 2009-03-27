@@ -32,26 +32,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myservices</xsl:with-param>
-      <xsl:with-param name="my-table-div">my-services-div</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-    function delete_service(id,row) {
+    function delete_service(id) {
         if(confirm('Are you sure?')){
         $.post("<xsl:value-of select="$link_prefix"/>x--service-delete&amp;service_id="+id,
         {
 					'service_id': id
         },
         function (data){
+          $("#s_"+id).remove();
         });
-        myTable = document.getElementById("myservices");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
         }
     }
     </script>
-    <div id="my-services-div" class="tableframe">
+    <div class="tableframe">
       <table width="100%" class="tablesorter" id="myservices">
         <thead>
           <tr>
@@ -79,7 +77,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </thead>
 				<tbody>
         <xsl:for-each select="/_R_/services_get_all/services_get_all">
-          <tr>
+          <tr id="s_{id}">
             <td>
               <a href="{$link_prefix}service-edit&amp;service_id={id}">
 								<xsl:if test="string-length(service) &gt; 80">
@@ -100,7 +98,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <td align="right">
               <a href="{$link_prefix}x--service-delete&amp;service_id={id}"
-								onclick="delete_service('{id}',this); return false;">
+								onclick="delete_service('{id}'); return false;">
 								Delete
 							</a>
             </td>

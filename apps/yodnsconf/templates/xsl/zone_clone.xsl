@@ -99,7 +99,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:call-template>
       </xsl:if>
       <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 4">
-        <iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
       </xsl:if>
     </div>
     <br/><a href="{$link_prefix}x-zone-export&amp;zone={//id}">Export</a>

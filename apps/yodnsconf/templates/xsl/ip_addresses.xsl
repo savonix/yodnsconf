@@ -31,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
-      <xsl:with-param name="my-table-div">my-ip_addresses-div</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: { 2: {sorter: false} }
     </xsl:with-param>
@@ -50,10 +49,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
     }
     </script>
-    <div id="my-ip_addresses-div">
-      <script type="text/javascript">
-			document.getElementById('my-ip_addresses-div').style.visibility = 'hidden';
-      </script>
+    <div>
       <table width="100%" class="tablesorter" id="myip_addresses">
         <thead>
           <tr>

@@ -65,4 +65,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:for-each>
     </html>
   </xsl:template>
+  <xsl:template match="node()">
+<xsl:element name="{name()}">
+<xsl:apply-templates select="@*|node()"/>
+</xsl:element>
+</xsl:template>
+
+<xsl:template match="@*|text()|comment()|processing-instruction()">
+<xsl:copy/>
+</xsl:template>
 </xsl:stylesheet>

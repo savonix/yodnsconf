@@ -70,8 +70,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td></td>
           <td>
-            <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-            <input name="btn_cancel" type="button" class="button" value="Cancel"
+            <input type="submit" class="button" value="Save"/>&#160;
+            <input type="button" class="button" value="Cancel"
 							onClick="window.location.href='{$link_prefix}redirects'"/>
           </td>
         </tr>
