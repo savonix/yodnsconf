@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     function delete_redirect(http_host,row) {
         if(confirm('Are you sure?')){
-					$.post("<xsl:value-of select="$link_prefix"/>x--redirect-delete&amp;http_host="+http_host,
+					$.post("<xsl:value-of select="$link_prefix"/>x-redirect-delete&amp;http_host="+http_host,
 					{
 						'http_host': http_host
 					},
