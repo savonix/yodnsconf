@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="layout">
 #main {
-    width: 980px;
+    width: 100%;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -35,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     padding: .5em;
 }
 
-#main-menu {
+#top_nav {
     background-color: gray;
 	  font-size: small;
     padding: 2px;

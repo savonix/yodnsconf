@@ -31,9 +31,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="section_start">main_menu</xsl:with-param>
     </xsl:call-template>
 
-    <div id="main-menu">
-
-      <div id="main-menu-buttons">
+    <div id="top_nav">
+      <div>
         <a href="{$link_prefix}index">
           <xsl:value-of select="/_R_/i18n/zones"/>
         </a>
