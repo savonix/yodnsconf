@@ -153,6 +153,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<map:gate name="x-redirect-delete" role="yodnsuser">
 		<map:action type="header" params="Content-Type,text/xml"/>
 		<map:query src="data/sql/redirect_delete.xml"/>
+		<map:xsl src="templates/xml/ajax_response.xml.xsl"/>
 	</map:gate>
 
 	<map:gate name="records" role="yodnsuser">

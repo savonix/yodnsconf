@@ -37,15 +37,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-    function delete_redirect(http_host,row) {
+    function delete_redirect(http_host,pos) {
         if(confirm('Are you sure?')){
 					$.post("<xsl:value-of select="$link_prefix"/>x-redirect-delete&amp;http_host="+http_host,
 					{
 						'http_host': http_host
 					},
 					function (data){
+					  $("#h_"+pos).remove();
 					});
-					$("#"+http_host).remove();
         }
     }
     </script>
@@ -65,14 +65,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
               <td></td>
               <td align="right">
-                <input name="Filter" type="submit" id="Filter" value="Filter"/>
+                <input name="Filter" type="submit" value="Filter"/>
               </td>
             </form>
           </tr>
         </thead>
 				<tbody>
         <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
-          <tr id="{http_host}">
+          <tr id="h_{position()}">
             <td>
               <a href="{$link_prefix}redirect-edit&amp;http_host={http_host}">
                 <xsl:value-of select="http_host"/>
@@ -84,8 +84,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--redirect-delete&amp;http_host={http_host}"
-								onclick="delete_redirect('{http_host}',this); return false;">Delete</a>
+              <a href="{$link_prefix}x-redirect-delete&amp;http_host={http_host}"
+								onclick="delete_redirect('{http_host}',{position()}); return false;">Delete</a>
             </td>
           </tr>
         </xsl:for-each>
@@ -97,7 +97,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
     <div style="text-align: right" class="prefoot">
       <a href="{$link_prefix}redirect-edit">New</a>&#160;
-      <a href="{$link_prefix}x--redirects-export">Export</a>
+      <a href="{$link_prefix}x-redirects-export">Export</a>
     </div>
   </xsl:template>
 </xsl:stylesheet>
