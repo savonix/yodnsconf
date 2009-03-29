@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <script language="javascript" src="{/_R_/runtime/path_prefix}s/js/jsval.js"></script>
+    <script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
     <script language="javascript">
     <![CDATA[
         function initValidation()

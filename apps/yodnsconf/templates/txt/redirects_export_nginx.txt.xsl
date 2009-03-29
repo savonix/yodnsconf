@@ -50,10 +50,19 @@ server {
 }
 
 -->
+<!--
 <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
 if ($host = "<xsl:value-of select="http_host"/>") {
     rewrite ^ http://<xsl:value-of select="redirect"/> permanent;
 }</xsl:for-each>
+-->
 
+map $host $new {
+<xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
+  <xsl:value-of select="http_host"/>  http://<xsl:value-of select="redirect"/>;
+</xsl:for-each>
+}
+ 
+rewrite  ^    $new   permanent;
 </xsl:template>
 </xsl:stylesheet>

@@ -97,7 +97,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
     <div style="text-align: right" class="prefoot">
       <a href="{$link_prefix}redirect-edit">New</a>&#160;
-      <a href="{$link_prefix}x-redirects-export">Export</a>
+      <a href="{$link_prefix}x-redirects-export">Export</a>&#160;
+      <a href="{$link_prefix}x-redirects-export-nginx">NGINX</a>
     </div>
   </xsl:template>
 </xsl:stylesheet>
