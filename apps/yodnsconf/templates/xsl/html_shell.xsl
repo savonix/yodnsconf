@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		indent="yes" encoding="UTF-8" omit-xml-declaration="no"
 		doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
 		doctype-public="-//W3C//DTD XHTML 1.1//EN" />
-
+  <xsl:strip-space  elements="*"/>
   <xsl:template match="/">
     <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
 

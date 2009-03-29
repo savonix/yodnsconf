@@ -31,62 +31,82 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="section_start">main_menu</xsl:with-param>
     </xsl:call-template>
 
-    <div id="top_nav">
-      <div>
+    <form action="{$link_prefix}index" method="get"
+      style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
+    <xsl:if test="not(/_R_/_get/zone)">
+      <!-- to do: match selection -->
+      <input type="hidden" name="nid" value="index"/>
+      <select name="ns_filter">
+        <option value="%">Select All</option>
+        <option value="ns1.savonix.com.">ns1.savonix.com.</option>
+        <option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
+      </select>
+      <input type="submit" value="Go"/>
+    </xsl:if>
+    </form>
+    <ul id="nav">
+      <li>
         <a href="{$link_prefix}index">
           <xsl:value-of select="/_R_/i18n/zones"/>
         </a>
+      </li>
         <xsl:if test="not(/_R_/_get/zone)">
+        <li>
 					<a href="{$link_prefix}zone-edit">
 						<xsl:value-of select="/_R_/i18n/new_zone"/>
 					</a>
+        </li>
+        <li>
 					<a href="{$link_prefix}redirects">
 						<xsl:value-of select="/_R_/i18n/redirects"/>
 					</a>
+        </li>
+        <li>
 					<a href="{$link_prefix}ip">
 						<xsl:value-of select="/_R_/i18n/ip"/>
 					</a>
+        </li>
+        <li>
 					<a href="{$link_prefix}hosts">
 						<xsl:value-of select="/_R_/i18n/hosts"/>
 					</a>
-					<a href="{$link_prefix}services">
+        </li>
+				<li>
+          <a href="{$link_prefix}services">
 						<xsl:value-of select="/_R_/i18n/services"/>
 					</a>
+        </li>
+        <li>
 					<a href="{$link_prefix}yodns-options">
 						<xsl:value-of select="/_R_/i18n/options"/>
 					</a>
+        </li>
 				</xsl:if>
         <xsl:if test="/_R_/_get/zone">
+          <li>
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
             <span style="color: #8C2323; font-weight: bold;">
               <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
             </span>
           </a>
+          </li>
+          <li>
           <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}">
             Records
           </a>
+          </li>
+          <li>
           <a href="{$link_prefix}record-edit&amp;zone={/_R_/_get/zone}">
             New Record
           </a>
+          </li>
+          <li>
           <a href="http://www.{//origin}" target="_blank">
             Visit
           </a>
+          </li>
         </xsl:if>
-				<form action="{$link_prefix}index" method="get"
-					style="padding-left: 10em; display: inline;">
-        <xsl:if test="not(/_R_/_get/zone)">
-					<!-- to do: match selection -->
-					<input type="hidden" name="nid" value="index"/>
-					<select name="ns_filter">
-						<option value="%">Select All</option>
-						<option value="ns1.savonix.com.">ns1.savonix.com.</option>
-						<option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
-					</select>
-					<input type="submit" value="Go"/>
-				</xsl:if>
-				</form>
-      </div>
-    </div>
+    </ul>
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_end">main_menu</xsl:with-param>
     </xsl:call-template>
