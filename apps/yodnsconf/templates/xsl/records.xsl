@@ -148,19 +148,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">records_table</xsl:with-param>
     </xsl:call-template>
+    <br/><br/>
     <div style="float: right;">
-      <a href="{$link_prefix}zone-create-default-dns-records&amp;zone={/_R_/_get/zone}"
-        onclick="confirm('Are you sure?'); create_default_dns_records({/_R_/_get/zone}); return false;">
-        Create Default DNS Records
-			</a>
-      <br/>
-      <br/>
-      <a href="{$link_prefix}zone-create-default-a-records&amp;zone={/_R_/_get/zone}"
-        onclick="confirm('Are you sure?'); create_default_a_records({/_R_/_get/zone}); return false;">
-        Create Default A Records
-			</a>
-			<br/>
-      <br/>
 			<form method="post" action="{$link_prefix}zone-apply-profile&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
 				<input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
         <select name="profile_id">
