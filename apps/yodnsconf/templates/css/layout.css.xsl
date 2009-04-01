@@ -25,24 +25,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="layout">
 #main {
-    width: 100%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  text-align: left;
 }
 
 #content {
-    padding: .5em;
+  padding: .5em;
 }
 
 .wten {
   width: 30em;
 }
 #top_nav {
-    background-color: gray;
-	  font-size: small;
-    padding: 2px;
-		display: block;
+  background-color: gray;
+  font-size: small;
+  padding: 2px;
+  display: block;
 }
 #main-menu-buttons {
 	padding: 2px;
@@ -54,13 +52,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	padding: .3em 1em .3em 1em;
 }
 .prefoot {
-		position: absolute;
-		bottom: 3px;
-		right: 100px;
+  position: absolute;
+  bottom: 3px;
+  right: 100px;
 }
 #footer {
-		position: absolute;
-		bottom: 0px;
+  position: absolute;
+  bottom: 0px;
 }
 .simple-table tr td {
 	padding: 2px;
@@ -96,8 +94,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
   background-color: #F9F9F9;
   overflow: auto;
   /* css hack for IE */
+  <xsl:if test="//browser='msie'">
   width: expression((parseInt(document.documentElement.clientWidth)-230)+'px');
   height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
+  </xsl:if>
 }
 
 </xsl:template>
