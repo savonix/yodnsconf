@@ -38,7 +38,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <input type="hidden" name="nid" value="index"/>
       <select name="ns_filter">
         <option value="%">Select All</option>
-        <xsl:for-each select="//ns_filters_get_all/ns_filters_get_all/ns">
+        <xsl:for-each select="//zones_get_ns/zones_get_ns/ns">
         <option value="{.}">
           <xsl:if test="//runtime/ns_filter=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
           <xsl:value-of select="."/>
