@@ -148,9 +148,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
       </table>
     </div>
+    <div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
     </xsl:call-template>
+    </div>
 		<div class="prefoot" style="float: right">
 			Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
 			<br/>

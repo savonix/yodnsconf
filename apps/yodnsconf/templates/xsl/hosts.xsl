@@ -35,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         headers: { 2: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
-    <div id="my_hosts_div" class="tableframe">
+    <div class="tableframe">
       <table width="100%" class="tablesorter" id="myhosts">
         <thead>
           <tr>
@@ -64,7 +64,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </thead>
 				<tbody>
         <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-          <tr>
+          <tr id="h_{id}">
             <td>
               <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
                 <xsl:value-of select="ip"/>
@@ -73,9 +73,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td>
               <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
 								<xsl:if test="string-length(host) &gt; 80">
-									<xsl:attribute name="title">
-										<xsl:value-of select="host"/>
-									</xsl:attribute>
+									<xsl:attribute name="title" select="host"/>
 								</xsl:if>
 								<xsl:value-of select="substring(host,0,80)"/>
 								<xsl:if test="string-length(host) &gt; 80">
@@ -89,7 +87,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--host-delete&amp;host_id={id}&amp;cloner=0"
+              <a href="{$link_prefix}x-host-delete&amp;host_id={id}&amp;cloner=0"
 								onclick="delete_host('{id}',this); return false;">
 								Delete
 							</a>
@@ -104,11 +102,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
       </table>
     </div>
-    <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">myhosts</xsl:with-param>
-    </xsl:call-template>
-		<div  class="prefoot">
-    <div style="text-align: right">
+    <div  class="prefoot" style="text-align: right">
       <a href="{$link_prefix}x--hosts-export">/etc/hosts Export</a>&#160;
       <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>&#160;
 			<a href="{$link_prefix}x--hosts-export-puppet">Puppet Export</a>&#160;
@@ -116,6 +110,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <a href="{$link_prefix}host-create">New Host</a>&#160;
       <a href="{$link_prefix}hostgroups">Hostgroups</a>
     </div>
-		</div>
+    <div class="table_controls">
+    <xsl:call-template name="pager">
+      <xsl:with-param name="my-table">myhosts</xsl:with-param>
+    </xsl:call-template>
+    </div>
   </xsl:template>
 </xsl:stylesheet>

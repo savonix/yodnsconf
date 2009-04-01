@@ -39,39 +39,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
 				</xsl:with-param>
     </xsl:call-template>
-    <script type="text/javascript">
-    function delete_record(record_id,zone) {
-        if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x-record-delete&amp;record_id="+record_id,
-        {
-          'record_id': record_id,
-          'zone': zone
-        },
-        function (data){
-        });
-					$("#"+record_id).remove();
-        }
-    }
-
-    function create_default_dns_records(zone) {
-        $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-dns-records&amp;zone="+zone,
-        {
-          'zone': zone
-        },
-        function (data){
-          window.location.reload(true);
-        });
-    }
-    function create_default_a_records(zone) {
-        $.post("<xsl:value-of select="$link_prefix"/>zone-create-default-a-records&amp;zone="+zone,
-        {
-          'zone': zone
-        },
-        function (data){
-          window.location.reload(true);
-        });
-    }
-    </script>
     <div class="tableframe">
     <table width="100%" class="tablesorter" id="records_table">
       <thead>
@@ -159,7 +126,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     		<input type="submit" value="Apply Zone Profile" style="cursor: pointer;"/>
 			</form>
     </div>
-    <div id="table_controls">
+    <div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">records_table</xsl:with-param>
     </xsl:call-template>

@@ -24,17 +24,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes" />
   <xsl:template match="/">
-    function delete_host(id,row) {
-        if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="//link_prefix"/>x--host-delete&amp;host_id="+id,
+    function delete_host(id) {
+      if(confirm('Are you sure?')){
+        $.post("<xsl:value-of select="//link_prefix"/>x-host-delete&amp;host_id="+id,
         {
 					'host_id': id
         },
         function (data){
+          $("#h_"+id).remove();
         });
-        myTable = document.getElementById("myhosts");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
-        }
+      }
+    }
+    function delete_record(record_id,zone) {
+      if(confirm('Are you sure?')){
+        $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id,
+        {
+          // zone is needed to update serial
+          'record_id': record_id,
+          'zone': zone
+        },
+        function (data){
+					$("#"+record_id).remove();
+        });
+      }
     }
   </xsl:template>
 </xsl:stylesheet>

@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <param name="//_post/record_id" type="integer"/>
   </params>
   <sql>
-    DELETE FROM &prefix;rr WHERE id = ?
+  DELETE FROM &prefix;rr WHERE id = ?
   </sql>
 </query>

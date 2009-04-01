@@ -64,7 +64,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 										{
 												container: $("#<xsl:value-of select="$my-table"/>-pager"),
 												positionFixed: false,
-												size: 30
+												size: 20
 										}
 							);
         }
@@ -97,13 +97,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
   <!-- load the javascript -->
   <xsl:template name="jquery-links">
-    <link rel="stylesheet" href="{/_R_/runtime/path_prefix}s/js/blue/style.css" type="text/css" media="print, projection, screen" />
+    <link rel="stylesheet" href="{/_R_/runtime/path_prefix}s/js/blue/style.css"
+      type="text/css"/>
   </xsl:template>
 
   <xsl:template name="pager">
     <xsl:param name="my-table"/>
-			<div id="{$my-table}-pager" class="pager" style="position: absolute; left: 100px; bottom: 20px;">
-      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="30"/>
+			<div id="{$my-table}-pager" class="pager">
+      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
       <table>
         <tr>
           <td>
