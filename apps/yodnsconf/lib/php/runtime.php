@@ -36,10 +36,14 @@ $defaults = Nexista_Config::getSection('defaults');
 Nexista_Flow::add("defaults", $defaults, false);
 
 
-/* Subversion revision */
-if (is_file('../revision')) {
-    $svn_revision = file_get_contents('../revision');
+if(isset($_GET['ns_filter'])) {
+    $_SESSION['ns_filter'] = $_GET['ns_filter'];
+} elseif (!$_SESSION['ns_filter']) {
+    $_SESSION['ns_filter'] = '%';
 }
+
+$ns_filter = $_SESSION['ns_filter'];
+
 
 $runtime = array(
         'path_prefix' => $path_prefix,

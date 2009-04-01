@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:perl src="lib/perl/runtime.pl"/>
 		<map:script src="lib/php/runtime.php"/>
 		<map:xml src="data/xml/main_menu.xml"/>
+		<map:xml src="data/xml/ns_filters.xml"/>
 		<map:xml src="i18n/en_US/yodnsconf.xml"/>
 		<map:set name="theme" value="default"/>
 	</map:prepend>

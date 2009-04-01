@@ -38,8 +38,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <input type="hidden" name="nid" value="index"/>
       <select name="ns_filter">
         <option value="%">Select All</option>
-        <option value="ns1.savonix.com.">ns1.savonix.com.</option>
-        <option value="ns1.archiecomics.com.">ns1.archiecomics.com.</option>
+        <xsl:for-each select="//ns_filters_get_all/ns_filters_get_all/ns">
+        <option value="{.}">
+          <xsl:if test="//runtime/ns_filter=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+          <xsl:value-of select="."/>
+        </option>
+        </xsl:for-each>
       </select>
       <input type="submit" value="Go"/>
     </xsl:if>
