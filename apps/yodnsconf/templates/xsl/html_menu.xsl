@@ -115,4 +115,68 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="section_end">main_menu</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+  <xsl:template name="menu">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#nav').droppy();
+    });
+    </script>
+    <ul id="nav">
+      <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
+        <xsl:call-template name="button">
+          <xsl:with-param name="key" select="key"/>
+        </xsl:call-template>
+      </xsl:for-each>
+      
+        <xsl:if test="/_R_/_get/zone">
+          <li>
+          <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
+            <span style="color: #8C2323; font-weight: bold;">
+              <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
+            </span>
+          </a>
+          </li>
+          <li>
+          <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}">
+            Records
+          </a>
+          </li>
+          <li>
+          <a href="{$link_prefix}record-edit&amp;zone={/_R_/_get/zone}">
+            New Record
+          </a>
+          </li>
+          <li>
+          <a href="http://www.{//origin}" target="_blank">
+            Visit
+          </a>
+          </li>
+        </xsl:if>
+    </ul>
+  </xsl:template>
+
+  <xsl:template name="button">
+    <xsl:param name="key"/>
+    <li>
+      <div id="nav_{$key}">
+        <xsl:if test="//_get/nid=/_R_/menu/item[key=$key]/item/url">
+          <xsl:attribute name="class">nav_selected</xsl:attribute>
+        </xsl:if>
+        <xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/>
+      </div>
+      <ul>
+        <xsl:for-each select="/_R_/menu/item[key=$key]/item">
+          <xsl:variable name="my_key" select="key"/>
+          <li>
+            <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
+              <xsl:value-of select="/_R_/i18n/*[local-name()=$my_key]"/>
+            </a>
+          </li>
+        </xsl:for-each>
+      </ul>
+    </li>
+  </xsl:template>
 </xsl:stylesheet>

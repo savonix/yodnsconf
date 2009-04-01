@@ -100,6 +100,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
   height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
   </xsl:if>
 }
+#nav div {
+  padding: 4px 20px;
+  cursor: default;
+}
 
 </xsl:template>
 </xsl:stylesheet>

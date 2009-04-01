@@ -110,10 +110,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
       </table>
     </div>
+    <div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myservices</xsl:with-param>
     </xsl:call-template>
-    <div style="text-align: right" class="prefoot">
+    </div>
+    <div style="text-align: right" class="table_meta">
       <a href="{$link_prefix}service-edit">New Service</a>
     </div>
   </xsl:template>

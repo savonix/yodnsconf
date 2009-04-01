@@ -22,11 +22,47 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <menu>
-  <item>
-    <key>index</key>
-    <item>
-      <key>index</key>
+  <item active="1">
+    <key>zones</key>
+    <item active="1">
+      <key>zones</key>
       <url>index</url>
+    </item>
+    <item active="1">
+      <key>zone_create</key>
+      <url>zone-edit</url>
+    </item>
+  </item>
+  <item active="0">
+    <key>ip</key>
+    <item active="1">
+      <key>ip_addresses</key>
+      <url>ip</url>
+    </item>
+  </item>
+  <item active="1">
+    <key>redirects</key>
+    <item active="1">
+      <key>redirects</key>
+      <url>redirects</url>
+    </item>
+    <item active="1">
+      <key>redirect_create</key>
+      <url>redirect-edit</url>
+    </item>
+  </item>
+  <item active="1">
+    <key>hosts</key>
+    <item active="1">
+      <key>hosts</key>
+      <url>hosts</url>
+    </item>
+  </item>
+  <item active="1">
+    <key>services</key>
+    <item active="1">
+      <key>services</key>
+      <url>services</url>
     </item>
   </item>
 </menu>

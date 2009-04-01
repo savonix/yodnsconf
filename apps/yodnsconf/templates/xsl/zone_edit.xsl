@@ -114,9 +114,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
 		</xsl:if>
 		-->
-		<xsl:variable name="origin_link">
-			<xsl:value-of select="substring(//origin,0,string-length(//origin))"/>
-		</xsl:variable>
+		<xsl:variable name="origin_link" select="substring(//origin,0,string-length(//origin))"/>
 		<a class="thickbox" href="http://www.{$origin_link}/?keepThis=true&amp;TB_iframe=true&amp;height=400&amp;width=600">Preview</a>
     <br/>
 		<a href="{$link_prefix}x-zone-export&amp;zone={//id}">Export</a>
