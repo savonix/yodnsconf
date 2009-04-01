@@ -1,5 +1,5 @@
 <?php
-/*
+/* <!--
 Program: YoDNSConf
 Component: net_dns.plugin.php
 Copyright: Savonix Corporation
@@ -19,10 +19,9 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
-
-*/
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+--> */
 
 class Nexista_Net_dnsAction extends Nexista_Action
 {
@@ -57,7 +56,7 @@ class Nexista_Net_dnsAction extends Nexista_Action
         $my_zone = $this->params['zone'];
         $yo_dns = $this->params['dns'];
         $my_type = $this->params['type'];
-        
+
         if($my_type=="CNAME") { 
             $my_type = "A";
         }
@@ -76,6 +75,5 @@ class Nexista_Net_dnsAction extends Nexista_Action
 
     }
 } //end class
-
 
 ?>
