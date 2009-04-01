@@ -48,5 +48,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
         });
       }
     }
+    function delete_hostgroup(id) {
+      if(confirm('Are you sure?')){
+        $.post("<xsl:value-of select="//link_prefix"/>x-hostgroup-delete&amp;hostgroup_id="+id,
+        {
+					'hostgroup_id': id
+        },
+        function (data){
+          $("#hg_"+id).remove();
+        });
+      }
+    }
   </xsl:template>
 </xsl:stylesheet>

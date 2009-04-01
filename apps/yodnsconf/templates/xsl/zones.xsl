@@ -125,13 +125,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <xsl:if test="verbose='true'">
               <td>
-                  <xsl:value-of select="ns"/>
+                <xsl:value-of select="ns"/>
               </td>
               <td>
-                  <xsl:value-of select="ttl"/>
+                <xsl:value-of select="ttl"/>
               </td>
               <td>
-                  <xsl:value-of select="active"/>
+                <xsl:value-of select="active"/>
               </td>
             </xsl:if>
             <xsl:if test="not(verbose)">

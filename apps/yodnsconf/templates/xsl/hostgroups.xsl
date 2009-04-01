@@ -35,20 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         headers: { 2: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
-    <script type="text/javascript">
-    function delete_host(id) {
-        if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x--hostgroup-delete&amp;hostgroup_id="+id,
-        {
-					'hostgroup_id': id
-        },
-        function (data){
-        });
-        $("#h_"+id).remove();
-        }
-    }
-    </script>
-    <div style="height: 440px; background-color: #eee;">
+    <div class="tableframe">
       <table width="100%" class="tablesorter" id="myhostgroups">
         <thead>
           <tr>
@@ -60,7 +47,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </thead>
 				<tbody>
         <xsl:for-each select="/_R_/hostgroups_get_all/hostgroups_get_all">
-          <tr id="h_{id}">
+          <tr id="hg_{id}">
             <td>
               <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
                 <xsl:value-of select="name"/>
@@ -72,8 +59,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x--hostgroup-delete&amp;hostgroup_id={id}&amp;cloner=0"
-								onclick="delete_host('{id}',this); return false;">
+              <a href="{$link_prefix}x-hostgroup-delete&amp;hostgroup_id={id}&amp;cloner=0"
+								onclick="delete_hostgroup('{id}',this); return false;">
 								Delete
 							</a>
             </td>
@@ -88,14 +75,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </table>
     </div>
 		<br/>
-    <div style="float: right">
-      <a href="{$link_prefix}x--hostgroups-export">Nagios3 Export</a>
-    </div>
-    <div style="float: right">
-      <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
-    </div>
+    <div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
     </xsl:call-template>
+    </div>
+    <div class="table_meta" style="float: right">
+      <a href="{$link_prefix}x-hostgroups-export">Nagios3 Export</a>&#160;
+      <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
+    </div>
   </xsl:template>
 </xsl:stylesheet>
