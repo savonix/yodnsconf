@@ -78,12 +78,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 .table_controls
 {
   position: absolute;
-  bottom: 95px;
+  bottom: 25px;
 }
 .table_meta
 {
   position: absolute;
-  bottom: 80px;
+  bottom: 10px;
 }
 .tableframe
 {

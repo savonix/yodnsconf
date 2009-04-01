@@ -72,6 +72,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         });
     }
     </script>
+    <div class="tableframe">
     <table width="100%" class="tablesorter" id="records_table">
       <thead>
         <tr>
@@ -145,11 +146,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
       </tbody>
     </table>
-    <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">records_table</xsl:with-param>
-    </xsl:call-template>
-    <br/><br/>
-    <div style="float: right;">
+    </div>
+    <div class="table_meta" style="right: 80px;">
 			<form method="post" action="{$link_prefix}zone-apply-profile&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
 				<input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
         <select name="profile_id">
@@ -160,6 +158,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </select>
     		<input type="submit" value="Apply Zone Profile" style="cursor: pointer;"/>
 			</form>
+    </div>
+    <div id="table_controls">
+    <xsl:call-template name="pager">
+      <xsl:with-param name="my-table">records_table</xsl:with-param>
+    </xsl:call-template>
     </div>
   </xsl:template>
 </xsl:stylesheet>
