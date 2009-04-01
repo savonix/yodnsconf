@@ -45,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<map:gate name="index-rows" role="yodnsuser" content_type="text/xml" cache="30">
 
 		<map:if name="//_get/origin">
-			<map:true>
+			<map:true>       
 				<map:action type="concat" params="%,{//_get/origin},//_get/origin"/>
 				<map:action type="concat" params="{//_get/origin},%,//_get/origin"/>
 			</map:true>
@@ -433,12 +433,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 	<map:gate name="x-javascript" content_type="application/javascript" cache="0">
 		<map:action type="header" params="Content-type,application/javascript"/>
-		<map:xsl src="templates/txt/js_functions.txt.xsl"/>
+		<map:xsl src="templates/js/js_functions.js.xsl"/>
 	</map:gate>
-	<map:gate name="themed-css" cache="0">
-		<map:action type="header" params="Content-Type,text/css"/>
-		<map:raw src="templates/themes/{//theme}/css/style.css" />
-	</map:gate>
+
 	<map:gate name="x-dynamic-css"
 			cache="0"
 			nosession="true"
@@ -456,7 +453,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xsl src="data/model/yodnsconf.sql.xsl"/>
 	</map:gate>
-	<map:gate name="x--sitetest" content_type="text/plain" cache="0">
+	<map:gate name="x-sitetest" content_type="text/plain" cache="0">
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xml src="sitemap.xml"/>
 		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
