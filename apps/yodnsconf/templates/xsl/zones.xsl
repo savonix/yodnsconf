@@ -38,20 +38,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
-		// zone delete
-    function zd(zone,row) {
-			if(confirm('Are you sure?')){
-			$.post("<xsl:value-of select="$link_prefix"/>x-zone-delete&amp;zone="+zone,
-			{
-					'zone': zone
-			},
-			function (data){
-			});
-			myTable = document.getElementById("myzones");
-			myTable.deleteRow(row.parentNode.parentNode.rowIndex);
-			}
-			return false;
-    }
 		function fixup_rows() {
 			if($(".zc:first").text()=="") {
 				$(".zc,.zd,.ze").css("cursor","pointer");
@@ -63,11 +49,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				$(".zd").after(" | ");
 				$(".zc").text("Clone");
 				$(".zc").click( function () { 
-					location.href="<xsl:value-of select="//link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id"); 
+					location.href="<xsl:value-of select="//link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("z_id"); 
 				}
 				);
 				$(".ze").click( function () { 
-					location.href="<xsl:value-of select="//link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id"); 
+					location.href="<xsl:value-of select="//link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("z_id"); 
 				}
 				);
 			}
@@ -82,8 +68,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				}
 		);
     </script>
-		
-    <div id="my_zones_div" class="tableframe">
+
+    <div class="tableframe">
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
@@ -153,7 +139,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">myzones</xsl:with-param>
     </xsl:call-template>
     </div>
-		<div class="prefoot" style="float: right">
+		<div class="table_meta" style="float: right">
 			Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>
 			<br/>
       <a href="{$link_prefix}x-zones-export-csv&amp;ns_filter=ns1.savonix.com.">CSV Zone Export</a>
