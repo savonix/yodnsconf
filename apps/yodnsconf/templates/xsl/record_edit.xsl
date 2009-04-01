@@ -31,32 +31,31 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
     <script language="javascript">
     <![CDATA[
-        function initValidation()
-        {
-            var objForm = document.forms["record"];
-            objForm.name.required = 0;
-            objForm.name.regexp = /^[A-Za-z0-9\-\.]*$/;
-            objForm.data.required = 1;
-            if(objForm.type.value=='A') {
-                objForm.data.regexp = /^[0-9\-]+(\.[0-9\-]+)+$/;
-            } elseif(objForm.type.value=='TXT') {
-            } else { 
-                objForm.data.regexp = /^[A-Za-z0-9\-\.]*$/;
-            }
+    function initValidation()
+    {
+        var objForm = document.forms["record"];
+        objForm.name.required = 0;
+        objForm.name.regexp = /^[A-Za-z0-9\-\.]*$/;
+        objForm.data.required = 1;
+        if(objForm.type.value=='A') {
+            objForm.data.regexp = /^[0-9\-]+(\.[0-9\-]+)+$/;
+        } elseif(objForm.type.value=='TXT') {
+        } else {
+            objForm.data.regexp = /^[A-Za-z0-9\-\.]*$/;
         }
+    }
     ]]>
     </script>
     <form method="post" name="record" onSubmit="return validateStandard(this);">
-      <input type="hidden" name="id" value="{/_R_/_get/id}"/>
-      <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
+
+      <input type="hidden" name="id"     value="{/_R_/_get/id}"/>
+      <input type="hidden" name="zone"   value="{/_R_/_get/zone}"/>
       <input type="hidden" name="serial" value="{/_R_/zone_get_by_id/zone_get_by_id/serial}"/>
+
       <xsl:if test="/_R_/_get/nid='record-edit'">
         <input type="hidden" name="action" value="edit"/>
       </xsl:if>
-      <xsl:if test="/_R_/_get/action='copy'">
-        <input type="hidden" name="action" value="create"/>
-      </xsl:if>
-      <xsl:if test="not(/_R_/_get/id)">
+      <xsl:if test="/_R_/_get/action='copy' or not(/_R_/_get/id)">
         <input type="hidden" name="action" value="create"/>
       </xsl:if>
       <table width="100%">

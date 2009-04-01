@@ -109,15 +109,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
 		<div  class="prefoot">
     <div style="text-align: right">
-      <a href="{$link_prefix}x--hosts-export">/etc/hosts Export</a> - <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>
-    </div>
-    <div style="text-align: right">
-			<a href="{$link_prefix}x--hosts-export-puppet">Puppet Export</a> - <a href="{$link_prefix}x--hosts-export-nagios">Nagios3 Export</a>
-		</div>
-    <div style="text-align: right">
-      <a href="{$link_prefix}host-create">New Host</a>
-    </div>
-    <div style="text-align: right">
+      <a href="{$link_prefix}x--hosts-export">/etc/hosts Export</a>&#160;
+      <a href="{$link_prefix}x--hosts-export-unbound">Unbound Export</a>&#160;
+			<a href="{$link_prefix}x--hosts-export-puppet">Puppet Export</a>&#160;
+      <a href="{$link_prefix}x--hosts-export-nagios">Nagios3 Export</a>&#160;
+      <a href="{$link_prefix}host-create">New Host</a>&#160;
       <a href="{$link_prefix}hostgroups">Hostgroups</a>
     </div>
 		</div>

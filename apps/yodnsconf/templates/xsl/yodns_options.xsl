@@ -39,9 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <form method="post">
       <table>
       <xsl:for-each select="//yodns_options/option">
-          <xsl:variable name="my_option">
-            <xsl:value-of select="option_key"/>
-          </xsl:variable>
+          <xsl:variable name="my_option" select="option_key"/>
           <xsl:if test="@set=//option_set">
             <tr>
               <td>

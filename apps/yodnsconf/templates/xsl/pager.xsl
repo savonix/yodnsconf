@@ -28,7 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="jquery-setup">
     <xsl:param name="my-table"/>
 		<xsl:param name="my_page"/>
-    <xsl:param name="my-table-div"/>
     <xsl:param name="my-sort-column"/>
     <xsl:param name="no-sort-column"/>
     <xsl:param name="my-page-num">0</xsl:param>

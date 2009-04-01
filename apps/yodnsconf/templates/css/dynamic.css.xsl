@@ -40,9 +40,6 @@ textarea,input.text,option {
 	position: relative;
 }
 
-
-
-
 .error {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	color: #000000;

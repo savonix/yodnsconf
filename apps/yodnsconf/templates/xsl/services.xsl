@@ -81,9 +81,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td>
               <a href="{$link_prefix}service-edit&amp;service_id={id}">
 								<xsl:if test="string-length(service) &gt; 80">
-									<xsl:attribute name="title">
-										<xsl:value-of select="service"/>
-									</xsl:attribute>
+									<xsl:attribute name="title" select="service"/>
 								</xsl:if>
 								<xsl:value-of select="substring(name,0,80)"/>
 								<xsl:if test="string-length(service) &gt; 80">
