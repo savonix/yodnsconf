@@ -39,35 +39,35 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</xsl:template>
 	<xsl:template name="rows">
     <xsl:variable name="link_prefix" select="//link_prefix"/>
-        <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-          <tr id="{id}">
+      <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
+        <tr id="{id}">
+          <td>
+            <a href="{$link_prefix}zone-edit&amp;zone={id}">
+              <xsl:value-of select="origin"/>
+            </a>
+          </td>
+          <xsl:if test="verbose='true'">
             <td>
-              <a href="{$link_prefix}zone-edit&amp;zone={id}">
-                <xsl:value-of select="origin"/>
-              </a>
+                <xsl:value-of select="ns"/>
             </td>
-            <xsl:if test="verbose='true'">
-              <td>
-                  <xsl:value-of select="ns"/>
-              </td>
-              <td>
-                  <xsl:value-of select="ttl"/>
-              </td>
-              <td>
-                  <xsl:value-of select="active"/>
-              </td>
-            </xsl:if>
-            <xsl:if test="not(verbose)">
-              <td>
-                <xsl:value-of select="ttl"/>
-              </td>
-            </xsl:if>
             <td>
-              <span class="zd"/>
-							<span class="zc"/>
-						</td>
-          </tr>
-        </xsl:for-each>
+                <xsl:value-of select="ttl"/>
+            </td>
+            <td>
+                <xsl:value-of select="active"/>
+            </td>
+          </xsl:if>
+          <xsl:if test="not(verbose)">
+            <td>
+              <xsl:value-of select="ttl"/>
+            </td>
+          </xsl:if>
+          <td>
+            <span class="zd"/>
+            <span class="zc"/>
+          </td>
+        </tr>
+      </xsl:for-each>
   </xsl:template>
 	<!-- verbose 
 

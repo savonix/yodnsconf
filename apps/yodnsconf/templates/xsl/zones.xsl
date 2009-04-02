@@ -49,11 +49,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				$(".zd").after(" | ");
 				$(".zc").text("Clone");
 				$(".zc").click( function () { 
-					location.href="<xsl:value-of select="//link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("z_id"); 
+					location.href="<xsl:value-of select="//link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id"); 
 				}
 				);
 				$(".ze").click( function () { 
-					location.href="<xsl:value-of select="//link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("z_id"); 
+					location.href="<xsl:value-of select="//link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id"); 
 				}
 				);
 			}
@@ -61,8 +61,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     $(document).ready(function()
         {
 					fixup_rows();
-					//$(".prev,.next").click(function() { fixup_rows(); });
-					//$("table").change(function() { fixup_rows(); });
 					$(".header").bind("mouseleave", function(e) { fixup_rows(); });
 					$(".prev,.next").bind("click", function(e) { fixup_rows(); });
 				}
@@ -103,7 +101,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody id="myzonesbody">
 
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-          <tr id="{id}">
+          <tr id="{id}" class="z_{id}">
             <td>
               <span class="ze">
                 <xsl:value-of select="origin"/>
