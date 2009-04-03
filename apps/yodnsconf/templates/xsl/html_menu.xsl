@@ -124,6 +124,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
         $('#nav').droppy();
     });
     </script>
+    <form action="{$link_prefix}index" method="get"
+      style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
+    <xsl:if test="not(/_R_/_get/zone)">
+      <!-- to do: match selection -->
+      <input type="hidden" name="nid" value="index"/>
+      <select name="ns_filter">
+        <option value="%">Select All</option>
+        <xsl:for-each select="//zones_get_ns/zones_get_ns/ns">
+        <option value="{.}">
+          <xsl:if test="//runtime/ns_filter=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+          <xsl:value-of select="."/>
+        </option>
+        </xsl:for-each>
+      </select>
+      <input type="submit" value="Go"/>
+    </xsl:if>
+    </form>
     <ul id="nav">
       <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
         <xsl:call-template name="button">
