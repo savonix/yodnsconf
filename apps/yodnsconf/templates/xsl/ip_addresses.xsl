@@ -38,14 +38,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     function delete_ip(ip_address,row) {
         if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x--ip-delete&amp;ip_address="+ip_address,
+        $.post("<xsl:value-of select="$link_prefix"/>x-ip-delete&amp;ip_address="+ip_address,
         {
             'ip_address': ip_address
         },
         function (data){
         });
-        myTable = document.getElementById("myip_addresses");
-        myTable.deleteRow(row.parentNode.parentNode.rowIndex);
         }
     }
     </script>

@@ -35,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     $(document).ready(function()
         {
-					<!-- WOrking ajax
+					<!-- Working ajax
 					$("#<xsl:value-of select="$my-table"/>").tablesorter(
 						{widgets:['zebra'],widthFixed: true
 							<xsl:value-of select="$no-sort-column"/>});
@@ -102,6 +102,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
   </xsl:template>
 
   <xsl:template name="pager">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
     <xsl:param name="my-table"/>
 			<div id="{$my-table}-pager" class="pager">
       <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>

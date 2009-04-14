@@ -51,11 +51,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
         </tr>
         <tr>
-          <td></td>
+          <td/>
           <td>
             <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
             <input name="btn_cancel" type="button" class="button" value="Cancel"
-							onClick="window.location.href='{$link_prefix}services'"/>
+							onclick="window.location.href='{$link_prefix}services'"/>
           </td>
         </tr>
       </table>

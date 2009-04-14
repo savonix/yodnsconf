@@ -88,7 +88,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <td align="right">
               <a href="{$link_prefix}x-host-delete&amp;host_id={id}&amp;cloner=0"
-								onclick="delete_host('{id}',this); return false;">
+								onclick="delete_host('{id}'); return false;">
 								Delete
 							</a>
             </td>

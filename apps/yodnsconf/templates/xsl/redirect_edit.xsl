@@ -40,6 +40,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		}
     ]]>
     </script>
+
+    <xsl:variable
+      name   = "my_redirects"
+      select = "/_R_/redirects_get_all/redirects_get_all"
+    />
+
     <form method="post" name="redirect" onSubmit="return validateStandard(this);">
       <input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
       <xsl:if test="/_R_/_get/nid='redirect-edit'">
@@ -52,23 +58,26 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td>From Host:</td>
           <td>
-            <input name="http_host" class="wten" type="text" value="{/_R_/_get/http_host}"/>
+            <input name="http_host" class="wten" type="text"
+              value="{/_R_/_get/http_host}"/>
           </td>
         </tr>
         <tr>
           <td>To URL:</td>
           <td>
-            <input name="redirect" class="wten" type="text" value="{/_R_/redirects_get_all/redirects_get_all[http_host=/_R_/_get/http_host]/redirect}"/>
+            <input name="redirect" class="wten" type="text"
+              value="{$my_redirects[http_host=/_R_/_get/http_host]/redirect}"/>
           </td>
         </tr>
         <tr>
           <td>Rewrite Type:</td>
           <td>
-            <input name="rewrite_type" type="text" value="{/_R_/redirects_get_all/redirects_get_all[http_host=/_R_/_get/http_host]/rewrite_type}"/>
+            <input name="rewrite_type" type="text"
+              value="{$my_redirects[http_host=/_R_/_get/http_host]/rewrite_type}"/>
           </td>
         </tr>
         <tr>
-          <td></td>
+          <td/>
           <td>
             <input type="submit" class="button" value="Save"/>&#160;
             <input type="button" class="button" value="Cancel"
