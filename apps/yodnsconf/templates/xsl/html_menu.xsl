@@ -27,6 +27,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="main_menu">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:variable
+      name   = "my_origin"
+      select = "/_R_/zone_get_by_id/zone_get_by_id/origin"
+    />
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">main_menu</xsl:with-param>
     </xsl:call-template>
@@ -90,7 +94,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <li>
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
             <span style="color: #8C2323; font-weight: bold;">
-              <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
+              <xsl:value-of select="$my_origin"/>
             </span>
           </a>
           </li>
@@ -105,7 +109,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </a>
           </li>
           <li>
-          <a href="http://www.{//origin}" target="_blank">
+          <a href="http://www.{substring($my_origin,0,string-length($my_origin))}" target="_blank">
             Visit
           </a>
           </li>
@@ -118,6 +122,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="menu">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:variable
+      name   = "my_origin"
+      select = "/_R_/zone_get_by_id/zone_get_by_id/origin"
+    />
     <script type="text/javascript">
     $(document).ready(function()
     {
@@ -152,7 +160,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <li>
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
             <span style="color: #8C2323; font-weight: bold;">
-              <xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
+              <xsl:value-of select="$my_origin"/>
             </span>
           </a>
           </li>
@@ -167,7 +175,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </a>
           </li>
           <li>
-          <a href="http://www.{//origin}" target="_blank">
+          <a href="http://www.{substring($my_origin,0,string-length($my_origin))}" target="_blank">
             Visit
           </a>
           </li>

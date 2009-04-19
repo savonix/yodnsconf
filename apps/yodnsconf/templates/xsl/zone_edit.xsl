@@ -44,6 +44,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		}
 		]]>
     </script>
+
     <form method="post" onSubmit="return validateStandard(this);" name="myform">
       <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
         <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
