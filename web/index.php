@@ -4,7 +4,7 @@ ini_set('display_errors',true);
 error_reporting(E_ALL ^ E_NOTICE);
 
 // MSIE won't work with application/xhtml+xml
-if(strstr($_SERVER['HTTP_USER_AGENT'],"MSIE")) {
+if(strstr($_SERVER['HTTP_USER_AGENT'],'MSIE')) {
     ini_set('default_mimetype','text/html');
 } else {
     ini_set('default_mimetype','application/xhtml+xml');
@@ -12,11 +12,11 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],"MSIE")) {
 //
 // Where is nexista? This path should be to a folder containing nexista
 // This is the only thing you may need to edit:
-if(file_exists("../nexista/")) {
-    define('NX_PATH_BASE', "../nexista/");
+if(file_exists('../nexista/')) {
+    define('NX_PATH_BASE', '../nexista/');
 }
-if (file_exists("../../nexista/")) {
-    define('NX_PATH_BASE', "../../nexista/");
+if (file_exists('../../nexista/')) {
+    define('NX_PATH_BASE', '../../nexista/');
 }
 
 
@@ -25,7 +25,7 @@ if (file_exists("../../nexista/")) {
 
 // Bad hack
 if(!strpos($_SERVER['REQUEST_URI'],'.php')) {
-    header("Location: ".$_SERVER['REQUEST_URI']."index.php");
+    header('Location: '.$_SERVER['REQUEST_URI'].'index.php');
     exit;
 }
 
@@ -38,10 +38,10 @@ define('PROJECT_ROOT', $project_root);
 define('PROJECT_NAME', 'yodnsconf');
 define('APP_NAME', 'yodnsconf');
 
-$server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
+$server_init = PROJECT_ROOT.'/cache/'.SERVER_NAME.'/'.APP_NAME.'/'.APP_NAME.'.php';
 
 if(!include(NX_PATH_BASE.'extensions/nexista_builder.php')) {
-    echo "Error: Unable to load server loader or builder.";
+    echo 'Error: Unable to load server loader or builder.';
     exit;
 }
 
