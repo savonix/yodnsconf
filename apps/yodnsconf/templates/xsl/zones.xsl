@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">myzones</xsl:with-param>
       <xsl:with-param name="my_page"><xsl:value-of select="$pagenum"/></xsl:with-param>
       <xsl:with-param name="no-sort-column">,
-        headers: { 1: {sorter: false}, 2: {sorter: false} }
+        headers: { 0: {sorter: false}, 2: {sorter: false}, 3: {sorter: false} }
     </xsl:with-param>
     </xsl:call-template>
     <script type="text/javascript">
@@ -71,6 +71,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
+            <th style="width: 2em;"></th>
             <th id="barf" width="700">Origin</th>
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
@@ -82,6 +83,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <th width="100"></th>
           </tr>
           <tr>
+              <td></td>
             <form method="get">
 						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
@@ -102,6 +104,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
           <tr id="{id}" class="z_{id}">
+            <td>
+            </td>
             <td>
               <span class="ze">
                 <xsl:value-of select="origin"/>

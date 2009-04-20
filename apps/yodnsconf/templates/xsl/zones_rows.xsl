@@ -42,6 +42,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
         <tr id="{id}">
           <td>
+          </td>
+          <td>
             <a href="{$link_prefix}zone-edit&amp;zone={id}">
               <xsl:value-of select="origin"/>
             </a>
