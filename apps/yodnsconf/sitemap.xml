@@ -42,10 +42,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:query src="data/sql/zones_get_all.xml"/>
 		<map:xsl src="templates/xsl/zones.xsl"/>
 	</map:gate>
+  
 	<map:gate name="index-rows" role="yodnsuser" content_type="text/xml" cache="30">
-
 		<map:if name="//_get/origin">
-			<map:true>       
+			<map:true>
 				<map:action type="concat" params="%,{//_get/origin},//_get/origin"/>
 				<map:action type="concat" params="{//_get/origin},%,//_get/origin"/>
 			</map:true>
@@ -121,6 +121,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 	<map:gate name="x-zone-delete" role="yodnsuser">
+		<map:query src="data/sql/zone_delete.xml"/>
+	</map:gate>
+
+	<map:gate name="zone-groups" role="yodnsuser">
+		<map:xsl src="templates/xsl/zone_groups.xsl"/>
 		<map:query src="data/sql/zone_delete.xml"/>
 	</map:gate>
 

@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <options>Options</options>
   <zones>Zones</zones>
   <zone_edit>Zone Edit</zone_edit>
+  <zone_groups>Zone Groups</zone_groups>
   <zone_create>New Zone</zone_create>
   <new_zone>New Zone</new_zone>
   <redirects>Redirects</redirects>
