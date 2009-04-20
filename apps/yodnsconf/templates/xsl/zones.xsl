@@ -83,7 +83,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <th width="100"></th>
           </tr>
           <tr>
-              <td></td>
+            <td></td>
             <form method="get">
 						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
@@ -105,6 +105,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
           <tr id="{id}" class="z_{id}">
             <td>
+              <input type="checkbox" name="selected_zones" value="{id}" />
             </td>
             <td>
               <span class="ze">
