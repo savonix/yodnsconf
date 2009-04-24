@@ -189,7 +189,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<map:query src="data/sql/zone_serial_update.xml"/>
 				<map:action type="redirect" params="{//link_prefix}records&amp;zone={//_post/zone}"/>
 			</map:case>
-			<map:default></map:default>
+			<map:default/>
 		</map:switch>
 		<map:xml src="data/xml/dns_record_types.xml"/>
 		<map:query src="data/sql/zone_get_by_id.xml"/>
@@ -204,6 +204,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <map:plugin type="serial" params="{//zone_get_by_id/zone_get_by_id/serial}"/>
         <map:query src="data/sql/zone_serial_update.xml"/>
         <map:xsl src="templates/xml/ajax_response.xml.xsl"/>
+      </map:true>
+      <map:false/>
+    </map:if>
+	</map:gate>
+	<map:gate name="x-records-delete" role="yodnsuser">
+		<map:if name="//_post/zone">
+			<map:true>
+        <map:query src="data/sql/records_delete.xml"/>
+        <map:query src="data/sql/zone_get_by_id.xml"/>
+        <map:plugin type="serial" params="{//zone_get_by_id/zone_get_by_id/serial}"/>
+        <map:query src="data/sql/zone_serial_update.xml"/>
+        <map:action type="redirect" params="{//link_prefix}records&amp;zone={//_post/zone}"/>
       </map:true>
       <map:false/>
     </map:if>

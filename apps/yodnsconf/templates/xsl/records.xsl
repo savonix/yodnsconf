@@ -33,47 +33,40 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">records_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">,
         headers: {
-            5: {sorter: false},
+            0: {sorter: false},
             6: {sorter: false},
-            7: {sorter: false}
+            7: {sorter: false},
+            8: {sorter: false}
         }
 				</xsl:with-param>
     </xsl:call-template>
+    <script type="text/javascript">
+      function select_all_boxes() {
+        $(":checkbox[name='record_id[]']").attr("checked","checked");
+      }
+    </script>
+    <form method="post" action="{$link_prefix}x-records-delete">
+    <input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
     <div class="tableframe">
-    <table width="100%" class="tablesorter" id="records_table">
+    <table width="100%" class="tablesorter" id="records_table" border="0">
       <thead>
         <tr>
-          <th><input type="checkbox" name="select_all"/></th>
+          <th><input type="checkbox" name="select_all" onclick="select_all_boxes();"/></th>
           <th>Name</th>
           <th>Type</th>
           <th>Data</th>
-          <th>Preference/Priority</th>
+          <th>Priority</th>
           <th>TTL</th>
           <th>Dig</th>
           <th />
           <th>+</th>
-        </tr>
-        <tr>
-          <td/>
-          <form method="get">
-            <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-            <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
-            <td>
-              <input type="text" name="name" value="{/_R_/_get/name}" />
-            </td>
-            <td colspan="5"/>
-            <td align="right">
-              <input name="Filter" type="submit" id="Filter" value="Filter"/>
-            </td>
-            <td/>
-          </form>
         </tr>
       </thead>
       <tbody>
         <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
           <tr id="{id}">
             <td>
-              <input type="checkbox" name="select_all"/>
+              <input class="record_boxes" type="checkbox" name="record_id[]" value="{id}"/>
             </td>
             <td>
               <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
@@ -112,9 +105,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
           </tr>
         </xsl:for-each>
+          <tr>
+            <td colspan="9">
+              <input type="submit" name="submit" value="Delete Selected Records"/>
+            </td>
+          </tr>
       </tbody>
     </table>
     </div>
+    </form>
     <div class="table_meta" style="right: 80px;">
 			<form method="post" action="{$link_prefix}zone-apply-profile&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
 				<input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
