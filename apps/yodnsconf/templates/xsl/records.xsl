@@ -43,37 +43,38 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <table width="100%" class="tablesorter" id="records_table">
       <thead>
         <tr>
+          <th><input type="checkbox" name="select_all"/></th>
           <th>Name</th>
           <th>Type</th>
           <th>Data</th>
           <th>Preference/Priority</th>
           <th>TTL</th>
           <th>Dig</th>
-          <th></th>
+          <th />
           <th>+</th>
         </tr>
         <tr>
+          <td/>
           <form method="get">
             <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
             <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
             <td>
               <input type="text" name="name" value="{/_R_/_get/name}" />
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colspan="5"/>
             <td align="right">
               <input name="Filter" type="submit" id="Filter" value="Filter"/>
             </td>
-            <td></td>
+            <td/>
           </form>
         </tr>
       </thead>
       <tbody>
         <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
           <tr id="{id}">
+            <td>
+              <input type="checkbox" name="select_all"/>
+            </td>
             <td>
               <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
                 <xsl:value-of select="name"/>
