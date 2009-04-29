@@ -40,17 +40,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<tr>
 				<td>
 				Origin:
-				<xsl:if test="not(//*[local-name()=$zone_prefix]/origin)">
+				<xsl:if test="not($zone_prefix/origin)">
 					<br/>
 					(one per line)
 				</xsl:if>
 				</td>
 				<td>
-					<xsl:if test="//*[local-name()=$zone_prefix]/origin">
-						<input name="origin" type="text" value="{//*[local-name()=$zone_prefix]/origin}"/>
+					<xsl:if test="$zone_prefix/origin">
+						<input name="origin" type="text" value="{$zone_prefix/origin}"/>
             (example.com.)
           </xsl:if>
-					<xsl:if test="not(//*[local-name()=$zone_prefix]/origin)">
+					<xsl:if test="not($zone_prefix/origin)">
 						<input name="origin[]" type="text"/>
 						<span style="cursor: pointer; font-weight: bold; font-size: 1.5em;"
 							id="origin" onclick="add_element(); return false;">+</span>
@@ -62,75 +62,92 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<tr>
 				<td>Name Server:</td>
 				<td>
-					<input name="ns" type="text" value="{//*[local-name()=$zone_prefix]/ns}"/>
+					<input name="ns" type="text" value="{$zone_prefix/ns}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Admin Email:</td>
 				<td>
-					<input name="mbox" type="text" value="{//*[local-name()=$zone_prefix]/mbox}"/>
+					<input name="mbox" type="text" value="{$zone_prefix/mbox}"/>
 				</td>
 			</tr>
 			<xsl:if test="/_R_/_get/zone">
 				<tr>
 					<td>Serial No.:</td>
 					<td>
-						<input name="serial" type="text" value="{//*[local-name()=$zone_prefix]/serial}" readonly="readonly" />
+						<input name="serial" type="text" value="{$zone_prefix/serial}" readonly="readonly" />
 					</td>
 				</tr>
 			</xsl:if>
 			<tr>
 				<td>Refresh:</td>
 				<td>
-					<input name="refresh" type="text" value="{//*[local-name()=$zone_prefix]/refresh}" required="1"/>
+					<input name="refresh" type="text" value="{$zone_prefix/refresh}" required="1"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Retry:</td>
 				<td>
-					<input name="retry" type="text" value="{//*[local-name()=$zone_prefix]/retry}"/>
+					<input name="retry" type="text" value="{$zone_prefix/retry}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Expire:</td>
 				<td>
-					<input name="expire" type="text" value="{//*[local-name()=$zone_prefix]/expire}"/>
+					<input name="expire" type="text" value="{$zone_prefix/expire}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Minimum TTL:</td>
 				<td>
-					<input name="minimum" type="text" value="{//*[local-name()=$zone_prefix]/minimum}"/>
+					<input name="minimum" type="text" value="{$zone_prefix/minimum}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>TTL:</td>
 				<td>
-					<input name="ttl" type="text" value="{//*[local-name()=$zone_prefix]/ttl}"/>
+					<input name="ttl" type="text" value="{$zone_prefix/ttl}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Notes:</td>
 				<td>
-					<input name="notes" type="text" value="{//*[local-name()=$zone_prefix]/notes}"/>
+					<input name="notes" type="text" value="{$zone_prefix/notes}"/>
 				</td>
 			</tr>
 			<tr>
 				<td>Expiration Date:</td>
 				<td>
-					<input name="expiration_date" type="text" value="{//*[local-name()=$zone_prefix]/expiration_date}"/>
+					<input name="expiration_date" type="text" value="{$zone_prefix/expiration_date}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Group:</td>
+				<td>
+          <select name="zone_group_id">
+            <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
+              <option>None</option>
+              <xsl:variable name="my_zone_group_id" select="$zone_prefix/zone_group_id"/>
+              <option value="{zone_group_id}">
+                <xsl:if test="$zone_prefix/zone_group_id=$my_zone_group_id">
+                  <xsl:attribute name="selected">selected</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="zone_group_name"/>
+              </option>
+            </xsl:for-each>
+          </select>
 				</td>
 			</tr>
 			<tr>
 				<td valign="top">Active:</td>
 				<td>
 					<input name="active" type="radio" value="Y">
-						<xsl:if test="//*[local-name()=$zone_prefix]/active='Y'">
+						<xsl:if test="$zone_prefix/active='Y'">
 							<xsl:attribute name="checked">checked</xsl:attribute>
 						</xsl:if>
 					</input> Yes<br/>
 					<input name="active" type="radio" value="N">
-						<xsl:if test="//*[local-name()=$zone_prefix]/active='N'">
+						<xsl:if test="$zone_prefix/active='N'">
 							<xsl:attribute name="checked">checked</xsl:attribute>
 						</xsl:if>
 					</input> No<br/>

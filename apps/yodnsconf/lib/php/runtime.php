@@ -25,15 +25,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 $path        = $_SERVER['SCRIPT_NAME'];
-$path_prefix = dirname($path)."/";
-$link_prefix = $path . "?nid=";
+$path_prefix = dirname($path).'/';
+$link_prefix = $path . '?nid=';
 
 $utcdate = gmdate('Y-m-d H:i:s');
 
 
 $tablesorter = json_decode(rawurldecode($_COOKIE['jqCookieJar_tablesorter']),true);
-$defaults = Nexista_Config::getSection('defaults');
-Nexista_Flow::add("defaults", $defaults, false);
+//$defaults = Nexista_Config::getSection('zone_defaults');
+//Nexista_Flow::add('zone_defaults', $defaults, false);
 
 
 if(isset($_GET['ns_filter'])) {
@@ -53,8 +53,8 @@ $runtime = array(
         'db_version' => $db_version
         );
 
-Nexista_Flow::add("runtime", $runtime, false);
-Nexista_Flow::add("tablesorter", $tablesorter, false);
+Nexista_Flow::add('runtime', $runtime, false);
+Nexista_Flow::add('tablesorter', $tablesorter, false);
 /*
 {"myzones-page":1,"myredirects-sort":[[0,0]],"myredirects-page":8,"records_table-page":1,"myposts-page":1,"my-template-table-page":1,"myhosts-page":9}
 */

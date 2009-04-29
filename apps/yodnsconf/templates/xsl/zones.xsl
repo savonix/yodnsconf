@@ -103,7 +103,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody id="myzonesbody">
 
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-          <tr id="{id}" class="z_{id}">
+          <tr id="{id}" class="z_{id}"
+            onmouseover="oldClass=this.className; this.className='active'"
+            onmouseout="this.className=oldClass">
             <td>
               <input type="checkbox" name="selected_zones" value="{id}" />
             </td>
@@ -111,6 +113,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <span class="ze">
                 <xsl:value-of select="origin"/>
               </span>
+              <a href="{$link_prefix}zone-edit&amp;zone={id}">e</a>
             </td>
             <xsl:if test="verbose='true'">
               <td>

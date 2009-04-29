@@ -50,13 +50,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
         <input type="hidden" name="action" value="edit"/>
         <xsl:call-template name="zone-form">
-          <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
+          <xsl:with-param name="zone_prefix" select="/_R_/zone_get_by_id/zone_get_by_id"/>
         </xsl:call-template>
       </xsl:if>
       <xsl:if test="not(/_R_/_get/zone) and not(/_R_/_get/origin)">
         <input type="hidden" name="action" value="create"/>
         <xsl:call-template name="zone-form">
-          <xsl:with-param name="zone_prefix">defaults</xsl:with-param>
+          <xsl:with-param name="zone_prefix" select="/_R_/config/zone_defaults"/>
         </xsl:call-template>
       </xsl:if>
     </form>

@@ -49,7 +49,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
         <input type="hidden" name="action" value="clone"/>
         <xsl:call-template name="zone-form">
-          <xsl:with-param name="zone_prefix">zone_get_by_id</xsl:with-param>
+          <xsl:with-param name="zone_prefix" select="/_R_/zone_get_by_id/zone_get_by_id"/>
         </xsl:call-template>
       </xsl:if>
     </form>

@@ -49,7 +49,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr id="hg_{id}">
             <td>
               <a href="{$link_prefix}zone-group-edit&amp;zone_group_id={id}&amp;cloner=0">
-                <xsl:value-of select="name"/>
+                <xsl:value-of select="zone_group_name"/>
               </a>
             </td>
             <td>
@@ -74,6 +74,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">my_zone_groups</xsl:with-param>
     </xsl:call-template>
     </div>
+		<div class="table_meta" style="float: right">
+      <a href="{$link_prefix}zone-group-edit">New Zone Group</a>
+		</div>
 
   </xsl:template>
 </xsl:stylesheet>

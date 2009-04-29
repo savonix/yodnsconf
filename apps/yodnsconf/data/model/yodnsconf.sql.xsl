@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:template match="/">
 
 
-CREATE TABLE `soa` (
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>soa` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `origin` char(255) NOT NULL,
   `ns` char(255) NOT NULL,
@@ -40,13 +40,19 @@ CREATE TABLE `soa` (
   `active` enum('Y','N') NOT NULL,
   `xfer` char(255) NOT NULL,
   `notes` varchar(255) NOT NULL,
+  `zone_group_id` int(11),
   PRIMARY KEY  (`id`),
   UNIQUE KEY `origin` (`origin`),
   KEY `active` (`active`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>zone_groups` (
+  `zone_group_id` int(11) NOT NULL auto_increment,
+  `zone_group_name` varchar(255) NOT NULL,
+  KEY  (`zone_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE `rr` (
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>rr` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `zone` int(10) unsigned NOT NULL,
   `name` char(64) NOT NULL,
