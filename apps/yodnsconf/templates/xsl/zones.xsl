@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
 		function fixup_rows() {
       // Has this already been done?
-			if($(".zrow td:nth-child(4) a:nth-child(1)").text()=="") {
+			if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {
 
         // Highlight
         $(".zrow").attr("onmouseover","oldClass=this.className; this.className='active'").attr("onmouseout","this.className=oldClass");
@@ -48,7 +48,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         $(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
 
         // Zone Delete
-        $(".zrow td:nth-child(4) a:nth-child(1)").click( function () {
+        $(".zrow td:nth-child(3) a:nth-child(1)").click( function () {
 					zd($(this).parent().parent().attr("id"));
 				}
 				).attr("href", function () {
@@ -57,7 +57,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				).text("Delete").after(" | ");
 
         // Zone Clone
-				$(".zrow td:nth-child(4) a:nth-child(2)").attr("href", function () {
+				$(".zrow td:nth-child(3) a:nth-child(2)").attr("href", function () {
 					return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
 				}
 				).text("Clone");
@@ -69,13 +69,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				);
 			}
 		}
-    $(document).ready(function()
-        {
-					fixup_rows();
-					$(".header").bind("mouseleave", function(e) { fixup_rows(); });
-					$(".prev,.next").bind("click", function(e) { fixup_rows(); });
-				}
-		);
+    $(document).ready(function() {
+      fixup_rows();
+      $(".header").bind("mouseleave", function(e) { fixup_rows(); });
+      $(".prev,.next").bind("click", function(e) { fixup_rows(); });
+		});
     </script>
 
     <div class="tableframe">
@@ -87,8 +85,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
             </xsl:if>
-            <th width="100">TTL</th>
             <xsl:if test="verbose='true'">
+              <th width="100">TTL</th>
               <th>Active</th>
             </xsl:if>
             <th width="100"/>
@@ -101,8 +99,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <input type="text" name="origin" value="{/_R_/_get/origin}" />
               </td>
               <xsl:if test="verbose='true'">
-                <td></td>
-                <td></td>
+                <td/>
+                <td/>
+                <td/>
               </xsl:if>
               <td align="right">
                 <input name="Filter" type="submit" id="Filter" value="Filter"/>
@@ -131,11 +130,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
               <td>
                 <xsl:value-of select="active"/>
-              </td>
-            </xsl:if>
-            <xsl:if test="not(verbose)">
-              <td>
-                <xsl:value-of select="ttl"/>
               </td>
             </xsl:if>
             <td>

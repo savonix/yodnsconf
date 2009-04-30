@@ -40,6 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					:<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip"/>
         </xsl:if>
      </title>
+      <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
       <link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
