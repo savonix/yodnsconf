@@ -60,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       }
     }
 		// zone delete
-    function zd(zone,row) {
+    function zd(zone) {
 			if(confirm('Are you sure?')){
         $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone="+zone,
         {

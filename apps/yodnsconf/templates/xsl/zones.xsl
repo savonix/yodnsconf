@@ -41,19 +41,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		function fixup_rows() {
 			if($(".zc:first").text()=="") {
 				$(".zc,.zd,.ze").css("cursor","pointer");
+        // Zone Delete
 				$(".zd").click( function () { 
 					zd($(this).parent().parent().attr("id"));
 				}
 				);
-				$(".zd").text("Delete");
-				$(".zd").after(" | ");
-				$(".zc").text("Clone");
-				$(".zc").click( function () { 
-					location.href="<xsl:value-of select="//link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id"); 
+				$(".zd").attr("href", function () {
+					return "#x-zone-delete&amp;zone="+$(this).parent().parent().attr("id");
 				}
 				);
-				$(".ze").click( function () { 
-					location.href="<xsl:value-of select="//link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id"); 
+				$(".zd").text("Delete");
+				$(".zd").after(" | ");
+				$(".zrow td:nth-child(4) a").attr("href", function () {
+					return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
+				}
+				).text("Clone");
+				$(".zrow td:nth-child(2) a").attr("href", function () {
+					return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
 				}
 				);
 			}
@@ -71,7 +75,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
-            <th style="width: 2em;"></th>
+            <th style="width: 2em;"/>
             <th id="barf" width="700">Origin</th>
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
@@ -80,15 +84,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:if test="verbose='true'">
               <th>Active</th>
             </xsl:if>
-            <th width="100"></th>
+            <th width="100"/>
           </tr>
           <tr>
-            <td></td>
+            <td/>
             <form method="get">
 						  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
               <td>
-                <input type="text" name="origin" value="{/_R_/_get/origin}"
-									onkeyup="filter_table(this.value,'Origin')"/>
+                <input type="text" name="origin" value="{/_R_/_get/origin}" />
               </td>
               <xsl:if test="verbose='true'">
                 <td></td>
@@ -103,17 +106,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody id="myzonesbody">
 
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-          <tr id="{id}" class="z_{id}"
+          <tr id="{id}" class="z_{id} zrow"
             onmouseover="oldClass=this.className; this.className='active'"
             onmouseout="this.className=oldClass">
             <td>
               <input type="checkbox" name="selected_zones" value="{id}" />
             </td>
             <td>
-              <span class="ze">
+              <a>
                 <xsl:value-of select="origin"/>
-              </span>
-              <a href="{$link_prefix}zone-edit&amp;zone={id}">e</a>
+              </a>
             </td>
             <xsl:if test="verbose='true'">
               <td>
@@ -132,8 +134,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </xsl:if>
             <td>
-              <span class="zd"/>
-							<span class="zc"/>
+              <a class="zd"/>
+							<a class="zc"/>
 						</td>
           </tr>
         </xsl:for-each>
