@@ -39,23 +39,30 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
     <script type="text/javascript">
 		function fixup_rows() {
-			if($(".zc:first").text()=="") {
-				$(".zc,.zd,.ze").css("cursor","pointer");
+      // Has this already been done?
+			if($(".zrow td:nth-child(4) a:nth-child(1)").text()=="") {
+
+        // Highlight
+        $(".zrow").attr("onmouseover","oldClass=this.className; this.className='active'").attr("onmouseout","this.className=oldClass");
+				$(".zrow td:nth-child(1) input").attr("name","selected_zones[]");
+        $(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
+
         // Zone Delete
-				$(".zd").click( function () { 
+        $(".zrow td:nth-child(4) a:nth-child(1)").click( function () {
 					zd($(this).parent().parent().attr("id"));
 				}
-				);
-				$(".zd").attr("href", function () {
+				).attr("href", function () {
 					return "#x-zone-delete&amp;zone="+$(this).parent().parent().attr("id");
 				}
-				);
-				$(".zd").text("Delete");
-				$(".zd").after(" | ");
-				$(".zrow td:nth-child(4) a").attr("href", function () {
+				).text("Delete").after(" | ");
+
+        // Zone Clone
+				$(".zrow td:nth-child(4) a:nth-child(2)").attr("href", function () {
 					return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
 				}
 				).text("Clone");
+
+        // Zone Edit
 				$(".zrow td:nth-child(2) a").attr("href", function () {
 					return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
 				}
@@ -106,11 +113,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody id="myzonesbody">
 
         <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-          <tr id="{id}" class="z_{id} zrow"
-            onmouseover="oldClass=this.className; this.className='active'"
-            onmouseout="this.className=oldClass">
+          <tr id="{id}" class="z_{id} zrow">
             <td>
-              <input type="checkbox" name="selected_zones" value="{id}" />
+              <input type="checkbox" />
             </td>
             <td>
               <a>
@@ -134,8 +139,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </xsl:if>
             <td>
-              <a class="zd"/>
-							<a class="zc"/>
+              <a/>
+							<a/>
 						</td>
           </tr>
         </xsl:for-each>
