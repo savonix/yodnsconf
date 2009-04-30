@@ -118,7 +118,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <input type="checkbox" />
             </td>
             <td>
-              <a>
+              <a href="#">
                 <xsl:value-of select="origin"/>
               </a>
             </td>
