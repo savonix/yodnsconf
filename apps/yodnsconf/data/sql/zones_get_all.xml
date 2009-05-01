@@ -26,14 +26,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <connection>&connection_read;</connection>
   <params>
     <param name="_get/origin" type="text" default="%"/>
-    <param name="//runtime/ns_filter" type="text" default="%"/>
+    <param name="//runtime/zone_group_id" type="text" default="%"/>
   </params>
   <sql>
     SELECT id, origin, ns, active, ttl
     FROM &prefix;soa
     WHERE
     origin LIKE ?
-    AND ns LIKE ?
+    AND zone_group_id LIKE ?
     ORDER BY origin
   </sql>
 </query>

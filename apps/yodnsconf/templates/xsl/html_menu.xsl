@@ -40,12 +40,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:if test="not(/_R_/_get/zone)">
       <!-- to do: match selection -->
       <input type="hidden" name="nid" value="index"/>
-      <select name="ns_filter">
+      <select name="zone_group_id">
         <option value="%">Select All</option>
-        <xsl:for-each select="//zones_get_ns/zones_get_ns/ns">
-        <option value="{.}">
-          <xsl:if test="//runtime/ns_filter=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-          <xsl:value-of select="."/>
+        <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
+        <option value="{zone_group_id}">
+          <xsl:if test="//runtime/zone_group_id=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+          <xsl:value-of select="zone_group_name"/>
         </option>
         </xsl:for-each>
       </select>
@@ -137,12 +137,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:if test="not(/_R_/_get/zone)">
       <!-- to do: match selection -->
       <input type="hidden" name="nid" value="index"/>
-      <select name="ns_filter">
+      <select name="zone_group_id">
         <option value="%">Select All</option>
-        <xsl:for-each select="//zones_get_ns/zones_get_ns/ns">
-        <option value="{.}">
-          <xsl:if test="//runtime/ns_filter=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-          <xsl:value-of select="."/>
+        <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
+        <option value="{zone_group_id}">
+          <xsl:if test="//runtime/zone_group_id=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+          <xsl:value-of select="zone_group_name"/>
         </option>
         </xsl:for-each>
       </select>

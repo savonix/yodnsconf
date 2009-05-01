@@ -39,6 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</map:true>
 			<map:false/>
 		</map:if>
+		<map:query src="data/sql/zone_groups_get_all.xml"/>
 		<map:query src="data/sql/zones_get_all.xml"/>
 		<map:xsl src="templates/xsl/zones.xsl"/>
 	</map:gate>

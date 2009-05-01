@@ -36,20 +36,20 @@ $tablesorter = json_decode(rawurldecode($_COOKIE['jqCookieJar_tablesorter']),tru
 //Nexista_Flow::add('zone_defaults', $defaults, false);
 
 
-if(isset($_GET['ns_filter'])) {
-    $_SESSION['ns_filter'] = $_GET['ns_filter'];
-} elseif (!$_SESSION['ns_filter']) {
-    $_SESSION['ns_filter'] = '%';
+if(isset($_GET['zone_group_id'])) {
+    $_SESSION['zone_group_id'] = $_GET['zone_group_id'];
+} elseif (!$_SESSION['zone_group_id']) {
+    $_SESSION['zone_group_id'] = '%';
 }
 
-$ns_filter = $_SESSION['ns_filter'];
+$zone_group_id = $_SESSION['zone_group_id'];
 
 
 $runtime = array(
         'path_prefix' => $path_prefix,
         'link_prefix' => $link_prefix,
         'utcdate' => $utcdate,
-        'ns_filter' => $ns_filter,
+        'zone_group_id' => $zone_group_id,
         'db_version' => $db_version
         );
 
