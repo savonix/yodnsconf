@@ -125,9 +125,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<td>Group:</td>
 				<td>
           <select name="zone_group_id">
-            <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
               <option>None</option>
-              <xsl:variable name="my_zone_group_id" select="$zone_prefix/zone_group_id"/>
+            <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
+              <xsl:variable name="my_zone_group_id" select="zone_group_id"/>
               <option value="{zone_group_id}">
                 <xsl:if test="$zone_prefix/zone_group_id=$my_zone_group_id">
                   <xsl:attribute name="selected">selected</xsl:attribute>
