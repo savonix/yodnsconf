@@ -38,9 +38,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
         objForm.name.regexp = /^[A-Za-z0-9\-\.]*$/;
         objForm.data.required = 1;
         if(objForm.type.value=='A') {
-            objForm.data.regexp = /^[0-9\-]+(\.[0-9\-]+)+$/;
-        } elseif(objForm.type.value=='TXT') {
+            $("#rr_prio_row").css("display","none");
+            objForm.data.regexp = /^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$/;
+        } else if (objForm.type.value=='TXT') {
+            $("#rr_prio_row").css("display","none");
+            var blah = "barf";
+        } else if (objForm.type.value=='MX') {
+            $("#rr_prio_row").css("display","");
         } else {
+            $("#rr_prio_row").css("display","none");
             objForm.data.regexp = /^[A-Za-z0-9\-\.]*$/;
         }
     }
@@ -48,7 +54,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
     <form method="post" name="record" onSubmit="return validateStandard(this);">
 
-      <input type="hidden" name="id"     value="{/_R_/_get/id}"/>
+      <xsl:if test="/_R_/_get/id">
+        <input type="hidden" name="id" value="{/_R_/_get/id}"/>
+      </xsl:if>
       <input type="hidden" name="zone"   value="{/_R_/_get/zone}"/>
       <input type="hidden" name="serial" value="{/_R_/zone_get_by_id/zone_get_by_id/serial}"/>
 
@@ -60,8 +68,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
       <table width="100%">
         <tr>
-          <td>Name:</td>
-          <td>
+          <td width="200">Name:</td>
+          <td width="400">
             <input name="name" type="text"
 							value="{/_R_/record_get_by_id/record_get_by_id/name}"/>
           </td>
@@ -89,7 +97,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							value="{/_R_/record_get_by_id/record_get_by_id/data}"/>
           </td>
         </tr>
-        <tr>
+        <tr id="rr_prio_row" style="display:none;">
           <td>Preference/Priority:</td>
           <td>
             <input name="aux" type="text"
@@ -127,7 +135,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
         </tr>
         <tr>
-          <td></td>
+          <td/>
           <td>
             <input type="submit" class="button" value="Save"/>&#160;
 						<input type="button" class="button" value="Cancel"
