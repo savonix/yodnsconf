@@ -23,13 +23,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 =cut
 
 use XML::Simple;
+use Data::Dumper;
 
 my $parser = XML::LibXML->new();
-my $flow = Apache2::Aortica::Kernel::Flow->instance();
+my $flow = Aortica::Kernel::Flow->instance();
 
-my $config  = Apache2::Aortica::Kernel::Config->instance();
+my $config  = Aortica::Kernel::Config->instance();
 
-my $defaults = $config->{ CONFIG }->{ defaults };
+my $defaults = $config->{ CONFIG }->{ yodnsconf }->{ defaults };
 
 
 my $xml_str = XMLout($defaults, 'RootName' => 'defaults', 'NoAttr' => 1 );
@@ -44,7 +45,7 @@ $flow->{ ROOT }->appendChild($node);
 
 
 
-my $auth = Apache2::Aortica::Kernel::Auth->new();
+my $auth = Aortica::Kernel::Auth->new();
 
 $auth_info = $auth->check_status();
 $username = $auth_info->{username};

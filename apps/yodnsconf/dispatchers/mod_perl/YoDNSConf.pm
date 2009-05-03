@@ -62,7 +62,7 @@ sub handler {
             #unless($gate_content_type eq 'text/html') {
             $r->content_type($gate_content_type);
             #}
-        } else {
+        } elsif ( !$r->content_type ) {
             $r->content_type("application/xhtml+xml");
         }
     }
