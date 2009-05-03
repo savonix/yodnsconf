@@ -137,7 +137,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td/>
           <td>
-            <input type="submit" class="button" value="Save"/>&#160;
+            <input type="submit" class="button" value="Save" onclick="return validateStandard();"/>&#160;
 						<input type="button" class="button" value="Cancel"
 							onClick="window.location.href='{$link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
           </td>
