@@ -1,5 +1,5 @@
 package yodnsconf::apps::yodnsconf::dispatchers::mod_perl::YoDNSConf;
-use Apache2::Aortica::Aortica ();
+use Aortica::Aortica ();
 use strict;
 use Data::Dumper;
 use DateTime;
@@ -17,18 +17,18 @@ my $app_name = 'yodnsconf';
 
 
 # Create config
-my $config = Apache2::Aortica::Kernel::Config->instance();
+my $config = Aortica::Kernel::Config->instance();
 $config->configure($srv_cfg, $app_cfg, $app_name);
 
 # Create fence
 my $fence_file = $config->{ CONFIG }->{ $app_name }->{build}->{sitemap};
-my $fence = Apache2::Aortica::Kernel::Fence->instance();
+my $fence = Aortica::Kernel::Fence->instance();
 $fence->set_fence($fence_file, $app_name);
 
-Apache2::Aortica::Kernel::Init->instance($app_name);
-Apache2::Aortica::Modules::Handlers::QueryHandler->instance($app_name);
-Apache2::Aortica::Modules::Handlers::XmlHandler->instance($app_name);
-Apache2::Aortica::Modules::Handlers::XslHandler->instance($app_name);
+Aortica::Kernel::Init->instance($app_name);
+Aortica::Modules::Handlers::QueryHandler->instance($app_name);
+Aortica::Modules::Handlers::XmlHandler->instance($app_name);
+Aortica::Modules::Handlers::XslHandler->instance($app_name);
 
 sub handler {
 
@@ -46,11 +46,11 @@ sub handler {
     my $gate_content_type = undef;
 
     # Create Gatekeeper
-    my $init = Apache2::Aortica::Kernel::Init->instance('yodnsconf');
+    my $init = Aortica::Kernel::Init->instance('yodnsconf');
 
 
     $init->start();
-    my $dbh = Apache2::Aortica::Modules::DataSources::DBIDataSource->instance();
+    my $dbh = Aortica::Modules::DataSources::DBIDataSource->instance();
     $output = $init->process_gate($nid);
 
 
@@ -58,13 +58,18 @@ sub handler {
     $duration = sprintf("%.3f", $duration);
     {
         if ( $gate_content_type = $init->{ yodnsconf }->{ GATE }->{ $nid }->{ CONTENT_TYPE } ) {
+            # Memory leak???
+            #unless($gate_content_type eq 'text/html') {
             $r->content_type($gate_content_type);
+            #}
+        } else {
+            $r->content_type("application/xhtml+xml");
         }
     }
 
     if( $req->param('view_flow') eq "true") {
         # Maybe create flow dom document, but populate it and flush it for each request
-        my $flow = Apache2::Aortica::Kernel::Flow->instance();
+        my $flow = Aortica::Kernel::Flow->instance();
         $doc  = $flow->{ DOC };
         $output .= '<textarea rows="20" style="width: 100%">'.$flow->{ DOC }->toString.'</textarea>';
     }
@@ -93,7 +98,7 @@ sub handler {
 
 
     unless ( $gate_content_type eq "text/xml") {
-        $output .= $duration.$memory;
+        #$output .= $duration.$memory;
     }
     my $length = length($output);
     $r->set_content_length($length);

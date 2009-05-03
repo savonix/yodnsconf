@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:variable name="pagenum" select="//tablesorter/myzones-page - 1"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myzones</xsl:with-param>
-      <xsl:with-param name="my_page"><xsl:value-of select="$pagenum"/></xsl:with-param>
+      <xsl:with-param name="my_page" select="$pagenum"/>
       <xsl:with-param name="no-sort-column">,
         headers: { 0: {sorter: false}, 2: {sorter: false}, 3: {sorter: false} }
     </xsl:with-param>
@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {
 
         // Highlight
-        $(".zrow").attr("onmouseover","oldClass=this.className; this.className='active'").attr("onmouseout","this.className=oldClass");
+        $(".zrow").attr("onmouseover","oldClass=this.className; this.className=oldClass; this.className='active'").attr("onmouseout","this.className=oldClass");
 				$(".zrow td:nth-child(1) input").attr("name","selected_zones[]");
         $(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
 
