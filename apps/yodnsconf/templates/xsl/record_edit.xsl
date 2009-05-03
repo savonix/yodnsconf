@@ -52,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     }
     ]]>
     </script>
-    <form method="post" name="record" onSubmit="return validateStandard(this);">
+    <form method="post" name="record" onsubmit="return validateStandard(document.forms['record']);">
 
       <xsl:if test="/_R_/_get/id">
         <input type="hidden" name="id" value="{/_R_/_get/id}"/>
@@ -137,7 +137,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td/>
           <td>
-            <input type="submit" class="button" value="Save" onclick="return validateStandard();"/>&#160;
+            <input type="submit" class="button" value="Save"
+              onclick="return validateStandard(document.forms['record']);"/>&#160;
 						<input type="button" class="button" value="Cancel"
 							onClick="window.location.href='{$link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
           </td>
