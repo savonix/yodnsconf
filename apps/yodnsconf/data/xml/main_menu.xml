@@ -62,6 +62,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <url>hosts</url>
     </item>
     <item active="1">
+      <key>host_names</key>
+      <url>host-names</url>
+    </item>
+    <item active="1">
       <key>hostgroups</key>
       <url>hostgroups</url>
     </item>
