@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: yodnsconf.xml
+Component: hosts_get_all.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,19 +21,16 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<i18n>
-  <ip>IP Addresses</ip>
-  <hosts>Hosts</hosts>
-  <hostgroups>Hostgroups</hostgroups>
-  <options>Options</options>
-  <zones>Zones</zones>
-  <zone_edit>Zone Edit</zone_edit>
-  <zone_groups>Zone Groups</zone_groups>
-  <zone_create>New Zone</zone_create>
-  <new_zone>New Zone</new_zone>
-  <redirects>Redirects</redirects>
-  <redirect_create>New Redirect</redirect_create>
-  <profiles>Profiles</profiles>
-  <nameservers>Name Servers</nameservers>
-  <services>Services</services>
-</i18n>
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="hosts_get_all">
+	<connection>&connection_read;</connection>
+	<params>
+		<param name="_get/host_id" type="text" default="%"/>
+	</params>
+	<sql>
+	SELECT *, ip AS plain_ip, ip FROM &prefix;hosts
+  WHERE id LIKE ?
+  AND ip='300.300.300.300'
+  ORDER BY priority ASC
+	</sql>
+</query>
