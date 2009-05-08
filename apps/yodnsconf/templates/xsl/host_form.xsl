@@ -42,13 +42,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
     <form method="post" name="redirect" onSubmit="return validateStandard(this);">
 			<xsl:if test="//_get/clone='true'">
-				<input type="hidden" name="clone" value="true"/>
+				<input type="hidden" name="post_type" value="clone"/>
 			</xsl:if>
       <xsl:if test="/_R_/_get/host_id">
+				<input type="hidden" name="post_type" value="edit"/>
       	<input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
         <input type="hidden" name="host_id" value="{/_R_/_get/host_id}"/>
       </xsl:if>
-      <table width="100%" class="simple-table bottom-edge">
+      <xsl:if test="not(/_R_/_get/host_id)">
+				<input type="hidden" name="post_type" value="create"/>
+      </xsl:if>
+      <table width="80%" class="simple-table bottom-edge">
+        <xsl:if test="//_get/nid='host-name-edit'">
+        	<input type="hidden" name="ip" value="300.300.300.300"/>
+        </xsl:if>
+        <xsl:if test="//_get/nid='host-edit'">
         <tr>
           <td style="width: 10em;">IP:</td>
           <td>
@@ -61,6 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority + //_get/cloner}"/>
           </td>
         </tr>
+        </xsl:if>
         <tr>
           <td>Hosts:</td>
           <td colspan="3">
@@ -68,12 +77,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/host}"/>
           </td>
         </tr>
+        <xsl:if test="//_get/nid='host-edit'">
         <tr>
           <td>Create PTR:</td>
           <td colspan="3">
             <input name="create_ptr_record" type="checkbox" />
           </td>
         </tr>
+        </xsl:if>
 				<xsl:if test="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority=0">
         <tr>
           <td>MAC Address:</td>

@@ -109,7 +109,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <a href="{$link_prefix}x-hosts-export-unbound">Unbound Export</a>&#160;
 			<a href="{$link_prefix}x-hosts-export-puppet">Puppet Export</a>&#160;
       <a href="{$link_prefix}x-hosts-export-nagios">Nagios3 Export</a>&#160;
-      <a href="{$link_prefix}host-create">New Host</a>&#160;
+      <a href="{$link_prefix}host-edit">New Host</a>&#160;
       <a href="{$link_prefix}hostgroups">Hostgroups</a>
     </div>
     <div class="table_controls">
