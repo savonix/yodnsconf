@@ -28,6 +28,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_get/host_id" type="text" default="%"/>
 	</params>
 	<sql>
-	SELECT *, ip AS plain_ip, ip FROM &prefix;hosts WHERE id LIKE ? ORDER BY priority ASC
+	SELECT *, ip AS plain_ip, ip FROM &prefix;hosts
+  WHERE id LIKE ?
+  AND ip!='300.300.300.300'
+  ORDER BY priority ASC
 	</sql>
 </query>

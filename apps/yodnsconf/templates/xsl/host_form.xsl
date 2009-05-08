@@ -40,7 +40,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		}
     ]]>
     </script>
-    <form method="post" name="redirect" onSubmit="return validateStandard(this);">
+    <form method="post" name="redirect" onSubmit="return validateStandard(this);"
+      action="{$link_prefix}host-edit">
 			<xsl:if test="//_get/clone='true'">
 				<input type="hidden" name="post_type" value="clone"/>
 			</xsl:if>
