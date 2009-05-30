@@ -58,15 +58,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgetId",['zebra']);
 					} });
 					-->
-					$("#<xsl:value-of select="$my-table"/>").tablesorter(
-						{widgets:['zebra'],widthFixed: true
-							<xsl:value-of select="$no-sort-column"/>}).tablesorterPager(
-										{
-												container: $("#<xsl:value-of select="$my-table"/>-pager"),
-												positionFixed: false,
-												size: 20
-										}
-							);
+
+        $("#<xsl:value-of select="$my-table"/>").tablesorter(
+            {
+              widgets:['zebra','cookie'],
+              widthFixed: true
+              <xsl:value-of select="$no-sort-column"/>
+            }
+          ).tablesorterPager(
+                  {
+                      container: $("#<xsl:value-of select="$my-table"/>-pager"),
+                      positionFixed: false,
+                      size: 20
+                  }
+          );
+
+
         }
 
     );
