@@ -37,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
     <form action="{$link_prefix}index" method="get"
       style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
-    <xsl:if test="not(/_R_/_get/zone)">
+    <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
       <!-- to do: match selection -->
       <input type="hidden" name="nid" value="index"/>
       <select name="zone_group_id">
@@ -58,7 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:value-of select="/_R_/i18n/zones"/>
         </a>
       </li>
-        <xsl:if test="not(/_R_/_get/zone)">
+        <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
         <li>
 					<a href="{$link_prefix}zone-edit">
 						<xsl:value-of select="/_R_/i18n/new_zone"/>
@@ -90,7 +90,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</a>
         </li>
 				</xsl:if>
-        <xsl:if test="/_R_/_get/zone">
+        <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
           <li>
           <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
             <span style="color: #8C2323; font-weight: bold;">
@@ -134,7 +134,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
     <form action="{$link_prefix}index" method="get"
       style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
-    <xsl:if test="not(/_R_/_get/zone)">
+    <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
       <!-- to do: match selection -->
       <input type="hidden" name="nid" value="index"/>
       <select name="zone_group_id">
@@ -157,21 +157,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:call-template>
       </xsl:for-each>
       
-        <xsl:if test="/_R_/_get/zone">
+        <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
           <li>
-          <a href="{$link_prefix}zone-edit&amp;zone={/_R_/_get/zone}">
+          <a href="{$link_prefix}zone-edit&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
             <span style="color: #8C2323; font-weight: bold;">
               <xsl:value-of select="$my_origin"/>
             </span>
           </a>
           </li>
           <li>
-          <a href="{$link_prefix}records&amp;zone={/_R_/_get/zone}">
+          <a href="{$link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
             Records
           </a>
           </li>
           <li>
-          <a href="{$link_prefix}record-edit&amp;zone={/_R_/_get/zone}">
+          <a href="{$link_prefix}record-edit&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
             New Record
           </a>
           </li>
