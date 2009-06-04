@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: record_types.xml
+Component: ip_get_distinct_public.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,14 +21,11 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<record_types>
-  <type>A</type>
-  <type>AAAA</type>
-  <type>ALIAS</type>
-  <type>CNAME</type>
-  <type>MX</type>
-  <type>NS</type>
-  <type>PTR</type>
-  <type>SRV</type>
-  <type>TXT</type>
-</record_types>
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="ip_get_distinct_public">
+	<connection>&connection_read;</connection>
+	<params/>
+  <sql>
+  SELECT DISTINCT data FROM &prefix;.rr WHERE TYPE = 'A'
+  </sql>
+</query>

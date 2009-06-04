@@ -61,7 +61,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
         $("#<xsl:value-of select="$my-table"/>").tablesorter(
             {
+              <xsl:if test="not(//_get/nid='records')">
               widgets:['zebra','cookie'],
+              </xsl:if>
               widthFixed: true
               <xsl:value-of select="$no-sort-column"/>
             }
@@ -72,8 +74,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
                       size: 20
                   }
           );
-
-
         }
 
     );

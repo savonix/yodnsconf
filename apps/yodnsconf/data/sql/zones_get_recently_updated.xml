@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: record_types.xml
+Component: zones_get_recently_updated.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,14 +21,17 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<record_types>
-  <type>A</type>
-  <type>AAAA</type>
-  <type>ALIAS</type>
-  <type>CNAME</type>
-  <type>MX</type>
-  <type>NS</type>
-  <type>PTR</type>
-  <type>SRV</type>
-  <type>TXT</type>
-</record_types>
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="zones_get_all">
+  <connection>&connection_read;</connection>
+  <params>
+    <param name="//new_serial" type="text" default="0"/>
+  </params>
+  <sql>
+    SELECT id, origin, ns, active, ttl
+    FROM &prefix;soa
+    WHERE
+    serial >= ?
+    ORDER BY origin
+  </sql>
+</query>
