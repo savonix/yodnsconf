@@ -25,11 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 <xsl:text>
-server:
-	verbosity: 1
-	interface: 0.0.0.0
-	do-ip4: yes
-	do-ip6: no
+
 	access-control: 192.168.0.0/16 allow
 	access-control: 172.20.0.184/32 allow
 	access-control: 192.168.134.22/32 allow
