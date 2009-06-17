@@ -34,7 +34,6 @@ function rows (connection, sql_statement)
   end
 end
 
-
 for origin,ns,mbox,refresh,retry,minimum,ttl,expire,serial,id in rows (con, "select origin,ns,mbox,refresh,retry,minimum,ttl,expire,serial,id from soa WHERE serial>="..os.date("%Y%m%d00")) do
   myzone = "$ORIGIN "..origin.."\n".."$TTL 12h\n"
   myzone = myzone..origin.." IN SOA "..ns.." "..mbox.." ("
@@ -43,8 +42,8 @@ for origin,ns,mbox,refresh,retry,minimum,ttl,expire,serial,id in rows (con, "sel
   myzone = myzone.."\n\t\t"..retry
   myzone = myzone.."\n\t\t"..expire
   myzone = myzone.."\n\t\t"..minimum.."\n\t\t)"
-  for name,data,ttl in rows (con, "select name,data,ttl from rr WHERE zone="..id) do
-    myzone = myzone..name.." IN "..ttl
+  for name,data,ttl,type,aux,weight,port in rows (con, "select name,data,ttl,type,aux,weight,port from rr WHERE zone="..id) do
+    myzone = myzone..name.." IN "..ttl.." "..type
     if (type == "MX") then
         myzone = myzone .." "..aux
     end
@@ -58,7 +57,9 @@ for origin,ns,mbox,refresh,retry,minimum,ttl,expire,serial,id in rows (con, "sel
     end
     myzone = myzone.."\n"
   end
-  F = io.open("zones/"..origin..".zone.","w")
+  F = io.open("zones/"..origin.."zone.","w")
   F:write(string.format ("%s", myzone))
   F:close()
+  --print (string.format ("%s", myzone))
 end
+
