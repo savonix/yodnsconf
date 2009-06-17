@@ -11,6 +11,6 @@ function rows (connection, sql_statement)
   end
 end
 
-for domain, transport in rows (con, "select origin from soa ") do
-  print (string.format ("%s", domain))
+for domain, transport in rows (con, "select origin from soa WHERE serial>="..os.date("%Y%m%d00")) do
+  print (string.format ("%s", domain).."zone.")
 end
