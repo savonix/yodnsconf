@@ -38,8 +38,9 @@
                }
             }
             
-            if ( pageNum > 0 ) {
+            if ( pageNum >= 1 ) {
                 tablesorterCookieJar.set($(table).attr('id')+'-page', pageNum);
+            } else if ( pageNum == 0 ) {
             } else {
                var pageNum = tablesorterCookieJar.get($(table).attr('id')+'-page');
                if (pageNum && pageNum > 1) {
