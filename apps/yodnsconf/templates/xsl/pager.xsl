@@ -59,23 +59,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					} });
 					-->
 
+        <xsl:variable name="my-table-page"><xsl:value-of select="$my-table"/>-page</xsl:variable>
         $("#<xsl:value-of select="$my-table"/>").tablesorter(
             {
               <xsl:if test="not(//_get/nid='records')">
-              widgets:['zebra','cookie'],
               </xsl:if>
               widthFixed: true
-              <xsl:value-of select="$no-sort-column"/>
+              <xsl:value-of select="$no-sort-column"/>,
+              widgets:['zebra','cookie']
             }
           ).tablesorterPager(
-                  {
-                      container: $("#<xsl:value-of select="$my-table"/>-pager"),
-                      positionFixed: false,
-                      size: 20
-                  }
+              {
+                  container: $("#<xsl:value-of select="$my-table"/>-pager"),
+                  positionFixed: false,
+                  size: 20,
+                  page: <xsl:value-of select="//tablesorter/*[local-name()=$my-table-page]"/>
+              }
           );
         }
-
     );
     </script>
   </xsl:template>
