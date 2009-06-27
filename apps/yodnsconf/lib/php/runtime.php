@@ -30,6 +30,7 @@ $link_prefix = $path . '?nid=';
 
 $utcdate = gmdate('Y-m-d H:i:s');
 
+$tablesorter = json_decode(rawurldecode($_COOKIE['jqCookieJar_tablesorter']),true);
 
 if(isset($_GET['zone_group_id'])) {
     $_SESSION['zone_group_id'] = $_GET['zone_group_id'];
@@ -50,4 +51,5 @@ $runtime = array(
 
 
 Nexista_Flow::add('runtime', $runtime, false);
+Nexista_Flow::add('tablesorter', $tablesorter, false);
 ?>

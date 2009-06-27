@@ -58,8 +58,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							$("#<xsl:value-of select="$my-table"/>").trigger("applyWidgetId",['zebra']);
 					} });
 					-->
-
+        var tablesorterCookieJar = $.cookieJar('tablesorter', {
+            cookie: {
+                path: '/'
+            }
+        });
+        <!--
+        var mypage = <xsl:value-of select="//tablesorter/*[local-name()=$my-table-page]"/> + 0;
+        -->
         <xsl:variable name="my-table-page"><xsl:value-of select="$my-table"/>-page</xsl:variable>
+        var mypage = tablesorterCookieJar.get('<xsl:value-of select="$my-table"/>-page');
         $("#<xsl:value-of select="$my-table"/>").tablesorter(
             {
               <xsl:if test="not(//_get/nid='records')">
@@ -73,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   container: $("#<xsl:value-of select="$my-table"/>-pager"),
                   positionFixed: false,
                   size: 20,
-                  page: <xsl:value-of select="//tablesorter/*[local-name()=$my-table-page]"/>
+                  page: mypage
               }
           );
         }
