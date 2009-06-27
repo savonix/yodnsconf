@@ -37,8 +37,5 @@ $TTL 12h
 <xsl:value-of select="name"/><xsl:text> </xsl:text><xsl:if test="ttl &gt; 0">IN <xsl:value-of select="ttl"/><xsl:text> </xsl:text></xsl:if><xsl:value-of select="type"/><xsl:if test="type='MX' or type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="aux"/></xsl:if><xsl:if test="type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="weight"/><xsl:text> </xsl:text><xsl:value-of select="port"/></xsl:if><xsl:text> </xsl:text><xsl:if test="type='TXT'">"</xsl:if><xsl:value-of select="data"/><xsl:if test="type='TXT'">"</xsl:if>
 </xsl:for-each><xsl:text>
 </xsl:text>
-
-
-
 </xsl:template>
 </xsl:stylesheet>
