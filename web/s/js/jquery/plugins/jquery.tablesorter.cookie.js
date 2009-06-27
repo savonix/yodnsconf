@@ -38,16 +38,8 @@
             }
 
             var pageNum = table.config.page;
-            var totalRows = table.config.totalRows;
-            if ( totalRows > 0 ) {
+            if ( pageNum > 0 ) {
                 tablesorterCookieJar.set($(table).attr('id')+'-page', pageNum);
-            } else {
-               table.config.totalRows = 1;
-               var pageNum = tablesorterCookieJar.get($(table).attr('id')+'-page');
-               if (pageNum && pageNum > 1) {
-                   table.config.page = pageNum;
-                   jQuery(table).trigger('sorton',[0,0]);
-               }
             }
         }
     });
