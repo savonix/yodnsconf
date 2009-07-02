@@ -1,3 +1,4 @@
+#!/usr/bin/lua
 --[[ <!--
 Program: YoDNSConf
 Component: domain_list.lua
