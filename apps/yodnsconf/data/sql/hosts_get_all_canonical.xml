@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: services_get_all.xml
+Component: hosts_get_all_canonical.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,13 +22,16 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="services_get_all">
+<query name="hosts_get_all">
 	<connection>&connection_read;</connection>
 	<params>
-		<param name="_get/service_id" type="text" default="%"/>
+		<param name="_get/host_id" type="text" default="%"/>
 	</params>
 	<sql>
-	SELECT * FROM &prefix;services WHERE id LIKE ?
-  ORDER BY name
+	SELECT *, ip AS plain_ip, ip FROM &prefix;hosts
+  WHERE id LIKE ?
+  AND ip!='300.300.300.300'
+  AND priority = 0
+  ORDER BY priority ASC
 	</sql>
 </query>

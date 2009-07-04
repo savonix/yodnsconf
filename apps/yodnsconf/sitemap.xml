@@ -312,6 +312,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 	<map:gate name="hosts" role="yodnsuser" cache="600" client_cache="300">
+		<map:query src="data/sql/hosts_get_all_canonical.xml"/>
+		<map:xsl src="templates/xsl/hosts.xsl"/>
+	</map:gate>
+	<map:gate name="hosts-all" role="yodnsuser" cache="600" client_cache="300">
 		<map:query src="data/sql/hosts_get_all.xml"/>
 		<map:xsl src="templates/xsl/hosts.xsl"/>
 	</map:gate>
