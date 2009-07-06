@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     function delete_service(id) {
         if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x--service-delete&amp;service_id="+id,
+        $.post("<xsl:value-of select="$link_prefix"/>x-service-delete&amp;service_id="+id,
         {
 					'service_id': id
         },
