@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-wget -O <xsl:value-of select="origin"/>zone http://pro-103-gl.savonix.com/a/dev/yodnsconf/index.php?nid=x-zone-export\&amp;zone=<xsl:value-of select="id"/></xsl:for-each>
+wget -O <xsl:value-of select="origin"/>zone http://<xsl:value-of select="//runtime/export_target_server"/>/a/dev/yodnsconf/index.php?nid=x-zone-export\&amp;zone=<xsl:value-of select="id"/></xsl:for-each>
 
 </xsl:template>
 </xsl:stylesheet>

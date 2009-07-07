@@ -30,7 +30,7 @@ $link_prefix = $path . '?nid=';
 
 $utcdate = gmdate('Y-m-d H:i:s');
 
-$tablesorter = json_decode(rawurldecode($_COOKIE['jqCookieJar_tablesorter']),true);
+
 
 if(isset($_GET['zone_group_id'])) {
     $_SESSION['zone_group_id'] = $_GET['zone_group_id'];
@@ -46,7 +46,8 @@ $runtime = array(
         'link_prefix' => $link_prefix,
         'utcdate' => $utcdate,
         'zone_group_id' => $zone_group_id,
-        'db_version' => $db_version
+        'db_version' => $db_version,
+        'export_target_server' => 'pro-103-gl.savonix.com'
         );
 
 
