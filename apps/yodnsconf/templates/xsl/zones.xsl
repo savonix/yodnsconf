@@ -80,16 +80,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table width="100%" class="tablesorter" id="myzones">
         <thead>
           <tr>
-            <th style="width: 2em;"/>
-            <th id="barf" width="700">Origin</th>
+            <th style="width: 5%;"/>
+            <th id="barf" width="60%">Origin</th>
             <xsl:if test="verbose='true'">
               <th>Name Server</th>
             </xsl:if>
             <xsl:if test="verbose='true'">
-              <th width="100">TTL</th>
-              <th>Active</th>
+              <th width="10%">TTL</th>
+              <th width="10%">Active</th>
             </xsl:if>
-            <th width="100"/>
+            <th width="15%"/>
           </tr>
           <tr>
             <td/>
