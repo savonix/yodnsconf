@@ -88,9 +88,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 {
   position: absolute;
   top: 40px;
-  left: 100px;
-  right: 100px;
-  bottom: 60px;
+  left: 40px;
+  right: 40px;
+  bottom: 70px;
   border: 1px solid #999999;
   background-color: #F9F9F9;
   overflow: auto;
