@@ -53,9 +53,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table width="100%" class="tablesorter" id="myredirects">
         <thead>
           <tr>
-            <th>Domain Name</th>
-            <th>Target</th>
-            <th></th>
+            <th width="45%">Domain Name</th>
+            <th width="45%">Target</th>
+            <th width="10%"></th>
           </tr>
           <tr>
             <form method="get">
@@ -74,14 +74,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
           <tr id="h_{position()}">
             <td>
-              <a href="{$link_prefix}redirect-edit&amp;http_host={http_host}">
+              <div style="width:20em;white-space:nowrap;overflow:hidden">
+              <a href="{$link_prefix}redirect-edit&amp;http_host={http_host}" title="{http_host}">
                 <xsl:value-of select="http_host"/>
               </a>
+              </div>
             </td>
             <td>
-              <a href="{$link_prefix}redirect-edit&amp;http_host={http_host}">
+              <div style="width:20em;white-space:nowrap;overflow:hidden">
+              <a href="{$link_prefix}redirect-edit&amp;http_host={http_host}" title="{redirect}">
                 <xsl:value-of select="redirect"/>
               </a>
+              </div>
             </td>
             <td align="right">
               <a href="{$link_prefix}x-redirect-delete&amp;http_host={http_host}"
