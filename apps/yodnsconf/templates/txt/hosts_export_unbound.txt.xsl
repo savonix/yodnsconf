@@ -26,6 +26,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template match="/">
 <xsl:text>
 
+  <xsl:for-each select="/_R_/ip_get_distinct_public/ip_get_distinct_public">
+<xsl:text>    access-control: </xsl:text><xsl:value-of select="data"/><xsl:text> allow
+</xsl:text>
+</xsl:for-each>
 	access-control: 192.168.0.0/16 allow
 	access-control: 172.20.0.184/32 allow
 	access-control: 192.168.134.22/32 allow
