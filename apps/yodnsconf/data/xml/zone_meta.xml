@@ -30,4 +30,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<meta_key>expiration</meta_key>
 		<meta_type>text</meta_type>
 	</meta>
+	<meta>
+		<meta_key>analytics_key</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key>feed_url</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
 </zone_meta>

@@ -118,6 +118,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:variable name="origin_link" select="substring(//origin,0,string-length(//origin))"/>
 		<a class="thickbox" href="http://www.{$origin_link}/?keepThis=true&amp;TB_iframe=true&amp;height=400&amp;width=600">Preview</a>
     <br/>
+		<a class="thickbox" href="{$link_prefix}zone-keys&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">Zone Keys</a>
+    <br/>
 		<a href="{$link_prefix}x-zone-export&amp;zone={//id}">Export</a>
     <script type="text/javascript">
 		initValidation();
