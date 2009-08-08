@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
       <!-- to do: match selection -->
       <input type="hidden" name="nid" value="index"/>
-      <select name="zone_group_id">
+      <select name="zone_group_id" onchange="location.href='{$link_prefix}index&amp;zone_group_id='">
         <option value="%">Select All</option>
         <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
         <option value="{zone_group_id}">
@@ -137,7 +137,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
       <!-- to do: match selection -->
       <input type="hidden" name="nid" value="index"/>
-      <select name="zone_group_id">
+      <select name="zone_group_id" onchange="location.href='{$link_prefix}index&amp;zone_group_id='+$(this).val()">
         <option value="%">Select All</option>
         <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
         <xsl:variable name="zone_group_id" select="zone_group_id"/>
