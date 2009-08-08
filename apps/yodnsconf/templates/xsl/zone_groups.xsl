@@ -48,18 +48,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:for-each select="/_R_/zone_groups_get_all/zone_groups_get_all">
           <tr id="hg_{id}">
             <td>
-              <a href="{$link_prefix}zone-group-edit&amp;zone_group_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}index&amp;zone_group_id={zone_group_id}">
                 <xsl:value-of select="zone_group_name"/>
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}zone-group-edit&amp;zone_group_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}zone-group-edit&amp;zone_group_id={zone_group_id}&amp;cloner=0">
 								Edit
               </a>
             </td>
             <td align="right">
-              <a href="{$link_prefix}x-zone-group-delete&amp;zone_group_id={id}&amp;cloner=0"
-								onclick="delete_zone_group('{id}'); return false;">
+              <a href="{$link_prefix}x-zone-group-delete&amp;zone_group_id={zone_group_id}&amp;cloner=0"
+								onclick="delete_zone_group('{zone_group_id}'); return false;">
 								Delete
 							</a>
             </td>
