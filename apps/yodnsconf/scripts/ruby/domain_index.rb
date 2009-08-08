@@ -1,9 +1,7 @@
 #!/usr/bin/ruby
-
 load "config.rb"
 require 'dbi'
 require 'dbm'
-
 
 
 begin
@@ -15,13 +13,13 @@ rescue DBI::DatabaseError => e
     puts "Error message: #{e.errstr}"
 end
 
-
-sth = dbh.prepare("SELECT id,origin FROM soa ORDER BY origin")
+sth = dbh.prepare("SELECT id,origin FROM soa WHERE zone_group_id=2 ORDER BY origin")
 
 begin
     sth.execute()
     sth.fetch do |row|
-        puts "#{row[0]} #{row[1]}"
+        domain = row[1].gsub(/\.$/,'')
+        puts "#{row[0]} #{domain}"
     end
 rescue DBI::DatabaseError => e
     puts "An error occurred"
