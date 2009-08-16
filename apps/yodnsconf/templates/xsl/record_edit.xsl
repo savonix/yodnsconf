@@ -35,13 +35,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
     {
         var objForm = document.forms["record"];
         objForm.name.required = 0;
-        objForm.name.regexp = /^[A-Za-z0-9\-\.]*$/;
+        objForm.name.regexp = /^[A-Za-z0-9\-\._]*$/;
         objForm.data.required = 1;
         if(objForm.type.value=='A') {
             $("#rr_prio_row").css("display","none");
             objForm.data.regexp = /^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$/;
         } else if (objForm.type.value=='TXT') {
             $("#rr_prio_row").css("display","none");
+            objForm.data.regexp = /^.*$/;
             var blah = "barf";
         } else if (objForm.type.value=='MX') {
             $("#rr_prio_row").css("display","");
