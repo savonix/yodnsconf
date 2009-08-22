@@ -69,7 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <input class="record_boxes" type="checkbox" name="record_id[]" value="{id}"/>
             </td>
             <td>
-              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit" title="{notes}">
                 <xsl:value-of select="name"/>
               </a>
             </td>
@@ -79,8 +79,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </td>
             <td>
-              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
-                <xsl:value-of select="data"/>
+              <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit" title="{notes}">
+                <xsl:value-of select="substring(data,0,40)"/>
               </a>
             </td>
             <td>
