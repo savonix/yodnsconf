@@ -515,6 +515,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/js/js_functions.js.xsl"/>
 	</map:gate>
 
+	<map:gate name="x-tablesorter-setup-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=10, must-revalidate">
+    <map:xsl src="templates/js/tablesorter_setup.js.xsl"/>
+	</map:gate>
+
 	<map:gate name="x-dynamic-css"
 			cache="0"
 			nosession="true"

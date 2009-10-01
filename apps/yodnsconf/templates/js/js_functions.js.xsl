@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: sitetest.txt.xsl
+Component: js_functions.js.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -24,53 +24,91 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes" />
   <xsl:template match="/">
-    function delete_host(id) {
-      if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="//link_prefix"/>x-host-delete&amp;host_id="+id,
-        {
-					'host_id': id
-        },
-        function (data){
-          $("#h_"+id).remove();
-        });
-      }
+  <xsl:variable name="link_prefix" select="//link_prefix"/>
+
+function delete_host(id) {
+  if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-host-delete&amp;host_id="+id,
+    {
+      'host_id': id
+    },
+    function (data){
+      $("#h_"+id).remove();
+    });
+  }
+}
+function delete_record(record_id,zone) {
+  if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id,
+    {
+      // zone is needed to update serial
+      'record_id': record_id,
+      'zone': zone
+    },
+    function (data){
+      $("#"+record_id).remove();
+    });
+  }
+}
+function delete_hostgroup(id) {
+  if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-hostgroup-delete&amp;hostgroup_id="+id,
+    {
+      'hostgroup_id': id
+    },
+    function (data){
+      $("#hg_"+id).remove();
+    });
+  }
+}
+// zone delete
+function zd(zone) {
+  if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone="+zone,
+    {
+      'zone': zone
+    },
+    function (data){
+      $("#z_"+zone).remove();
+    });
+  }
+  return false;
+}
+function fixup_rows() {
+  // Has this already been done?
+  if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {
+
+    // Highlight
+    $(".zrow").attr("onmouseover","oldClass=this.className; this.className=oldClass; this.className='active'").attr("onmouseout","this.className=oldClass");
+    $(".zrow td:nth-child(1) input").attr("name","selected_zones[]");
+    $(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
+
+    // Zone Delete
+    $(".zrow td:nth-child(3) a:nth-child(1)").click( function () {
+      zd($(this).parent().parent().attr("id"));
     }
-    function delete_record(record_id,zone) {
-      if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id,
-        {
-          // zone is needed to update serial
-          'record_id': record_id,
-          'zone': zone
-        },
-        function (data){
-					$("#"+record_id).remove();
-        });
-      }
+    ).attr("href", function () {
+      return "#x-zone-delete&amp;zone="+$(this).parent().parent().attr("id");
     }
-    function delete_hostgroup(id) {
-      if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="//link_prefix"/>x-hostgroup-delete&amp;hostgroup_id="+id,
-        {
-					'hostgroup_id': id
-        },
-        function (data){
-          $("#hg_"+id).remove();
-        });
-      }
+    ).text("Delete").after(" | ");
+
+    // Zone Clone
+    $(".zrow td:nth-child(3) a:nth-child(2)").attr("href", function () {
+      return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
     }
-		// zone delete
-    function zd(zone) {
-			if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone="+zone,
-        {
-          'zone': zone
-        },
-        function (data){
-          $("#z_"+zone).remove();
-        });
-			}
-			return false;
+    ).text("Clone");
+
+    // Zone Edit
+    $(".zrow td:nth-child(2) a").attr("href", function () {
+      return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
     }
+    );
+  }
+}
+$(document).ready(function() {
+  fixup_rows();
+  $(".header").bind("mouseleave", function(e) { fixup_rows(); });
+  $(".prev,.next").bind("click", function(e) { fixup_rows(); });
+});
   </xsl:template>
 </xsl:stylesheet>
