@@ -38,7 +38,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
   <table width="100%" class="tablesorter" id="myzones">
     <thead>
       <tr>
-        <th style="width: 5%;"/>
         <th id="barf" width="60%">Origin</th>
         <xsl:if test="verbose='true'">
           <th>Name Server</th>
@@ -50,7 +49,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
         <th width="15%"/>
       </tr>
       <tr>
-        <td/>
         <form method="get">
           <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
           <td>
@@ -67,13 +65,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
         </form>
       </tr>
     </thead>
-    <tbody id="myzonesbody">
+    <tbody id="myzonesbody" class="zrow">
 
     <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-      <tr id="{id}" class="z_{id} zrow">
-        <td>
-          <input type="checkbox" />
-        </td>
+      <tr id="{id}">
         <td>
           <a href="#">
             <xsl:value-of select="origin"/>

@@ -69,8 +69,10 @@ function zd(zone) {
       'zone': zone
     },
     function (data){
-      $("#z_"+zone).remove();
+      $("#"+zone).remove();
     });
+    // TODO - FIXME - Use jQuery AJAX.
+    $("#"+zone).remove();
   }
   return false;
 }
@@ -79,12 +81,12 @@ function fixup_rows() {
   if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {
 
     // Highlight
-    $(".zrow").attr("onmouseover","oldClass=this.className; this.className=oldClass; this.className='active'").attr("onmouseout","this.className=oldClass");
-    $(".zrow td:nth-child(1) input").attr("name","selected_zones[]");
-    $(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
+    $(".zrow tr").attr("onmouseover","oldClass=this.className; this.className=oldClass; this.className='active'").attr("onmouseout","this.className=oldClass");
+    //$(".zrow td:nth-child(1) input").attr("name","selected_zones[]");
+    //$(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
 
     // Zone Delete
-    $(".zrow td:nth-child(3) a:nth-child(1)").click( function () {
+    $(".zrow td:nth-child(2) a:nth-child(1)").click( function () {
       zd($(this).parent().parent().attr("id"));
     }
     ).attr("href", function () {
@@ -93,13 +95,13 @@ function fixup_rows() {
     ).text("Delete").after(" | ");
 
     // Zone Clone
-    $(".zrow td:nth-child(3) a:nth-child(2)").attr("href", function () {
+    $(".zrow td:nth-child(2) a:nth-child(2)").attr("href", function () {
       return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
     }
     ).text("Clone");
 
     // Zone Edit
-    $(".zrow td:nth-child(2) a").attr("href", function () {
+    $(".zrow td:nth-child(1) a").attr("href", function () {
       return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
     }
     );
