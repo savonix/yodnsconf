@@ -29,17 +29,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">records_table</xsl:with-param>
-      <xsl:with-param name="no-sort-column">,
-        headers: {
-            0: {sorter: false},
-            6: {sorter: false},
-            7: {sorter: false},
-            8: {sorter: false}
-        }
-				</xsl:with-param>
-    </xsl:call-template>
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
 
 
 <script type="text/javascript">

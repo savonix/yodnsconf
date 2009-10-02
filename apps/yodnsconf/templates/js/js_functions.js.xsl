@@ -26,6 +26,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template match="/">
   <xsl:variable name="link_prefix" select="//link_prefix"/>
 
+function delete_redirect(http_host,pos) {
+    if(confirm('Are you sure?')){
+      $.post("<xsl:value-of select="$link_prefix"/>x-redirect-delete&amp;http_host="+http_host,
+      {
+        'http_host': http_host
+      },
+      function (data){
+        $("#h_"+pos).remove();
+      });
+    }
+}
+
 function delete_host(id) {
   if(confirm('Are you sure?')){
     $.post("<xsl:value-of select="//link_prefix"/>x-host-delete&amp;host_id="+id,
