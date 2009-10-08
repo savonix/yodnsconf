@@ -123,6 +123,8 @@ $(document).ready(function() {
   fixup_rows();
   $(".header").bind("mouseleave", function(e) { fixup_rows(); });
   $(".prev,.next").bind("click", function(e) { fixup_rows(); });
+  $('#nav').droppy();
 });
+
   </xsl:template>
 </xsl:stylesheet>
