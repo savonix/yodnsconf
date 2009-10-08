@@ -22,8 +22,8 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" 
-	xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="xml"
 		indent="yes" encoding="UTF-8" omit-xml-declaration="no"
 		doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
