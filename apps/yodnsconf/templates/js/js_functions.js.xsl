@@ -49,6 +49,18 @@ function delete_host(id) {
     });
   }
 }
+
+function delete_ip(ip_address,row) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-ip-delete&amp;ip_address="+ip_address,
+    {
+        'ip_address': ip_address
+    },
+    function (data){
+    });
+    }
+}
+
 function delete_record(record_id,zone) {
   if(confirm('Are you sure?')){
     $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id,

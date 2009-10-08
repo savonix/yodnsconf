@@ -22,77 +22,64 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
-      <xsl:with-param name="no-sort-column">,
-        headers: { 2: {sorter: false} }
-    </xsl:with-param>
-    </xsl:call-template>
-    <script type="text/javascript">
-    function delete_ip(ip_address,row) {
-        if(confirm('Are you sure?')){
-        $.post("<xsl:value-of select="$link_prefix"/>x-ip-delete&amp;ip_address="+ip_address,
-        {
-            'ip_address': ip_address
-        },
-        function (data){
-        });
-        }
-    }
-    </script>
-    <div>
-      <table width="100%" class="tablesorter" id="myip_addresses">
-        <thead>
-          <tr>
-            <th>Address</th>
-            <th>Hostname</th>
-            <th></th>
-          </tr>
-          <tr>
-            <form method="get">
-              <input type="hidden" name="nid" value="ip_addresses"/>
-              <td>
-                <input type="text" name="ip_address" value="{/_R_/_get/ip_address}"/>
-              </td>
-              <td></td>
-              <td align="right">
-                <input name="Filter" type="submit" id="Filter" value="Filter"/>
-              </td>
-            </form>
-          </tr>
-        </thead>
-        <xsl:for-each select="/_R_/ip_addresses_get_all/ip_addresses_get_all">
-          <tr>
-            <td>
-              <a href="{$link_prefix}ip-edit&amp;ip_address={ip_address}">
-                <xsl:value-of select="ip"/>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}ip-edit&amp;ip_address={ip_address}">
-                <xsl:value-of select="ip"/>
-              </a>
-            </td>
-            <td align="right">
-              <a href="{$link_prefix}x--ip-delete&amp;ip_address={ip_address}"
-								onclick="delete_ip('{ip_address}',this); return false;">Delete</a>
-            </td>
-          </tr>
-        </xsl:for-each>
-      </table>
-    </div>
-    <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
-    </xsl:call-template>
-    <div style="text-align: right">
-      <a href="{$link_prefix}x--ip_addresses-export">Export</a>
-    </div>
-  </xsl:template>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
+
+<div>
+  <table width="100%" class="tablesorter" id="myip_addresses">
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th>Hostname</th>
+        <th></th>
+      </tr>
+      <tr>
+        <form method="get">
+          <input type="hidden" name="nid" value="ip_addresses"/>
+          <td>
+            <input type="text" name="ip_address" value="{/_R_/_get/ip_address}"/>
+          </td>
+          <td></td>
+          <td align="right">
+            <input name="Filter" type="submit" id="Filter" value="Filter"/>
+          </td>
+        </form>
+      </tr>
+    </thead>
+    <xsl:for-each select="/_R_/ip_addresses_get_all/ip_addresses_get_all">
+      <tr>
+        <td>
+          <a href="{$link_prefix}ip-edit&amp;ip_address={ip_address}">
+            <xsl:value-of select="ip"/>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}ip-edit&amp;ip_address={ip_address}">
+            <xsl:value-of select="ip"/>
+          </a>
+        </td>
+        <td align="right">
+          <a href="{$link_prefix}x--ip-delete&amp;ip_address={ip_address}"
+            onclick="delete_ip('{ip_address}',this); return false;">Delete</a>
+        </td>
+      </tr>
+    </xsl:for-each>
+  </table>
+</div>
+<xsl:call-template name="pager">
+  <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
+</xsl:call-template>
+<div style="text-align: right">
+  <a href="{$link_prefix}x--ip_addresses-export">Export</a>
+</div>
+</xsl:template>
 </xsl:stylesheet>
