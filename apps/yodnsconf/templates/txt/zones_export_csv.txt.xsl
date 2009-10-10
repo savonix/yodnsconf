@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:if test="//_get/simple='true'">
     <xsl:text>.</xsl:text>
     <xsl:value-of select="substring(origin,0,string-length(origin))"/>
-    <xsl:text>,</xsl:text>
+    <xsl:text> </xsl:text>
   </xsl:if>
   <xsl:if test="not(//_get/simple='true')">
     <xsl:text>www.</xsl:text>
