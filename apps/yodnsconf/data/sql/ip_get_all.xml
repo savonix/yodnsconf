@@ -25,10 +25,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="ip_get_all">
 	<connection>&connection_read;</connection>
 	<params>
+		<param name="_get/ip_id" type="text" default="%"/>
 	</params>
   <sql>
-    SELECT *
-    FROM &prefix;ip
-    WHERE
+  SELECT * FROM &prefix;ip_addr WHERE ip_id LIKE ?
   </sql>
 </query>

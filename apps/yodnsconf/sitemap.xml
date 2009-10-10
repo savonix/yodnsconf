@@ -432,8 +432,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 
-	<map:gate name="ip" role="yodnsuser" cache="600" client_cache="300">
+	<map:gate name="ydc-ips" role="yodnsuser" cache="600" client_cache="300">
+		<map:query src="data/sql/ip_get_all.xml"/>
 		<map:xsl src="templates/xsl/ip_addresses.xsl"/>
+	</map:gate>
+	<map:gate name="ydc-edit" role="yodnsuser">
+		<map:switch name="//_post/action">
+			<map:case value="edit">
+			</map:case>
+			<map:case value="create">
+				<map:plugin type="serial" params="//_post/serial"/>
+				<map:query src="data/sql/ip_create.xml"/>
+				<map:action type="redirect" params="{//link_prefix}ydc-ip-addr"/>
+			</map:case>
+			<map:default/>
+		</map:switch>
+		<map:xsl src="templates/xsl/ip_address_form.xsl"/>
 	</map:gate>
 
 	<map:gate name="services" role="yodnsuser">
@@ -534,7 +548,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:raw src="LICENSE" />
 	</map:gate>
-	<map:gate name="dynamic-database-model">
+	<map:gate name="x-dynamic-database-model">
 		<map:set name="engine" value="mysqli"/>
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xsl src="data/model/yodnsconf.sql.xsl"/>

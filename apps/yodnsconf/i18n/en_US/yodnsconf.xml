@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <i18n>
-  <ip>IP Addresses</ip>
+  <ip_addr>IP Addresses</ip_addr>
   <hosts>Hosts</hosts>
   <host_names>Host Names</host_names>
   <hostgroups>Hostgroups</hostgroups>

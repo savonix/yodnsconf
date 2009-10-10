@@ -77,4 +77,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <url>services</url>
     </item>
   </item>
+  <item active="1">
+    <key>ip_addr</key>
+    <item active="1">
+      <key>ip_addr</key>
+      <url>ydc-ip-addr</url>
+    </item>
+  </item>
 </menu>

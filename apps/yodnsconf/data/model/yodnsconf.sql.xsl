@@ -124,11 +124,14 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>host_services` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
 
-CREATE TABLE `<xsl:value-of select="//table_prefix"/>ip` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `data` char(128) NOT NULL,
-  `notes` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id`)
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>ip_addr` (
+  `ip_id` int(10) unsigned NOT NULL auto_increment,
+  `ip_addr` char(128) NOT NULL,
+  `ip_netmask` char(128) NOT NULL,
+  `ip_cidr` char(128) NOT NULL,
+  `ip_description` varchar(255) NOT NULL,
+  `ip_notes` text NOT NULL,
+  PRIMARY KEY  (`ip_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
