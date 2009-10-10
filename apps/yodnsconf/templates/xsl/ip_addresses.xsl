@@ -44,9 +44,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
       </tr>
       <tr>
         <form method="get">
-          <input type="hidden" name="nid" value="ip_addresses"/>
+          <input type="hidden" name="nid" value="ydc-ip-addr"/>
           <td>
-            <input type="text" name="ip_address" value="{/_R_/_get/ip_address}"/>
+            <input type="text" name="ip_addr" value="{/_R_/_get/ip_addr}"/>
           </td>
           <td></td>
           <td align="right">
@@ -55,31 +55,33 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
         </form>
       </tr>
     </thead>
-    <xsl:for-each select="/_R_/ip_addresses_get_all/ip_addresses_get_all">
+    <tbody>
+    <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
       <tr>
         <td>
-          <a href="{$link_prefix}ip-edit&amp;ip_address={ip_address}">
-            <xsl:value-of select="ip"/>
+          <a href="{$link_prefix}ip-edit&amp;ip_id={ip_id}">
+            <xsl:value-of select="ip_id"/>
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ip-edit&amp;ip_address={ip_address}">
-            <xsl:value-of select="ip"/>
+          <a href="{$link_prefix}ip-edit&amp;ip_id={ip_id}">
+            <xsl:value-of select="ip_addr"/>
           </a>
         </td>
         <td align="right">
-          <a href="{$link_prefix}x--ip-delete&amp;ip_address={ip_address}"
-            onclick="delete_ip('{ip_address}',this); return false;">Delete</a>
+          <a href="#x-ip-delete&amp;ip_id={ip_id}"
+          onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
         </td>
       </tr>
     </xsl:for-each>
+    </tbody>
   </table>
 </div>
 <xsl:call-template name="pager">
   <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
 </xsl:call-template>
 <div style="text-align: right">
-  <a href="{$link_prefix}x--ip_addresses-export">Export</a>
+  <a href="{$link_prefix}x-ip-addr-export">Export</a>
 </div>
 </xsl:template>
 </xsl:stylesheet>

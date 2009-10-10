@@ -23,6 +23,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <i18n>
   <ip_addr>IP Addresses</ip_addr>
+  <ip_addr_new>New IP Address</ip_addr_new>
   <hosts>Hosts</hosts>
   <host_names>Host Names</host_names>
   <hostgroups>Hostgroups</hostgroups>

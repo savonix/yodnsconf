@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="ip_get_all">
+<query name="ip_addr_get_all">
 	<connection>&connection_read;</connection>
 	<params>
 		<param name="_get/ip_id" type="text" default="%"/>
