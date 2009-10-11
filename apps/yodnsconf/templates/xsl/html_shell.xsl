@@ -21,19 +21,16 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" 
-xmlns="http://www.w3.org/1999/xhtml"
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="xml"
-		indent="yes" encoding="UTF-8" omit-xml-declaration="no"
-		doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
-		doctype-public="-//W3C//DTD XHTML 1.1//EN" />
+	<xsl:output method="xml" indent="yes" encoding="UTF-8"
+	omit-xml-declaration="no"
+  doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+  doctype-public="-//W3C//DTD XHTML 1.1//EN" />
   <xsl:strip-space  elements="*"/>
   <xsl:template match="/">
     <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
-
     <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
-
     <xsl:variable name="my18n" select="document('../../i18n/en_US/yodnsconf.xml')/i18n"/>
 
     <html>
