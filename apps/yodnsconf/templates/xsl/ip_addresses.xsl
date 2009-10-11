@@ -38,8 +38,12 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
   <table width="100%" class="tablesorter" id="myip_addresses">
     <thead>
       <tr>
-        <th>Address</th>
-        <th>Hostname</th>
+        <th>
+          <span id="i18n-id">ID</span>
+        </th>
+        <th>
+          <span id="i18n-ip_addr">IP Address</span>
+        </th>
         <th></th>
       </tr>
       <tr>
@@ -83,5 +87,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
 <div style="text-align: right">
   <a href="{$link_prefix}x-ip-addr-export">Export</a>
 </div>
-</xsl:template>
+
+
+  </xsl:template>
 </xsl:stylesheet>

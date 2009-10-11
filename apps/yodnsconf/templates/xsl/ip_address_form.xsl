@@ -35,13 +35,13 @@ xmlns="http://www.w3.org/1999/xhtml">
 <![CDATA[
 function initValidation()
 {
-    var objForm = document.forms["redirect"];
+    var objForm = document.forms["ip_addr_form"];
     objForm.http_host.required = 1;
     objForm.redirect.required = 1;
 }
 ]]>
 </script>
-<form method="post" name="redirect" onSubmit="return validateStandard(this);">
+<form method="post" name="ip_addr_form" onSubmit="return validateStandard(this);">
   <xsl:if test="/_R_/_get/ip_addr">
     <input type="hidden" name="action" value="edit"/>
   </xsl:if>
@@ -51,7 +51,9 @@ function initValidation()
   <table>
     <tbody>
       <tr>
-        <th>IP Address:</th>
+        <th>
+          <span id="i18n-ip_addr">IP Address</span>
+        </th>
         <td>
           <input name="ip_addr" type="text" value="{/_R_/_get/http_host}"/>
         </td>
