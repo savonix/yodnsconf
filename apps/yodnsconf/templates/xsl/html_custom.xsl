@@ -198,4 +198,35 @@ xmlns="http://www.w3.org/1999/xhtml">
 
   </xsl:template>
 
+  	<!-- UI PRIMARY MENU -->
+  <xsl:template name="main-menu">
+    <ul id="nav">
+      <xsl:for-each select="//menu/item[not(@active=0)]">
+        <xsl:call-template name="list-button">
+          <xsl:with-param name="key" select="key"/>
+        </xsl:call-template>
+      </xsl:for-each>
+    </ul>
+  </xsl:template>
+
+  <!-- UI LIST BUTTON -->
+  <xsl:template name="list-button">
+    <xsl:param name="key"/>
+    <li>
+      <a href="#" class="head">
+        <xsl:value-of select="/_R_/i18n/*[name()=$key]"/>
+      </a>
+      <ul>
+        <xsl:for-each select="//menu/item[key=$key]/item">
+          <xsl:variable name="my_key" select="key"/>
+          <li>
+            <a href="{//runtime/link_prefix}{url}" id="{key}">
+              <xsl:value-of select="/_R_/i18n/*[name()=$my_key]"/>
+            </a>
+          </li>
+        </xsl:for-each>
+      </ul>
+    </li>
+  </xsl:template>
+  
 </xsl:stylesheet>
