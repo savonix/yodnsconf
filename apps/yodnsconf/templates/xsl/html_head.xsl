@@ -23,43 +23,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:template name="head">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
 
+<!-- DEPRECATED -->
 
-<head>
-  <title>Web DNS <xsl:value-of select="/_R_/i18n/*[name()=//_get/nid]/."/>
-    <xsl:if test="/_R_/_get/zone">
-      :<xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
-    </xsl:if>
-    <xsl:if test="/_R_/_get/host_id">
-      :<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip"/>
-    </xsl:if>
- </title>
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
-  <link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
-  <link rel="stylesheet" type="text/css" href="{/_R_/runtime/path_prefix}s/js/blue/style.css"/>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.min.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
-  <script type="text/javascript" src="{$link_prefix}x-javascript"></script>
-  <script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
-  <xsl:for-each select="//head_nodes">
-    <xsl:sort select="priority" order="ascending"/>
-    <xsl:apply-templates select="nodes/*"/>
-  </xsl:for-each>
-</head>
-
-
-  </xsl:template>
 </xsl:stylesheet>

@@ -28,46 +28,5 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
   doctype-public="-//W3C//DTD XHTML 1.1//EN" />
   <xsl:strip-space  elements="*"/>
-  <xsl:template match="/">
-    <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
-    <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
-    <xsl:variable name="my18n" select="document('../../i18n/en_US/yodnsconf.xml')/i18n"/>
-
-    <html>
-      <xsl:call-template name="head">
-        <xsl:with-param name="link_prefix" select="$link_prefix"/>
-        <xsl:with-param name="path_prefix" select="$path_prefix"/>
-      </xsl:call-template>
-      <body>
-        <xsl:for-each select="//pre_body_content">
-          <xsl:sort select="priority" order="ascending"/>
-          <xsl:apply-templates select="nodes/*"/>
-        </xsl:for-each>
-
-        <xsl:call-template name="main">
-          <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="path_prefix" select="$path_prefix"/>
-          <xsl:with-param name="i18n" select="$my18n"/>
-        </xsl:call-template>
-
-        <xsl:for-each select="//post_body_content">
-          <xsl:sort select="priority" order="ascending"/>
-          <xsl:apply-templates select="nodes/*"/>
-        </xsl:for-each>
-      </body>
-      <xsl:for-each select="//post_html_content">
-				<xsl:sort select="priority" order="ascending"/>
-				<xsl:apply-templates select="nodes/*"/>
-			</xsl:for-each>
-    </html>
-  </xsl:template>
-  <xsl:template match="node()">
-<xsl:element name="{name()}">
-<xsl:apply-templates select="@*|node()"/>
-</xsl:element>
-</xsl:template>
-
-<xsl:template match="@*|text()|comment()|processing-instruction()">
-<xsl:copy/>
-</xsl:template>
+  <!-- DEPRECATED -->
 </xsl:stylesheet>
