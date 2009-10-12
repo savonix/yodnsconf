@@ -123,26 +123,42 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </tr>
         </xsl:if>
         <tr>
-          <td>TTL:</td>
+          <th>
+          	<span id="i18n-ttl">TTL</span>
+					</th>
           <td>
             <input name="ttl" type="text"
 							value="{/_R_/record_get_by_id/record_get_by_id/ttl}"/>
           </td>
         </tr>
         <tr>
-          <td>Notes:</td>
+          <th>
+          	<label for="http_host">
+          		<span id="i18n-protocols">HTTP Host?</span>
+						</label>
+					</th>
           <td>
-            <input name="notes" type="text"
-							value="{/_R_/record_get_by_id/record_get_by_id/notes}"/>
+            <input type="checkbox" name="http_host" id="http_host" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+          	<label for="notes">
+          		<span id="i18n-notes">Notes</span>
+						</label>
+					</th>
+          <td>
+            <input name="notes" type="text" id="notes"
+						value="{/_R_/record_get_by_id/record_get_by_id/notes}"/>
           </td>
         </tr>
         <tr>
           <td/>
           <td>
             <input type="submit" class="button" value="Save"
-              onclick="return validateStandard(document.forms['record']);"/>&#160;
+						onclick="return validateStandard(document.forms['record']);"/>&#160;
 						<input type="button" class="button" value="Cancel"
-							onClick="window.location.href='{$link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
+						onClick="window.location.href='{$link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
           </td>
         </tr>
       </table>
