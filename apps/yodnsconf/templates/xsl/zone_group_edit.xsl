@@ -30,7 +30,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
     <form action="{$link_prefix}zone-group-edit" method="post">
-      Name: <input name="name" type="text"/>
+      Name:
+      <input name="name" type="text"
+			value="{//zone_groups_get_all/zone_groups_get_all/zone_group_name}"/>
       <input type="submit"/>
     </form>
   </xsl:template>

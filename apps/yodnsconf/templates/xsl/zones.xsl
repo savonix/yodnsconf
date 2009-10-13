@@ -101,7 +101,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
 </div>
 <div class="table_meta" style="float: right">
   Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>&#160;
-  <a href="{$link_prefix}x-zones-export-csv&amp;ns_filter=ns1.savonix.com.">CSV Zone Export</a>
+  <a href="{$link_prefix}x-zones-export-csv">CSV Zone Export</a>&#160;
+  <a href="{$link_prefix}x-zones-export-nginx-map">NGINX Map Export</a>
 </div>
 
 

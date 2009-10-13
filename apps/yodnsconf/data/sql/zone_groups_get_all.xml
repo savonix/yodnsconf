@@ -24,8 +24,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="zone_groups_get_all">
 	<connection>&connection_read;</connection>
-	<params/>
+	<params>
+		<param name="_get/zone_group_id" type="text" default="%"/>
+	</params>
 	<sql>
-		SELECT * FROM &prefix;zone_groups
+		SELECT * FROM &prefix;zone_groups WHERE zone_group_id LIKE ?
 	</sql>
 </query>

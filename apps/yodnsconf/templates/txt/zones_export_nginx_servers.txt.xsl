@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zones_get_all.xml
+Component: zones_export_nginx_map.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -18,22 +18,21 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation, Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301 USA
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zones_get_all">
-  <connection>&connection_read;</connection>
-  <params>
-    <param name="_get/origin" type="text" default="%"/>
-    <param name="//runtime/zone_group_id" type="text" default="%"/>
-  </params>
-  <sql>
-  SELECT id, origin, ns, active, ttl, notes, zone_group_id
-  FROM &prefix;soa
-  WHERE
-  origin LIKE ?
-  AND zone_group_id LIKE ?
-  ORDER BY origin
-  </sql>
-</query>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
+<xsl:template match="/">
+
+server {
+<xsl:for-each select="/_R_/zone_groups_get_all/zone_groups_get_all">
+	# <xsl:value-of select="zone_group_name" />
+	if ($zone_group_id = <xsl:value-of select="zone_group_id" />) {
+		break;
+		proxy_pass  http://127.0.0.1;
+	}
+</xsl:for-each>
+}
+</xsl:template>
+</xsl:stylesheet>

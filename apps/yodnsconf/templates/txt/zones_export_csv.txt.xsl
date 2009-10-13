@@ -30,9 +30,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:value-of select="substring(origin,0,string-length(origin))"/>
     <xsl:text> </xsl:text>
   </xsl:if>
-  <xsl:if test="not(//_get/simple='true')">
+  <xsl:if test="not(//_get/simple) or //_get/simple=''">
     <xsl:text>www.</xsl:text>
-    <xsl:value-of select="origin"/>
+    <xsl:value-of select="substring(origin,0,string-length(origin))"/>
     <xsl:text>,</xsl:text>
   </xsl:if>
 </xsl:for-each>
