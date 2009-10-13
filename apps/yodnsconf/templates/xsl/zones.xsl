@@ -28,7 +28,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-		<xsl:variable name="pagenum" select="//tablesorter/myzones-page - 1"/>
 
 
 <script type="text/javascript"
@@ -102,7 +101,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
 <div class="table_meta" style="float: right">
   Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>&#160;
   <a href="{$link_prefix}x-zones-export-csv">CSV Zone Export</a>&#160;
-  <a href="{$link_prefix}x-zones-export-nginx-map">NGINX Map Export</a>
+  <a href="{$link_prefix}x-zones-export-nginx-map&amp;zone_group_id=%">NGINX Map Export</a>&#160;
+  <a href="{$link_prefix}x-zones-export-nginx-map&amp;zone_group_id=%">NGINX Server Export</a>
 </div>
 
 

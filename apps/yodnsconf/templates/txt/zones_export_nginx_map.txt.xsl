@@ -25,13 +25,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 map $http_host $zone_group_id {
-	hostnames;
+  hostnames;
 <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
 
-    <xsl:text>	.</xsl:text>
+    <xsl:text>  .</xsl:text>
     <xsl:value-of select="substring(origin,0,string-length(origin))"/>
-    <xsl:text>	</xsl:text>
-    <xsl:value-of select="zone_group_id" />;
+    <xsl:text> </xsl:text><xsl:value-of select="zone_group_id" />;
 </xsl:for-each>
 }
 </xsl:template>
