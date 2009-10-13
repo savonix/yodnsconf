@@ -38,6 +38,7 @@ function remove_element () {
 ]]>
 </script>
 <table width="100%">
+  <tbody>
 	<tr>
 		<th>
 			<label for="origin">
@@ -217,6 +218,7 @@ function remove_element () {
 			onClick="window.location.href='{/_R_/runtime/link_prefix}index'"/>
 		</td>
 	</tr>
+	</tbody>
 </table>
 
 

@@ -50,7 +50,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_zone_groups" />
     </thead>
     <tbody>
     <xsl:for-each select="/_R_/zone_groups_get_all/zone_groups_get_all">
-      <tr id="hg_{id}">
+      <tr id="zg_{zone_group_id}">
         <td>
           <a href="{$link_prefix}index&amp;zone_group_id={zone_group_id}">
             <xsl:value-of select="zone_group_name"/>
@@ -62,8 +62,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_zone_groups" />
           </a>
         </td>
         <td align="right">
-          <a href="{$link_prefix}x-zone-group-delete&amp;zone_group_id={zone_group_id}&amp;cloner=0"
-          onclick="delete_zone_group('{zone_group_id}'); return false;">
+          <a href="#x-zone-group-delete&amp;zone_group_id={zone_group_id}"
+          onclick="delete_zone_group('{zone_group_id}'); return false;"
+          title="#x-zone-group-delete&amp;zone_group_id={zone_group_id}">
             <span id="i18n-delete">Delete</span>
           </a>
         </td>
@@ -82,6 +83,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_zone_groups" />
 <div class="table_meta" style="float: right">
   <a href="{$link_prefix}zone-group-edit">
     <span id="i18n-new_zone_group">New Zone Group</span>
+  </a>&#160;
+  <a href="{$link_prefix}x-zones-export-nginx-servers&amp;zone_group_id=%">
+    <span id="i18n-nginx_server_export">NGINX Server Export</span>
   </a>
 </div>
 

@@ -26,13 +26,37 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template match="/">
 
 server {
+
+  listen 80 default;
+  server_name _;
+
+  location / {
+    proxy_set_header   Host             $host;
 <xsl:for-each select="/_R_/zone_groups_get_all/zone_groups_get_all">
-	# <xsl:value-of select="zone_group_name" />
-	if ($zone_group_id = <xsl:value-of select="zone_group_id" />) {
-		break;
-		proxy_pass  http://127.0.0.1;
-	}
+    # <xsl:value-of select="zone_group_name" />
+    if ($zone_group_id = <xsl:value-of select="zone_group_id" />) {
+      break;
+      proxy_pass  http://<xsl:value-of select="zone_group_http_proxy" />;
+    }
 </xsl:for-each>
+    proxy_pass http://127.0.0.1:6081;
+  }
+
+
+  location /s/ {
+<xsl:for-each select="/_R_/zone_groups_get_all/zone_groups_get_all">
+    # <xsl:value-of select="zone_group_name" />
+    if ($zone_group_id = <xsl:value-of select="zone_group_id" /><xsl:text>) {</xsl:text>
+    <xsl:if test="contains(zone_group_static_paths,'/s/') or zone_group_id='2'">
+      root /var/www/public;
+    </xsl:if>
+    <xsl:if test="not(zone_group_id='2')">
+      break;
+      proxy_pass  http://<xsl:value-of select="zone_group_http_proxy" />;
+    </xsl:if>
+    <xsl:text>}</xsl:text>
+</xsl:for-each>
+  }
 }
 </xsl:template>
 </xsl:stylesheet>

@@ -21,19 +21,49 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <form action="{$link_prefix}zone-group-edit" method="post">
-      Name:
-      <input name="name" type="text"
-			value="{//zone_groups_get_all/zone_groups_get_all/zone_group_name}"/>
-      <input type="submit"/>
-    </form>
+
+<xsl:variable name="my_zone_group"
+select="/_R_/zone_groups_get_all/zone_groups_get_all" />
+
+<form action="{$link_prefix}zone-group-edit" method="post">
+  <input name="zone_group_id" type="hidden"
+  value="{$my_zone_group/zone_group_id}"/>
+  <table>
+    <tbody>
+    <tr>
+      <th>
+        <label for="name">
+          <span id="i18n-name">Name</span>
+        </label>
+      </th>
+      <td>
+        <input name="name" type="text" id="name"
+        value="{$my_zone_group/zone_group_name}"/>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="http_proxy">
+          <span id="i18n-http_proxy">HTTP Proxy</span>
+        </label>
+      </th>
+      <td>
+        <input name="zone_group_http_proxy" type="text" id="http_proxy"
+        value="{$my_zone_group/zone_group_http_proxy}"/>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <input type="submit"/>
+</form>
+
+
   </xsl:template>
 </xsl:stylesheet>

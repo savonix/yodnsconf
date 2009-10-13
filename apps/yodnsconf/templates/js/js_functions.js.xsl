@@ -100,6 +100,25 @@ function zd(zone) {
   }
   return false;
 }
+function delete_zone_group(zone_group_id) {
+  if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-zone-group-delete&amp;zg_id="+zone_group_id,
+    {
+      'zone_group_id': zone_group_id
+    },
+    function (data){
+      $("#zg_"+zone_group_id).remove();
+    });
+    // TODO - FIXME - Use jQuery AJAX.
+    $("#zg_"+zone_group_id).remove();
+  }
+  return false;
+}
+
+
+
+
+
 function fixup_rows() {
   // Has this already been done?
   if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {

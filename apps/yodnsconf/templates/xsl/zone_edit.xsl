@@ -64,7 +64,9 @@ function initValidation()
 </form>
 
 <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 5">
-
+<a href="{$link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id}">
+  <span id="i18n-records">Records</span>
+</a>
 <div style="float: right; width: 60%">
   <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">records_table</xsl:with-param>

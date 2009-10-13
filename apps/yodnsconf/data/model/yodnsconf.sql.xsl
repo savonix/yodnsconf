@@ -49,8 +49,18 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>soa` (
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>zone_groups` (
   `zone_group_id` int(11) NOT NULL auto_increment,
   `zone_group_name` varchar(255) NOT NULL,
+  `zone_group_http_proxy` varchar(255) NOT NULL,
+  `zone_group_smtp_proxy` varchar(255) NOT NULL,
+  `zone_group_default_proxy` varchar(255) NOT NULL,
   KEY  (`zone_group_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
+
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>zone_groups_metadata` (
+    `zone_group_id` int(11) NOT NULL auto_increment,
+    `meta_key` varchar(100) NULL,
+    `meta_value` varchar(100) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>rr` (
   `id` int(10) unsigned NOT NULL auto_increment,

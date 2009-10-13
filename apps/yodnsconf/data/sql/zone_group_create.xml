@@ -26,9 +26,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>&connection;</connection>
 	<params>
 		<param array="//_post/name" type="text"/>
+		<param array="//_post/zone_group_http_proxy" type="text"/>
+		<param array="//_post/zone_group_smtp_proxy" type="text"/>
 	</params>
 	<sql>
-		INSERT INTO &prefix;zone_groups
-		(zone_group_name) VALUES (?)
+INSERT INTO &prefix;zone_groups
+(zone_group_name,zone_group_http_proxy,zone_group_smtp_proxy) VALUES (?,?,?)
 	</sql>
 </query>
