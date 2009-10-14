@@ -21,44 +21,47 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <form method="post" name="redirect">
-			<xsl:if test="//_get/clone='true'">
-				<input type="hidden" name="clone" value="true"/>
-			</xsl:if>
-      <xsl:if test="/_R_/_get/service_id">
-        <input type="hidden" name="service_id" value="{/_R_/_get/service_id}"/>
-      </xsl:if>
-      <table width="100%" class="simple-table">
-        <tr>
-          <td>Service:</td>
-          <td>
-            <input name="name" type="text" style="width: 12em;"
-							value="{/_R_/services_get_all/services_get_all[id=/_R_/_get/service_id]/name}"/>
-          </td>
-        </tr>
-        <tr>
-          <td>:</td>
-          <td colspan="3">
-            <input name="create_ptr_record" type="checkbox" />
-          </td>
-        </tr>
-        <tr>
-          <td/>
-          <td>
-            <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-            <input name="btn_cancel" type="button" class="button" value="Cancel"
-							onclick="window.location.href='{$link_prefix}services'"/>
-          </td>
-        </tr>
-      </table>
-    </form>
+
+
+<form method="post" name="redirect">
+  <xsl:if test="//_get/clone='true'">
+    <input type="hidden" name="clone" value="true"/>
+  </xsl:if>
+  <xsl:if test="/_R_/_get/service_id">
+    <input type="hidden" name="service_id" value="{/_R_/_get/service_id}"/>
+  </xsl:if>
+  <table width="100%" class="simple-table">
+    <tr>
+      <td>Service:</td>
+      <td>
+        <input name="name" type="text" style="width: 12em;"
+          value="{/_R_/services_get_all/services_get_all[id=/_R_/_get/service_id]/name}"/>
+      </td>
+    </tr>
+    <tr>
+      <td>:</td>
+      <td colspan="3">
+        <input name="create_ptr_record" type="checkbox" />
+      </td>
+    </tr>
+    <tr>
+      <td/>
+      <td>
+        <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
+        <input name="btn_cancel" type="button" class="button" value="Cancel"
+          onclick="window.location.href='{$link_prefix}services'"/>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
   </xsl:template>
 </xsl:stylesheet>

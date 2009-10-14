@@ -116,7 +116,17 @@ function delete_zone_group(zone_group_id) {
 }
 
 
-
+function delete_service(id) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-service-delete&amp;service_id="+id,
+    {
+      'service_id': id
+    },
+    function (data){
+      $("#s_"+id).remove();
+    });
+    }
+}
 
 
 function fixup_rows() {
