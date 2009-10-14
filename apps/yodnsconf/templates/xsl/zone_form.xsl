@@ -37,6 +37,12 @@ function remove_element () {
 }
 ]]>
 </script>
+<div style="float:right">
+<xsl:value-of select="$zone_prefix/origin"/><br/>
+<a href="{//link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
+  <span id="i18n-records">Records</span>
+</a>
+</div>
 <table width="100%">
   <tbody>
 	<tr>
