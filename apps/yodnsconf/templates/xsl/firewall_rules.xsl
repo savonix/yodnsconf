@@ -34,16 +34,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<td width="22%" valign="top" class="vncellreq">Action</td>
 			<td width="78%" class="vtable">
 				<select name="type" class="formfld">
-										<option value="pass">
-
-					Pass					</option>
-										<option value="block" >
-					Block					</option>
-										<option value="reject" >
-					Reject					</option>
-									</select>
+          <option value="pass">Pass</option>
+          <option value="block">Block</option>
+          <option value="reject" >Reject</option>
+        </select>
 				<br/>
-
 				<span class="vexpl">
 					Choose what to do with packets that match the criteria specified below. <br/>
 					Hint: the difference between block and reject is that with reject, a packet (TCP RST or ICMP port unreachable for UDP) is returned to the sender, whereas with block the packet is dropped silently. In either case, the original packet is discarded. Reject only works when the protocol is set to either TCP or UDP (but not &quot;TCP/UDP&quot;) below.
@@ -69,7 +64,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<option value="pptp" >PPTP</option>
 						<option value="pppoe" >PPPOE</option>
 						<option value="enc0" >IPSEC</option>
-
 						<option value="opt1" >OPT1</option>
 				</select>
 				<br />
@@ -78,7 +72,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncellreq">Protocol</td>
-
 			<td width="78%" class="vtable">
 				<select name="proto" class="formfld" onchange="proto_change()">
 					<option value="tcp" >TCP</option>
@@ -86,21 +79,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<option value="tcp/udp" >TCP/UDP</option>
 					<option value="icmp" >ICMP</option>
 					<option value="esp" >ESP</option>
-
 					<option value="ah" >AH</option>
 					<option value="gre" >GRE</option>
 					<option value="igmp" >IGMP</option>
 					<option value="any" >any</option>
 					<option value="carp" >carp</option>
 					<option value="pfsync" >pfsync</option>
-
 				</select>
 				<br />
 				<span class="vexpl">Choose which IP protocol this rule should match. <br /> Hint: in most cases, you should specify <em>TCP</em> &#160;here.</span>
 			</td>
 		</tr>
 		<tr id="icmpbox" name="icmpbox">
-
 			<td valign="top" class="vncell">ICMP type</td>
 			<td class="vtable">
 				<select name="icmptype" class="formfld">
@@ -108,21 +98,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<option value="echorep" >Echo reply</option>
 					<option value="unreach" >Destination unreachable</option>
 					<option value="squench" >Source quench</option>
-
 					<option value="redir" >Redirect</option>
 					<option value="althost" >Alternate Host</option>
 					<option value="echoreq" >Echo</option>
 					<option value="routeradv" >Router advertisement</option>
 					<option value="routersol" >Router solicitation</option>
 					<option value="timex" >Time exceeded</option>
-
 					<option value="paramprob" >Invalid IP header</option>
 					<option value="timereq" >Timestamp</option>
 					<option value="timerep" >Timestamp reply</option>
 					<option value="inforeq" >Information request</option>
 					<option value="inforep" >Information reply</option>
 					<option value="maskreq" >Address mask request</option>
-
 					<option value="maskrep" >Address mask reply</option>
 			</select>
 			<br />
@@ -131,7 +118,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncellreq">Source</td>
-
 			<td width="78%" class="vtable">
 				<input name="srcnot" type="checkbox" id="srcnot" value="yes" />
 				<strong>not</strong>
@@ -141,7 +127,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<br />
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
-
 						<td>Type:&#160;&#160;</td>
 						<td>
 							<select name="srctype" class="formfld" onChange="typesel_change()">
@@ -149,16 +134,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<option value="single"  >Single host or alias</option>
 								<option value="network" >Network</option>
 								<option value="wanip" 	>WAN address</option>
-
 								<option value="lanip" 	>LAN address</option>
 								<option value="lan"     >LAN subnet</option>
 								<option value="pptp"    >PPTP clients</option>
 								<option value="pppoe"   >PPPoE clients</option>
 									<option value="opt1" >OPT1 subnet</option>
-									<option value="opt1ip">
-
-										OPT1 address
-									</option>
+									<option value="opt1ip">OPT1 address</option>
 							</select>
 						</td>
 					</tr>
@@ -167,49 +148,42 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td>
 							<input autocomplete='off' name="src" type="text" class="formfldalias" id="src" size="20" value=""/> /
 							<select name="srcmask" class="formfld" id="srcmask">
-
 								<option value="31" >31</option>
 								<option value="30" >30</option>
 								<option value="29" >29</option>
 								<option value="28" >28</option>
 								<option value="27" >27</option>
 								<option value="26" >26</option>
-
 								<option value="25" >25</option>
 								<option value="24" >24</option>
 								<option value="23" >23</option>
 								<option value="22" >22</option>
 								<option value="21" >21</option>
 								<option value="20" >20</option>
-
 								<option value="19" >19</option>
 								<option value="18" >18</option>
 								<option value="17" >17</option>
 								<option value="16" >16</option>
 								<option value="15" >15</option>
 								<option value="14" >14</option>
-
 								<option value="13" >13</option>
 								<option value="12" >12</option>
 								<option value="11" >11</option>
 								<option value="10" >10</option>
 								<option value="9" >9</option>
 								<option value="8" >8</option>
-
 								<option value="7" >7</option>
 								<option value="6" >6</option>
 								<option value="5" >5</option>
 								<option value="4" >4</option>
 								<option value="3" >3</option>
 								<option value="2" >2</option>
-
 								<option value="1" >1</option>
 							</select>
 						</td>
 					</tr>
 				</table>
 				<div id="showadvancedboxspr">
-
 				</div>
 			</td>
 		</tr>
@@ -218,7 +192,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<td width="78%" class="vtable">
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
-
 						<td>from:&#160;&#160;</td>
 						<td>
 							<select name="srcbeginport" class="formfld" onchange="src_rep_change();ext_change()">
@@ -226,42 +199,36 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<option value="any" >any</option>
 									<option value="3389" >MS RDP</option>
 									<option value="21" >FTP</option>
-
 									<option value="22" >SSH</option>
 									<option value="23" >Telnet</option>
 									<option value="25" >SMTP</option>
 									<option value="53" >DNS</option>
 									<option value="69" >TFTP</option>
 									<option value="80" >HTTP</option>
-
 									<option value="110" >POP3</option>
 									<option value="113" >IDENT/AUTH</option>
 									<option value="119" >NNTP</option>
 									<option value="123" >NTP</option>
 									<option value="137" >NetBIOS-NS</option>
 									<option value="138" >NetBIOS-DGM</option>
-
 									<option value="139" >NetBIOS-SSN</option>
 									<option value="143" >IMAP</option>
 									<option value="161" >SNMP</option>
 									<option value="162" >SNMP-Trap</option>
 									<option value="389" >LDAP</option>
 									<option value="443" >HTTPS</option>
-
 									<option value="445" >MS DS</option>
 									<option value="465" >SMTP/S</option>
 									<option value="500" >isakmp</option>
 									<option value="993" >IMAP/S</option>
 									<option value="995" >POP3/S</option>
 									<option value="1194" >OpenVPN</option>
-
 									<option value="1512" >MS WINS</option>
 									<option value="1701" >L2TP</option>
 									<option value="1723" >PPTP</option>
 									<option value="1812" >Radius</option>
 									<option value="1813" >Radius-accounting</option>
 									<option value="3000" >HBCI</option>
-
 									<option value="4500" >IPSec NAT-T</option>
 									<option value="5190" >ICQ</option>
 									<option value="5900" >VNC</option>
@@ -277,49 +244,42 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<select name="srcendport" class="formfld" onchange="ext_change()">
 								<option value="">(other)</option>
 								<option value="any" >any</option>
-
 									<option value="3389" >MS RDP</option>
 									<option value="21" >FTP</option>
 									<option value="22" >SSH</option>
 									<option value="23" >Telnet</option>
 									<option value="25" >SMTP</option>
 									<option value="53" >DNS</option>
-
 									<option value="69" >TFTP</option>
 									<option value="80" >HTTP</option>
 									<option value="110" >POP3</option>
 									<option value="113" >IDENT/AUTH</option>
 									<option value="119" >NNTP</option>
 									<option value="123" >NTP</option>
-
 									<option value="137" >NetBIOS-NS</option>
 									<option value="138" >NetBIOS-DGM</option>
 									<option value="139" >NetBIOS-SSN</option>
 									<option value="143" >IMAP</option>
 									<option value="161" >SNMP</option>
 									<option value="162" >SNMP-Trap</option>
-
 									<option value="389" >LDAP</option>
 									<option value="443" >HTTPS</option>
 									<option value="445" >MS DS</option>
 									<option value="465" >SMTP/S</option>
 									<option value="500" >isakmp</option>
 									<option value="993" >IMAP/S</option>
-
 									<option value="995" >POP3/S</option>
 									<option value="1194" >OpenVPN</option>
 									<option value="1512" >MS WINS</option>
 									<option value="1701" >L2TP</option>
 									<option value="1723" >PPTP</option>
 									<option value="1812" >Radius</option>
-
 									<option value="1813" >Radius-accounting</option>
 									<option value="3000" >HBCI</option>
 									<option value="4500" >IPSec NAT-T</option>
 									<option value="5190" >ICQ</option>
 									<option value="5900" >VNC</option>
 									<option value="5999" >CVSup</option>
-
 							</select>
 							<input autocomplete='off' class="formfldalias" name="srcendport_cust" id="srcendport_cust" type="text" size="5" value=""/>
 						</td>
@@ -327,28 +287,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</table>
 				<br />
 				<span class="vexpl">Specify the port or port range for the source of the packet for this rule. This is usually not equal to the destination port range (and is often &quot;any&quot;). <br /> Hint: you can leave the <em>'to'</em> field empty if you only want to filter a single port</span><br/>
-
 				<span class="vexpl"><B>NOTE:</B> You will not need to enter anything here in 99.99999% of the circumstances.  If you're unsure, do not enter anything here!</span>
 			</td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncellreq">Source OS</td>
 			<td width="78%" class="vtable">OS Type:&#160;
-
 				<select name="os" id="os" class="formfld">
 						<option value="" >any</option>
 						<option value="AIX" >AIX</option>
 						<option value="Linux" >Linux</option>
 						<option value="FreeBSD" >FreeBSD</option>
 						<option value="NetBSD" >NetBSD</option>
-
 						<option value="OpenBSD" >OpenBSD</option>
 						<option value="Solaris" >Solaris</option>
 						<option value="MacOS" >MacOS</option>
 						<option value="Windows" >Windows</option>
 						<option value="Novell" >Novell</option>
 						<option value="NMAP" >NMAP</option>
-
 				</select>
 				<br />
 				Note: this only works for TCP rules

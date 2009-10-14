@@ -21,8 +21,7 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
@@ -63,17 +62,17 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
     <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
       <tr>
         <td>
-          <a href="{$link_prefix}ip-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
             <xsl:value-of select="ip_id"/>
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ip-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
             <xsl:value-of select="ip_addr"/>
           </a>
         </td>
         <td align="right">
-          <a href="#x-ip-delete&amp;ip_id={ip_id}"
+          <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
           onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
         </td>
       </tr>
