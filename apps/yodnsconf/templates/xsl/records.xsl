@@ -39,11 +39,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
     $(":checkbox[name='record_id[]']").attr("checked","checked");
   }
 </script>
-<div style="float:right">
-<a href="{$link_prefix}zone-edit&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
-  <xsl:value-of select="/_R_/zone_get_by_id/zone_get_by_id/origin"/>
-</a>
-</div>
+
 <form method="post" action="{$link_prefix}x-records-delete">
 <input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
 <div class="tableframe">

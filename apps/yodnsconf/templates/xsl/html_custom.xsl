@@ -23,39 +23,43 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:output method="xml" indent="yes" encoding="UTF-8"
-  omit-xml-declaration="no" doctype-public="-//W3C//DTD XHTML 1.1//EN"
-  doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" />
+  <xsl:output doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+  method="xml" doctype-public="-//W3C//DTD XHTML 1.1//EN" encoding="UTF-8" 
+  indent="yes" omit-xml-declaration="no" />
   <xsl:strip-space elements="*"/>
   <xsl:template match="/">
-    <html>
-      <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
-      <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
-      <xsl:variable name="my18n"
-        select="document('../../i18n/en_US/yodnsconf.xml')/i18n"/>
 
-      <xsl:call-template name="head">
-        <xsl:with-param name="link_prefix" select="$link_prefix"/>
-        <xsl:with-param name="path_prefix" select="$path_prefix"/>
-      </xsl:call-template>
-      <body>
-				<xsl:for-each select="//pre_body_content">
-					<xsl:sort select="priority" order="ascending"/>
-					<xsl:apply-templates select="nodes/*"/>
-				</xsl:for-each>
 
-        <xsl:call-template name="main">
-          <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="path_prefix" select="$path_prefix"/>
-          <xsl:with-param name="i18n" select="$my18n"/>
-        </xsl:call-template>
+<html>
+  <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
+  <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
+  <xsl:variable name="my18n"
+  select="document('../../i18n/en_US/yodnsconf.xml')/i18n"/>
 
-        <xsl:for-each select="//footer_nodes">
-          <xsl:sort select="priority" order="ascending"/>
-          <xsl:apply-templates select="nodes/*"/>
-        </xsl:for-each>
-      </body>
-    </html>
+  <xsl:call-template name="head">
+    <xsl:with-param name="link_prefix" select="$link_prefix"/>
+    <xsl:with-param name="path_prefix" select="$path_prefix"/>
+  </xsl:call-template>
+  <body>
+    <xsl:for-each select="//pre_body_content">
+      <xsl:sort select="priority" order="ascending"/>
+      <xsl:apply-templates select="nodes/*"/>
+    </xsl:for-each>
+
+    <xsl:call-template name="main">
+      <xsl:with-param name="link_prefix" select="$link_prefix"/>
+      <xsl:with-param name="path_prefix" select="$path_prefix"/>
+      <xsl:with-param name="i18n" select="$my18n"/>
+    </xsl:call-template>
+
+    <xsl:for-each select="//footer_nodes">
+      <xsl:sort select="priority" order="ascending"/>
+      <xsl:apply-templates select="nodes/*"/>
+    </xsl:for-each>
+  </body>
+</html>
+
+
   </xsl:template>
 
 
@@ -116,43 +120,49 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 <div style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
   <div style="float: right;">
-  <form action="{$link_prefix}index" method="get">
-  <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
-    <!-- to do: match selection -->
-    <input type="hidden" name="nid" value="index"/>
-    <select name="zone_group_id" onchange="location.href='{$link_prefix}index&amp;zone_group_id='+$(this).val()">
-      <option value="%">Select All</option>
-      <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
-      <xsl:variable name="zone_group_id" select="zone_group_id"/>
-      <option value="{zone_group_id}">
-        <xsl:if test="//runtime/zone_group_id=$zone_group_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-        <xsl:value-of select="zone_group_name"/>
-      </option>
-      </xsl:for-each>
-    </select>
-    <input type="submit" value="Go"/>
-  </xsl:if>
-  </form>
+    <form action="{$link_prefix}index" method="get">
+      <!-- to do: match selection -->
+      <input type="hidden" name="nid" value="index"/>
+      <select name="zone_group_id" onchange="location.href='{$link_prefix}index&amp;zone_group_id='+$(this).val()">
+        <option value="%">Select All</option>
+        <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
+        <xsl:variable name="zone_group_id" select="zone_group_id"/>
+        <option value="{zone_group_id}">
+          <xsl:if test="//runtime/zone_group_id=$zone_group_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+          <xsl:value-of select="zone_group_name"/>
+        </option>
+        </xsl:for-each>
+      </select>
+      <input type="submit" value="Go"/>
+    </form>
   </div>
 
   <div style="float: right;">
-  <form action="{$link_prefix}" method="get">
-  <xsl:if test="not(/_R_/_get/zone or /_R_/_get/origin)">
-    <!-- to do: match selection -->
-    <input type="hidden" name="nid" value="zone-edit"/>
-    <select name="zone_group_id" onchange="location.href='{$link_prefix}zone-edit&amp;zone='+$(this).val()">
-      <option value="%">Quick Zone Links</option>
-      <xsl:for-each select="//zones_get_all/zones_get_all[notes='quicklink']">
-      <option value="{id}">
-        <xsl:if test="//_get/zone_id=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-        <xsl:value-of select="origin"/>
-      </option>
-      </xsl:for-each>
-    </select>
-    <input type="submit" value="Go"/>
-  </xsl:if>
-  </form>
+    <form action="{$link_prefix}" method="get">
+      <!-- to do: match selection -->
+      <input type="hidden" name="nid" value="zone-edit"/>
+      <select name="zone_group_id" onchange="location.href='{$link_prefix}zone-edit&amp;zone='+$(this).val()">
+        <option value="%">Quick Zone Links</option>
+        <xsl:for-each select="//zones_get_all/zones_get_all[notes='quicklink']">
+        <option value="{id}">
+          <xsl:if test="//_get/zone_id=."><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+          <xsl:value-of select="origin"/>
+        </option>
+        </xsl:for-each>
+      </select>
+      <input type="submit" value="Go"/>
+    </form>
   </div>
+  <xsl:if test="/_R_/zone_get_by_id/zone_get_by_id/id">
+    <div style="float:right;padding:2px;">
+      <a href="{$link_prefix}zone-edit&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
+        <xsl:value-of select="/_R_/zone_get_by_id/zone_get_by_id/origin"/>
+      </a>
+      <a href="{//link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
+        <span id="i18n-records">Records</span>
+      </a>
+    </div>
+  </xsl:if>
 </div>
 
 
