@@ -575,7 +575,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</td>
 		</tr>
 
-		
 		<tr>
 			<td width="22%" valign="top" class="vncell">Gateway</td>
 			<td width="78%" class="vtable">

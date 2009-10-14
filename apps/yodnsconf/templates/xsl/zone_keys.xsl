@@ -21,9 +21,8 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:include href="zone_form.xsl"/>
@@ -31,15 +30,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <table>
-    <form method="post" name="myform">
-        <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
-        <xsl:for-each select="//zone_meta/meta">
-          <tr><td><xsl:value-of select="meta_key"/>:</td>
-          <td><input type="text" name="{meta_key}"/></td></tr>
-        </xsl:for-each>
-    </form>
-    </table>
+
+
+<table>
+<form method="post" name="myform">
+    <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
+    <xsl:for-each select="//zone_meta/meta">
+      <tr><td><xsl:value-of select="meta_key"/>:</td>
+      <td><input type="text" name="{meta_key}"/></td></tr>
+    </xsl:for-each>
+</form>
+</table>
 
 
   </xsl:template>

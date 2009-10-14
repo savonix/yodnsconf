@@ -21,87 +21,87 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">my_host_names</xsl:with-param>
-      <xsl:with-param name="no-sort-column">,
-        headers: { 0: {sorter: "text"}, 1: {sorter: "text"}, 2: {sorter: false}, 3: {sorter: false}, 4: {sorter: false} }
-			</xsl:with-param>
-    </xsl:call-template>
-    <div class="tableframe">
-      <table width="100%" class="tablesorter" id="my_host_names">
-        <thead>
-          <tr>
-            <th>
-              Host Name
-            </th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Clone</th>
-          </tr>
-          <tr>
-            <form method="get">
-              <input type="hidden" name="nid" value="hosts"/>
-              <td>
-                <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
-              </td>
-              <td></td>
-              <td align="right">
-                <input name="Filter" type="submit" id="Filter" value="Filter"/>
-              </td>
-							<td>
-							</td>
-            </form>
-          </tr>
-        </thead>
-				<tbody>
-        <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-          <tr id="h_{id}">
-            <td>
-              <a href="{$link_prefix}host-edit&amp;host={host}&amp;host_id={id}&amp;cloner=0">
-                <xsl:value-of select="host"/>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
-								Edit
-              </a>
-            </td>
-            <td align="right">
-              <a href="{$link_prefix}x-host-delete&amp;host_id={id}&amp;cloner=0"
-								onclick="delete_host('{id}'); return false;">
-								Delete
-							</a>
-            </td>
-            <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true&amp;cloner=1">
-								Clone
-              </a>
-            </td>
-          </tr>
-        </xsl:for-each>
-				</tbody>
-      </table>
-    </div>
-    <div  class="prefoot" style="text-align: right">
-      <a href="{$link_prefix}x-hosts-export">/etc/hosts Export</a>&#160;
-      <a href="{$link_prefix}x-hosts-export-unbound">Unbound Export</a>&#160;
-			<a href="{$link_prefix}x-hosts-export-puppet">Puppet Export</a>&#160;
-      <a href="{$link_prefix}x-hosts-export-nagios">Nagios3 Export</a>&#160;
-      <a href="{$link_prefix}host-create">New Host</a>&#160;
-      <a href="{$link_prefix}hostgroups">Hostgroups</a>
-    </div>
-    <div class="table_controls">
-    <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">my_host_names</xsl:with-param>
-    </xsl:call-template>
-    </div>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
+
+<div class="tableframe">
+  <table width="100%" class="tablesorter" id="my_host_names">
+    <thead>
+      <tr>
+        <th>
+          Host Name
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Clone</th>
+      </tr>
+      <tr>
+        <form method="get">
+          <input type="hidden" name="nid" value="hosts"/>
+          <td>
+            <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
+          </td>
+          <td></td>
+          <td align="right">
+            <input name="Filter" type="submit" id="Filter" value="Filter"/>
+          </td>
+          <td>
+          </td>
+        </form>
+      </tr>
+    </thead>
+    <tbody>
+    <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
+      <tr id="h_{id}">
+        <td>
+          <a href="{$link_prefix}host-edit&amp;host={host}&amp;host_id={id}&amp;cloner=0">
+            <xsl:value-of select="host"/>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
+            Edit
+          </a>
+        </td>
+        <td align="right">
+          <a href="{$link_prefix}x-host-delete&amp;host_id={id}&amp;cloner=0"
+            onclick="delete_host('{id}'); return false;">
+            Delete
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true&amp;cloner=1">
+            Clone
+          </a>
+        </td>
+      </tr>
+    </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+<div  class="prefoot" style="text-align: right">
+  <a href="{$link_prefix}x-hosts-export">/etc/hosts Export</a>&#160;
+  <a href="{$link_prefix}x-hosts-export-unbound">Unbound Export</a>&#160;
+  <a href="{$link_prefix}x-hosts-export-puppet">Puppet Export</a>&#160;
+  <a href="{$link_prefix}x-hosts-export-nagios">Nagios3 Export</a>&#160;
+  <a href="{$link_prefix}host-create">New Host</a>&#160;
+  <a href="{$link_prefix}hostgroups">Hostgroups</a>
+</div>
+<div class="table_controls">
+<xsl:call-template name="pager">
+  <xsl:with-param name="my-table">my_host_names</xsl:with-param>
+</xsl:call-template>
+</div>
+
+
   </xsl:template>
 </xsl:stylesheet>
