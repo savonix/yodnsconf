@@ -21,68 +21,68 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
-      <xsl:with-param name="no-sort-column">,
-        headers: { 2: {sorter: false} }
-			</xsl:with-param>
-    </xsl:call-template>
-    <div class="tableframe">
-      <table width="100%" class="tablesorter" id="myhostgroups">
-        <thead>
-          <tr>
-            <th>Hostgroup</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Clone</th>
-          </tr>
-        </thead>
-				<tbody>
-        <xsl:for-each select="/_R_/hostgroups_get_all/hostgroups_get_all">
-          <tr id="hg_{id}">
-            <td>
-              <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
-                <xsl:value-of select="name"/>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
-								Edit
-              </a>
-            </td>
-            <td align="right">
-              <a href="{$link_prefix}x-hostgroup-delete&amp;hostgroup_id={id}&amp;cloner=0"
-								onclick="delete_hostgroup('{id}',this); return false;">
-								Delete
-							</a>
-            </td>
-            <td>
-              <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;clone=true&amp;cloner=1">
-								Clone
-              </a>
-            </td>
-          </tr>
-        </xsl:for-each>
-				</tbody>
-      </table>
-    </div>
-		<br/>
-    <div class="table_controls">
-    <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
-    </xsl:call-template>
-    </div>
-    <div class="table_meta" style="float: right">
-      <a href="{$link_prefix}x-hostgroups-export">Nagios3 Export</a>&#160;
-      <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
-    </div>
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
+
+
+<div class="tableframe">
+  <table width="100%" class="tablesorter" id="myhostgroups">
+    <thead>
+      <tr>
+        <th>Hostgroup</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Clone</th>
+      </tr>
+    </thead>
+    <tbody>
+    <xsl:for-each select="/_R_/hostgroups_get_all/hostgroups_get_all">
+      <tr id="hg_{id}">
+        <td>
+          <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
+            <xsl:value-of select="name"/>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;cloner=0">
+            Edit
+          </a>
+        </td>
+        <td align="right">
+          <a href="{$link_prefix}x-hostgroup-delete&amp;hostgroup_id={id}&amp;cloner=0"
+            onclick="delete_hostgroup('{id}',this); return false;">
+            Delete
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}hostgroup-edit&amp;hostgroup_id={id}&amp;clone=true&amp;cloner=1">
+            Clone
+          </a>
+        </td>
+      </tr>
+    </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+<br/>
+<div class="table_controls">
+<xsl:call-template name="pager">
+  <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
+</xsl:call-template>
+</div>
+<div class="table_meta" style="float: right">
+  <a href="{$link_prefix}x-hostgroups-export">Nagios3 Export</a>&#160;
+  <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
+</div>
+
+
   </xsl:template>
 </xsl:stylesheet>

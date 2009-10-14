@@ -55,7 +55,8 @@ function initValidation()
 }
 ]]>
 </script>
-<form method="post" name="record" onsubmit="return validateStandard(document.forms['record']);">
+<form method="post" name="record"
+onsubmit="return validateStandard(document.forms['record']);">
 
   <xsl:if test="/_R_/_get/id">
     <input type="hidden" name="id" value="{/_R_/_get/id}"/>

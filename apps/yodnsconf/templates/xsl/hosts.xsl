@@ -28,12 +28,11 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">my_hosts</xsl:with-param>
-      <xsl:with-param name="no-sort-column">,
-        headers: { 0: {sorter: "text"}, 1: {sorter: "text"}, 2: {sorter: false}, 3: {sorter: false}, 4: {sorter: false} }
-			</xsl:with-param>
-    </xsl:call-template>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
+
     <div class="tableframe">
       <table width="100%" class="tablesorter" id="my_hosts">
         <thead>
