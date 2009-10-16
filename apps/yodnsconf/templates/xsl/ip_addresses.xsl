@@ -59,7 +59,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
       </tr>
     </thead>
     <tbody>
-    <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
+      <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
       <tr>
         <td>
           <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
@@ -76,7 +76,30 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
           onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
         </td>
       </tr>
-    </xsl:for-each>
+      </xsl:for-each>
+      <tr>
+        <td colspan="3">
+          <span id="i18n-ips_from_zone_records">IP Addresses from Zone Records</span>
+        </td>
+      </tr>
+      <xsl:for-each select="/_R_/ip_get_distinct_public/ip_get_distinct_public">
+      <tr>
+        <td>
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+            <xsl:value-of select="id"/>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+            <xsl:value-of select="data"/>
+          </a>
+        </td>
+        <td align="right">
+          <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
+          onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
+        </td>
+      </tr>
+      </xsl:for-each>
     </tbody>
   </table>
 </div>

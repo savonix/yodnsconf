@@ -26,8 +26,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>&connection_read;</connection>
 	<params>
 		<param name="_post/ip_addr" type="text" />
+		<param name="_post/ip_description" type="text" />
+		<param name="_post/ip_notes" type="text" />
 	</params>
   <sql>
-  INSERT INTO &prefix;ip_addr (ip_addr) VALUES (?)
+  INSERT INTO &prefix;ip_addr (ip_addr,ip_description,ip_notes) VALUES (?,?,?)
   </sql>
 </query>

@@ -29,8 +29,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:param name="path_prefix"/>
 
 
-<script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 <![CDATA[
 function initValidation()
 {
@@ -165,7 +164,7 @@ onsubmit="return validateStandard(document.forms['record']);">
     </tr>
   </table>
 </form>
-<script language="javascript">
+<script type="text/javascript">
 initValidation();
 </script>
 

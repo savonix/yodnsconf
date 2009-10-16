@@ -30,8 +30,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:param name="i18n"/>
 
 
-<script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 <![CDATA[
 function initValidation()
 {
@@ -85,7 +84,7 @@ select="/_R_/redirects_get_all/redirects_get_all" />
     </tr>
   </table>
 </form>
-<script language="javascript">
+<script type="text/javascript">
 initValidation();
 </script>
 

@@ -30,32 +30,47 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:param name="i18n"/>
 
 
-<script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-<script language="javascript">
-<![CDATA[
-function initValidation()
-{
-    var objForm = document.forms["ip_addr_form"];
-    objForm.http_host.required = 1;
-    objForm.redirect.required = 1;
-}
-]]>
-</script>
 <form method="post" name="ip_addr_form" onSubmit="return validateStandard(this);">
-  <xsl:if test="/_R_/_get/ip_addr">
+  <xsl:if test="/_R_/_get/ip_id">
     <input type="hidden" name="action" value="edit"/>
+    <input type="hidden" name="ip_id" value="{//_get/ip_id}"/>
   </xsl:if>
-  <xsl:if test="not(/_R_/_get/ip_addr)">
+  <xsl:if test="not(/_R_/_get/ip_id)">
     <input type="hidden" name="action" value="create"/>
   </xsl:if>
   <table>
     <tbody>
       <tr>
         <th>
-          <span id="i18n-ip_addr">IP Address</span>
+          <label for="ip_addr">
+            <span id="i18n-ip_addr">IP Address</span>
+          </label>
         </th>
         <td>
-          <input name="ip_addr" type="text" value="{/_R_/_get/http_host}"/>
+          <input name="ip_addr" id="ip_addr" type="text"
+          value="{//ip_addr_get_all/ip_addr}"/>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label for="ip_description">
+            <span id="i18n-description">Description</span>
+          </label>
+        </th>
+        <td>
+          <input name="ip_description" id="ip_description" type="text"
+          value="{//ip_addr_get_all/ip_description}"/>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <label for="ip_notes">
+            <span id="i18n-notes">Notes</span>
+          </label>
+        </th>
+        <td>
+          <input id="ip_notes" name="ip_notes" type="text"
+          value="{//ip_addr_get_all/ip_notes}"/>
         </td>
       </tr>
       <tr>
@@ -69,9 +84,6 @@ function initValidation()
     </tbody>
   </table>
 </form>
-<script language="javascript">
-initValidation();
-</script>
 
 
   </xsl:template>

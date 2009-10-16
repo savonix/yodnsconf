@@ -33,7 +33,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
 
 
-<script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
 <script type="text/javascript">
 <![CDATA[
 function initValidation()
