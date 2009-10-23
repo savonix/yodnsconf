@@ -21,8 +21,7 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
@@ -32,6 +31,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
 
 <script type="text/javascript">
 <![CDATA[
@@ -46,35 +48,9 @@ function initValidation()
 ]]>
 </script>
 
-<form method="post" onSubmit="return validateStandard(this);" name="myform">
-  <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
-    <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
-    <input type="hidden" name="action" value="edit"/>
-    <xsl:call-template name="zone-form">
-      <xsl:with-param name="zone_prefix" select="/_R_/zone_get_by_id/zone_get_by_id"/>
-    </xsl:call-template>
-  </xsl:if>
-  <xsl:if test="not(/_R_/_get/zone) and not(/_R_/_get/origin)">
-    <input type="hidden" name="action" value="create"/>
-    <xsl:call-template name="zone-form">
-      <xsl:with-param name="zone_prefix" select="/_R_/config/zone_defaults"/>
-    </xsl:call-template>
-  </xsl:if>
-</form>
-
 <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 5">
-
-<div style="float: right; width: 60%">
-  <xsl:call-template name="jquery-setup">
-    <xsl:with-param name="my-table">records_table</xsl:with-param>
-    <xsl:with-param name="no-sort-column">,
-    headers: {
-        2: {sorter: false}
-    }
-    </xsl:with-param>
-  </xsl:call-template>
-
-  <table style="width: 100%" class="tablesorter" id="records_table">
+<div style="float: right; width: 50%;">
+  <table class="tablesorter" id="records_table">
     <thead>
       <tr>
         <th>Name</th>
@@ -104,18 +80,33 @@ function initValidation()
       </xsl:for-each>
     </tbody>
   </table>
-</div>
-</xsl:if>
 <xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
   <xsl:call-template name="pager">
     <xsl:with-param name="my-table">records_table</xsl:with-param>
   </xsl:call-template>
 </xsl:if>
-<!--
-<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 4">
-  <iframe src="http://www.{//origin}" frameborder="0" height="240px" style="width: 80%"></iframe>
+</div>
 </xsl:if>
--->
+
+
+<div style=" width: 50%;">
+<form method="post" onSubmit="return validateStandard(this);" name="myform">
+  <xsl:if test="/_R_/_get/zone or /_R_/_get/origin">
+    <input type="hidden" name="zone" value="{/_R_/zone_get_by_id/zone_get_by_id/id}"/>
+    <input type="hidden" name="action" value="edit"/>
+    <xsl:call-template name="zone-form">
+      <xsl:with-param name="zone_prefix" select="/_R_/zone_get_by_id/zone_get_by_id"/>
+    </xsl:call-template>
+  </xsl:if>
+  <xsl:if test="not(/_R_/_get/zone) and not(/_R_/_get/origin)">
+    <input type="hidden" name="action" value="create"/>
+    <xsl:call-template name="zone-form">
+      <xsl:with-param name="zone_prefix" select="/_R_/config/zone_defaults"/>
+    </xsl:call-template>
+  </xsl:if>
+</form>
+
+
 <xsl:variable name="origin_link" select="substring(//origin,0,string-length(//origin))"/>
 <a class="thickbox" href="http://www.{$origin_link}/?keepThis=true&amp;TB_iframe=true&amp;height=400&amp;width=600">Preview</a>
 <br/>
@@ -125,6 +116,6 @@ function initValidation()
 <script type="text/javascript">
 initValidation();
 </script>
-
+</div>
   </xsl:template>
 </xsl:stylesheet>
