@@ -84,6 +84,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
         </td>
       </tr>
       <xsl:for-each select="/_R_/ip_get_distinct_public/ip_get_distinct_public">
+      <xsl:sort select="data"/>
       <tr>
         <td>
           <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
@@ -107,9 +108,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
 <xsl:call-template name="pager">
   <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
 </xsl:call-template>
-<div style="text-align: right">
-  <a href="{$link_prefix}x-ip-addr-export">Export</a>
-</div>
 
 
   </xsl:template>
