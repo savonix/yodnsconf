@@ -67,7 +67,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}"
+          title="{ip_description} {ip_notes}">
             <xsl:value-of select="ip_addr"/>
           </a>
         </td>
