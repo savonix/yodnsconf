@@ -67,12 +67,15 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}"
+          <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_addr={ip_addr}"
           title="{ip_description} {ip_notes}">
             <xsl:value-of select="ip_addr"/>
           </a>
         </td>
         <td align="right">
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+            <span id="i18n-edit">Edit</span>
+          </a>
           <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
           onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
         </td>
@@ -92,11 +95,14 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_id={ip_id}">
             <xsl:value-of select="data"/>
           </a>
         </td>
         <td align="right">
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+            <span id="i18n-edit">Edit</span>
+          </a>
           <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
           onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
         </td>

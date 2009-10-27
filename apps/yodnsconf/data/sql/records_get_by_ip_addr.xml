@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: records_get_by_profile_id.xml
+Component: records_get_by_ip_addr.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,12 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="records_get_by_profile_id">
+<query name="records_get_by_id">
 	<connection>&connection_read;</connection>
 	<params>
-		<param name="//_post/profile_id" type="integer"/>
+		<param name="//_get/ip_addr" type="text"/>
 	</params>
 	<sql>
-		SELECT * FROM &prefix;rr WHERE zone = ?
+		SELECT * FROM &prefix;rr WHERE data = ?
 	</sql>
 </query>
