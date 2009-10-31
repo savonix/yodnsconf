@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: host_update.xml
+Component: ip_get_distinct_private.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,17 +22,10 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="host_update">
-	<connection>&connection;</connection>
-	<params>
-		<param name="_post/ip" type="text"/>
-		<param name="_post/host" type="text"/>
-		<param name="_post/notes" type="text"/>
-		<param name="_post/priority" type="integer"/>
-		<param name="_post/macaddr" type="text" default="NULL"/>
-		<param name="_post/host_id" type="integer"/>
-	</params>
-	<sql>
-	UPDATE &prefix;hosts SET ip=?,host=?,notes=?,priority=?,macaddr=? WHERE id=?
-	</sql>
+<query name="ip_get_distinct_private">
+	<connection>&connection_read;</connection>
+	<params/>
+  <sql>
+  SELECT DISTINCT ip FROM &prefix;hosts
+  </sql>
 </query>

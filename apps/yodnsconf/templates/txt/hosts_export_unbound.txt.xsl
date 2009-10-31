@@ -24,12 +24,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
-<xsl:text>
 
   <xsl:for-each select="/_R_/ip_get_distinct_public/ip_get_distinct_public">
 <xsl:text>    access-control: </xsl:text><xsl:value-of select="data"/><xsl:text> allow
 </xsl:text>
 </xsl:for-each>
+<xsl:text>
 	access-control: 192.168.0.0/16 allow
 	access-control: 172.20.0.184/32 allow
 	access-control: 192.168.134.22/32 allow

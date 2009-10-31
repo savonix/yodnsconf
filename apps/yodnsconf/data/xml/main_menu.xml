@@ -69,6 +69,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <key>hostgroups</key>
       <url>hostgroups</url>
     </item>
+    <item active="1">
+      <key>ip_private</key>
+      <url>ydc-ip-addr-private</url>
+    </item>
   </item>
   <item active="1">
     <key>services</key>

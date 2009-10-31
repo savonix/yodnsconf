@@ -76,7 +76,7 @@ function initValidation()
       <td>Hosts:</td>
       <td colspan="3">
         <input name="host" type="text" style="width: 60em;"
-          value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/host}"/>
+        value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/host}"/>
       </td>
     </tr>
     <xsl:if test="//_get/nid='host-edit'">
@@ -87,6 +87,13 @@ function initValidation()
       </td>
     </tr>
     </xsl:if>
+    <tr>
+      <td>Notes:</td>
+      <td colspan="3">
+        <input name="notes" type="text" style="width: 30em;"
+        value="{/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/notes}"/>
+      </td>
+    </tr>
     <xsl:if test="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/priority=0">
     <tr>
       <td>MAC Address:</td>

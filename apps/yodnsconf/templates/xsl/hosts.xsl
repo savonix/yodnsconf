@@ -55,10 +55,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
               <td align="right">
                 <input name="Filter" type="submit" id="Filter" value="Filter"/>
               </td>
-							<td>
-							</td>
-							<td>
-							</td>
+							<td/>
+							<td/>
             </form>
           </tr>
         </thead>
@@ -73,7 +71,14 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
             <td>
               <a href="{$link_prefix}host-edit&amp;host={host}&amp;host_id={id}&amp;cloner=0">
 								<xsl:if test="string-length(host) &gt; 80">
-									<xsl:attribute name="title" select="host"/>
+									<xsl:attribute name="title">
+									  <xsl:value-of select="host"/>: <xsl:value-of select="notes"/>
+                  </xsl:attribute>
+								</xsl:if>
+								<xsl:if test="not(string-length(host) &gt; 80)">
+									<xsl:attribute name="title">
+									  <xsl:value-of select="notes"/>
+                  </xsl:attribute>
 								</xsl:if>
 								<xsl:value-of select="substring(host,0,80)"/>
 								<xsl:if test="string-length(host) &gt; 80">
