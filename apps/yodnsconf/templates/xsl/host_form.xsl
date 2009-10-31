@@ -54,6 +54,7 @@ function initValidation()
   <xsl:if test="not(/_R_/_get/host_id)">
     <input type="hidden" name="post_type" value="create"/>
   </xsl:if>
+  <div class="tableframe">
   <table width="80%" class="simple-table bottom-edge">
     <xsl:if test="//_get/nid='host-name-edit'">
       <input type="hidden" name="ip" value="300.300.300.300"/>
@@ -133,6 +134,7 @@ function initValidation()
       </td>
     </tr>
   </table>
+  </div>
 </form>
 <script language="javascript">
 initValidation();
