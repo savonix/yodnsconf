@@ -41,9 +41,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
               <span id="i18n-address">Address</span>
             </th>
             <th>Hostname</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Clone</th>
+            <th class="{{sorter: false}}">Edit</th>
+            <th class="{{sorter: false}}">Delete</th>
+            <th class="{{sorter: false}}">Clone</th>
           </tr>
           <tr>
             <form method="get">

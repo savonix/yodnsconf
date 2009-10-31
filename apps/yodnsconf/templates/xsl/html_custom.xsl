@@ -197,6 +197,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
+  <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.metadata.js"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
   <script type="text/javascript" src="{$link_prefix}x-javascript"></script>
   <script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
