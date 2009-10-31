@@ -50,7 +50,7 @@ function delete_host(id) {
   }
 }
 
-function delete_ip(ip_address,row) {
+function delete_ip(ip_address) {
     if(confirm('Are you sure?')){
     $.post("<xsl:value-of select="//link_prefix"/>x-ip-delete&amp;ip_address="+ip_address,
     {

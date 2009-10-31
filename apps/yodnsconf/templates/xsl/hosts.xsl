@@ -64,7 +64,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
         <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
           <tr id="h_{id}">
             <td>
-              <a href="{$link_prefix}host-edit&amp;host_ip={ip}&amp;host_id={id}&amp;cloner=0">
+              <a href="{$link_prefix}ydc-hosts-get-by-ip-addr&amp;ip_addr={ip}">
                 <xsl:value-of select="ip"/>
               </a>
             </td>

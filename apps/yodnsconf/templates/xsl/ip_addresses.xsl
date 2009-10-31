@@ -112,24 +112,25 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
         </td>
       </tr>
       </xsl:for-each>
-      <xsl:for-each select="/_R_/ip_get_distinct_private/ip_get_distinct_private">
+      <!-- PRIVATE IP ADDRESSES -->
+      <xsl:for-each select="//ip_get_distinct_private">
       <tr>
         <td>
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ydc-ip-hosts-edit&amp;id={id}">
             <xsl:value-of select="id"/>
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ydc-hosts-get-by-ip-addr&amp;ip_addr={ip}">
             <xsl:value-of select="ip"/>
           </a>
         </td>
         <td align="right">
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}host-edit&amp;id={id}">
             <span id="i18n-edit">Edit</span>
           </a>
-          <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
-          onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
+          <a href="#x-ydc-ip-addr-delete&amp;id={id}"
+          onclick="delete_ip('{id}'); return false;">Delete</a>
         </td>
       </tr>
       </xsl:for-each>
