@@ -43,8 +43,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
         <th>
           <span id="i18n-ip_addr">IP Address</span>
         </th>
-        <th></th>
+        <th width="160"/>
       </tr>
+      <xsl:if test="not(//_get/nid='ydc-ip-addr-private')">
       <tr>
         <form method="get">
           <input type="hidden" name="nid" value="ydc-ip-addr"/>
@@ -57,8 +58,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
           </td>
         </form>
       </tr>
+      </xsl:if>
     </thead>
     <tbody>
+      <xsl:if test="not(//_get/nid='ydc-ip-addr-private')">
       <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
       <tr>
         <td>
@@ -86,6 +89,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
           <span id="i18n-ips_from_zone_records">IP Addresses from Zone Records</span>
         </td>
       </tr>
+      </xsl:if>
       <xsl:for-each select="/_R_/ip_get_distinct_public/ip_get_distinct_public">
       <xsl:sort select="data"/>
       <tr>
@@ -97,6 +101,27 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
         <td>
           <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_id={ip_id}">
             <xsl:value-of select="data"/>
+          </a>
+        </td>
+        <td align="right">
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+            <span id="i18n-edit">Edit</span>
+          </a>
+          <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
+          onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
+        </td>
+      </tr>
+      </xsl:for-each>
+      <xsl:for-each select="/_R_/ip_get_distinct_private/ip_get_distinct_private">
+      <tr>
+        <td>
+          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+            <xsl:value-of select="id"/>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_id={ip_id}">
+            <xsl:value-of select="ip"/>
           </a>
         </td>
         <td align="right">
