@@ -108,6 +108,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
       </table>
     </div>
     <div  class="prefoot" style="text-align: right">
+      <a href="{$link_prefix}hosts-all">View All Hosts</a>&#160;
       <a href="{$link_prefix}x-hosts-export">/etc/hosts Export</a>&#160;
       <a href="{$link_prefix}x-hosts-export-unbound">Unbound Export</a>&#160;
 			<a href="{$link_prefix}x-hosts-export-puppet">Puppet Export</a>&#160;
