@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: zone_update.xml
+Component: records_get_all_www.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,19 +22,11 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="zone_group_update">
-	<connection>&connection;</connection>
-	<params>
-		<param array="//_post/name" type="text"/>
-		<param array="//_post/zone_group_http_proxy" type="text"/>
-		<param array="//_post/zone_group_proxy_only" type="text"/>
-		<param array="//_post/zone_group_smtp_proxy" type="text"/>
-		<param array="//_post/zone_group_id" type="text"/>
-	</params>
-	<sql>
-UPDATE &prefix;zone_groups SET
-zone_group_name=?, zone_group_http_proxy=?, zone_group_proxy_only=?,
-zone_group_smtp_proxy=?
-WHERE zone_group_id=?
-	</sql>
+<query name="records_get_all_www">
+  <connection>&connection_read;</connection>
+  <params/>
+  <sql>
+    SELECT rr.name,soa.origin,CONCAT_WS('.',rr.name,SUBSTRING(soa.origin,1,CHAR_LENGTH(soa.origin)-1)) AS wwwhost FROM &prefix;soa,&prefix;rr WHERE soa.id=rr.zone
+    AND rr.name LIKE 'www%' ORDER BY soa.origin
+  </sql>
 </query>

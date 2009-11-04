@@ -37,7 +37,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
   <table width="100%" class="tablesorter" id="myzones">
     <thead>
       <tr>
-        <th id="barf" width="60%">Origin</th>
+        <th id="barf" width="60%"  class="{{sorter: 'text'}}">Origin</th>
         <xsl:if test="verbose='true'">
           <th>Name Server</th>
         </xsl:if>
@@ -45,7 +45,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
           <th width="10%">TTL</th>
           <th width="10%">Active</th>
         </xsl:if>
-        <th width="15%"/>
+        <th width="15%" class="{{sorter: false}}"/>
       </tr>
       <tr>
         <form method="get">
@@ -100,6 +100,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
 </div>
 <div class="table_meta" style="float: right">
   Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>&#160;
+  <a href="{$link_prefix}x-zones-export-unbound">Unbound Local Data Export</a>&#160;
   <a href="{$link_prefix}x-zones-export-csv">CSV Zone Export</a>&#160;
   <a href="{$link_prefix}x-zones-export-nginx-map&amp;zone_group_id=%">NGINX Map Export</a>&#160;
   <a href="{$link_prefix}x-zones-export-nginx-servers&amp;zone_group_id=%">NGINX Server Export</a>

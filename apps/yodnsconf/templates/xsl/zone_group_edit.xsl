@@ -59,6 +59,17 @@ select="/_R_/zone_groups_get_all/zone_groups_get_all" />
         value="{$my_zone_group/zone_group_http_proxy}"/>
       </td>
     </tr>
+    <tr>
+      <th>
+        <label for="proxy_only">
+          <span id="i18n-proxy_only">Proxy Only</span>
+        </label>
+      </th>
+      <td>
+        <input name="zone_group_proxy_only" type="text" id="proxy_only"
+        value="{$my_zone_group/zone_group_proxy_only}"/>
+      </td>
+    </tr>
     </tbody>
   </table>
   <input type="submit"/>

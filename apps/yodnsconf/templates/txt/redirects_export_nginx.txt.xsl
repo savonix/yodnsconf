@@ -59,10 +59,35 @@ if ($host = "<xsl:value-of select="http_host"/>") {
 
 map $host $new {
 <xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
-  <xsl:value-of select="http_host"/>  http://<xsl:value-of select="redirect"/>;
+  <xsl:variable name="myhost" select="http_host"/>
+  <xsl:if test="not(contains(http_host,'_')) and contains(redirect,'www')">
+    <xsl:if test="//records_get_all_www/records_get_all_www[wwwhost=$myhost]"><xsl:text>
+      </xsl:text><xsl:value-of select="http_host"/>  http://<xsl:value-of select="redirect"/>
+      <xsl:text>;</xsl:text>
+    </xsl:if>
+  </xsl:if>
 </xsl:for-each>
 }
- 
-rewrite  ^    $new   permanent;
+
+#if ($new) {
+#rewrite  ^    $new   permanent;
+#}
+<xsl:for-each select="/_R_/redirects_get_all/redirects_get_all">
+  <xsl:variable name="myhost" select="http_host"/>
+  <xsl:if test="not(contains(http_host,'_'))">
+    <xsl:if test="not(//records_get_all_www/records_get_all_www[wwwhost=$myhost])">
+      <xsl:text>
+#</xsl:text><xsl:value-of select="http_host"/>
+    </xsl:if>
+  </xsl:if>
+</xsl:for-each>
+<!--
+<xsl:for-each select="//records_get_all_www/records_get_all_www">
+    <xsl:text>#</xsl:text><xsl:value-of select="wwwhost"/>
+    <xsl:text>
+</xsl:text>
+</xsl:for-each>
+-->
+
 </xsl:template>
 </xsl:stylesheet>

@@ -40,10 +40,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_zone_groups" />
         <th>
           <span id="i18n-zone_group">Zone Group</span>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <span id="i18n-edit">Edit</span>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <span id="i18n-delete">Delete</span>
         </th>
       </tr>

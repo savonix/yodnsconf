@@ -50,6 +50,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>zone_groups` (
   `zone_group_id` int(11) NOT NULL auto_increment,
   `zone_group_name` varchar(255) NOT NULL,
   `zone_group_http_proxy` varchar(255) NOT NULL,
+  `zone_group_proxy_only` varchar(255) NOT NULL,
   `zone_group_smtp_proxy` varchar(255) NOT NULL,
   `zone_group_default_proxy` varchar(255) NOT NULL,
   KEY  (`zone_group_id`)
