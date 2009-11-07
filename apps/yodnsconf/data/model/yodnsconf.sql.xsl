@@ -95,7 +95,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hosts` (
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>redirects` (
   `source` varchar(255) NOT NULL,
   `target` varchar(255) NOT NULL,
-  `created` timestamp DEFAULT <xsl:value-of select="//db_engines/engine_default_timestamp/text"/>,
+  `created` <xsl:value-of select="//dbe/engine_default_timestamp"/>,
   PRIMARY KEY  (`source`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
