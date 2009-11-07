@@ -69,7 +69,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>rr` (
   `zone` int(10) unsigned NOT NULL,
   `name` char(64) NOT NULL,
   `type` enum('A','AAAA','CNAME','HINFO','MX','NAPTR','NS','PTR','RP','SRV','TXT') default NULL,
-  `data` char(256) NOT NULL,
+  `data` char(255) NOT NULL,
   `aux` int(10) unsigned default NULL,
   `ttl` int(10) unsigned NOT NULL default '86400',
   `weight` int(10) unsigned default NULL,
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>redirects` (
   `source` varchar(255) NOT NULL,
   `target` varchar(255) NOT NULL,
   `created` timestamp DEFAULT <xsl:value-of select="//db_engines/engine_default_timestamp/text"/>,
-  PRIMARY KEY  (`http_host`)
+  PRIMARY KEY  (`source`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
