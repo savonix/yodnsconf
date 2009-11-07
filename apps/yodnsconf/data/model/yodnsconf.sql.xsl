@@ -40,6 +40,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>soa` (
   `active` enum('Y','N') NOT NULL,
   `xfer` char(255) NOT NULL,
   `notes` varchar(255) NOT NULL,
+  `expiration_date` date,
   `zone_group_id` int(11),
   PRIMARY KEY  (`id`),
   UNIQUE KEY `origin` (`origin`),
