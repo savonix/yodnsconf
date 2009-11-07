@@ -59,7 +59,8 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>zone_groups` (
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>zone_groups_metadata` (
     `zone_group_id` int(11) NOT NULL auto_increment,
     `meta_key` varchar(100) NULL,
-    `meta_value` varchar(100) NULL
+    `meta_value` varchar(100) NULL,
+  KEY  (`zone_group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
