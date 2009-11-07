@@ -28,7 +28,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <map:xml src="data/xml/main_menu.xml"/>
     <map:xml src="i18n/en_US/yodnsconf.xml"/>
     <map:set name="theme" value="default"/>
-    <map:query src="data/sql/zones_get_ns.xml"/>
+		<map:switch name="//_get/nid">
+			<map:case value="x-dynamic-database-model">
+			</map:case>
+      <map:default>
+			  <map:query src="data/sql/zones_get_ns.xml"/>
+      </map:default>
+    </map:switch>
 	</map:prepend>
 
 	<map:gate name="index" role="yodnsuser">
