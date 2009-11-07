@@ -93,10 +93,10 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>hosts` (
 
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>redirects` (
-  `source` varchar(255) NOT NULL,
-  `target` varchar(255) NOT NULL,
+  `http_host` varchar(255) NOT NULL,
+  `redirect` varchar(255) NOT NULL,
   `created` <xsl:value-of select="//dbe/engine_default_timestamp"/>,
-  PRIMARY KEY  (`source`)
+  PRIMARY KEY  (`http_host`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 

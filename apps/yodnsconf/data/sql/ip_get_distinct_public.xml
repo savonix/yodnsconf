@@ -26,6 +26,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>&connection_read;</connection>
 	<params/>
   <sql>
-  SELECT DISTINCT data FROM &prefix;.rr WHERE TYPE = 'A'
+  SELECT DISTINCT data FROM &prefix;rr WHERE TYPE = 'A'
   </sql>
 </query>
