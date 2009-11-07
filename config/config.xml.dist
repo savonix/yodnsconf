@@ -1,7 +1,21 @@
 <!-- This is a configuration file for Nexista applications. It can be
 used for a single or several applications. -->
 <config>
+    <!-- SQLITE SUPPORT IS EXPERIMENTAL -->
+    <!--
     <datasource id="yodnsconf">
+        <type>sqlite</type>
+        <database>/tmp/yodnsconfdb</database>
+    </datasource>
+    -->
+    <datasource id="yodnsconf">
+        <type>mysqli</type>
+        <hostname>127.0.0.1</hostname>
+        <database>pbooks</database>
+        <username>username</username>
+        <password>password</password>
+    </datasource>
+    <datasource id="yodnsconf_read">
         <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
@@ -56,10 +70,10 @@ used for a single or several applications. -->
         <handlers>&includepath;modules/handlers/</handlers>
         <validators>&includepath;modules/validators/</validators>
         <actions>&includepath;modules/actions/</actions>
-        <plugins>&project_root;/apps/&app_name;/plugins/</plugins> 
+        <plugins>&project_root;/apps/&app_name;/plugins/</plugins>
         <applications>&project_root;/apps/&app_name;/</applications>
         <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
-		<cache>&project_root;/cache/&server_name;/cache/</cache>
+        <cache>&project_root;/cache/&server_name;/cache/</cache>
     </path>
 
     <!-- BUILD SETTINGS -->
@@ -67,10 +81,11 @@ used for a single or several applications. -->
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
         <sitemap>&project_root;/apps/&app_name;/sitemap.xml</sitemap>
 
-        <prepend>&includepath;plugins/nx-cache.php</prepend>
+        <!-- default uri - used for login script to send user somewhere -->
+        <default>index.php?nid=index</default>
+
         <!-- enter a gate name for missing when there is no match -->
         <missing>index</missing>
-        <!-- this needs the relative url, not the gate -->
         <query>nid</query>
     </build>
 
