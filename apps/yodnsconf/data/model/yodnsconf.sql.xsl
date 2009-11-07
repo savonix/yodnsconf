@@ -126,7 +126,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>services` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
   `notes` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
