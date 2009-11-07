@@ -21,37 +21,14 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<db_engines>
-  <engine_default_timestamp>
-    <text>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</text>
-  </engine_default_timestamp>
-
-  <engine_auto_increment>
-			<text>int(11) NOT NULL auto_increment</text>
-  </engine_auto_increment>
-
-  <engine_increment_start>
-    <text>AUTO_INCREMENT=1</text>
-  </engine_increment_start>
-
-  <engine_auto_increment_b>
-      <text>, PRIMARY KEY (category_id)</text>
-  </engine_auto_increment_b>
-
-  <innodb_engine>
-			<text>ENGINE=InnoDB</text>
-    </innodb_engine>
-
-  <myisam_engine>
-        <text>ENGINE=MyISAM</text>
-  </myisam_engine>
-
-  <if_not_exists>
-			<text>IF NOT EXISTS </text>
-  </if_not_exists>
-
-  <integer>
-      <text>int(10)</text>
-  </integer>
-
-</db_engines>
+<dbe>
+  <engine_default_timestamp>timestamp NOT NULL default CURRENT_TIMESTAMP</engine_default_timestamp>
+  <engine_auto_increment>int(11) NOT NULL auto_increment</engine_auto_increment>
+  <engine_increment_start> AUTO_INCREMENT=1</engine_increment_start>
+  <engine_auto_increment_b>, PRIMARY KEY (category_id)</engine_auto_increment_b>
+  <innodb_engine>ENGINE=InnoDB</innodb_engine>
+  <myisam_engine>ENGINE=MyISAM</myisam_engine>
+  <if_not_exists>IF NOT EXISTS </if_not_exists>
+  <integer>int(11) NOT NULL default 0</integer>
+  <varchar>varchar(255) NOT NULL default ''</varchar>
+</dbe>
