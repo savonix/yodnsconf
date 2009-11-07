@@ -174,7 +174,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 <head>
-  <title>Web DNS <xsl:value-of select="/_R_/i18n/*[name()=//_get/nid]/."/>
+  <title>YDC <xsl:value-of select="/_R_/i18n/*[name()=//_get/nid]/."/>
     <xsl:if test="/_R_/_get/zone">
       :<xsl:value-of select="//zone_get_by_id/zone_get_by_id/origin"/>
     </xsl:if>
