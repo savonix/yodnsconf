@@ -1,6 +1,6 @@
 <!--
 Program: YoDNSConf
-Component: ip_get_all.xml
+Component: ip_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,12 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="ip_addr_get_all">
-	<connection>&connection_read;</connection>
+<query name="ip_delete">
+	<connection>&connection;</connection>
 	<params>
-		<param name="//_get/ip_id" type="text" default="%"/>
+		<param name="_post/ip_id" type="text" />
 	</params>
   <sql>
-  SELECT * FROM &prefix;ip_addr WHERE ip_id LIKE ? AND ip_active='Y'
+  UPDATE &prefix;ip_addr SET ip_active='N' WHERE ip_id=?
   </sql>
 </query>

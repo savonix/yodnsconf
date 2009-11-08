@@ -63,7 +63,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
     <tbody>
       <xsl:if test="not(//_get/nid='ydc-ip-addr-private')">
       <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
-      <tr>
+      <tr id="ip_{ip_id}">
         <td>
           <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
             <xsl:value-of select="ip_id"/>
@@ -78,9 +78,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
         <td align="right">
           <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
             <span id="i18n-edit">Edit</span>
-          </a>
+          </a> , 
           <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
-          onclick="delete_ip('{ip_id}',this); return false;">Delete</a>
+          onclick="delete_ip('{ip_id}'); return false;">Delete</a>
         </td>
       </tr>
       </xsl:for-each>

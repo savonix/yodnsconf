@@ -499,7 +499,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 
-	<map:gate name="ydc-ip-addr" role="yodnsuser" cache="600" client_cache="300">
+	<map:gate name="ydc-ip-addr" role="yodnsuser">
 		<map:query src="data/sql/ip_get_all.xml"/>
 		<map:query src="data/sql/ip_get_distinct_public.xml"/>
 		<map:xsl src="templates/xsl/ip_addresses.xsl"/>
@@ -530,6 +530,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <map:xsl src="templates/xsl/ip_address_form.xsl"/>
       </map:false>
     </map:if>
+	</map:gate>
+
+	<map:gate name="x-ydc-ip-addr-delete" role="yodnsuser">
+		<map:action type="header" params="Content-Type,text/xml"/>
+		<map:if name="//_post/ip_id">
+			<map:true>
+        <map:query src="data/sql/ip_delete.xml"/>
+        <map:xsl src="templates/xml/ajax_response.xml.xsl"/>
+			</map:true>
+		</map:if>
 	</map:gate>
 
 	<map:gate name="services" role="yodnsuser">

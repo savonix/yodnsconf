@@ -144,6 +144,7 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>ip_addr` (
   `ip_cidr` char(128) NOT NULL,
   `ip_description` varchar(255) NOT NULL,
   `ip_notes` text NOT NULL,
+  `active` enum('Y','N') NOT NULL,
   PRIMARY KEY  (`ip_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
