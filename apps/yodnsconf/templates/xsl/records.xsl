@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
@@ -33,11 +33,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
 
 
-<script type="text/javascript">
-  function select_all_boxes() {
-    $(":checkbox[name='record_id[]']").attr("checked","checked");
-  }
-</script>
 
 <form method="post" action="{$link_prefix}x-records-delete">
 <input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
@@ -45,15 +40,32 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
 <table width="100%" class="tablesorter" id="records_table" border="0">
   <thead>
     <tr>
-      <th><input type="checkbox" name="select_all" onclick="select_all_boxes();"/></th>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Data</th>
-      <th>Priority</th>
-      <th>TTL</th>
-      <th>Dig</th>
-      <th />
-      <th>+</th>
+      <th class="{{sorter: false}}">
+        <input type="checkbox" name="select_all"
+        onclick="select_all_boxes('record_id');"/>
+      </th>
+      <th>
+        <span id="i18n-name">Name</span>
+      </th>
+      <th>
+        <span id="i18n-type">Type</span>
+      </th>
+      <th>
+        <span id="i18n-data">Data</span>
+      </th>
+      <th>
+        <span id="i18n-priority">Priority</span>
+      </th>
+      <th>
+        <span id="i18n-ttl">TTL</span>
+      </th>
+      <th class="{{sorter: false}}">
+        <span id="i18n-dig">Dig</span>
+      </th>
+      <th class="{{sorter: false}}" />
+      <th class="{{sorter: false}}">
+        <span title="Clone">+</span>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -92,21 +104,17 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
         </td>
         <td align="right">
           <a href="{$link_prefix}x-record-delete&amp;record_id={id}"
-              onclick="delete_record({id},{zone}); return false;">Delete</a>
+          onclick="delete_record({id},{zone}); return false;">Delete</a>
         </td>
         <td>
           <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>
         </td>
       </tr>
     </xsl:for-each>
-      <tr>
-        <td colspan="9">
-          <input type="submit" name="submit" value="Delete Selected Records"/>
-        </td>
-      </tr>
   </tbody>
 </table>
 </div>
+<input class="table_meta" style="right: 420px;" type="submit" name="submit" value="Delete Selected Records"/>
 </form>
 <div class="table_meta" style="right: 80px;">
   <form method="post" action="{$link_prefix}zone-apply-profile&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">

@@ -129,6 +129,9 @@ function delete_service(id) {
     }
 }
 
+function select_all_boxes(checkbox_name) {
+  $(":checkbox[name='"+checkbox_name+"[]']").attr("checked","checked");
+}
 
 function fixup_rows() {
   // Has this already been done?
