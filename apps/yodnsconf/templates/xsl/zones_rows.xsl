@@ -40,8 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:template name="rows">
     <xsl:variable name="link_prefix" select="//link_prefix"/>
       <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-        <tr id="{id}" onmouseover="oldClass=this.className; this.className='active'"
-              onmouseout="this.className=oldClass">
+        <tr id="{id}" class="znrw">
           <td>
           </td>
           <td>

@@ -69,56 +69,60 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
     </tr>
   </thead>
   <tbody>
-    <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
-      <tr id="{id}">
-        <td>
-          <input class="record_boxes" type="checkbox" name="record_id[]" value="{id}"/>
-        </td>
-        <td>
-          <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit" title="{notes}">
-            <xsl:value-of select="name"/>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
-            <xsl:value-of select="type"/>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit" title="{notes}">
-            <xsl:value-of select="substring(data,0,40)"/>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
-            <xsl:value-of select="aux"/>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
-            <xsl:value-of select="ttl"/>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">Dig</a>
-        </td>
-        <td align="right">
-          <a href="{$link_prefix}x-record-delete&amp;record_id={id}"
-          onclick="delete_record({id},{zone}); return false;">Delete</a>
-        </td>
-        <td>
-          <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>
-        </td>
-      </tr>
-    </xsl:for-each>
+  <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
+    <tr id="{id}">
+      <td>
+        <input class="record_boxes" type="checkbox" name="record_id[]"
+        value="{id}"/>
+      </td>
+      <td>
+        <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit" title="{notes}">
+          <xsl:value-of select="name"/>
+        </a>
+      </td>
+      <td>
+        <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+          <xsl:value-of select="type"/>
+        </a>
+      </td>
+      <td>
+        <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit" title="{notes}">
+          <xsl:value-of select="substring(data,0,40)"/>
+        </a>
+      </td>
+      <td>
+        <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+          <xsl:value-of select="aux"/>
+        </a>
+      </td>
+      <td>
+        <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=edit">
+          <xsl:value-of select="ttl"/>
+        </a>
+      </td>
+      <td>
+        <a href="{$link_prefix}tools-query&amp;hostname={name}.{//zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">Dig</a>
+      </td>
+      <td align="right">
+        <a href="{$link_prefix}x-record-delete&amp;record_id={id}"
+        onclick="delete_record({id},{zone}); return false;">Delete</a>
+      </td>
+      <td>
+        <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}&amp;action=copy" title="Copy">+</a>
+      </td>
+    </tr>
+  </xsl:for-each>
   </tbody>
 </table>
 </div>
-<input class="table_meta" style="right: 420px;" type="submit" name="submit" value="Delete Selected Records"/>
+<input class="table_meta" style="right: 420px;" type="submit" name="submit"
+value="Delete Selected Records"/>
 </form>
 <div class="table_meta" style="right: 80px;">
-  <form method="post" action="{$link_prefix}zone-apply-profile&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
-    <input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
+  <form method="post"
+  action="{$link_prefix}zone-apply-profile&amp;zone={//zone_get_by_id/id}">
+    <input type="hidden" name="zone"
+    value="{//zone_get_by_id/zone_get_by_id/id}"/>
     <select name="profile_id">
         <option>Select</option>
         <xsl:for-each select="//zone_get_profiles/zone_get_profiles">

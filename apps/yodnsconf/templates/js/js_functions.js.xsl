@@ -86,9 +86,9 @@ function delete_hostgroup(id) {
     });
   }
 }
-// zone delete
+// zone delete / delete_zone
 function zd(zone) {
-  if(confirm('Are you sure?')){
+  if(confirm('Delete zone id '+zone+'? You can deactivate it instead.')){
     $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone="+zone,
     {
       'zone': zone
@@ -102,7 +102,7 @@ function zd(zone) {
   return false;
 }
 function delete_zone_group(zone_group_id) {
-  if(confirm('Are you sure?')){
+  if(confirm('Are you sure you want to ?')){
     $.post("<xsl:value-of select="//link_prefix"/>x-zone-group-delete&amp;zg_id="+zone_group_id,
     {
       'zone_group_id': zone_group_id
@@ -137,10 +137,15 @@ function fixup_rows() {
   // Has this already been done?
   if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {
 
-    // Highlight
-    $(".zrow tr").attr("onmouseover","oldClass=this.className; this.className=oldClass; this.className='active'").attr("onmouseout","this.className=oldClass");
-    //$(".zrow td:nth-child(1) input").attr("name","selected_zones[]");
-    //$(".zrow td:nth-child(1) input").attr("value", function () { return $(this).parent().parent().attr("id"); });
+    // Zone Row Highlight
+    $(".zrow tr").hover(
+      function () {
+        $(this).addClass("active");
+      },
+      function () {
+        $(this).removeClass("active");
+      }
+    );
 
     // Zone Delete
     $(".zrow td:nth-child(2) a:nth-child(1)").click( function () {
@@ -164,6 +169,9 @@ function fixup_rows() {
     );
   }
 }
+
+
+
 $(document).ready(function() {
   fixup_rows();
   $(".header").bind("mouseleave", function(e) { fixup_rows(); });

@@ -60,6 +60,7 @@ onsubmit="return validateStandard(document.forms['record']);">
   <xsl:if test="/_R_/_get/id">
     <input type="hidden" name="id" value="{/_R_/_get/id}"/>
   </xsl:if>
+  <!-- YES, YOU NEED "zone" AS A GET PARAMETER HERE. -->
   <input type="hidden" name="zone"   value="{/_R_/_get/zone}"/>
   <input type="hidden" name="serial" value="{/_R_/zone_get_by_id/zone_get_by_id/serial}"/>
 
