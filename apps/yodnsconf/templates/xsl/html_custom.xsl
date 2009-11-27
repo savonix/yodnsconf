@@ -64,30 +64,8 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
   <xsl:template name="header">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="i18n"/>
-    <xsl:call-template name="source_spacer">
-      <xsl:with-param name="section_start">header</xsl:with-param>
-    </xsl:call-template>
     <div id="header">
-      <div style="float:right;margin: 4px;">
-        <form action="index.php" method="get">
-          <input type="hidden" name="nid" value="journal-search" />
-          <input type="text" name="entry_search" />
-          <input type="submit" />
-        </form>
-      </div>
-    	<span id="company-name">
-        <xsl:value-of select="//runtime/company_name"/>
-      </span>
-      <h1 class="page-title">
-        <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
-      </h1>
     </div>
-
-    <xsl:call-template name="source_spacer">
-      <xsl:with-param name="section_end">header</xsl:with-param>
-    </xsl:call-template>
   </xsl:template>
 
 
