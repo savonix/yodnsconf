@@ -83,10 +83,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
             <xsl:value-of select="active"/>
           </td>
         </xsl:if>
-        <td>
-          <a/>
-          <a/>
-        </td>
+        <td/>
       </tr>
     </xsl:for-each>
     </tbody>

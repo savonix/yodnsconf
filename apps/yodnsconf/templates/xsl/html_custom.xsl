@@ -165,7 +165,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
   <link rel="stylesheet" type="text/css" href="{/_R_/runtime/path_prefix}s/js/blue/style.css"/>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.min.js"></script>
+  <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.js"></script>

@@ -146,8 +146,12 @@ function fixup_rows() {
         $(this).removeClass("active");
       }
     );
-
+    $("<span/>", {
+      'text': 'Delete'
+    }).appendTo(".zrow td:nth-child(2)");
+    
     // Zone Delete
+    /*
     $(".zrow td:nth-child(2) a:nth-child(1)").click( function () {
       zd($(this).parent().parent().attr("id"));
     }
@@ -155,7 +159,7 @@ function fixup_rows() {
       return "#x-zone-delete&amp;zone="+$(this).parent().parent().attr("id");
     }
     ).text("Delete").after(" | ");
-
+    
     // Zone Clone
     $(".zrow td:nth-child(2) a:nth-child(2)").attr("href", function () {
       return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
@@ -167,6 +171,7 @@ function fixup_rows() {
       return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
     }
     );
+    */
   }
 }
 
