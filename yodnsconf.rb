@@ -125,19 +125,6 @@ module Yodnsconf
 
     helpers do
       # These should be different based upon development vs. production
-      def get_passlist
-        ['example.com','example.org','example.net']
-      end
-      def get_aliases(domain=nil)
-        aliases = []
-        myalias = Hash.new
-        myalias[:id] = 1
-        myalias[:alias] = 'bob_hope'
-        myalias[:destination] = 'bob.hope'
-        myalias[:modified] = Time.now.to_i
-        aliases << myalias
-        return aliases
-      end
       def get_servers(domain=nil)
         servers = []
         server = Hash.new
@@ -155,9 +142,6 @@ module Yodnsconf
           idx_json = '["docunext.com"]'
         end
         return JSON.parse(idx_json)
-      end
-      def get_access_lists
-        {'example.com'=>'allow','example.org'=>'allow','microsoft.com'=>'deny'}
       end
     end
 
@@ -178,7 +162,7 @@ module Yodnsconf
     get '/s/css/stylesheet.css' do
       cache_control :public, :max_age => 600
       content_type 'text/css', :charset => 'utf-8'
-      sass 'css/yodnsconf'.to_sym
+      sass :yodnsconf
     end
   end
 
