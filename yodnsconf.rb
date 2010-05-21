@@ -1,6 +1,6 @@
 ###
-# Program:: http://www.yodnsconf.com
-# Component:: yodnsconf.rb
+# Program:: http://www.docunext.com/wiki/Sinatra
+# Component:: notapp.rb
 # Copyright:: Savonix Corporation
 # Author:: Albert L. Lash, IV
 # License:: Gnu Affero Public License version 3
@@ -30,26 +30,42 @@ require 'xml/xslt'
 require 'rack-xslview'
 require 'rack/cache'
 require 'sinatra/xslview'
+require 'sinatra/simplerdiscount'
 require 'rexml/document'
 require 'memcache'
 require 'json'
 require 'dbi'
 require 'net/ssh'
+require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' if ENV['RACK_ENV'] == 'development'
+require 'svxbox' unless ENV['RACK_ENV'] == 'development'
 
-# The container for the YoDNSAdmin application
-module YoDNSAdmin
+module Sinatra
+  module ModBox
+    include SvxBox::Sinatricus
+    include SvxBox::MarkupGuppy
+  end
+  helpers ModBox
+end
+
+# The container for the Yodnsconf application
+module Yodnsconf
 
   class << self
-    attr_accessor(:conf, :runtime, :memc, :memcdb)
+    attr_accessor(:conf, :memcdb)
   end
 
   # Create the app which will run
   def self.new(conf)
     self.conf = conf
-    if File.exists?(self.conf[:ccf])
-      myconf = File.open(self.conf[:ccf]) { |f| f.read }
-      customconf = eval(myconf)
-      self.conf.merge!(customconf)
+    if self.conf[:ccf]
+      if File.exists?(self.conf[:ccf])
+        myconf = File.open(self.conf[:ccf]) { |f| f.read }
+        customconf = eval(myconf)
+        self.conf.merge!(customconf)
+      end
+    end
+    if self.conf[:memc_srv]
+      self.memcdb = MemCache.new self.conf[:memc_srv], :namespace => self.conf[:memc_ns]
     end
     Main
   end
@@ -58,82 +74,112 @@ module YoDNSAdmin
   class Main < Sinatra::Base
 
     configure do
-      set :static, true
-      set :public, 'public'
-      set :xslviews, 'views/xsl/'
-      set :uripfx, Proc.new { YoDNSAdmin.conf[:uripfx] }
+      set :static => true, :public => 'public'
+      set :xslviews => 'views/xsl/'
+      set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
+      set :started_at => Time.now.to_i
 
       # Set request.env with application mount path
       use Rack::Config do |env|
-        env['RACK_ENV'] = ENV['RACK_ENV'] ? ENV['RACK_ENV'] : 'development'
-        env['path_prefix'] = YoDNSAdmin.conf[:uripfx]
-        env['link_prefix'] = YoDNSAdmin.conf[:uripfx]
+        env['analytics_key'] = Yodnsconf.conf[:analytics_key] if Yodnsconf.conf[:analytics_key]
+        env['RACK_ENV'] = ENV['RACK_ENV']
+        env['path_prefix'] = uripfx
+        env['link_prefix'] = uripfx
       end
 
-      YoDNSAdmin.runtime = Hash.new
-      # Setup XSL - better to do this only once
-      YoDNSAdmin.runtime[:xslt]    = XML::XSLT.new()
-      YoDNSAdmin.runtime[:xslfile] = File.open('views/xsl/html_main.xsl') {|f| f.read }
-      YoDNSAdmin.runtime[:xslt].xsl = REXML::Document.new YoDNSAdmin.runtime[:xslfile]
+      myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
+      myxsl = XML::XSLT.new()
+      myxsl.xsl = REXML::Document.new myxslfile
+      set :xsl, myxsl
+      set :xslfile, myxslfile
+      set :noxsl, ['/raw/', '/s/img/', '/s/js/']
+      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix','analytics_key']
 
-      # Setup paths to remove from Rack::XSLView, and params to include
-      YoDNSAdmin.runtime[:omitxsl] = ['/raw/', '/s/js/']
-      YoDNSAdmin.runtime[:passenv] = ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
-
-      # Used in runtime/info
-      YoDNSAdmin.runtime['started_at'] = Time.now.to_i
     end
     configure :development do
-      set :logging, false
-      set :reload_templates, true # This does work! :-)
+      set :logging => false, :reload_templates => true
     end
     configure :demo do
-      set :logging, true
-      set :reload_templates, false # This does work! :-)
+      set :logging => true, :reload_templates => false
     end
 
-    configure :test do
-      #
+    if ENV['RACK_ENV'] == 'production' && Yodnsconf.conf[:cache_base]
+      use Rack::Cache,
+        :verbose     => true,
+        :metastore   => Yodnsconf.conf[:cache_base]+'/meta',
+        :entitystore => Yodnsconf.conf[:cache_base]+'/body'
     end
-
-    # Rewrite app url patterns to static files
-    use Rack::Rewrite do
-      rewrite YoDNSAdmin.conf[:uripfx]+'welcome', '/s/xhtml/welcome.html'
-      rewrite YoDNSAdmin.conf[:uripfx]+'cma-alias-edit', '/s/xhtml/alias_form.html'
-      rewrite %r{#{YoDNSAdmin.conf[:uripfx]}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
-      rewrite %r{#{YoDNSAdmin.conf[:uripfx]}cma-import-(.*)}, '/s/xhtml/import_form.html?type=$1'
-      rewrite %r{#{YoDNSAdmin.conf[:uripfx]}cma-spamassassin-edit}, '/s/xhtml/spam_spamassassin_form.html?type=$1'
-      rewrite YoDNSAdmin.conf[:uripfx]+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
-      rewrite YoDNSAdmin.conf[:uripfx]+'cma-server-edit', '/s/xhtml/server_form.html'
-      rewrite YoDNSAdmin.conf[:uripfx]+'cma-domain-edit', '/s/xhtml/domain_form.html'
-    end
-
-    use Rack::Cache,
-      :verbose     => false,
-      :metastore   => 'file:/tmp/cache/rack/meta',
-      :entitystore => 'file:/tmp/cache/rack/body'
 
     # Use Rack-XSLView
-    use Rack::XSLView, :myxsl => YoDNSAdmin.runtime[:xslt], :noxsl => YoDNSAdmin.runtime[:omitxsl], :passenv => YoDNSAdmin.runtime[:passenv]
+    use Rack::XSLView,
+      :myxsl => xsl,
+      :noxsl => noxsl,
+      :passenv => passenv,
+      :xslfile => xslfile,
+      :reload => ENV['RACK_ENV'] == 'development' ? true : false
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView
+    helpers Sinatra::ModBox
+    helpers Sinatra::SimpleRDiscount
 
     helpers do
-      # Just the usual Sinatra redirect with App prefix
-      def mredirect(uri)
-        redirect YoDNSAdmin.conf[:uripfx]+uri
+      # These should be different based upon development vs. production
+      def get_passlist
+        ['example.com','example.org','example.net']
       end
-      def markdown(template, options={})
-        output = render :md, template, options
-        '<div>'+output+'</div>'
+      def get_aliases(domain=nil)
+        aliases = []
+        myalias = Hash.new
+        myalias[:id] = 1
+        myalias[:alias] = 'bob_hope'
+        myalias[:destination] = 'bob.hope'
+        myalias[:modified] = Time.now.to_i
+        aliases << myalias
+        return aliases
+      end
+      def get_servers(domain=nil)
+        servers = []
+        server = Hash.new
+        server[:id] = 1
+        server[:server] = 'Franklin'
+        server[:host_name] = 'mx2.example.com'
+        server[:modified] = Time.now.to_i
+        servers << server
+        return servers
+      end
+      def get_domains(domain_group=nil)
+        if Yodnsconf.conf[:memc_srv]
+          idx_json = Yodnsconf.memcdb.get('dig_index')
+        else
+          idx_json = '["docunext.com"]'
+        end
+        return JSON.parse(idx_json)
+      end
+      def get_access_lists
+        {'example.com'=>'allow','example.org'=>'allow','microsoft.com'=>'deny'}
       end
     end
 
     get '/' do
-      "hi"
+      'welcome'
     end
 
+    get '/raw/json/yd-domain-list' do
+      content_type :json
+      idx_json = get_domains.to_json
+      idx_json
+    end
+    not_found do
+      cache_control :'no-store', :max_age => 0
+      %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Yodnsconf.conf[:uripfx]}">Start over?</a></div></div>)
+    end
+
+    get '/s/css/stylesheet.css' do
+      cache_control :public, :max_age => 600
+      content_type 'text/css', :charset => 'utf-8'
+      sass 'css/yodnsconf'.to_sym
+    end
   end
 
 end
