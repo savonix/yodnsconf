@@ -23,12 +23,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:include href="html_main.xsl"/>
-  <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
+  <xsl:template match="/">
 
-
+<div>
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
 
@@ -65,37 +62,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
     </thead>
     <tbody id="myzonesbody" class="zrow">
 
-    <xsl:for-each select="/_R_/zones_get_all/zones_get_all">
-      <tr id="{id}">
-        <td>
-          <a href="#">
-            <xsl:value-of select="origin"/>
-          </a>
-        </td>
-        <xsl:if test="verbose='true'">
-          <td>
-            <xsl:value-of select="ns"/>
-          </td>
-          <td>
-            <xsl:value-of select="ttl"/>
-          </td>
-          <td>
-            <xsl:value-of select="active"/>
-          </td>
-        </xsl:if>
-        <td>
-          <a/>
-          <a/>
-        </td>
-      </tr>
-    </xsl:for-each>
     </tbody>
   </table>
 </div>
 <div class="table_controls">
-<xsl:call-template name="pager">
-  <xsl:with-param name="my-table">myzones</xsl:with-param>
-</xsl:call-template>
 </div>
 <div class="table_meta" style="float: right">
   Total number of zones: <xsl:value-of select="count(/_R_/zones_get_all/zones_get_all)"/>&#160;
@@ -105,6 +75,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
   <a href="{$link_prefix}x-zones-export-nginx-servers&amp;zone_group_id=%">NGINX Server Export</a>
 </div>
 
-
-  </xsl:template>
+</div>
+</xsl:template>
 </xsl:stylesheet>

@@ -26,15 +26,10 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 <xsl:template match="page">
 <html>
-  <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
-  <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
   <xsl:variable name="my18n"
-  select="document('../../i18n/en_US/yodnsconf.xml')/i18n"/>
+  select="document('apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n"/>
 
-  <xsl:call-template name="head">
-    <xsl:with-param name="link_prefix" select="$link_prefix"/>
-    <xsl:with-param name="path_prefix" select="$path_prefix"/>
-  </xsl:call-template>
+  <xsl:call-template name="head" />
   <body>
     <xsl:for-each select="//pre_body_content">
       <xsl:sort select="priority" order="ascending"/>
@@ -43,21 +38,14 @@ xmlns="http://www.w3.org/1999/xhtml">
 
     <div id="main">
       <xsl:call-template name="drop-downs">
-          <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="path_prefix" select="$path_prefix"/>
           <xsl:with-param name="i18n" select="$i18n"/>
         </xsl:call-template>
       <xsl:call-template name="main-menu">
-          <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="path_prefix" select="$path_prefix"/>
           <xsl:with-param name="i18n" select="$i18n"/>
         </xsl:call-template>
     
       <div id="content">
-        <xsl:call-template name="content">
-          <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="path_prefix" select="$path_prefix"/>
-        </xsl:call-template>
+        <xsl:call-template name="content" />
       </div>
     
       <div id="nofooter"/>
@@ -158,8 +146,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   </xsl:template>
 
   <xsl:template name="head">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
 
 
 <head>
@@ -172,7 +158,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     </xsl:if>
  </title>
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
-  <link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
+  <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
   <link rel="stylesheet" type="text/css" href="{/_R_/runtime/path_prefix}s/js/blue/style.css"/>

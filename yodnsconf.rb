@@ -148,6 +148,17 @@ module Yodnsconf
     get '/' do
       'welcome'
     end
+    get '/yd-zones/' do
+      xml = '<root />'
+      xslview xml, 'zones.xsl', { 'link_prefix' => "#{Yodnsconf.conf[:uripfx]}"  }
+    end
+    get '/not-yd-zones/' do
+      xml = '<root />'
+    end
+    get '/raw/yd-zones/' do
+      xml = '<root />'
+      xslview xml, 'zones.xsl'
+    end
 
     get '/raw/json/yd-domain-list' do
       content_type :json
