@@ -154,7 +154,7 @@ function fixup_rows() {
     ).attr("href", function () {
       return "#x-zone-delete&amp;zone="+$(this).parent().parent().attr("id");
     }
-    ).text("Delete").after(" | ");
+    ).text("Delete");
 
     // Zone Clone
     $(".zrow td:nth-child(2) a:nth-child(2)").attr("href", function () {
