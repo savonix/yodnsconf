@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
-
+<div>
 <form method="post">
   <xsl:if test="//_get/clone='true'">
     <input type="hidden" name="clone" value="true"/>
@@ -84,7 +84,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       <td>
         <input type="submit" class="button" value="Save"/>&#160;
         <input type="button" class="button" value="Cancel"
-          onClick="window.location.href='{$link_prefix}hosts'"/>
+          onClick="window.location.href=app_prefix+'hosts'"/>
       </td>
       <td></td>
       <td></td>
@@ -92,9 +92,9 @@ xmlns="http://www.w3.org/1999/xhtml">
   </table>
 </form>
 <div style="text-align: right">
-  <a href="{$link_prefix}hostgroups">Hostgroups</a>
+  <a href="./hostgroups">Hostgroups</a>
 </div>
-
+</div>
 
 	</xsl:template>
 </xsl:stylesheet>
