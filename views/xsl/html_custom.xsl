@@ -158,7 +158,7 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
   	<!-- UI PRIMARY MENU -->
   <xsl:template name="main-menu">
     <ul id="nav">
-      <xsl:for-each select="document('../../apps/yodnsconf/data/xml/main_menu.xml')/menu/item">
+      <xsl:for-each select="document('data/xml/main_menu.xml')/menu/item">
         <xsl:call-template name="list-button">
           <xsl:with-param name="key" select="key"/>
         </xsl:call-template>
@@ -172,7 +172,7 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
 <li>
   <div><xsl:value-of select="document('i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$key]"/></div>
   <ul>
-    <xsl:for-each select="document('../../apps/yodnsconf/data/xml/main_menu.xml')/menu/item[key=$key]/item">
+    <xsl:for-each select="document('data/xml/main_menu.xml')/menu/item[key=$key]/item">
       <xsl:variable name="my_key" select="key"/>
       <li>
         <a href="{$link_prefix}{url}" id="{key}">
