@@ -1,4 +1,4 @@
-<!--
+/*
 Program: YoDNSConf
 Component: js_functions.js.xsl
 Copyright: Savonix Corporation
@@ -20,15 +20,11 @@ You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
--->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes" />
-  <xsl:template match="/">
-  <xsl:variable name="link_prefix" select="//link_prefix"/>
+*/
 
 function delete_redirect(http_host,pos) {
     if(confirm('Are you sure?')){
-      $.post(app_prefix + "x-redirect-delete&amp;http_host="+http_host,
+      $.post(app_prefix + "x-redirect-delete&http_host="+http_host,
       {
         'http_host': http_host
       },
@@ -40,7 +36,7 @@ function delete_redirect(http_host,pos) {
 
 function delete_host(id) {
   if(confirm('Are you sure?')){
-    $.post(app_prefix + "x-host-delete&amp;host_id="+id,
+    $.post(app_prefix + "x-host-delete&host_id="+id,
     {
       'host_id': id
     },
@@ -52,7 +48,7 @@ function delete_host(id) {
 
 function delete_ip(ip_id) {
     if(confirm('Are you sure?')){
-    $.post(app_prefix + "x-ydc-ip-addr-delete&amp;ip_id="+ip_id,
+    $.post(app_prefix + "x-ydc-ip-addr-delete&ip_id="+ip_id,
     {
         'ip_id': ip_id
     },
@@ -64,7 +60,7 @@ function delete_ip(ip_id) {
 
 function delete_record(record_id,zone) {
   if(confirm('Are you sure?')){
-    $.post(app_prefix + "x-record-delete&amp;record_id="+record_id,
+    $.post(app_prefix + "x-record-delete&record_id="+record_id,
     {
       // zone is needed to update serial
       'record_id': record_id,
@@ -77,7 +73,7 @@ function delete_record(record_id,zone) {
 }
 function delete_hostgroup(id) {
   if(confirm('Are you sure?')){
-    $.post(app_prefix + "x-hostgroup-delete&amp;hostgroup_id="+id,
+    $.post(app_prefix + "x-hostgroup-delete&hostgroup_id="+id,
     {
       'hostgroup_id': id
     },
@@ -89,7 +85,7 @@ function delete_hostgroup(id) {
 // zone delete / delete_zone
 function zd(zone) {
   if(confirm('Delete zone id '+zone+'? You can deactivate it instead.')){
-    $.post(app_prefix + "x-zone-delete&amp;zone="+zone,
+    $.post(app_prefix + "x-zone-delete&zone="+zone,
     {
       'zone': zone
     },
@@ -103,7 +99,7 @@ function zd(zone) {
 }
 function delete_zone_group(zone_group_id) {
   if(confirm('Are you sure you want to ?')){
-    $.post(app_prefix + "x-zone-group-delete&amp;zg_id="+zone_group_id,
+    $.post(app_prefix + "x-zone-group-delete&zg_id="+zone_group_id,
     {
       'zone_group_id': zone_group_id
     },
@@ -119,7 +115,7 @@ function delete_zone_group(zone_group_id) {
 
 function delete_service(id) {
     if(confirm('Are you sure?')){
-    $.post(app_prefix + "x-service-delete&amp;service_id="+id,
+    $.post(app_prefix + "x-service-delete&service_id="+id,
     {
       'service_id': id
     },
@@ -147,26 +143,6 @@ function fixup_rows() {
       }
     );
 
-    // Zone Delete
-    $(".zrow td:nth-child(2) a:nth-child(1)").click( function () {
-      zd($(this).parent().parent().attr("id"));
-    }
-    ).attr("href", function () {
-      return "#x-zone-delete&amp;zone="+$(this).parent().parent().attr("id");
-    }
-    ).text("Delete").after(" | ");
-
-    // Zone Clone
-    $(".zrow td:nth-child(2) a:nth-child(2)").attr("href", function () {
-      return app_prefix + "zone-clone&amp;zone="+$(this).parent().parent().attr("id");
-    }
-    ).text("Clone");
-
-    // Zone Edit
-    $(".zrow td:nth-child(1) a").attr("href", function () {
-      return app_prefix + "zone-edit&amp;zone="+$(this).parent().parent().attr("id");
-    }
-    );
     /*
     $("#myzonesbody tr").append('<td class="ztrow"><a href="#">Delete</a></td>');
     $("<a/>", {
@@ -181,13 +157,9 @@ function fixup_rows() {
 }
 
 
-
 $(document).ready(function() {
   fixup_rows();
   $(".header").bind("mouseleave", function(e) { fixup_rows(); });
   $(".prev,.next").bind("click", function(e) { fixup_rows(); });
   $('#nav').droppy();
 });
-
-  </xsl:template>
-</xsl:stylesheet>

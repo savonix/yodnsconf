@@ -134,6 +134,10 @@ xmlns="http://www.w3.org/1999/xhtml">
       :<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip"/>
     </xsl:if>
  </title>
+    <script type="text/javascript"><xsl:comment>
+var app_prefix = '<xsl:value-of select="$path_prefix"/>';
+//</xsl:comment>
+    </script>
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
@@ -151,7 +155,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.metadata.js"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
   <script type="text/javascript" src="{$link_prefix}x-javascript"></script>
-  <script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
+  <script type="text/javascript" src="{$link_prefix}s/js/yodnsconf.js"></script>
   <xsl:for-each select="//head_nodes">
     <xsl:sort select="priority" order="ascending"/>
     <xsl:apply-templates select="nodes/*"/>
