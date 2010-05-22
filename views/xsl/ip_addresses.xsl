@@ -23,12 +23,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:include href="html_main.xsl"/>
-  <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
+  <xsl:template match="/">
 
-
+<div>
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
 
@@ -106,10 +103,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
     </tbody>
   </table>
 </div>
-<xsl:call-template name="pager">
-  <xsl:with-param name="my-table">myip_addresses</xsl:with-param>
-</xsl:call-template>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>

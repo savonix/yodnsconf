@@ -155,7 +155,12 @@ function fixup_rows() {
 
   }
 }
-
+function add_element () {
+	$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
+}
+function remove_element () {
+	alert('Not functional yet.');
+}
 
 $(document).ready(function() {
   fixup_rows();

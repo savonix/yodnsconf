@@ -26,18 +26,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="zone-form">
 		<xsl:param name="zone_prefix"/>
 
-
-<script type="text/javascript">
-<![CDATA[
-function add_element () {
-	$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
-}
-function remove_element () {
-	alert('Not functional yet.');
-}
-]]>
-</script>
-
 <table width="100%">
   <tbody>
 	<tr>

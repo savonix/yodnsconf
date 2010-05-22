@@ -128,6 +128,12 @@ module Yodnsconf
     helpers Sinatra::SimpleRDiscount
 
     helpers do
+      def link_prefix
+        "#{Yodnsconf.conf[:uripfx]}"
+      end
+      def rootxml
+        '<root />'
+      end
       # These should be different based upon development vs. production
       def get_servers(domain=nil)
         servers = []
@@ -150,18 +156,19 @@ module Yodnsconf
     end
 
     get '/' do
-      'welcome'
+      mredirect 'zones'
     end
-    get '/yd-zones/' do
-      xml = '<root />'
-      xslview xml, 'zones.xsl', { 'link_prefix' => "#{Yodnsconf.conf[:uripfx]}"  }
+    get %r{/(hosts|zones)} do
+      xslview rootxml, params[:captures].first + '.xsl', { 'link_prefix' => link_prefix }
     end
-    get '/not-yd-zones/' do
-      xml = '<root />'
+    get '/zone-edit' do
+      xslview rootxml, 'zone_edit.xsl', { 'link_prefix' => link_prefix }
+    end
+    get '/raw/zone-edit' do
+      xslview rootxml, 'zone_edit.xsl', { 'link_prefix' => link_prefix }
     end
     get '/raw/yd-zones/' do
-      xml = '<root />'
-      xslview xml, 'zones.xsl'
+      xslview rootxml, 'zones.xsl'
     end
 
     get '/raw/json/yd-domain-list' do

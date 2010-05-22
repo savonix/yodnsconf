@@ -23,16 +23,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:include href="html_main.xsl"/>
   <xsl:include href="zone_form.xsl"/>
-  <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
+  <xsl:template match="/">
     <xsl:param name="i18n"/>
 
-
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
+<div>
 
 <script type="text/javascript">
 <![CDATA[
@@ -46,46 +41,6 @@ function initValidation()
 }
 ]]>
 </script>
-
-<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 5">
-<div style="float: right; width: 50%;">
-  <table class="tablesorter" id="records_table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Data</th>
-        <th>Dig</th>
-      </tr>
-    </thead>
-    <tbody>
-      <xsl:for-each select="/_R_/records_get_by_id/records_get_by_id">
-        <tr>
-          <td>
-            <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
-              <xsl:value-of select="name"/>
-            </a>
-          </td>
-          <td>
-            <a href="{$link_prefix}record-edit&amp;id={id}&amp;zone={zone}">
-              <xsl:value-of select="substring(data,0,30)"/>
-            </a>
-          </td>
-          <td>
-            <a href="{$link_prefix}tools-query&amp;hostname={name}.{/_R_/zone_get_by_id/zone_get_by_id/origin}&amp;type={type}">
-            Dig
-            </a>
-          </td>
-        </tr>
-      </xsl:for-each>
-    </tbody>
-  </table>
-<xsl:if test="count(/_R_/records_get_by_id/records_get_by_id) &gt; 10">
-  <xsl:call-template name="pager">
-    <xsl:with-param name="my-table">records_table</xsl:with-param>
-  </xsl:call-template>
-</xsl:if>
-</div>
-</xsl:if>
 
 
 <div style=" width: 50%;">
@@ -115,6 +70,7 @@ function initValidation()
 <script type="text/javascript">
 initValidation();
 </script>
+</div>
 </div>
   </xsl:template>
 </xsl:stylesheet>
