@@ -24,10 +24,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
 
+<xsl:param name="main_menu_doc" select="document('../../data/xml/main_menu.xml')"/>
+<xsl:variable name="i18n" select="document('../../i18n/en_US/yodnsconf.xml')"/>
+
 <xsl:template name="page">
 <html>
-  <xsl:variable name="i18n"
-  select="document('i18n/en_US/yodnsconf.xml')/i18n"/>
 
   <xsl:call-template name="head" />
   <body>
@@ -37,12 +38,8 @@ xmlns="http://www.w3.org/1999/xhtml">
     </xsl:for-each>
 
     <div id="main">
-      <xsl:call-template name="drop-downs">
-          <xsl:with-param name="i18n" select="$i18n"/>
-        </xsl:call-template>
-      <xsl:call-template name="main-menu">
-          <xsl:with-param name="i18n" select="$i18n"/>
-        </xsl:call-template>
+      <xsl:call-template name="drop-downs" />
+      <xsl:call-template name="main-menu" />
     
       <div id="content">
         <xsl:apply-templates />
@@ -158,7 +155,7 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
   	<!-- UI PRIMARY MENU -->
   <xsl:template name="main-menu">
     <ul id="nav">
-      <xsl:for-each select="document('data/xml/main_menu.xml')/menu/item">
+      <xsl:for-each select="$main_menu_doc/menu/item">
         <xsl:call-template name="list-button">
           <xsl:with-param name="key" select="key"/>
         </xsl:call-template>
@@ -170,13 +167,13 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
   <xsl:template name="list-button">
     <xsl:param name="key"/>
 <li>
-  <div><xsl:value-of select="document('i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$key]"/></div>
+  <div><xsl:value-of select="$i18n/i18n/*[local-name()=$key]"/></div>
   <ul>
-    <xsl:for-each select="document('data/xml/main_menu.xml')/menu/item[key=$key]/item">
+    <xsl:for-each select="$main_menu_doc/menu/item[key=$key]/item">
       <xsl:variable name="my_key" select="key"/>
       <li>
         <a href="{$link_prefix}{url}" id="{key}">
-          <xsl:value-of select="document('i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$my_key]"/>
+          <xsl:value-of select="$i18n/i18n/*[local-name()=$my_key]"/>
         </a>
       </li>
     </xsl:for-each>
