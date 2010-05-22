@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 function delete_redirect(http_host,pos) {
     if(confirm('Are you sure?')){
-      $.post("<xsl:value-of select="$link_prefix"/>x-redirect-delete&amp;http_host="+http_host,
+      $.post(app_prefix + "x-redirect-delete&amp;http_host="+http_host,
       {
         'http_host': http_host
       },
@@ -40,7 +40,7 @@ function delete_redirect(http_host,pos) {
 
 function delete_host(id) {
   if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-host-delete&amp;host_id="+id,
+    $.post(app_prefix + "x-host-delete&amp;host_id="+id,
     {
       'host_id': id
     },
@@ -52,7 +52,7 @@ function delete_host(id) {
 
 function delete_ip(ip_id) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-ydc-ip-addr-delete&amp;ip_id="+ip_id,
+    $.post(app_prefix + "x-ydc-ip-addr-delete&amp;ip_id="+ip_id,
     {
         'ip_id': ip_id
     },
@@ -64,7 +64,7 @@ function delete_ip(ip_id) {
 
 function delete_record(record_id,zone) {
   if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-record-delete&amp;record_id="+record_id,
+    $.post(app_prefix + "x-record-delete&amp;record_id="+record_id,
     {
       // zone is needed to update serial
       'record_id': record_id,
@@ -77,7 +77,7 @@ function delete_record(record_id,zone) {
 }
 function delete_hostgroup(id) {
   if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-hostgroup-delete&amp;hostgroup_id="+id,
+    $.post(app_prefix + "x-hostgroup-delete&amp;hostgroup_id="+id,
     {
       'hostgroup_id': id
     },
@@ -89,7 +89,7 @@ function delete_hostgroup(id) {
 // zone delete / delete_zone
 function zd(zone) {
   if(confirm('Delete zone id '+zone+'? You can deactivate it instead.')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-zone-delete&amp;zone="+zone,
+    $.post(app_prefix + "x-zone-delete&amp;zone="+zone,
     {
       'zone': zone
     },
@@ -103,7 +103,7 @@ function zd(zone) {
 }
 function delete_zone_group(zone_group_id) {
   if(confirm('Are you sure you want to ?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-zone-group-delete&amp;zg_id="+zone_group_id,
+    $.post(app_prefix + "x-zone-group-delete&amp;zg_id="+zone_group_id,
     {
       'zone_group_id': zone_group_id
     },
@@ -119,7 +119,7 @@ function delete_zone_group(zone_group_id) {
 
 function delete_service(id) {
     if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="//link_prefix"/>x-service-delete&amp;service_id="+id,
+    $.post(app_prefix + "x-service-delete&amp;service_id="+id,
     {
       'service_id': id
     },
@@ -158,13 +158,13 @@ function fixup_rows() {
 
     // Zone Clone
     $(".zrow td:nth-child(2) a:nth-child(2)").attr("href", function () {
-      return "<xsl:value-of select="$link_prefix"/>zone-clone&amp;zone="+$(this).parent().parent().attr("id");
+      return app_prefix + "zone-clone&amp;zone="+$(this).parent().parent().attr("id");
     }
     ).text("Clone");
 
     // Zone Edit
     $(".zrow td:nth-child(1) a").attr("href", function () {
-      return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
+      return app_prefix + "zone-edit&amp;zone="+$(this).parent().parent().attr("id");
     }
     );
     /*

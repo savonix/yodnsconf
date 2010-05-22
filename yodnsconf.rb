@@ -74,7 +74,7 @@ module Yodnsconf
   class Main < Sinatra::Base
 
     configure do
-      set :static => true, :public => 'public'
+      set :static => true, :public => 'web'
       set :xslviews => 'views/xsl/'
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i

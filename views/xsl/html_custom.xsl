@@ -173,7 +173,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   </xsl:template>
 
   <!-- UI LIST BUTTON -->
-  <xsl:template name="button">
+  <xsl:template name="list-button">
     <xsl:param name="key"/>
 <li>
   <div><xsl:value-of select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$key]"/></div>
