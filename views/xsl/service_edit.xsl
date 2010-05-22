@@ -25,7 +25,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
-
 <form method="post" name="redirect">
   <xsl:if test="//_get/clone='true'">
     <input type="hidden" name="clone" value="true"/>
