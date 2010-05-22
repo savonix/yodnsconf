@@ -24,10 +24,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
 
-<xsl:template match="page">
+<xsl:template name="page">
 <html>
-  <xsl:variable name="my18n"
-  select="document('apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n"/>
+  <xsl:variable name="i18n"
+  select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n"/>
 
   <xsl:call-template name="head" />
   <body>
@@ -45,7 +45,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         </xsl:call-template>
     
       <div id="content">
-        <xsl:call-template name="content" />
+        <xsl:apply-templates />
       </div>
     
       <div id="nofooter"/>
@@ -69,27 +69,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 
-  <xsl:template name="button">
-    <xsl:param name="key"/>
-    <li>
-      <div id="nav_{$key}">
-        <xsl:if test="//_get/nid=/_R_/menu/item[key=$key]/item/url">
-          <xsl:attribute name="class">nav_selected</xsl:attribute>
-        </xsl:if>
-        <xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/>
-      </div>
-      <ul>
-        <xsl:for-each select="/_R_/menu/item[key=$key]/item">
-          <xsl:variable name="my_key" select="key"/>
-          <li>
-            <a href="{$link_prefix}{url}" id="{key}">
-              <xsl:value-of select="/_R_/i18n/*[local-name()=$my_key]"/>
-            </a>
-          </li>
-        </xsl:for-each>
-      </ul>
-    </li>
-  </xsl:template>
+
   <xsl:template name="drop-downs">
 
 <div style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
@@ -184,7 +164,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   	<!-- UI PRIMARY MENU -->
   <xsl:template name="main-menu">
     <ul id="nav">
-      <xsl:for-each select="//menu/item[not(@active=0)]">
+      <xsl:for-each select="document('../../apps/yodnsconf/data/xml/main_menu.xml')/menu/item">
         <xsl:call-template name="list-button">
           <xsl:with-param name="key" select="key"/>
         </xsl:call-template>
@@ -193,24 +173,23 @@ xmlns="http://www.w3.org/1999/xhtml">
   </xsl:template>
 
   <!-- UI LIST BUTTON -->
-  <xsl:template name="list-button">
+  <xsl:template name="button">
     <xsl:param name="key"/>
-    <li>
-      <a href="#" class="head">
-        <xsl:value-of select="/_R_/i18n/*[name()=$key]"/>
-      </a>
-      <ul>
-        <xsl:for-each select="//menu/item[key=$key]/item">
-          <xsl:variable name="my_key" select="key"/>
-          <li>
-            <a href="{$link_prefix}{url}" id="{key}">
-              <xsl:value-of select="/_R_/i18n/*[name()=$my_key]"/>
-            </a>
-          </li>
-        </xsl:for-each>
-      </ul>
-    </li>
+<li>
+  <div><xsl:value-of select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$key]"/></div>
+  <ul>
+    <xsl:for-each select="document('../../apps/yodnsconf/data/xml/main_menu.xml')/menu/item[key=$key]/item">
+      <xsl:variable name="my_key" select="key"/>
+      <li>
+        <a href="{$link_prefix}{url}" id="{key}">
+          <xsl:value-of select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$my_key]"/>
+        </a>
+      </li>
+    </xsl:for-each>
+  </ul>
+</li>
   </xsl:template>
+
 
   <xsl:template name="pager">
     <xsl:param name="my-table"/>
