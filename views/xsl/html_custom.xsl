@@ -143,10 +143,10 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
-  <script type="text/javascript" src="{$path_prefix}javascripts/bundles/all.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.metadata.js"/>
   <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+  <script type="text/javascript" src="{$path_prefix}javascripts/bundles/all.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
   <script type="text/javascript" src="{$link_prefix}x-javascript"></script>
   <script type="text/javascript" src="{$link_prefix}s/js/yodnsconf.js"></script>
