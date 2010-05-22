@@ -138,10 +138,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 var app_prefix = '<xsl:value-of select="$path_prefix"/>';
 //</xsl:comment>
     </script>
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
+  <link rel="stylesheet" type="text/css" href="{$path_prefix}stylesheets/bundles/all.css"></link>
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>

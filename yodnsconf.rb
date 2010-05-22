@@ -31,6 +31,7 @@ require 'rack-xslview'
 require 'rack/cache'
 require 'sinatra/xslview'
 require 'sinatra/simplerdiscount'
+require 'sinatra/bundles'
 require 'rexml/document'
 require 'memcache'
 require 'json'
@@ -72,12 +73,14 @@ module Yodnsconf
 
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
-
+    register Sinatra::Bundles
+    
     configure do
       set :static => true, :public => 'web'
       set :xslviews => 'views/xsl/'
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i
+      stylesheet_bundle(:all, %w(droppy yui-reset-min))
 
       # Set request.env with application mount path
       use Rack::Config do |env|
