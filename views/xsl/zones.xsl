@@ -34,13 +34,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
     <thead>
       <tr>
         <th id="barf" width="60%"  class="{{sorter: 'text'}}">Origin</th>
-        <xsl:if test="verbose='true'">
-          <th>Name Server</th>
-        </xsl:if>
-        <xsl:if test="verbose='true'">
-          <th width="10%">TTL</th>
-          <th width="10%">Active</th>
-        </xsl:if>
         <th width="15%" class="{{sorter: false}}"/>
       </tr>
       <tr>
@@ -49,11 +42,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
           <td>
             <input type="text" name="origin" value="{/_R_/_get/origin}" />
           </td>
-          <xsl:if test="verbose='true'">
-            <td/>
-            <td/>
-            <td/>
-          </xsl:if>
           <td align="right">
             <input name="Filter" type="submit" id="Filter" value="Filter"/>
           </td>
@@ -61,7 +49,14 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
       </tr>
     </thead>
     <tbody id="myzonesbody" class="zrow">
-
+        <tr class="znrw">
+          <td class="origin">
+          </td>
+          <td>
+            <span class="zd">Delete</span>
+            <span class="zc">Clone</span>
+          </td>
+        </tr>
     </tbody>
   </table>
 </div>

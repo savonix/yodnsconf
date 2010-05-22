@@ -128,32 +128,19 @@ function delete_service(id) {
 function select_all_boxes(checkbox_name) {
   $(":checkbox[name='"+checkbox_name+"[]']").attr("checked","checked");
 }
-
-function fixup_rows() {
-  // Has this already been done?
-  if($(".zrow td:nth-child(3) a:nth-child(1)").text()=="") {
-
-    // Zone Row Highlight
-    $(".zrow tr").hover(
-      function () {
-        $(this).addClass("active");
-      },
-      function () {
-        $(this).removeClass("active");
-      }
-    );
-
-    /*
-    $("#myzonesbody tr").append('<td class="ztrow"><a href="#">Delete</a></td>');
-    $("<a/>", {
-      'text': 'Delete',
-      'click': function () {
-        zd($(this).parent().parent().attr("id"));
-      }
-    }).appendTo(".ztrow");
-    */
-
-  }
+function load_zones() {
+  
+  $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(zones) {
+      var myarr = $('#myzonesbody').clone();
+      $('tr', myarr).remove();
+      var myrow = $('tr','#myzonesbody');
+      $.each(zones, function(i,zone) {
+          //myrow.clone().find('.origin').html(zone).parent().appendTo(myarr);
+          $('<tr><td>'+zone+'</td><td>Clone</td></tr>').appendTo(myarr);
+      });
+      $('#myzonesbody').replaceWith(myarr);
+  });
+  
 }
 function add_element () {
 	$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
@@ -163,7 +150,8 @@ function remove_element () {
 }
 
 $(document).ready(function() {
-  fixup_rows();
+
+    load_zones();
   $(".header").bind("mouseleave", function(e) { fixup_rows(); });
   $(".prev,.next").bind("click", function(e) { fixup_rows(); });
   $('#nav').droppy();
