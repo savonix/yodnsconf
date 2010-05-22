@@ -10,17 +10,4 @@
         <active>Y</active>
         <ns_filter>%</ns_filter>
     </defaults>
-    <extensions>
-        <dev_buffer>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
-            <sitemap>&includepath;extensions/dev_buffer/sitemap.xml</sitemap>
-            <excludes>x--,themed-css,dynamic-css,xml-sitemap,license,readme,license</excludes>
-        </dev_buffer>
-        <nexista_auth>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/nexista_auth.php</source>
-            <login>auth.php?nid=login</login>
-        </nexista_auth>
-    </extensions>
 </config>
