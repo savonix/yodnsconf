@@ -167,15 +167,6 @@ function fixup_rows() {
       return "<xsl:value-of select="$link_prefix"/>zone-edit&amp;zone="+$(this).parent().parent().attr("id");
     }
     );
-    /*
-    $("#myzonesbody tr").append('<td class="ztrow"><a href="#">Delete</a></td>');
-    $("<a/>", {
-      'text': 'Delete',
-      'click': function () {
-        zd($(this).parent().parent().attr("id"));
-      }
-    }).appendTo(".ztrow");
-    */
 
   }
 }
