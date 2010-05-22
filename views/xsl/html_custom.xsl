@@ -27,7 +27,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 <xsl:template name="page">
 <html>
   <xsl:variable name="i18n"
-  select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n"/>
+  select="document('i18n/en_US/yodnsconf.xml')/i18n"/>
 
   <xsl:call-template name="head" />
   <body>
@@ -170,13 +170,13 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
   <xsl:template name="list-button">
     <xsl:param name="key"/>
 <li>
-  <div><xsl:value-of select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$key]"/></div>
+  <div><xsl:value-of select="document('i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$key]"/></div>
   <ul>
     <xsl:for-each select="document('../../apps/yodnsconf/data/xml/main_menu.xml')/menu/item[key=$key]/item">
       <xsl:variable name="my_key" select="key"/>
       <li>
         <a href="{$link_prefix}{url}" id="{key}">
-          <xsl:value-of select="document('../../apps/yodnsconf/i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$my_key]"/>
+          <xsl:value-of select="document('i18n/en_US/yodnsconf.xml')/i18n/*[local-name()=$my_key]"/>
         </a>
       </li>
     </xsl:for-each>
