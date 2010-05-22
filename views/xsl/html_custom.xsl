@@ -82,7 +82,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         <xsl:for-each select="/_R_/menu/item[key=$key]/item">
           <xsl:variable name="my_key" select="key"/>
           <li>
-            <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
+            <a href="{$link_prefix}{url}" id="{key}">
               <xsl:value-of select="/_R_/i18n/*[local-name()=$my_key]"/>
             </a>
           </li>
@@ -91,9 +91,6 @@ xmlns="http://www.w3.org/1999/xhtml">
     </li>
   </xsl:template>
   <xsl:template name="drop-downs">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-
 
 <div style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
   <div style="float: right;">
@@ -135,7 +132,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       <a href="{$link_prefix}zone-edit&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
         <xsl:value-of select="/_R_/zone_get_by_id/zone_get_by_id/origin"/>
       </a>
-      <a href="{//link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
+      <a href="{$link_prefix}records&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
         <span id="i18n-records">Records</span>
       </a>
     </div>
@@ -161,7 +158,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
-  <link rel="stylesheet" type="text/css" href="{/_R_/runtime/path_prefix}s/js/blue/style.css"/>
+  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
@@ -170,7 +167,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.metadata.js"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
@@ -207,7 +203,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         <xsl:for-each select="//menu/item[key=$key]/item">
           <xsl:variable name="my_key" select="key"/>
           <li>
-            <a href="{//runtime/link_prefix}{url}" id="{key}">
+            <a href="{$link_prefix}{url}" id="{key}">
               <xsl:value-of select="/_R_/i18n/*[name()=$my_key]"/>
             </a>
           </li>
@@ -217,23 +213,21 @@ xmlns="http://www.w3.org/1999/xhtml">
   </xsl:template>
 
   <xsl:template name="pager">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
     <xsl:param name="my-table"/>
 			<div id="{$my-table}-pager" class="pager">
       <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
       <table>
         <tr>
           <td>
-            <img src="{/_R_/runtime/path_prefix}s/js/blue/first.png" class="first"/>
-            <img src="{/_R_/runtime/path_prefix}s/js/blue/prev.png" class="prev"/>
+            <img src="{$path_prefix}s/js/blue/first.png" class="first"/>
+            <img src="{$path_prefix}s/js/blue/prev.png" class="prev"/>
           </td>
           <td>
             <input type="text" class="pagedisplay" size="4" readonly="readonly"/>
           </td>
           <td>
-            <img src="{/_R_/runtime/path_prefix}s/js/blue/next.png" class="next"/>
-            <img src="{/_R_/runtime/path_prefix}s/js/blue/last.png" class="last"/>
+            <img src="{$path_prefix}s/js/blue/next.png" class="next"/>
+            <img src="{$path_prefix}s/js/blue/last.png" class="last"/>
           </td>
         </tr>
       </table>
