@@ -23,13 +23,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:output doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
-  method="xml" doctype-public="-//W3C//DTD XHTML 1.1//EN" encoding="UTF-8" 
-  indent="yes" omit-xml-declaration="no" />
-  <xsl:strip-space elements="*"/>
-  <xsl:template match="/">
 
-
+<xsl:template match="page">
 <html>
   <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
   <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
@@ -46,11 +41,27 @@ xmlns="http://www.w3.org/1999/xhtml">
       <xsl:apply-templates select="nodes/*"/>
     </xsl:for-each>
 
-    <xsl:call-template name="main">
-      <xsl:with-param name="link_prefix" select="$link_prefix"/>
-      <xsl:with-param name="path_prefix" select="$path_prefix"/>
-      <xsl:with-param name="i18n" select="$my18n"/>
-    </xsl:call-template>
+    <div id="main">
+      <xsl:call-template name="drop-downs">
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
+          <xsl:with-param name="i18n" select="$i18n"/>
+        </xsl:call-template>
+      <xsl:call-template name="main-menu">
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
+          <xsl:with-param name="i18n" select="$i18n"/>
+        </xsl:call-template>
+    
+      <div id="content">
+        <xsl:call-template name="content">
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
+        </xsl:call-template>
+      </div>
+    
+      <div id="nofooter"/>
+    </div>
 
     <xsl:for-each select="//footer_nodes">
       <xsl:sort select="priority" order="ascending"/>

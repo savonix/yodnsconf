@@ -22,38 +22,14 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
-	<xsl:import href="http://github.com/docunext/1bb02b59/raw/master/output.xhtml11.xsl"/>
-	<xsl:include href="html_custom.xsl"/>
-
-  <xsl:template name="main">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
+xmlns="http://www.w3.org/1999/xhtml">
+	<xsl:import href="./views/xsl/1bb02b59/output.xhtml10.xsl"/>
+  <xsl:include href="./views/xsl/html_custom.xsl"/>
 
 
-<div id="main">
-  <xsl:call-template name="drop-downs">
-      <xsl:with-param name="link_prefix" select="$link_prefix"/>
-      <xsl:with-param name="path_prefix" select="$path_prefix"/>
-      <xsl:with-param name="i18n" select="$i18n"/>
-    </xsl:call-template>
-  <xsl:call-template name="main-menu">
-      <xsl:with-param name="link_prefix" select="$link_prefix"/>
-      <xsl:with-param name="path_prefix" select="$path_prefix"/>
-      <xsl:with-param name="i18n" select="$i18n"/>
-    </xsl:call-template>
-
-  <div id="content">
-    <xsl:call-template name="content">
-      <xsl:with-param name="link_prefix" select="$link_prefix"/>
-      <xsl:with-param name="path_prefix" select="$path_prefix"/>
-    </xsl:call-template>
-  </div>
-
-  <div id="nofooter"/>
-</div>
-
-
+  <xsl:template match="/">
+  <xsl:call-template name="page"/>
   </xsl:template>
+
+
 </xsl:stylesheet>
