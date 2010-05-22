@@ -48,6 +48,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
         </form>
       </tr>
     </thead>
+    <!--
     <tbody id="myzonesbody" class="zrow">
         <tr class="znrw">
           <td class="origin">
@@ -58,6 +59,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
           </td>
         </tr>
     </tbody>
+    -->
   </table>
 </div>
 <div class="table_controls">

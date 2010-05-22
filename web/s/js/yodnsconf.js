@@ -128,17 +128,45 @@ function delete_service(id) {
 function select_all_boxes(checkbox_name) {
   $(":checkbox[name='"+checkbox_name+"[]']").attr("checked","checked");
 }
+function create_row(zone,myr) {
+  var newtextnode = document.createTextNode(zone);
+  mytd.appendChild(newtextnode);
+  return mytr;
+}
+
 function load_zones() {
-  
   $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(zones) {
-      var myarr = $('#myzonesbody').clone();
-      $('tr', myarr).remove();
-      var myrow = $('tr','#myzonesbody');
+      var mytb = document.createElement("tbody");
+      var mytr = document.createElement("tr");
+      var mytd1 = document.createElement("td");
+      mytd1.className = 'origin';
+      var mytd2 = document.createElement("td");
+      var mysp1 = document.createElement("span");
+      var mytn1 = document.createTextNode("Delete");
+      mysp1.appendChild(mytn1);
+      var mysp2 = document.createElement("span");
+      var mytn2 = document.createTextNode("Clone");
+      mysp2.appendChild(mytn2);
+      mytd2.appendChild(mysp1);
+      mytd2.appendChild(mysp2);
+      
+      //var myarr = $('#myzonesbody').clone();
+      //$('tr', myarr).remove();
+      //var myrow = $('tr','#myzonesbody');
       $.each(zones, function(i,zone) {
           //myrow.clone().find('.origin').html(zone).parent().appendTo(myarr);
-          $('<tr><td>'+zone+'</td><td>Clone</td></tr>').appendTo(myarr);
+          //$('<tr><td>'+zone+'</td><td>Clone</td></tr>').appendTo(myarr);
+          myr = mytr.cloneNode(true);
+          var mytdd1 = mytd1.cloneNode(true);
+          var mytdd2 = mytd2.cloneNode(true);
+          myr.appendChild(mytdd1);
+          myr.appendChild(mytdd2);
+          var newtextnode = document.createTextNode(zone);
+          mytdd1.appendChild(newtextnode);
+          mytb.appendChild(myr);
+          if ( i == 10 ) return false;
       });
-      $('#myzonesbody').replaceWith(myarr);
+      $('#myzones').append(mytb).show();
   });
   
 }
