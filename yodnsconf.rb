@@ -80,7 +80,7 @@ module Yodnsconf
       set :xslviews => 'views/xsl/'
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i
-      stylesheet_bundle(:all, %w(droppy yui-reset-min))
+      stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
       javascript_bundle(:all, %w(jquery/plugins/*))
 
       # Set request.env with application mount path
