@@ -150,12 +150,7 @@ function load_zones() {
       mytd2.appendChild(mysp1);
       mytd2.appendChild(mysp2);
       
-      //var myarr = $('#myzonesbody').clone();
-      //$('tr', myarr).remove();
-      //var myrow = $('tr','#myzonesbody');
       $.each(zones, function(i,zone) {
-          //myrow.clone().find('.origin').html(zone).parent().appendTo(myarr);
-          //$('<tr><td>'+zone+'</td><td>Clone</td></tr>').appendTo(myarr);
           myr = mytr.cloneNode(true);
           var mytdd1 = mytd1.cloneNode(true);
           var mytdd2 = mytd2.cloneNode(true);

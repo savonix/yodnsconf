@@ -23,16 +23,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:include href="html_main.xsl"/>
-  <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=records_table" />
-
-
-
+  <xsl:template match="/">
+<div>
 <form method="post" action="{$link_prefix}x-records-delete">
 <input type="hidden" name="zone" value="{//zone_get_by_id/zone_get_by_id/id}"/>
 <div class="tableframe">
@@ -132,11 +124,8 @@ value="Delete Selected Records"/>
   </form>
 </div>
 <div class="table_controls">
-<xsl:call-template name="pager">
-  <xsl:with-param name="my-table">records_table</xsl:with-param>
-</xsl:call-template>
 </div>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>

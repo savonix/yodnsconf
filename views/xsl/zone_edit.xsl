@@ -25,22 +25,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="zone_form.xsl"/>
   <xsl:template match="/">
-    <xsl:param name="i18n"/>
 
 <div>
 
-<script type="text/javascript">
-<![CDATA[
-function initValidation()
-{
-  var objForm = document.forms["myform"];
-  objForm.ns.required = 1;
-  objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
-  objForm.ttl.required = 1;
-  objForm.ttl.regexp = /^[0-9]+$/;
-}
-]]>
-</script>
 
 
 <div style=" width: 50%;">
@@ -67,9 +54,6 @@ function initValidation()
 <a class="thickbox" href="{$link_prefix}zone-keys&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">Zone Keys</a>
 <br/>
 <a href="{$link_prefix}x-zone-export&amp;zone={//id}">Export</a>
-<script type="text/javascript">
-initValidation();
-</script>
 </div>
 </div>
   </xsl:template>

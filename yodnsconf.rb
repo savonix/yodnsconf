@@ -158,8 +158,8 @@ module Yodnsconf
     get '/' do
       mredirect 'zones'
     end
-    get %r{/(hosts|zones)} do
-      xslview rootxml, params[:captures].first + '.xsl', { 'link_prefix' => link_prefix }
+    get %r{/(hosts|zones|zone-groups|services|redirects)} do
+      xslview rootxml, params[:captures].first.gsub('-','_') + '.xsl', { 'link_prefix' => link_prefix }
     end
     get '/zone-edit' do
       xslview rootxml, 'zone_edit.xsl', { 'link_prefix' => link_prefix }

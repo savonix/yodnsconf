@@ -23,15 +23,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:include href="html_main.xsl"/>
-  <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
+  <xsl:template match="/">
 
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
-
-
+<div>
 <div class="tableframe">
   <table width="100%" class="tablesorter" id="myhostgroups">
     <thead>
@@ -73,13 +67,11 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
 </div>
 <br/>
 <div class="table_controls">
-<xsl:call-template name="pager">
-  <xsl:with-param name="my-table">myhostgroups</xsl:with-param>
-</xsl:call-template>
 </div>
 <div class="table_meta" style="float: right">
   <a href="{$link_prefix}x-hostgroups-export">Nagios3 Export</a>&#160;
   <a href="{$link_prefix}hostgroup-edit">New Hostgroup</a>
+</div>
 </div>
 
 

@@ -23,16 +23,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:include href="html_main.xsl"/>
-  <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
+  <xsl:template match="/">
 
-
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myredirects" />
-
+<div>
 <div class="tableframe">
   <table width="100%" class="tablesorter" id="myredirects">
     <thead>
@@ -89,9 +82,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myredirects" />
   </table>
 </div>
 <div class="table_controls">
-<xsl:call-template name="pager">
-  <xsl:with-param name="my-table">myredirects</xsl:with-param>
-</xsl:call-template>
 </div>
 <div style="text-align: right" class="table_meta">
   <a href="{$link_prefix}redirect-edit">
@@ -104,7 +94,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myredirects" />
     <span id="i18n-nginx">NGINX</span>
   </a>
 </div>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>
