@@ -25,18 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
-
-<script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-<script language="javascript">
-<![CDATA[
-function initValidation()
-{
-  var objForm = document.forms["redirect"];
-  objForm.http_host.required = 1;
-  objForm.redirect.required = 1;
-}
-]]>
-</script>
+<div>
 <form method="post" name="redirect" onSubmit="return validateStandard(this);"
   action="{$link_prefix}host-edit">
   <xsl:if test="//_get/clone='true'">
@@ -132,13 +121,10 @@ function initValidation()
   </table>
   </div>
 </form>
-<script language="javascript">
-initValidation();
-</script>
 <div style="text-align: right">
   <a href="{$link_prefix}x-hosts-export-puppet&amp;host_id={//_get/host_id}">Puppet Export</a>
 </div>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>

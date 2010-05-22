@@ -25,18 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
-
-<script type="text/javascript">
-<![CDATA[
-function initValidation()
-{
-    var objForm = document.forms["redirect"];
-    objForm.http_host.required = 1;
-    objForm.redirect.required = 1;
-}
-]]>
-</script>
-
+<div>
 <xsl:variable name="my_redirects"
 select="/_R_/redirects_get_all/redirects_get_all" />
 
@@ -80,10 +69,7 @@ select="/_R_/redirects_get_all/redirects_get_all" />
     </tr>
   </table>
 </form>
-<script type="text/javascript">
-initValidation();
-</script>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>

@@ -26,33 +26,8 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
 
-<script type="text/javascript">
-<![CDATA[
-function initValidation()
-{
-    var objForm = document.forms["record"];
-    objForm.name.required = 0;
-    objForm.name.regexp = /^[A-Za-z0-9\-\._]*$/;
-    objForm.data.required = 1;
-    if(objForm.type.value=='A') {
-        $("#rr_prio_row").css("display","none");
-        objForm.data.regexp = /^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$/;
-    } else if (objForm.type.value=='TXT') {
-        $("#rr_prio_row").css("display","none");
-        objForm.data.regexp = /^.*$/;
-        var blah = "barf";
-    } else if (objForm.type.value=='MX') {
-        $("#rr_prio_row").css("display","");
-        objForm.data.regexp = /^[A-Za-z0-9\-\.]*$/;
-    } else {
-        $("#rr_prio_row").css("display","none");
-        objForm.data.regexp = /^[A-Za-z0-9\-\.]*$/;
-    }
-}
-]]>
-</script>
-<form method="post" name="record"
-onsubmit="return validateStandard(document.forms['record']);">
+<div>
+<form method="post" name="record">
 
   <xsl:if test="/_R_/_get/id">
     <input type="hidden" name="id" value="{/_R_/_get/id}"/>
@@ -154,18 +129,14 @@ onsubmit="return validateStandard(document.forms['record']);">
     <tr>
       <td/>
       <td>
-        <input type="submit" class="button" value="Save"
-        onclick="return validateStandard(document.forms['record']);"/>&#160;
+        <input type="submit" class="button" value="Save"/>&#160;
         <input type="button" class="button" value="Cancel"
         onClick="window.location.href='{$link_prefix}records&amp;zone={/_R_/_get/zone}'"/>
       </td>
     </tr>
   </table>
 </form>
-<script type="text/javascript">
-initValidation();
-</script>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>
