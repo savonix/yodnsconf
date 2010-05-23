@@ -135,12 +135,12 @@ xmlns="http://www.w3.org/1999/xhtml">
 var app_prefix = '<xsl:value-of select="$path_prefix"/>';
 //</xsl:comment>
     </script>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}stylesheets/bundles/all.css"></link>
+  <link rel="stylesheet" type="text/css" href="{$path_prefix}js/bundles/all.css"></link>
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
-  <script type="text/javascript" src="{$path_prefix}javascripts/jquery/plugins/jquery.tablesorter.min.js"></script>
-  <script type="text/javascript" src="{$path_prefix}javascripts/bundles/all.js"></script>
+  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
+  <script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
   <script type="text/javascript" src="{$link_prefix}s/js/yodnsconf.js"></script>
   <xsl:for-each select="//head_nodes">

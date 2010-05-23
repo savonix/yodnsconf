@@ -31,7 +31,10 @@ require 'rack-xslview'
 require 'rack/cache'
 require 'sinatra/xslview'
 require 'sinatra/simplerdiscount'
-require 'sinatra/bundles'
+
+require File.dirname(File.dirname(__FILE__)) + '/sinatra-stuff/sinatra-bundles/lib/sinatra/bundles' if ENV['RACK_ENV'] == 'development'
+require 'sinatra/bundles' unless ENV['RACK_ENV'] == 'development'
+
 require 'rexml/document'
 require 'memcache'
 require 'json'
@@ -73,6 +76,8 @@ module Yodnsconf
 
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
+    set :js => 's/js'
+    set :css => 's/css'
     register Sinatra::Bundles
     
     configure do
