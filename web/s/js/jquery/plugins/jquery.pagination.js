@@ -22,7 +22,7 @@ jQuery.fn.pagination = function(maxentries, opts){
 		callback:function(){return false;}
 	},opts||{});
 	
-	return this.each(function() {
+	return $(this).each(function() {
 		/**
 		 * Calculate the maximum number of pages
 		 */

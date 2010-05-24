@@ -161,6 +161,7 @@ function load_zones() {
           mytb.appendChild(myr);
           if ( i == 10 ) return false;
       });
+      $('#myzones tbody').remove();
       $('#myzones').append(mytb).show();
   });
   

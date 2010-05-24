@@ -26,42 +26,47 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
 <div>
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myzones" />
 
-<div class="tableframe">
-  <table width="100%" class="tablesorter" id="myzones">
-    <thead>
-      <tr>
-        <th id="barf" width="60%"  class="{{sorter: 'text'}}">Origin</th>
-        <th width="15%" class="{{sorter: false}}"/>
-      </tr>
-      <tr>
-        <form method="get">
-          <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-          <td>
-            <input type="text" name="origin" value="{/_R_/_get/origin}" />
-          </td>
-          <td align="right">
-            <input name="Filter" type="submit" id="Filter" value="Filter"/>
-          </td>
-        </form>
-      </tr>
-    </thead>
-    <!--
-    <tbody id="myzonesbody" class="zrow">
-        <tr class="znrw">
-          <td class="origin">
-          </td>
-          <td>
-            <span class="zd">Delete</span>
-            <span class="zc">Clone</span>
-          </td>
+<form method="get" action="zones">
+  <fieldset>
+  <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
+  </fieldset>
+  <div class="tableframe">
+    <table width="100%" class="tablesorter" id="myzones">
+      <thead>
+        <tr>
+          <th id="barf">Origin</th>
+          <th />
         </tr>
-    </tbody>
-    -->
-  </table>
-</div>
+        <tr>
+            <td>
+              <fieldset>
+                <input type="text" name="origin" value="{/_R_/_get/origin}" />
+              </fieldset>
+            </td>
+            <td align="right">
+            <fieldset>
+              <input name="Filter" type="submit" id="Filter" value="Filter"/>
+            </fieldset>
+            </td>
+        </tr>
+      </thead>
+      <tbody id="myzonesbody" class="zrow">
+      <tr><td></td><td></td></tr>
+      <!--
+          <tr class="znrw">
+            <td class="origin">
+            </td>
+            <td>
+              <span class="zd">Delete</span>
+              <span class="zc">Clone</span>
+            </td>
+          </tr>
+      -->
+      </tbody>
+    </table>
+  </div>
+</form>
 <div class="table_controls">
 </div>
 <div class="table_meta" style="float: right">

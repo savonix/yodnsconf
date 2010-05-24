@@ -27,7 +27,8 @@ require 'rack-rewrite'
 require 'builder'
 require 'sass'
 require 'xml/xslt'
-require 'rack-xslview'
+require File.dirname(File.dirname(__FILE__)) + '/Rack-XSLView/lib/rack-xslview' if ENV['RACK_ENV'] == 'development'
+require 'rack-xslview' unless ENV['RACK_ENV'] == 'development'
 require 'rack/cache'
 require 'sinatra/xslview'
 require 'sinatra/simplerdiscount'
@@ -76,17 +77,19 @@ module Yodnsconf
 
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
+    set :environment => ENV['RACK_ENV']
     set :js => 's/js'
     set :css => 's/css'
     register Sinatra::Bundles
-    
+    puts ENV['RACK_ENV']
+
     configure do
       set :static => true, :public => 'web'
       set :xslviews => 'views/xsl/'
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i
       stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
-      javascript_bundle(:all, %w(jquery/plugins/*))
+      javascript_bundle(:all, %w(jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination))
 
       # Set request.env with application mount path
       use Rack::Config do |env|
@@ -125,7 +128,9 @@ module Yodnsconf
       :noxsl => noxsl,
       :passenv => passenv,
       :xslfile => xslfile,
-      :reload => ENV['RACK_ENV'] == 'development' ? true : false
+      :reload => ENV['RACK_ENV'] == 'development' ? true : false,
+      :content_type => 'application/xhtml+xml'
+      
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView

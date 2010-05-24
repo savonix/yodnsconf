@@ -73,6 +73,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <div style="float: right;">
     <form action="{$link_prefix}index" method="get">
       <!-- to do: match selection -->
+      <fieldset>
       <input type="hidden" name="nid" value="index"/>
       <select name="zone_group_id" onchange="location.href='{$link_prefix}index&amp;zone_group_id='+$(this).val()">
         <option value="%">Select All</option>
@@ -85,12 +86,14 @@ xmlns="http://www.w3.org/1999/xhtml">
         </xsl:for-each>
       </select>
       <input type="submit" value="Go"/>
+      </fieldset>
     </form>
   </div>
 
   <div style="float: right;">
     <form action="{$link_prefix}" method="get">
       <!-- to do: match selection -->
+      <fieldset>
       <input type="hidden" name="nid" value="zone-edit"/>
       <select name="zone_group_id" onchange="location.href='{$link_prefix}zone-edit&amp;zone='+$(this).val()">
         <option value="%">Quick Zone Links</option>
@@ -102,6 +105,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         </xsl:for-each>
       </select>
       <input type="submit" value="Go"/>
+      </fieldset>
     </form>
   </div>
   <xsl:if test="/_R_/zone_get_by_id/zone_get_by_id/id">
@@ -131,17 +135,15 @@ xmlns="http://www.w3.org/1999/xhtml">
       :<xsl:value-of select="/_R_/hosts_get_all/hosts_get_all[id=/_R_/_get/host_id]/ip"/>
     </xsl:if>
  </title>
-    <script type="text/javascript"><xsl:comment>
+    <script type="text/javascript">
 var app_prefix = '<xsl:value-of select="$path_prefix"/>';
-//</xsl:comment>
     </script>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}js/bundles/all.css"></link>
+  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/bundles/all.css"></link>
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
   <link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css"/>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
   <script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
   <script type="text/javascript" src="{$link_prefix}s/js/yodnsconf.js"></script>
   <xsl:for-each select="//head_nodes">
     <xsl:sort select="priority" order="ascending"/>
