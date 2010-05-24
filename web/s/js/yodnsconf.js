@@ -167,7 +167,8 @@ function load_zones() {
   
 }
 function add_element () {
-	$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
+	//$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
+	alert('Not functional yet.');
 }
 function remove_element () {
 	alert('Not functional yet.');
