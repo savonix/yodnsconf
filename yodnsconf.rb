@@ -66,7 +66,7 @@ module Yodnsconf
     if self.conf[:ccf]
       if File.exists?(self.conf[:ccf])
         json = File.new(self.conf[:ccf], 'r')
-        parser = Yajl::Parser.new
+        parser = Yajl::Parser.new(:symbolize_keys => true)
         customconf = parser.parse(json)
         self.conf.merge!(customconf)
       end
