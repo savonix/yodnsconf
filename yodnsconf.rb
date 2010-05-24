@@ -26,6 +26,7 @@ require 'rack/contrib/config'
 require 'rack-rewrite'
 require 'builder'
 require 'sass'
+require 'yajl'
 require 'xml/xslt'
 require File.dirname(File.dirname(__FILE__)) + '/Rack-XSLView/lib/rack-xslview' if ENV['RACK_ENV'] == 'development'
 require 'rack-xslview' unless ENV['RACK_ENV'] == 'development'
@@ -64,8 +65,9 @@ module Yodnsconf
     self.conf = conf
     if self.conf[:ccf]
       if File.exists?(self.conf[:ccf])
-        myconf = File.open(self.conf[:ccf]) { |f| f.read }
-        customconf = eval(myconf)
+        json = File.new(self.conf[:ccf], 'r')
+        parser = Yajl::Parser.new
+        customconf = parser.parse(json)
         self.conf.merge!(customconf)
       end
     end

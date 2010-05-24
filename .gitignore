@@ -1,5 +1,6 @@
 coverage
 config/customconf.rb
+config/customconf.json
 config.xml
 config_noent.xml
 apps/auth

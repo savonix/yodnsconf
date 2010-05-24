@@ -11,7 +11,7 @@ end
 require 'yodnsconf'
 
 map mountpath do
-  ccf = 'config/customconf.rb'
+  ccf = 'config/customconf.json'
   conf = { :uripfx => mountpath.gsub(/^\/$/,''), :ccf => ccf }
   myapp = Yodnsconf.new(conf)
   run myapp
