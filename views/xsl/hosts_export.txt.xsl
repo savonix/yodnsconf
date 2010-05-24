@@ -108,4 +108,24 @@ define host{
 </xsl:text>
   </xsl:for-each>
 </xsl:template>
+
+
+<xsl:template name="hgnagios">
+
+  <xsl:for-each select="/_R_/hostgroups_get_all/hostgroups_get_all">
+		<xsl:variable name="my_hostgroup_id" select="id"/>
+define hostgroup {
+	hostgroup_name  <xsl:value-of select="name"/>
+	alias           <xsl:value-of select="alias"/>
+	<xsl:text>
+	members         </xsl:text>
+	<xsl:for-each select="/_R_/hostgroups_get_all_hosts/hostgroups_get_all_hosts[id=$my_hostgroup_id]">
+		<xsl:value-of select="host"/>
+		<xsl:if test="not(position()=last())"><xsl:text>,</xsl:text></xsl:if>
+	</xsl:for-each>
+}
+			<xsl:text>
+</xsl:text>
+  </xsl:for-each>
+</xsl:template>
 </xsl:stylesheet>
