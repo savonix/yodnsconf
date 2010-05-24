@@ -38,4 +38,22 @@ $TTL 12h
 </xsl:for-each><xsl:text>
 </xsl:text>
 </xsl:template>
+
+<xsl:template name="maradns">
+
+<xsl:value-of select="//zone_get_by_id/origin"/> SOA <xsl:value-of select="//zone_get_by_id/origin"/> support@savonix.com. <xsl:value-of select="//zone_get_by_id/serial"/>
+<xsl:text> </xsl:text><xsl:value-of select="//zone_get_by_id/refresh"/>
+<xsl:text> </xsl:text><xsl:value-of select="//zone_get_by_id/retry"/>
+<xsl:text> </xsl:text><xsl:value-of select="//zone_get_by_id/expire"/>
+<xsl:text> </xsl:text><xsl:value-of select="//zone_get_by_id/minimum"/> ~
+<xsl:for-each select="/_R_/records_get_by_id/records_get_by_id[type='NS']">
+<xsl:if test="not(name='')"><xsl:value-of select="name"/>.</xsl:if><xsl:value-of select="//zone_get_by_id/origin"/><xsl:text> </xsl:text><xsl:if test="ttl &gt; 0">+<xsl:value-of select="ttl"/><xsl:text> </xsl:text></xsl:if><xsl:value-of select="type"/><xsl:if test="type='MX' or type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="aux"/></xsl:if><xsl:if test="type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="weight"/><xsl:text> </xsl:text><xsl:value-of select="port"/></xsl:if><xsl:text> </xsl:text><xsl:if test="type='TXT'">"</xsl:if><xsl:value-of select="data"/><xsl:if test="type='TXT'">"</xsl:if> ~
+</xsl:for-each>
+<xsl:for-each select="/_R_/records_get_by_id/records_get_by_id[type='A']">
+<xsl:if test="not(name='')"><xsl:value-of select="name"/>.</xsl:if><xsl:value-of select="//zone_get_by_id/origin"/><xsl:text> </xsl:text><xsl:if test="ttl &gt; 0">+<xsl:value-of select="ttl"/><xsl:text> </xsl:text></xsl:if><xsl:value-of select="type"/><xsl:if test="type='MX' or type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="aux"/></xsl:if><xsl:if test="type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="weight"/><xsl:text> </xsl:text><xsl:value-of select="port"/></xsl:if><xsl:text> </xsl:text><xsl:if test="type='TXT'">"</xsl:if><xsl:value-of select="data"/><xsl:if test="type='TXT'">"</xsl:if> ~
+</xsl:for-each>
+<xsl:for-each select="/_R_/records_get_by_id/records_get_by_id[type='CNAME']">
+<xsl:if test="not(name='')"><xsl:value-of select="name"/>.</xsl:if><xsl:value-of select="//zone_get_by_id/origin"/><xsl:text> </xsl:text><xsl:if test="ttl &gt; 0">+<xsl:value-of select="ttl"/><xsl:text> </xsl:text></xsl:if><xsl:value-of select="type"/><xsl:if test="type='MX' or type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="aux"/></xsl:if><xsl:if test="type='SRV'"><xsl:text> </xsl:text><xsl:value-of select="weight"/><xsl:text> </xsl:text><xsl:value-of select="port"/></xsl:if><xsl:text> </xsl:text><xsl:if test="type='TXT'">"</xsl:if><xsl:value-of select="data"/><xsl:if test="type='TXT'">"</xsl:if> ~
+</xsl:for-each>
+</xsl:template>
 </xsl:stylesheet>
