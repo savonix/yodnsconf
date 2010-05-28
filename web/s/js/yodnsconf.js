@@ -165,7 +165,10 @@ function build_table() {
     });
     $('#myzones tbody').replaceWith(mytb);
     $('#myzones .origin').click(function(){
-        $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html');
+	thezone = $(this).text();
+        $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html', function() {
+		$('input:text[name="origin[]"]').val(thezone);
+	});
     });
     $('#myzones').data('index', index + 5);
     $('#origin').quicksearch('#myzones tbody tr');

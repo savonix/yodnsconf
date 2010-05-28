@@ -89,8 +89,6 @@ module Yodnsconf
       set :xslviews => 'views/xsl/'
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i
-      stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
-      javascript_bundle(:all, %w(jquery/jquery-1.4.2.min jquery/plugins/jquery.quicksearch jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination yodnsconf))
 
       # Set request.env with application mount path
       use Rack::Config do |env|
@@ -111,7 +109,6 @@ module Yodnsconf
 
     end
     configure :development do
-      set(:bundle_cache_time,0)
       set :logging => false, :reload_templates => true
     end
     configure :demo do
@@ -133,7 +130,13 @@ module Yodnsconf
       :xslfile => xslfile,
       :reload => ENV['RACK_ENV'] == 'development' ? true : false,
       :content_type => 'application/xhtml+xml'
-      
+
+      set(:bundle_cache_time,0)
+        set(:warm_bundle_cache,0)
+        set(:cache_bundles,0)
+ 
+      stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
+      javascript_bundle(:all, %w(jquery/jquery-1.4.2.min jquery/plugins/jquery.quicksearch jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination yodnsconf)) 
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView

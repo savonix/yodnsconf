@@ -138,9 +138,9 @@ xmlns="http://www.w3.org/1999/xhtml">
     <script type="text/javascript">
 var app_prefix = '<xsl:value-of select="$path_prefix"/>';
     </script>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/bundles/all.css?{$TS}"></link>
+  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/bundles/all.css?#{$TS}"></link>
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
-  <script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js?{$TS}"></script>
+  <script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js?#{$TS}"></script>
   <xsl:for-each select="//head_nodes">
     <xsl:sort select="priority" order="ascending"/>
     <xsl:apply-templates select="nodes/*"/>
