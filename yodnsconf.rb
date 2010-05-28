@@ -91,7 +91,7 @@ module Yodnsconf
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i
       stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
-      javascript_bundle(:all, %w(jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination))
+      javascript_bundle(:all, %w(jquery/jquery-1.4.2.min jquery/plugins/jquery.quicksearch jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination yodnsconf))
 
       # Set request.env with application mount path
       use Rack::Config do |env|
@@ -99,6 +99,7 @@ module Yodnsconf
         env['RACK_ENV'] = ENV['RACK_ENV']
         env['path_prefix'] = uripfx
         env['link_prefix'] = uripfx
+        env['TS'] = Time.now.to_i
       end
 
       myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
@@ -107,10 +108,11 @@ module Yodnsconf
       set :xsl, myxsl
       set :xslfile, myxslfile
       set :noxsl, ['/raw/', '/s/img/', '/s/js/']
-      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix','analytics_key']
+      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix','analytics_key','TS']
 
     end
     configure :development do
+      set(:bundle_cache_time,0)
       set :logging => false, :reload_templates => true
     end
     configure :demo do

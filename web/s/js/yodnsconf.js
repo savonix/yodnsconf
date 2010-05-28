@@ -22,6 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 */
 
+
 function delete_redirect(http_host,pos) {
     if(confirm('Are you sure?')){
       $.post(app_prefix + "x-redirect-delete&http_host="+http_host,
@@ -134,38 +135,49 @@ function create_row(zone,myr) {
   return mytr;
 }
 
-function load_zones() {
-  $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(zones) {
-      var mytb = document.createElement("tbody");
-      var mytr = document.createElement("tr");
-      var mytd1 = document.createElement("td");
-      mytd1.className = 'origin';
-      var mytd2 = document.createElement("td");
-      var mysp1 = document.createElement("span");
-      var mytn1 = document.createTextNode("Delete");
-      mysp1.appendChild(mytn1);
-      var mysp2 = document.createElement("span");
-      var mytn2 = document.createTextNode("Clone");
-      mysp2.appendChild(mytn2);
-      mytd2.appendChild(mysp1);
-      mytd2.appendChild(mysp2);
-      
-      $.each(zones, function(i,zone) {
-          myr = mytr.cloneNode(true);
-          var mytdd1 = mytd1.cloneNode(true);
-          var mytdd2 = mytd2.cloneNode(true);
-          myr.appendChild(mytdd1);
-          myr.appendChild(mytdd2);
-          var newtextnode = document.createTextNode(zone);
-          mytdd1.appendChild(newtextnode);
-          mytb.appendChild(myr);
-          if ( i == 10 ) return false;
-      });
-      $('#myzones tbody').remove();
-      $('#myzones').append(mytb).show();
-  });
-  
+function build_table() {
+    index = $('#myzones').data('index');
+    zones = $('#myzones').data('zones');
+    zoneview = $('#myzones').data('zones').slice(index,index + 10);
+
+    var mytb = document.createElement("tbody");
+    var mytr = document.createElement("tr");
+    var mytd1 = document.createElement("td");
+    mytd1.className = 'origin';
+    var mytd2 = document.createElement("td");
+    var mysp1 = document.createElement("span");
+    var mytn1 = document.createTextNode("Delete");
+    mysp1.appendChild(mytn1);
+    var mysp2 = document.createElement("span");
+    var mytn2 = document.createTextNode("Clone");
+    mysp2.appendChild(mytn2);
+    mytd2.appendChild(mysp1);
+    mytd2.appendChild(mysp2);
+    $.each(zones, function(i,zone) {
+        myr = mytr.cloneNode(true);
+        var mytdd1 = mytd1.cloneNode(true);
+        var mytdd2 = mytd2.cloneNode(true);
+        myr.appendChild(mytdd1);
+        myr.appendChild(mytdd2);
+        var newtextnode = document.createTextNode(zone);
+        mytdd1.appendChild(newtextnode);
+        mytb.appendChild(myr);
+    });
+    $('#myzones tbody').replaceWith(mytb);
+    $('#myzones .origin').click(function(){
+        $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html');
+    });
+    $('#myzones').data('index', index + 5);
+    $('#origin').quicksearch('#myzones tbody tr');
 }
+function load_zones() {
+  $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
+      $('#myzones').data('zones', data);
+      $('#myzones').data('index', 0);
+      build_table();
+  });
+}
+
 function add_element () {
 	//$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
 	alert('Not functional yet.');
@@ -176,8 +188,6 @@ function remove_element () {
 
 $(document).ready(function() {
 
-    load_zones();
-  $(".header").bind("mouseleave", function(e) { fixup_rows(); });
-  $(".prev,.next").bind("click", function(e) { fixup_rows(); });
+  load_zones();
   $('#nav').droppy();
 });

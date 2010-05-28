@@ -41,7 +41,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         <tr>
             <td>
               <fieldset>
-                <input type="text" name="origin" value="{/_R_/_get/origin}" />
+                <input type="text" id="origin" name="origin" value="{/_R_/_get/origin}" />
               </fieldset>
             </td>
             <td align="right">
@@ -53,16 +53,6 @@ xmlns="http://www.w3.org/1999/xhtml">
       </thead>
       <tbody id="myzonesbody" class="zrow">
       <tr><td></td><td></td></tr>
-      <!--
-          <tr class="znrw">
-            <td class="origin">
-            </td>
-            <td>
-              <span class="zd">Delete</span>
-              <span class="zc">Clone</span>
-            </td>
-          </tr>
-      -->
       </tbody>
     </table>
   </div>

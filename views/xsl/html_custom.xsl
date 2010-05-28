@@ -69,13 +69,13 @@ xmlns="http://www.w3.org/1999/xhtml">
 
   <xsl:template name="drop-downs">
 
-<div style="padding-left: 10em; right:10px;z-index:1000;position:absolute;">
+<div id="zonelinks">
   <div style="float: right;">
     <form action="{$link_prefix}index" method="get">
       <!-- to do: match selection -->
       <fieldset>
       <input type="hidden" name="nid" value="index"/>
-      <select name="zone_group_id" onchange="location.href='{$link_prefix}index&amp;zone_group_id='+$(this).val()">
+      <select name="zone_group_id">
         <option value="%">Select All</option>
         <xsl:for-each select="//zone_groups_get_all/zone_groups_get_all">
         <xsl:variable name="zone_group_id" select="zone_group_id"/>
@@ -95,7 +95,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       <!-- to do: match selection -->
       <fieldset>
       <input type="hidden" name="nid" value="zone-edit"/>
-      <select name="zone_group_id" onchange="location.href='{$link_prefix}zone-edit&amp;zone='+$(this).val()">
+      <select name="zone_group_id">
         <option value="%">Quick Zone Links</option>
         <xsl:for-each select="//zones_get_all/zones_get_all[notes='quicklink']">
         <option value="{id}">
@@ -109,7 +109,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     </form>
   </div>
   <xsl:if test="/_R_/zone_get_by_id/zone_get_by_id/id">
-    <div style="float:right;padding:2px;">
+    <div id="zoneoptions">
       <a href="{$link_prefix}zone-edit&amp;zone={/_R_/zone_get_by_id/zone_get_by_id/id}">
         <xsl:value-of select="/_R_/zone_get_by_id/zone_get_by_id/origin"/>
       </a>
@@ -138,13 +138,9 @@ xmlns="http://www.w3.org/1999/xhtml">
     <script type="text/javascript">
 var app_prefix = '<xsl:value-of select="$path_prefix"/>';
     </script>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/bundles/all.css"></link>
+  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/bundles/all.css?{$TS}"></link>
   <link rel="stylesheet" type="text/css" href="{$link_prefix}s/css/stylesheet.css"></link>
-  <link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css"/>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.4.2.min.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
-  <script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js"></script>
-  <script type="text/javascript" src="{$link_prefix}s/js/yodnsconf.js"></script>
+  <script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js?{$TS}"></script>
   <xsl:for-each select="//head_nodes">
     <xsl:sort select="priority" order="ascending"/>
     <xsl:apply-templates select="nodes/*"/>
@@ -184,25 +180,4 @@ var app_prefix = '<xsl:value-of select="$path_prefix"/>';
   </xsl:template>
 
 
-  <xsl:template name="pager">
-    <xsl:param name="my-table"/>
-			<div id="{$my-table}-pager" class="pager">
-      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
-      <table>
-        <tr>
-          <td>
-            <img src="{$path_prefix}s/js/blue/first.png" class="first"/>
-            <img src="{$path_prefix}s/js/blue/prev.png" class="prev"/>
-          </td>
-          <td>
-            <input type="text" class="pagedisplay" size="4" readonly="readonly"/>
-          </td>
-          <td>
-            <img src="{$path_prefix}s/js/blue/next.png" class="next"/>
-            <img src="{$path_prefix}s/js/blue/last.png" class="last"/>
-          </td>
-        </tr>
-      </table>
-			</div>
-  </xsl:template>
 </xsl:stylesheet>
