@@ -39,7 +39,6 @@ require 'sinatra/bundles' unless ENV['RACK_ENV'] == 'development'
 
 require 'rexml/document'
 require 'memcache'
-require 'json'
 require 'dbi'
 require 'net/ssh'
 require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' if ENV['RACK_ENV'] == 'development'
@@ -165,7 +164,8 @@ module Yodnsconf
         else
           idx_json = '["docunext.com"]'
         end
-        return JSON.parse(idx_json)
+	parser = Yajl::Parser.new
+        return parser.parse(idx_json)
       end
     end
 
