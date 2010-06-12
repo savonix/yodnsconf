@@ -135,9 +135,9 @@ function create_row(zone,myr) {
   return mytr;
 }
 
-function build_table() {
+function build_table(data,options) {
     index = $('#myzones').data('index');
-    zones = $('#myzones').data('zones');
+    zones = data;
     zoneview = $('#myzones').data('zones').slice(index,index + 10);
 
     var mytb = document.createElement("tbody");
@@ -145,14 +145,13 @@ function build_table() {
     var mytd1 = document.createElement("td");
     mytd1.className = 'origin';
     var mytd2 = document.createElement("td");
-    var mysp1 = document.createElement("span");
-    var mytn1 = document.createTextNode("Delete");
-    mysp1.appendChild(mytn1);
-    var mysp2 = document.createElement("span");
-    var mytn2 = document.createTextNode("Clone");
-    mysp2.appendChild(mytn2);
-    mytd2.appendChild(mysp1);
-    mytd2.appendChild(mysp2);
+    for(var i=0,max=options.length;i<max;i++){
+      var mysp1 = document.createElement("span");
+      var mytn1 = document.createTextNode(options[i]);
+      mysp1.appendChild(mytn1);
+      mytd2.appendChild(mysp1);
+    }
+    
     $.each(zones, function(i,zone) {
         myr = mytr.cloneNode(true);
         var mytdd1 = mytd1.cloneNode(true);
@@ -174,7 +173,8 @@ function load_zones() {
   $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
       $('#myzones').data('zones', data);
       $('#myzones').data('index', 0);
-      build_table();
+      var options = ["Edit", "Delete", "Clone"];
+      build_table(data,options);
   });
 }
 
