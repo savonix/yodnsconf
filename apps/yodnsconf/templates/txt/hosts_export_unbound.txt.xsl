@@ -29,14 +29,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:text>    access-control: </xsl:text><xsl:value-of select="data"/><xsl:text> allow
 </xsl:text>
 </xsl:for-each>
-<xsl:text>
-	access-control: 192.168.0.0/16 allow
-	access-control: 172.20.0.184/32 allow
-	access-control: 192.168.134.22/32 allow
-	chroot: ""
-</xsl:text>
   <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-    <xsl:text>	local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>
+    <xsl:text>    local-data: "</xsl:text><xsl:value-of select="host"/><xsl:text> </xsl:text>
 		<xsl:if test="priority &gt;= 0">A</xsl:if>
 		<xsl:if test="priority &lt; 0">PTR</xsl:if>
 		<xsl:text> </xsl:text><xsl:value-of select="ip"/><xsl:text>"</xsl:text>
