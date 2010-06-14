@@ -1,4 +1,5 @@
 coverage
+data/json/zone_groups.json
 config/customconf.rb
 config/customconf.json
 config.xml
