@@ -68,10 +68,11 @@ function build_table(data,options) {
                 }
             });
             $.getJSON(app_prefix + 'raw/json/yd-zone-groups',function(data) {
-                for (var i=0;i<=data.length;i=i+1)
-                $.each(data, function(index, zg) {
-                    $('#zone_group_id').find('option').clone().val(zg.id).text(zg.label).appendTo($('#zone_group_id'));
-                });
+                var opt = $('#zone_group_id').find('option').clone();
+                for (var i=0;i<=data.length;i=i+1) {
+                  var zg = data[i];
+                  opt.clone().val(zg.id).text(zg.label).appendTo($('#zone_group_id'));
+                }
             });
         });
     });
