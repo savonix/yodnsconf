@@ -188,6 +188,11 @@ module Yodnsconf
       xslview rootxml, 'zones.xsl'
     end
 
+    get '/raw/json/yd-zone-groups' do
+      content_type :json
+      zg = File.open('data/json/zone_groups.json') { |f| f.read }
+      zg.to_s
+    end
     get '/raw/json/yd-domain-list' do
       content_type :json
       idx_json = get_domains.to_json

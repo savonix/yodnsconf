@@ -67,6 +67,12 @@ function build_table(data,options) {
                   $('input:text[name="'+key+'"]').val(data[key]);
                 }
             });
+            $.getJSON(app_prefix + 'raw/json/yd-zone-groups',function(data) {
+                for (var i=0;i<=data.length;i=i+1)
+                $.each(data, function(index, zg) {
+                    $('#zone_group_id').find('option').clone().val(zg.id).text(zg.label).appendTo($('#zone_group_id'));
+                });
+            });
         });
     });
     $('#myzones').data('index', index + 5);
@@ -79,14 +85,6 @@ function load_zones() {
       var options = ["Edit", "Delete", "Clone"];
       build_table(data,options);
   });
-}
-
-function add_element () {
-	//$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
-	alert('Not functional yet.');
-}
-function remove_element () {
-	alert('Not functional yet.');
 }
 
 $(document).ready(function() {
