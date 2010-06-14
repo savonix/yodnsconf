@@ -7,12 +7,41 @@
   },
   {
     "id": 2,
-    "condition": {
+    "condition":
+    {
       "test": "HTTP_HOST",
       "pattern": "example.org"
     },
-    "rule": {
+    "rule":
+    {
       "response": "http://www.example.net/"
     }
+  },
+  {
+    "example.us":
+    [
+      {
+        "conditions":
+        [
+          {
+            "user_agent": "^Mozilla*"
+          }
+        ],
+        "rule":
+        [
+          "^/somestring",
+          "http://www.example.com/anotherurl",
+          "R=301"
+        ]
+      },
+      {
+        "rule":
+        [
+          "^/anotherstring",
+          "http://www.example.com/anotherurl",
+          "R=301"
+        ]
+      }
+    ]
   }
 ]
