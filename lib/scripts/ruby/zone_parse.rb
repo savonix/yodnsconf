@@ -2,7 +2,8 @@
 require 'zonefile'
 require 'json'
 
-zf = Zonefile.from_file('data/zones/example.com.zone')
+f = ARGV[0] || 'data/zones/example.com.zone'
+zf = Zonefile.from_file(f)
 
 puts "Record Time To Live: #{zf.soa[:ttl]}"
 
@@ -14,3 +15,7 @@ puts "TXT: #{zf.txt.to_json}"
 puts "SRV: #{zf.srv.to_json}"
 puts "A4: #{zf.a4.to_json}"
 puts "MX: #{zf.mx.to_json}"
+
+zf.a.each do |res|
+  puts "#{res[:name]} #{res[:host]}"
+end
