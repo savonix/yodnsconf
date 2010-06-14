@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "key": "internal",
+    "label": "Internal"
+  },
+  {
+    "id": 2,
+    "key": "external",
+    "label": "External"
+  }
+]
