@@ -1,0 +1,17 @@
+$ORIGIN example.com.
+$TTL 12h
+example.com.  IN  SOA  ns1.example.net. support.example.com. (
+              2010061201
+              28800
+              7200
+              604800
+              2400
+              )
+
+ IN 28800 A 207.192.71.184
+ IN 28800 A 209.20.83.25
+ IN 86400 MX 10 mx1.example.net.
+ IN 86400 MX 20 mx2.example.net.
+ IN 604800 NS ns1.example.net.
+ IN 604800 NS ns2.example.net.
+www IN 604800 CNAME www.us.example.net.

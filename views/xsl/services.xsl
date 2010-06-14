@@ -26,33 +26,22 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
 <div>
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myredirects" />
-
 <div class="tableframe">
   <table width="100%" class="tablesorter" id="myservices">
     <thead>
       <tr>
-        <th>Service</th>
+        <th><span id="i18n-service">Service</span></th>
         <th>Edit</th>
         <th>Delete</th>
         <th>Clone</th>
       </tr>
       <tr>
-        <form method="get">
-          <input type="hidden" name="nid" value="services"/>
-          <td>
-            <input type="text" name="http_service" value="{/_R_/_get/http_service}"/>
-          </td>
-          <td></td>
-          <td align="right">
-            <input name="Filter" type="submit" id="Filter" value="Filter"/>
-          </td>
-          <td>
-          </td>
-          <td>
-          </td>
-        </form>
+        <td>
+          <input type="text" name="http_service" value="{/_R_/_get/http_service}"/>
+          <input name="Filter" type="submit" id="Filter" value="Filter"/>
+        </td>
+        <td colspan="3">
+        </td>
       </tr>
     </thead>
     <tbody>
@@ -71,18 +60,18 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myredirects" />
         </td>
         <td>
           <a href="{$link_prefix}service-edit&amp;service_id={id}">
-            Edit
+            <span id="i18n-edit">Edit</span>
           </a>
         </td>
         <td align="right">
           <a href="{$link_prefix}x--service-delete&amp;service_id={id}"
             onclick="delete_service('{id}'); return false;">
-            Delete
+            <span id="i18n-delete">Delete</span>
           </a>
         </td>
         <td>
           <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;clone=true">
-            Clone
+            <span id="i18n-clone">Clone</span>
           </a>
         </td>
       </tr>

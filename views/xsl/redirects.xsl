@@ -39,16 +39,12 @@ xmlns="http://www.w3.org/1999/xhtml">
         <th width="10%" />
       </tr>
       <tr>
-        <form method="get">
-          <input type="hidden" name="nid" value="redirects"/>
-          <td>
-            <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
-          </td>
-          <td />
-          <td align="right">
-            <input name="Filter" type="submit" value="Filter"/>
-          </td>
-        </form>
+        <td>
+          <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
+          <input name="Filter" type="submit" value="Filter"/>
+        </td>
+        <td colspan="2">
+        </td>
       </tr>
     </thead>
     <tbody>
@@ -70,12 +66,7 @@ xmlns="http://www.w3.org/1999/xhtml">
             </a>
           </div>
         </td>
-        <td align="right">
-          <a href="{$link_prefix}x-redirect-delete&amp;http_host={http_host}"
-          onclick="delete_redirect('{http_host}',{position()}); return false;">
-            <span id="i18n-delete">Delete</span>
-        </a>
-        </td>
+        <td />
       </tr>
     </xsl:for-each>
     </tbody>

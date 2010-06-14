@@ -1,6 +1,6 @@
 ###
 # Program:: http://www.docunext.com/wiki/Sinatra
-# Component:: notapp.rb
+# Component:: yodnsconf.rb
 # Copyright:: Savonix Corporation
 # Author:: Albert L. Lash, IV
 # License:: Gnu Affero Public License version 3
@@ -39,7 +39,7 @@ require 'sinatra/bundles' unless ENV['RACK_ENV'] == 'development'
 
 require 'rexml/document'
 require 'memcache'
-require 'dbi'
+require 'zonefile'
 require 'net/ssh'
 require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' if ENV['RACK_ENV'] == 'development'
 require 'svxbox' unless ENV['RACK_ENV'] == 'development'
