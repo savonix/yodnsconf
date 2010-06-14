@@ -89,8 +89,10 @@ function load_zones() {
 }
 
 $(document).ready(function() {
-  load_zones();
   $('#nav').droppy();
+  if($('#myzones').length > 0) {
+    load_zones();
+  }
 });
 
 
