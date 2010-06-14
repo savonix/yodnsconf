@@ -1,7 +1,18 @@
 [
   {
     "id": 1,
-    "host": "example.net",
-    "target": "http://www.example.com/"
+    "condition": "HTTP_HOST",
+    "pattern": "example.net",
+    "response": "http://www.example.com/"
+  },
+  {
+    "id": 2,
+    "condition": {
+      "test": "HTTP_HOST",
+      "pattern": "example.org"
+    },
+    "rule": {
+      "response": "http://www.example.net/"
+    }
   }
 ]
