@@ -132,8 +132,8 @@ module Yodnsconf
       :content_type => 'application/xhtml+xml'
 
       set(:bundle_cache_time,0)
-        set(:warm_bundle_cache,0)
-        set(:cache_bundles,0)
+      set(:warm_bundle_cache,0)
+      set(:cache_bundles,0)
  
       stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
       javascript_bundle(:all, %w(jquery/jquery-1.4.2.min jquery/plugins/jquery.quicksearch jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination yodnsconf)) 
@@ -167,11 +167,14 @@ module Yodnsconf
         else
           idx_json = '["docunext.com"]'
         end
-	parser = Yajl::Parser.new
+        parser = Yajl::Parser.new
         return parser.parse(idx_json)
       end
     end
 
+    before do
+      cache_control :'no-store'
+    end
     get '/' do
       mredirect 'zones'
     end
@@ -189,6 +192,11 @@ module Yodnsconf
       content_type :json
       idx_json = get_domains.to_json
       idx_json
+    end
+    get '/raw/json/zone/:zone' do
+      content_type :json
+      zf = Zonefile.from_file('data/zones/example.com.zone')
+      zf.soa.to_json
     end
     not_found do
       cache_control :'no-store', :max_age => 0

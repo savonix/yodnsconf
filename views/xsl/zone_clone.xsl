@@ -26,20 +26,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="zone_form.xsl"/>
   <xsl:template match="/">
 
-
-<script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
-<script language="javascript">
-<![CDATA[
-function initValidation()
-{
-    var objForm = document.forms["myform"];
-    objForm.ns.required = 1;
-    objForm.ns.regexp = /^[A-Za-z0-9\-]+(\.[A-Za-z0-9\-]+)+\.$/;
-    objForm.ttl.required = 1;
-    objForm.ttl.regexp = /^[0-9]+$/;
-}
-]]>
-</script>
+<div>
 <form method="post" onSubmit="return validateStandard(this);" name="myform">
   <xsl:if test="/_R_/_get/zone">
     <input type="hidden" name="zone" value="{/_R_/_get/zone}"/>
@@ -90,10 +77,7 @@ function initValidation()
   </xsl:if>
 </div>
 <br/><a href="{$link_prefix}x-zone-export&amp;zone={//id}">Export</a>
-<script language="javascript">
-initValidation();
-</script>
-
+</div>
 
   </xsl:template>
 </xsl:stylesheet>

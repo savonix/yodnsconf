@@ -1,6 +1,7 @@
 /*
+###
 Program: YoDNSConf
-Component: js_functions.js.xsl
+Component: yodnsconf.js
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -20,7 +21,84 @@ You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
+##
 */
+
+function create_row(zone,myr) {
+  var newtextnode = document.createTextNode(zone);
+  mytd.appendChild(newtextnode);
+  return mytr;
+}
+
+function build_table(data,options) {
+    index = $('#myzones').data('index');
+    zones = data;
+    zoneview = $('#myzones').data('zones').slice(index,index + 10);
+
+    var mytb = document.createElement("tbody");
+    var mytr = document.createElement("tr");
+    var mytd1 = document.createElement("td");
+    mytd1.className = 'origin';
+    var mytd2 = document.createElement("td");
+    for(var i=0,max=options.length;i<max;i++){
+      var mysp1 = document.createElement("span");
+      var mytn1 = document.createTextNode(options[i]);
+      mysp1.appendChild(mytn1);
+      mytd2.appendChild(mysp1);
+    }
+    
+    $.each(zones, function(i,zone) {
+        myr = mytr.cloneNode(true);
+        var mytdd1 = mytd1.cloneNode(true);
+        var mytdd2 = mytd2.cloneNode(true);
+        myr.appendChild(mytdd1);
+        myr.appendChild(mytdd2);
+        var newtextnode = document.createTextNode(zone);
+        mytdd1.appendChild(newtextnode);
+        mytb.appendChild(myr);
+    });
+    $('#myzones tbody').replaceWith(mytb);
+    $('#myzones .origin').click(function(){
+        thezone = $(this).text();
+        $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html', function() {
+            $('input:text[name="origin[]"]').val(thezone);
+            $.getJSON(app_prefix + 'raw/json/zone/'+thezone,function(data) {
+                for (var key in data) {
+                  $('input:text[name="'+key+'"]').val(data[key]);
+                }
+            });
+        });
+    });
+    $('#myzones').data('index', index + 5);
+    $('#origin').quicksearch('#myzones tbody tr');
+}
+function load_zones() {
+  $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
+      $('#myzones').data('zones', data);
+      $('#myzones').data('index', 0);
+      var options = ["Edit", "Delete", "Clone"];
+      build_table(data,options);
+  });
+}
+
+function add_element () {
+	//$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
+	alert('Not functional yet.');
+}
+function remove_element () {
+	alert('Not functional yet.');
+}
+
+$(document).ready(function() {
+  load_zones();
+  $('#nav').droppy();
+});
+
+
+
+
+
+/* DEPRECATED */
 
 
 function delete_redirect(http_host,pos) {
@@ -129,68 +207,3 @@ function delete_service(id) {
 function select_all_boxes(checkbox_name) {
   $(":checkbox[name='"+checkbox_name+"[]']").attr("checked","checked");
 }
-function create_row(zone,myr) {
-  var newtextnode = document.createTextNode(zone);
-  mytd.appendChild(newtextnode);
-  return mytr;
-}
-
-function build_table(data,options) {
-    index = $('#myzones').data('index');
-    zones = data;
-    zoneview = $('#myzones').data('zones').slice(index,index + 10);
-
-    var mytb = document.createElement("tbody");
-    var mytr = document.createElement("tr");
-    var mytd1 = document.createElement("td");
-    mytd1.className = 'origin';
-    var mytd2 = document.createElement("td");
-    for(var i=0,max=options.length;i<max;i++){
-      var mysp1 = document.createElement("span");
-      var mytn1 = document.createTextNode(options[i]);
-      mysp1.appendChild(mytn1);
-      mytd2.appendChild(mysp1);
-    }
-    
-    $.each(zones, function(i,zone) {
-        myr = mytr.cloneNode(true);
-        var mytdd1 = mytd1.cloneNode(true);
-        var mytdd2 = mytd2.cloneNode(true);
-        myr.appendChild(mytdd1);
-        myr.appendChild(mytdd2);
-        var newtextnode = document.createTextNode(zone);
-        mytdd1.appendChild(newtextnode);
-        mytb.appendChild(myr);
-    });
-    $('#myzones tbody').replaceWith(mytb);
-    $('#myzones .origin').click(function(){
-	thezone = $(this).text();
-        $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html', function() {
-		$('input:text[name="origin[]"]').val(thezone);
-	});
-    });
-    $('#myzones').data('index', index + 5);
-    $('#origin').quicksearch('#myzones tbody tr');
-}
-function load_zones() {
-  $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
-      $('#myzones').data('zones', data);
-      $('#myzones').data('index', 0);
-      var options = ["Edit", "Delete", "Clone"];
-      build_table(data,options);
-  });
-}
-
-function add_element () {
-	//$("#origin").after("<br/><input name=\"origin[]\" type=\"text\"/> <span style=\"font-size: 1.5em; cursor: pointer;\" onclick=\"remove_element();\">x</span>");
-	alert('Not functional yet.');
-}
-function remove_element () {
-	alert('Not functional yet.');
-}
-
-$(document).ready(function() {
-
-  load_zones();
-  $('#nav').droppy();
-});
