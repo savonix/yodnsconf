@@ -1,3 +1,5 @@
+dnu
+data/zones/*
 coverage
 data/json/*.json
 config/customconf.rb
