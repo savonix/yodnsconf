@@ -1,0 +1,7 @@
+[
+  {
+    "id": 1,
+    "host": "example.net",
+    "target": "http://www.example.com/"
+  }
+]
