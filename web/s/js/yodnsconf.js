@@ -80,12 +80,12 @@ function load_zone(thezone) {
   $.history.load(thezone);
   $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html', function() {
       $('input:text[name="origin[]"]').val(thezone);
-      $.getJSON(app_prefix + 'raw/json/zone/'+thezone,function(data) {
+      $.getJSON(app_prefix + 'raw/json/records/soa/'+thezone,function(data) {
           for (var key in data) {
             $('input:text[name="'+key+'"]').val(data[key]);
           }
       });
-      $.getJSON(app_prefix + 'raw/json/ns/'+thezone,function(data) {
+      $.getJSON(app_prefix + 'raw/json/public-ns/'+thezone,function(data) {
           for (var i=0;i<data.length;i=i+1) {
             var ns = data[i] + ", ";
             $('#public-resolvers .data').append(ns);

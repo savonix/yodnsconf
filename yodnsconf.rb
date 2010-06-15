@@ -190,7 +190,7 @@ module Yodnsconf
     get '/' do
       mredirect 'zones'
     end
-    get %r{/(host|record|zone-group|service|redirect)s} do
+    get %r{/(host|record|zone-group|service|redirect)s$} do
       xslview rootxml, params[:captures].first.gsub('-','_') + 's.xsl', { 'link_prefix' => link_prefix }
     end
     get %r{/(host|zone-group|service|redirect|ip)-edit} do
@@ -216,20 +216,25 @@ module Yodnsconf
     get '/raw/json/records/:type/:zone' do
       content_type :json
       zone = "data/zones/#{params[:zone].to_s}.zone"
+      type = params[:type].to_s
+      
       zf = Zonefile.from_file(zone)
-      zf[:soa].to_json
+      rs = zf.send type.to_sym
+      rsarr = []
+      if rs
+        rs[0][:type] = type unless rs[0].nil?
+        rsarr << rs[0] unless rs[0].nil?
+      end
+      if type=='soa'
+        rsarr = rs
+      end
+      rsarr.to_json
     end
-    get '/raw/json/ns/:zone' do
+    get '/raw/json/public-ns/:zone' do
       content_type :json
       zone = params[:zone].to_s
       ns = get_public_ns(zone)
       ns.to_json
-    end
-    get '/raw/json/records/:zone/:type' do
-      content_type :json
-      zone = "data/zones/#{params[:zone].to_s}.zone"
-      zf = Zonefile.from_file(zone)
-      zf.to_json
     end
     not_found do
       cache_control :'no-store', :max_age => 0

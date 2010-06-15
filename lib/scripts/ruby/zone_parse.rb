@@ -28,4 +28,10 @@ zf.records.each do |res|
   end
 end
 
+rs = zf.send 'ns'.to_sym
+if rs
+  rs[0][:type] = 'ns' unless rs[0].nil?
+  rsarr << rs[0] unless rs[0].nil?
+end
+
 puts rsarr.to_json
