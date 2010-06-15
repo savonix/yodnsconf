@@ -17,6 +17,7 @@ puts "A4: #{zf.a4.to_json}"
 puts "MX: #{zf.mx.to_json}"
 
 zf.records.each do |res|
-  puts res
-  puts zf.send res[0].to_sym unless res=='soa'
+  #puts res unless res[0]==:soa
+  rs = zf.send res[0].to_sym unless res[0]==:soa
+  puts rs
 end
