@@ -70,7 +70,7 @@ function build_table(data,options) {
 }
 function load_zones() {
   $('#content').load(app_prefix + 'raw/xhtml/zones.html', function() {
-    $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
+    $.getJSON(app_prefix + 'raw/json/zones',function(data) {
         $('#myzones').data('zones', data);
         $('#myzones').data('index', 0);
         var options = ["Edit", "Delete", "Clone"];

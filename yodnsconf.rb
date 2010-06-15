@@ -63,7 +63,9 @@ module Yodnsconf
   def self.new(conf)
     self.conf = conf
     if self.conf[:ccf]
+      puts self.conf[:ccf]
       if File.exists?(self.conf[:ccf])
+        puts "reading custom conf"
         json = File.new(self.conf[:ccf], 'r')
         parser = Yajl::Parser.new(:symbolize_keys => true)
         customconf = parser.parse(json)
@@ -89,6 +91,7 @@ module Yodnsconf
       set :xslviews => 'views/xsl/'
       set :uripfx => Proc.new { Yodnsconf.conf[:uripfx] }
       set :started_at => Time.now.to_i
+      set :zonegroups => Proc.new { Yajl::Parser.parse(File.new(Yodnsconf.conf[:zonegroups], 'r'), :symbolize_keys => true) }
 
       # Set request.env with application mount path
       use Rack::Config do |env|
@@ -171,7 +174,13 @@ module Yodnsconf
         zf = Zonefile.from_file(zone)
         idx_json = []
         zf.txt.each do |res|
-          idx_json << res[:text] unless res[:ttl].to_i == 2
+          unless res[:ttl][0].to_i == 2
+            if domain_group.nil?
+              idx_json << res[:text]
+            else
+              idx_json << res[:text] if res[:ttl][1].to_i == domain_group
+            end
+          end
         end
         return idx_json
       end
@@ -210,7 +219,11 @@ module Yodnsconf
       zg = File.open('data/json/zone_groups.json') { |f| f.read }
       zg.to_s
     end
-    get '/raw/json/yd-domain-list' do
+    get '/raw/json/zones' do
+      content_type :json
+      get_domains.to_json
+    end
+    get '/raw/json/zones/:group' do
       content_type :json
       get_domains.to_json
     end
