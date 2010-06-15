@@ -49,6 +49,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:query src="data/sql/zones_get_all.xml"/>
 		<map:xsl src="templates/xsl/zones.xsl"/>
 	</map:gate>
+	<map:gate name="zredirects" role="yodnsuser" http_method="get">
+		<map:query src="data/sql/zone_groups_get_all.xml"/>
+		<map:query src="data/sql/zones_get_redirects.xml"/>
+		<map:xsl src="templates/xsl/zones.xsl"/>
+	</map:gate>
 
 	<map:gate name="index-rows" role="yodnsuser" content_type="text/xml" cache="30"  http_method="get">
 		<map:if name="//_get/origin">
