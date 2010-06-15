@@ -47,7 +47,7 @@ function build_table(data,options) {
       mytd2.appendChild(mysp1);
     }
     
-    $.each(zones, function(i,zone) {
+    $.each(zoneview, function(i,zone) {
         myr = mytr.cloneNode(true);
         var mytdd1 = mytd1.cloneNode(true);
         var mytdd2 = mytd2.cloneNode(true);
@@ -99,6 +99,9 @@ function load_zone(thezone) {
           }
       });
   });
+}
+function load_records(thezone) {
+  
 }
 
 $(document).ready(function() {

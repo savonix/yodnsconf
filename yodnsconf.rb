@@ -190,16 +190,20 @@ module Yodnsconf
     get '/' do
       mredirect 'zones'
     end
-    get %r{/(host|zone-group|service|redirect)s} do
+    get %r{/(host|record|zone-group|service|redirect)s} do
       xslview rootxml, params[:captures].first.gsub('-','_') + 's.xsl', { 'link_prefix' => link_prefix }
     end
     get %r{/(host|zone-group|service|redirect|ip)-edit} do
       xslview rootxml, params[:captures].first.gsub('-','_') + '_edit.xsl', { 'link_prefix' => link_prefix }
     end
+    
+    
+    
+    
+    
     get '/raw/yd-zones/' do
       xslview rootxml, 'zones.xsl'
     end
-
     get '/raw/json/yd-zone-groups' do
       content_type :json
       zg = File.open('data/json/zone_groups.json') { |f| f.read }
@@ -208,12 +212,6 @@ module Yodnsconf
     get '/raw/json/yd-domain-list' do
       content_type :json
       get_domains.to_json
-    end
-    get '/raw/json/zone/#:zone' do
-      content_type :json
-      zone = "data/zones/#{params[:zone].to_s}.zone"
-      zf = Zonefile.from_file(zone)
-      zf.soa.to_json
     end
     get '/raw/json/zone/:zone' do
       content_type :json

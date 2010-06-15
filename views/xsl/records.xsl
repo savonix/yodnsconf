@@ -31,7 +31,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 <table width="100%" class="tablesorter" id="records_table" border="0">
   <thead>
     <tr>
-      <th class="{{sorter: false}}">
+      <th>
         <input type="checkbox" name="select_all"
         onclick="select_all_boxes('record_id');"/>
       </th>
@@ -50,11 +50,11 @@ xmlns="http://www.w3.org/1999/xhtml">
       <th>
         <span id="i18n-ttl">TTL</span>
       </th>
-      <th class="{{sorter: false}}">
+      <th>
         <span id="i18n-dig">Dig</span>
       </th>
-      <th class="{{sorter: false}}" />
-      <th class="{{sorter: false}}">
+      <th />
+      <th>
         <span title="Clone">+</span>
       </th>
     </tr>
