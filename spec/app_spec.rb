@@ -33,6 +33,8 @@ describe "YoDNSConf" do
   end
   myurls = Array.new
   myurls << '/raw/json/yd-domain-list'
+  myurls << '/raw/json/ns/example.com'
+  myurls << '/raw/json/zone/example.com'
   myurls << '/s/css/stylesheet.css'
 
 

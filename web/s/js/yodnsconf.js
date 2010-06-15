@@ -85,6 +85,12 @@ function load_zone(thezone) {
             $('input:text[name="'+key+'"]').val(data[key]);
           }
       });
+      $.getJSON(app_prefix + 'raw/json/ns/'+thezone,function(data) {
+          for (var i=0;i<data.length;i=i+1) {
+            var ns = data[i] + ", ";
+            $('#public-resolvers .data').append(ns);
+          }
+      });
       $.getJSON(app_prefix + 'raw/json/yd-zone-groups',function(data) {
           var opt = $('#zone_group_id').find('option').clone();
           for (var i=0;i<=data.length;i=i+1) {

@@ -40,7 +40,7 @@ require 'sinatra/bundles' unless ENV['RACK_ENV'] == 'development'
 require 'rexml/document'
 require 'memcache'
 require 'zonefile'
-require 'net/ssh'
+require 'net/dns/resolver'
 require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' if ENV['RACK_ENV'] == 'development'
 require 'svxbox' unless ENV['RACK_ENV'] == 'development'
 
@@ -166,18 +166,21 @@ module Yodnsconf
         return servers
       end
       def get_domains(domain_group=nil)
-        if Yodnsconf.conf[:memc_srv]
-          idx_json = Yodnsconf.memcdb.get('dig_index')
-        else
-          idx_json = '["docunext.com"]'
-        end
-        zone = 'data/zones/' + Yodnsconf.conf[:zonelist] + '.zone'
+        # TODO caching
+        zone = Yodnsconf.conf[:zonelist]
         zf = Zonefile.from_file(zone)
         idx_json = zf.txt.map do |res|
           res[:text]
         end
-        #parser = Yajl::Parser.new
         return idx_json
+      end
+      def get_public_ns(domain)
+        res = Net::DNS::Resolver.new(:nameservers => "8.8.4.4")
+        packet = res.query(domain, Net::DNS::NS)
+        ns = packet.answer.map do |rr|
+          rr.nsdname
+        end
+        return ns
       end
     end
 
@@ -217,6 +220,12 @@ module Yodnsconf
       zone = "data/zones/#{params[:zone].to_s}.zone"
       zf = Zonefile.from_file(zone)
       zf.soa.to_json
+    end
+    get '/raw/json/ns/:zone' do
+      content_type :json
+      zone = params[:zone].to_s
+      ns = get_public_ns(zone)
+      ns.to_json
     end
     not_found do
       cache_control :'no-store', :max_age => 0
