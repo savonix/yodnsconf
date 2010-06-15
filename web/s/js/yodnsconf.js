@@ -60,38 +60,51 @@ function build_table(data,options) {
     $('#myzones tbody').replaceWith(mytb);
     $('#myzones .origin').click(function(){
         thezone = $(this).text();
-        $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html', function() {
-            $('input:text[name="origin[]"]').val(thezone);
-            $.getJSON(app_prefix + 'raw/json/zone/'+thezone,function(data) {
-                for (var key in data) {
-                  $('input:text[name="'+key+'"]').val(data[key]);
-                }
-            });
-            $.getJSON(app_prefix + 'raw/json/yd-zone-groups',function(data) {
-                var opt = $('#zone_group_id').find('option').clone();
-                for (var i=0;i<=data.length;i=i+1) {
-                  var zg = data[i];
-                  opt.clone().val(zg.id).text(zg.label).appendTo($('#zone_group_id'));
-                }
-            });
-        });
+        load_zone(thezone);
     });
     $('#myzones').data('index', index + 5);
     $('#origin').quicksearch('#myzones tbody tr');
 }
 function load_zones() {
-  $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
-      $('#myzones').data('zones', data);
-      $('#myzones').data('index', 0);
-      var options = ["Edit", "Delete", "Clone"];
-      build_table(data,options);
+  $('#content').load(app_prefix + 'raw/xhtml/zones.html', function() {
+    $.getJSON(app_prefix + 'raw/json/yd-domain-list',function(data) {
+        $('#myzones').data('zones', data);
+        $('#myzones').data('index', 0);
+        var options = ["Edit", "Delete", "Clone"];
+        build_table(data,options);
+    });
+  });
+}
+function load_zone(thezone) {
+  document.title = thezone;
+  $.history.load(thezone);
+  $('#content').load(app_prefix + 'raw/xhtml/zone_edit.html', function() {
+      $('input:text[name="origin[]"]').val(thezone);
+      $.getJSON(app_prefix + 'raw/json/zone/'+thezone,function(data) {
+          for (var key in data) {
+            $('input:text[name="'+key+'"]').val(data[key]);
+          }
+      });
+      $.getJSON(app_prefix + 'raw/json/yd-zone-groups',function(data) {
+          var opt = $('#zone_group_id').find('option').clone();
+          for (var i=0;i<=data.length;i=i+1) {
+            var zg = data[i];
+            opt.clone().val(zg.id).text(zg.label).appendTo($('#zone_group_id'));
+          }
+      });
   });
 }
 
 $(document).ready(function() {
   $('#nav').droppy();
   if($('#myzones').length > 0) {
-    load_zones();
+    $.history.init(function(url) {
+      if(url == "") {
+        load_zones();
+      } else {
+        load_zone(url);
+      }
+    });
   }
 });
 

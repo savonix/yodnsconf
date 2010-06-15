@@ -2,5 +2,6 @@
   "user": "user", 
   "pfhost": "192.168.0.1",
   "sahost": "192.168.0.1",
-  "analytics_key": ""
+  "analytics_key": "",
+  "zonelist": "config/example.com.zone"
 }

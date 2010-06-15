@@ -99,6 +99,10 @@ module Yodnsconf
         env['TS'] = Time.now.to_i
       end
 
+      use Rack::Rewrite do
+        rewrite Yodnsconf.conf[:uripfx]+'zones', '/s/xhtml/zones.html'
+      end
+
       myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
       myxsl = XML::XSLT.new()
       myxsl.xsl = REXML::Document.new myxslfile
@@ -136,7 +140,7 @@ module Yodnsconf
       set(:cache_bundles,0)
  
       stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
-      javascript_bundle(:all, %w(jquery/jquery-1.4.2.min jquery/plugins/jquery.quicksearch jquery/plugins/jquery.droppy jquery/plugins/jquery.pagination yodnsconf)) 
+      javascript_bundle(:all, %w(jquery/jquery-1.4.2.min jquery/plugins/jquery.quicksearch jquery/plugins/jquery.droppy jquery/plugins/jquery.history-201006 jquery/plugins/jquery.pagination))
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView
@@ -167,8 +171,13 @@ module Yodnsconf
         else
           idx_json = '["docunext.com"]'
         end
-        parser = Yajl::Parser.new
-        return parser.parse(idx_json)
+        zone = 'data/zones/' + Yodnsconf.conf[:zonelist] + '.zone'
+        zf = Zonefile.from_file(zone)
+        idx_json = zf.txt.map do |res|
+          res[:text]
+        end
+        #parser = Yajl::Parser.new
+        return idx_json
       end
     end
 
@@ -178,10 +187,10 @@ module Yodnsconf
     get '/' do
       mredirect 'zones'
     end
-    get %r{/(host|zone|zone-group|service|redirect)s} do
+    get %r{/(host|zone-group|service|redirect)s} do
       xslview rootxml, params[:captures].first.gsub('-','_') + 's.xsl', { 'link_prefix' => link_prefix }
     end
-    get %r{/(host|zone|zone-group|service|redirect|ip)-edit} do
+    get %r{/(host|zone-group|service|redirect|ip)-edit} do
       xslview rootxml, params[:captures].first.gsub('-','_') + '_edit.xsl', { 'link_prefix' => link_prefix }
     end
     get '/raw/yd-zones/' do
@@ -195,12 +204,18 @@ module Yodnsconf
     end
     get '/raw/json/yd-domain-list' do
       content_type :json
-      idx_json = get_domains.to_json
-      idx_json
+      get_domains.to_json
+    end
+    get '/raw/json/zone/#:zone' do
+      content_type :json
+      zone = "data/zones/#{params[:zone].to_s}.zone"
+      zf = Zonefile.from_file(zone)
+      zf.soa.to_json
     end
     get '/raw/json/zone/:zone' do
       content_type :json
-      zf = Zonefile.from_file('data/zones/example.com.zone')
+      zone = "data/zones/#{params[:zone].to_s}.zone"
+      zf = Zonefile.from_file(zone)
       zf.soa.to_json
     end
     not_found do
