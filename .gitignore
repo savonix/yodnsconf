@@ -1,3 +1,4 @@
+config/*internal.zone
 dnu
 data/zones/*
 coverage

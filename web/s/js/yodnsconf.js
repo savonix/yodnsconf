@@ -30,6 +30,9 @@ function create_row(zone,myr) {
   return mytr;
 }
 
+function build_list(data,options) {
+  
+}
 function build_table(data,options) {
     index = $('#myzones').data('index');
     zones = data;

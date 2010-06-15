@@ -169,8 +169,9 @@ module Yodnsconf
         # TODO caching
         zone = Yodnsconf.conf[:zonelist]
         zf = Zonefile.from_file(zone)
-        idx_json = zf.txt.map do |res|
-          res[:text]
+        idx_json = []
+        zf.txt.each do |res|
+          idx_json << res[:text] unless res[:ttl].to_i == 2
         end
         return idx_json
       end

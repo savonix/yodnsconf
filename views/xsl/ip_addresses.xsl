@@ -26,9 +26,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
 <div>
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myip_addresses" />
-
 <div>
   <table width="100%" class="tablesorter" id="myip_addresses">
     <thead>

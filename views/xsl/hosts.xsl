@@ -26,94 +26,88 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template match="/">
 
 <div>
-<script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_hosts" />
-
-    <div class="tableframe">
-      <table width="100%" class="tablesorter" id="my_hosts">
-        <thead>
-          <tr>
-            <th>
-              <span id="i18n-address">Address</span>
-            </th>
-            <th>Hostname</th>
-            <th class="{{sorter: false}}">Edit</th>
-            <th class="{{sorter: false}}">Delete</th>
-            <th class="{{sorter: false}}">Clone</th>
-          </tr>
-          <tr>
-            <form method="get">
-              <input type="hidden" name="nid" value="hosts"/>
-              <td>
-                <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
-              </td>
-              <td></td>
-              <td align="right">
-                <input name="Filter" type="submit" id="Filter" value="Filter"/>
-              </td>
-							<td/>
-							<td/>
-            </form>
-          </tr>
-        </thead>
-				<tbody>
-        <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
-          <tr id="h_{id}">
-            <td>
-              <a href="{$link_prefix}ydc-hosts-get-by-ip-addr&amp;ip_addr={ip}">
-                <xsl:value-of select="ip"/>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}host-edit&amp;host={host}&amp;host_id={id}&amp;cloner=0">
-								<xsl:if test="string-length(host) &gt; 80">
-									<xsl:attribute name="title">
-									  <xsl:value-of select="host"/>: <xsl:value-of select="notes"/>
-                  </xsl:attribute>
-								</xsl:if>
-								<xsl:if test="not(string-length(host) &gt; 80)">
-									<xsl:attribute name="title">
-									  <xsl:value-of select="notes"/>
-                  </xsl:attribute>
-								</xsl:if>
-								<xsl:value-of select="substring(host,0,80)"/>
-								<xsl:if test="string-length(host) &gt; 80">
-									<xsl:text>...</xsl:text>
-								</xsl:if>
-              </a>
-            </td>
-            <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
-								Edit
-              </a>
-            </td>
-            <td align="right">
-              <a href="{$link_prefix}x-host-delete&amp;host_id={id}&amp;cloner=0"
-								onclick="delete_host('{id}'); return false;">
-								Delete
-							</a>
-            </td>
-            <td>
-              <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true&amp;cloner=1">
-								Clone
-              </a>
-            </td>
-          </tr>
-        </xsl:for-each>
-				</tbody>
-      </table>
-    </div>
-    <div  class="prefoot" style="text-align: right">
-      <a href="{$link_prefix}hosts-all">View All Hosts</a>&#160;
-      <a href="{$link_prefix}x-hosts-export">/etc/hosts Export</a>&#160;
-      <a href="{$link_prefix}x-hosts-export-unbound">Unbound Export</a>&#160;
-			<a href="{$link_prefix}x-hosts-export-puppet">Puppet Export</a>&#160;
-      <a href="{$link_prefix}x-hosts-export-nagios">Nagios3 Export</a>&#160;
-      <a href="{$link_prefix}host-edit">New Host</a>&#160;
-      <a href="{$link_prefix}hostgroups">Hostgroups</a>
-    </div>
-    <div class="table_controls">
-    </div>
-  </div>
+<div class="tableframe">
+  <table width="100%" class="tablesorter" id="my_hosts">
+    <thead>
+      <tr>
+        <th>
+          <span id="i18n-address">Address</span>
+        </th>
+        <th>Hostname</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Clone</th>
+      </tr>
+      <tr>
+          <input type="hidden" name="nid" value="hosts"/>
+          <td>
+            <input type="text" name="http_host" value="{/_R_/_get/http_host}"/>
+          </td>
+          <td></td>
+          <td align="right">
+            <input name="Filter" type="submit" id="Filter" value="Filter"/>
+          </td>
+          <td colspan="2"></td>
+      </tr>
+    </thead>
+    <tbody>
+    <xsl:for-each select="/_R_/hosts_get_all/hosts_get_all">
+      <tr id="h_{id}">
+        <td>
+          <a href="{$link_prefix}ydc-hosts-get-by-ip-addr&amp;ip_addr={ip}">
+            <xsl:value-of select="ip"/>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}host-edit&amp;host={host}&amp;host_id={id}&amp;cloner=0">
+            <xsl:if test="string-length(host) &gt; 80">
+              <xsl:attribute name="title">
+                <xsl:value-of select="host"/>: <xsl:value-of select="notes"/>
+              </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(string-length(host) &gt; 80)">
+              <xsl:attribute name="title">
+                <xsl:value-of select="notes"/>
+              </xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="substring(host,0,80)"/>
+            <xsl:if test="string-length(host) &gt; 80">
+              <xsl:text>...</xsl:text>
+            </xsl:if>
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;cloner=0">
+            Edit
+          </a>
+        </td>
+        <td align="right">
+          <a href="{$link_prefix}x-host-delete&amp;host_id={id}&amp;cloner=0"
+            onclick="delete_host('{id}'); return false;">
+            Delete
+          </a>
+        </td>
+        <td>
+          <a href="{$link_prefix}host-edit&amp;host_id={id}&amp;clone=true&amp;cloner=1">
+            Clone
+          </a>
+        </td>
+      </tr>
+    </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+<div  class="prefoot" style="text-align: right">
+  <a href="{$link_prefix}hosts-all">View All Hosts</a>&#160;
+  <a href="{$link_prefix}x-hosts-export">/etc/hosts Export</a>&#160;
+  <a href="{$link_prefix}x-hosts-export-unbound">Unbound Export</a>&#160;
+  <a href="{$link_prefix}x-hosts-export-puppet">Puppet Export</a>&#160;
+  <a href="{$link_prefix}x-hosts-export-nagios">Nagios3 Export</a>&#160;
+  <a href="{$link_prefix}host-edit">New Host</a>&#160;
+  <a href="{$link_prefix}hostgroups">Hostgroups</a>
+</div>
+<div class="table_controls">
+</div>
+</div>
   </xsl:template>
 </xsl:stylesheet>
