@@ -18,5 +18,5 @@ puts "MX: #{zf.mx.to_json}"
 
 zf.records.each do |res|
   puts res
-  puts zf.send res[0].to_sym
+  puts zf.send res[0].to_sym unless res=='soa'
 end
