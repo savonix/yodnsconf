@@ -213,17 +213,23 @@ module Yodnsconf
       content_type :json
       get_domains.to_json
     end
-    get '/raw/json/zone/:zone' do
+    get '/raw/json/records/:type/:zone' do
       content_type :json
       zone = "data/zones/#{params[:zone].to_s}.zone"
       zf = Zonefile.from_file(zone)
-      zf.soa.to_json
+      zf[:soa].to_json
     end
     get '/raw/json/ns/:zone' do
       content_type :json
       zone = params[:zone].to_s
       ns = get_public_ns(zone)
       ns.to_json
+    end
+    get '/raw/json/records/:zone/:type' do
+      content_type :json
+      zone = "data/zones/#{params[:zone].to_s}.zone"
+      zf = Zonefile.from_file(zone)
+      zf.to_json
     end
     not_found do
       cache_control :'no-store', :max_age => 0
