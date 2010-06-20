@@ -28,7 +28,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <script language="javascript" src="{$path_prefix}s/js/jsval.js"></script>
