@@ -45,37 +45,12 @@ xmlns="http://www.w3.org/1999/xhtml">
       </tr>
     </thead>
     <tbody>
-    <xsl:for-each select="/_R_/services_get_all/services_get_all">
-      <tr id="s_{id}">
-        <td>
-          <a href="{$link_prefix}service-edit&amp;service_id={id}">
-            <xsl:if test="string-length(service) &gt; 80">
-              <xsl:attribute name="title" select="service"/>
-            </xsl:if>
-            <xsl:value-of select="substring(name,0,80)"/>
-            <xsl:if test="string-length(service) &gt; 80">
-              <xsl:text>...</xsl:text>
-            </xsl:if>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}service-edit&amp;service_id={id}">
-            <span id="i18n-edit">Edit</span>
-          </a>
-        </td>
-        <td align="right">
-          <a href="{$link_prefix}x--service-delete&amp;service_id={id}"
-            onclick="delete_service('{id}'); return false;">
-            <span id="i18n-delete">Delete</span>
-          </a>
-        </td>
-        <td>
-          <a href="{$link_prefix}service-edit&amp;service_id={id}&amp;clone=true">
-            <span id="i18n-clone">Clone</span>
-          </a>
-        </td>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
-    </xsl:for-each>
     </tbody>
   </table>
 </div>

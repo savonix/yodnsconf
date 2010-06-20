@@ -77,6 +77,14 @@ module Yodnsconf
     end
     Main
   end
+  class ZonefileNotFound < Sinatra::NotFound
+    attr_reader :name
+
+    def initialize(name)
+      @name = name
+    end
+  end
+  class RecordTypeNotFound < Sinatra::NotFound; end
 
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
@@ -104,6 +112,7 @@ module Yodnsconf
 
       use Rack::Rewrite do
         rewrite Yodnsconf.conf[:uripfx]+'zones', '/s/xhtml/zones.html'
+        rewrite Yodnsconf.conf[:uripfx]+'welcome', '/s/xhtml/welcome.html'
       end
 
       myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
@@ -184,6 +193,19 @@ module Yodnsconf
         end
         return idx_json
       end
+
+      def open_zonefile(zone)
+        zonefile = "data/zones/#{zone}.zone"
+        if File.exists?(zonefile)
+          return Zonefile.from_file(zonefile)
+        else
+          raise ZonefileNotFound(zone)
+        end
+      end
+      def check_rrtype(type)
+        raise RecordTypeNotFound unless Zonefile::RECORDS.include?(type)
+      end
+
       def get_public_ns(domain)
         res = Net::DNS::Resolver.new(:nameservers => "8.8.4.4")
         packet = res.query(domain, Net::DNS::NS)
@@ -198,7 +220,7 @@ module Yodnsconf
       cache_control :'no-store'
     end
     get '/' do
-      mredirect 'zones'
+      mredirect 'welcome'
     end
     get %r{/(host|record|zone-group|service|redirect)s$} do
       xslview rootxml, params[:captures].first.gsub('-','_') + 's.xsl', { 'link_prefix' => link_prefix }
@@ -206,8 +228,27 @@ module Yodnsconf
     get %r{/(host|zone-group|service|redirect|ip)-edit} do
       xslview rootxml, params[:captures].first.gsub('-','_') + '_edit.xsl', { 'link_prefix' => link_prefix }
     end
-    
-    
+
+    get '/raw/zone/:zone/:type' do
+      content_type :text
+      zf = open_zonefile(params[:zone].to_s)
+      type = params[:type].to_s
+      begin
+        check_rr_type type
+      rescue RecordTypeNotFound
+        halt '<span class="errblk">Not a valid record type.</span>'
+      end
+      rs = zf.send type.to_sym
+      rsarr = []
+      if rs
+        rs[0][:type] = type unless rs[0].nil?
+        rsarr << rs[0] unless rs[0].nil?
+      end
+      if type=='soa'
+        rsarr = rs
+      end
+      rsarr.to_s
+    end
     
     
     
@@ -231,7 +272,7 @@ module Yodnsconf
       content_type :json
       zone = "data/zones/#{params[:zone].to_s}.zone"
       type = params[:type].to_s
-      
+
       zf = Zonefile.from_file(zone)
       rs = zf.send type.to_sym
       rsarr = []

@@ -40,7 +40,6 @@ xmlns="http://www.w3.org/1999/xhtml">
     <div id="main">
       <xsl:call-template name="drop-downs" />
       <xsl:call-template name="main-menu" />
-    
       <div id="content">
         <xsl:apply-templates />
       </div>
