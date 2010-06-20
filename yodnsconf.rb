@@ -84,7 +84,6 @@ module Yodnsconf
       @name = name
     end
   end
-  class RecordTypeNotFound < StandardError
   end
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
@@ -203,11 +202,7 @@ module Yodnsconf
         end
       end
       def check_rr_type(type)
-        begin
-          Zonefile::RECORDS.include?(type)
-        rescue NoMethodError
-          raise RecordTypeNotFound
-        end
+        Zonefile::RECORDS.include?(type)
       end
 
       def get_public_ns(domain)
@@ -248,8 +243,8 @@ module Yodnsconf
         if type=='soa'
           rsarr = rs
         end
-        rsarr.to_s
-      rescue RecordTypeNotFound
+        "<pre>#{rsarr.to_s}</pre>"
+      rescue NoMethodError
         '<span class="errblk">Not a valid record type.</span>'
       end
     end
