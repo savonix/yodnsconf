@@ -84,8 +84,8 @@ module Yodnsconf
       @name = name
     end
   end
-  class RecordTypeNotFound < Sinatra::NotFound; end
-
+  class RecordTypeNotFound < StandardError
+  end
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
     set :environment => ENV['RACK_ENV']
@@ -199,11 +199,15 @@ module Yodnsconf
         if File.exists?(zonefile)
           return Zonefile.from_file(zonefile)
         else
-          raise ZonefileNotFound(zone)
+          raise ZonefileNotFound.new(zone)
         end
       end
-      def check_rrtype(type)
-        raise RecordTypeNotFound unless Zonefile::RECORDS.include?(type)
+      def check_rr_type(type)
+        begin
+          Zonefile::RECORDS.include?(type)
+        rescue NoMethodError
+          raise RecordTypeNotFound
+        end
       end
 
       def get_public_ns(domain)
@@ -234,20 +238,20 @@ module Yodnsconf
       zf = open_zonefile(params[:zone].to_s)
       type = params[:type].to_s
       begin
-        check_rr_type type
+        check_rr_type(type)
+        rs = zf.send type.to_sym
+        rsarr = []
+        if rs
+          rs[0][:type] = type unless rs[0].nil?
+          rsarr << rs[0] unless rs[0].nil?
+        end
+        if type=='soa'
+          rsarr = rs
+        end
+        rsarr.to_s
       rescue RecordTypeNotFound
-        halt '<span class="errblk">Not a valid record type.</span>'
+        '<span class="errblk">Not a valid record type.</span>'
       end
-      rs = zf.send type.to_sym
-      rsarr = []
-      if rs
-        rs[0][:type] = type unless rs[0].nil?
-        rsarr << rs[0] unless rs[0].nil?
-      end
-      if type=='soa'
-        rsarr = rs
-      end
-      rsarr.to_s
     end
     
     
