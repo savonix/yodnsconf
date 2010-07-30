@@ -21,15 +21,14 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="/">
 
 <div>
 <xsl:variable name="my_redirects"
 select="/_R_/redirects_get_all/redirects_get_all" />
 
-<form method="post" name="redirect" onSubmit="return validateStandard(this);">
+<form method="post" name="redirect">
   <input type="hidden" name="http_host" value="{/_R_/_get/http_host}"/>
   <xsl:if test="/_R_/_get/nid='redirect-edit'">
     <input type="hidden" name="action" value="edit"/>

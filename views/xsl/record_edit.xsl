@@ -21,8 +21,7 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="/">
 
 
@@ -53,7 +52,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <tr>
       <td>Type:</td>
       <td>
-        <select name="type" onchange="initValidation();">
+        <select name="type">
           <xsl:for-each select="//record_types/type">
             <xsl:variable name="this_type" select="."/>
             <option value="{.}">
