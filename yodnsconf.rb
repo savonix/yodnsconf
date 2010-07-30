@@ -84,7 +84,7 @@ module Yodnsconf
       @name = name
     end
   end
-  end
+
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
     set :environment => ENV['RACK_ENV']
@@ -201,6 +201,7 @@ module Yodnsconf
           raise ZonefileNotFound.new(zone)
         end
       end
+
       def check_rr_type(type)
         Zonefile::RECORDS.include?(type)
       end
@@ -221,15 +222,14 @@ module Yodnsconf
     get '/' do
       mredirect 'welcome'
     end
-    get %r{/(host|record|zone-group|service|redirect)s$} do
+    get %r{/(host|record|zone-group|service|redirect|ip)s$} do
       xslview rootxml, params[:captures].first.gsub('-','_') + 's.xsl', { 'link_prefix' => link_prefix }
     end
     get %r{/(host|zone-group|service|redirect|ip)-edit} do
       xslview rootxml, params[:captures].first.gsub('-','_') + '_edit.xsl', { 'link_prefix' => link_prefix }
     end
 
-    get '/raw/zone/:zone/:type' do
-      content_type :text
+    get '/zone/:zone/:type' do
       zf = open_zonefile(params[:zone].to_s)
       type = params[:type].to_s
       begin
@@ -249,8 +249,6 @@ module Yodnsconf
       end
     end
     
-    
-    
     get '/raw/yd-zones/' do
       xslview rootxml, 'zones.xsl'
     end
@@ -269,10 +267,9 @@ module Yodnsconf
     end
     get '/raw/json/records/:type/:zone' do
       content_type :json
-      zone = "data/zones/#{params[:zone].to_s}.zone"
+      zone = params[:zone].to_s
+      zf = open_zonefile(params[:zone].to_s)
       type = params[:type].to_s
-
-      zf = Zonefile.from_file(zone)
       rs = zf.send type.to_sym
       rsarr = []
       if rs
