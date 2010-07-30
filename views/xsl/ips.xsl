@@ -58,21 +58,21 @@ xmlns="http://www.w3.org/1999/xhtml">
       <xsl:for-each select="/_R_/ip_addr_get_all/ip_addr_get_all">
       <tr id="ip_{ip_id}">
         <td>
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ip-edit&amp;ip_id={ip_id}">
             <xsl:value-of select="ip_id"/>
           </a>
         </td>
         <td>
-          <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_addr={ip_addr}"
+          <a href="{$link_prefix}records-get-by-ip&amp;ip_addr={ip_addr}"
           title="{ip_description} {ip_notes}">
             <xsl:value-of select="ip_addr"/>
           </a>
         </td>
         <td align="right">
-          <a href="{$link_prefix}ydc-ip-addr-edit&amp;ip_id={ip_id}">
+          <a href="{$link_prefix}ip-edit&amp;ip_id={ip_id}">
             <span id="i18n-edit">Edit</span>
           </a> , 
-          <a href="#x-ydc-ip-addr-delete&amp;ip_id={ip_id}"
+          <a href="#x-ip-delete&amp;ip_id={ip_id}"
           onclick="delete_ip('{ip_id}'); return false;">Delete</a>
         </td>
       </tr>
@@ -89,7 +89,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         <td>
         </td>
         <td>
-          <a href="{$link_prefix}ydc-records-get-by-ip-addr&amp;ip_addr={data}">
+          <a href="{$link_prefix}records-get-by-ip&amp;ip_addr={data}">
             <xsl:value-of select="data"/>
           </a>
         </td>
