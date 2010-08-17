@@ -25,9 +25,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <form method="post" name="redirect">
@@ -55,8 +52,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       <td/>
       <td>
         <input name="btn_save" type="submit" class="button" value="Save"/>&#160;
-        <input name="btn_cancel" type="button" class="button" value="Cancel"
-          onclick="window.location.href='{$link_prefix}services'"/>
+        <input name="btn_cancel" type="button" class="button" value="Cancel"/>
       </td>
     </tr>
   </table>

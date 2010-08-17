@@ -26,8 +26,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <script type="text/javascript"

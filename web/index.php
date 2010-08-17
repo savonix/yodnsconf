@@ -20,7 +20,6 @@ if (file_exists('../../nexista/')) {
 }
 
 
-
 /* Probably don't need to edit anything under this line. */
 
 // Bad hack
@@ -44,7 +43,6 @@ if(!include(NX_PATH_BASE.'extensions/nexista_builder.php')) {
     echo 'Error: Unable to load server loader or builder.';
     exit;
 }
-
 // Loader not there or manually getting rebuilt? Build it!
 if(!file_exists($server_init) || isset($_POST['x--dev--rebuild'])) {
     nexista_build_it_now($server_init);

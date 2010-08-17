@@ -37,7 +37,7 @@ $(document).ready(function(){
   ).tablesorterPager(
       {
           container: $("#</xsl:text><xsl:value-of select="//_get/selector"/><xsl:text>-pager"),
-          size: 16,
+          size: 20,
           positionFixed: false
       }
   );
