@@ -61,9 +61,8 @@ select="/_R_/redirects_get_all/redirects_get_all" />
     <tr>
       <td/>
       <td>
-        <input type="submit" class="button" value="Save"/>&#160;
-        <input type="button" class="button" value="Cancel"
-          onClick="window.location.href='{$link_prefix}redirects'"/>
+        <input type="submit" class="button" value="Save"/>
+        <input type="button" class="button" value="Cancel" />
       </td>
     </tr>
   </table>

@@ -192,6 +192,11 @@ module Yodnsconf
         end
         return idx_json
       end
+      def get_redirects()
+        # TODO allow sourcing redirects from rdbms, json file, etc.
+        format = Yodnsconf.conf[:redirects_format]
+        
+      end
 
       def open_zonefile(zone)
         zonefile = "data/zones/#{zone}.zone"

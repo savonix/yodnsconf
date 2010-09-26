@@ -1,8 +1,13 @@
 {
   "user": "user", 
   "pfhost": "192.168.0.1",
-  "sahost": "192.168.0.1",
-  "analytics_key": "",
+  "sahost": "192.168.8.12",
+  "analytics_key": "UA-9068589-14",
+  "memc_srv": "192.168.1.1:21201",
+  "memc_ns": "something",
+  "cache_base": "file:/tmp/cache/rack",
   "zonelist": "config/example.com.zone",
   "zonegroups": "data/json/zone_groups.json.example"
+  "redirects_format": "json",
+  "redirects_dsn": "data/json/redirects.json"
 }

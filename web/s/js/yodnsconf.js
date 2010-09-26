@@ -33,15 +33,15 @@ function create_row(zone,myr) {
 function build_list(data,options) {
   
 }
-function build_table(data,options) {
-    index = $('#myzones').data('index');
+function build_table(table,data,options,key) {
+    index = $(table).data('index');
     zones = data;
-    zoneview = $('#myzones').data('zones').slice(index,index + 10);
+    zoneview = $(table).data(key).slice(index,index + 10);
 
     var mytb = document.createElement("tbody");
     var mytr = document.createElement("tr");
     var mytd1 = document.createElement("td");
-    mytd1.className = 'origin';
+    mytd1.className = 'primary-key';
     var mytd2 = document.createElement("td");
     for(var i=0,max=options.length;i<max;i++){
       var mysp1 = document.createElement("span");
@@ -60,13 +60,13 @@ function build_table(data,options) {
         mytdd1.appendChild(newtextnode);
         mytb.appendChild(myr);
     });
-    $('#myzones tbody').replaceWith(mytb);
-    $('#myzones .origin').click(function(){
+    $('tbody',table).replaceWith(mytb);
+    $('.primary-key',table).click(function(){
         thezone = $(this).text();
         load_zone(thezone);
     });
-    $('#myzones').data('index', index + 5);
-    $('#origin').quicksearch('#myzones tbody tr');
+    $(table).data('index', index + 5);
+    $('#origin').quicksearch('tbody tr',table);
 }
 function load_zones() {
   $('#content').load(app_prefix + 'raw/xhtml/zones.html', function() {
@@ -74,7 +74,7 @@ function load_zones() {
         $('#myzones').data('zones', data);
         $('#myzones').data('index', 0);
         var options = ["Edit", "Delete", "Clone"];
-        build_table(data,options);
+        build_table('#myzones',data,options,'zones');
     });
   });
 }
