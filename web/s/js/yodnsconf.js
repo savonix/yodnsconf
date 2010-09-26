@@ -78,6 +78,16 @@ function load_zones() {
     });
   });
 }
+function load_redirects() {
+  $('#content').load(app_prefix + 'raw/xhtml/redirects.html', function() {
+    $.getJSON(app_prefix + 'raw/json/redirects',function(data) {
+        $('#myzones').data('zones', data);
+        $('#myzones').data('index', 0);
+        var options = ["Edit", "Delete", "Clone"];
+        build_table('#myzones',data,options,'zones');
+    });
+  });
+}
 function load_zone(thezone) {
   document.title = thezone;
   $.history.load(thezone);
@@ -115,6 +125,13 @@ $(document).ready(function() {
         load_zones();
       } else {
         load_zone(url);
+      }
+    });
+  }
+  if($('#myredirects').length > 0) {
+    $.history.init(function(url) {
+      if(url == "") {
+      } else {
       }
     });
   }

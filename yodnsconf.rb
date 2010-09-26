@@ -111,6 +111,7 @@ module Yodnsconf
 
       use Rack::Rewrite do
         rewrite Yodnsconf.conf[:uripfx]+'zones', '/s/xhtml/zones.html'
+        rewrite Yodnsconf.conf[:uripfx]+'redirects', '/s/xhtml/redirects.html'
         rewrite Yodnsconf.conf[:uripfx]+'welcome', '/s/xhtml/welcome.html'
       end
 
@@ -227,7 +228,7 @@ module Yodnsconf
     get '/' do
       mredirect 'welcome'
     end
-    get %r{/(host|record|zone-group|service|redirect|ip)s$} do
+    get %r{/(host|record|zone-group|service|ip)s$} do
       xslview rootxml, params[:captures].first.gsub('-','_') + 's.xsl', { 'link_prefix' => link_prefix }
     end
     get %r{/(zone|record|host|zone-group|service|redirect|ip)-edit} do
@@ -260,6 +261,11 @@ module Yodnsconf
     get '/raw/json/yd-zone-groups' do
       content_type :json
       zg = File.open('data/json/zone_groups.json') { |f| f.read }
+      zg.to_s
+    end
+    get '/raw/json/redirects' do
+      content_type :json
+      zg = File.open('data/json/redirects.json') { |f| f.read }
       zg.to_s
     end
     get '/raw/json/zones' do

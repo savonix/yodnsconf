@@ -1,0 +1,47 @@
+<div>
+<form method="get" action="redirects">
+  <fieldset>
+  <input type="hidden" name="nid" value=""/>
+  </fieldset>
+  <div class="tableframe">
+    <table width="100%" class="tablesorter" id="myredirects">
+      <thead>
+        <tr>
+          <th width="45%">
+            <span id="i18n-domain_name">Domain Name</span>
+          </th>
+          <th width="45%">
+            <span id="i18n-destination">Destination</span>
+          </th>
+          <th width="10%" />
+        </tr>
+        <tr>
+          <td>
+            <input type="text" name="http_host" />
+            <input name="Filter" type="submit" value="Filter" />
+          </td>
+          <td colspan="2">
+          </td>
+        </tr>
+      </thead>
+      <tbody id="myredirectsbody" class="zrow">
+      <tr><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</form>
+<div class="table_controls">
+</div>
+<div class="table_meta">
+  <a href="redirect-edit">
+    <span id="i18n-new">New</span>
+  </a>
+  <a href="x-redirects-export">
+    <span id="i18n-export">Export</span>
+  </a>
+  <a href="x-redirects-export-nginx">
+    <span id="i18n-nginx">NGINX</span>
+  </a>
+</div>
+
+</div>
