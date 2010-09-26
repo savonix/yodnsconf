@@ -1,3 +1,5 @@
+use Rack::Static, :urls => ['/favicon.ico'], :root => 'web/s/'
+  
 if ENV['RACK_ENV'] == "demo"
   mountpath = '/demo/yodnsconf/'
   dirpfx = '/var/www/dev/yodnsconf/current'
@@ -9,6 +11,8 @@ else
 end
 
 require 'yodnsconf'
+
+
 
 map mountpath do
   ccf = 'config/customconf.json'
