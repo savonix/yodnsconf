@@ -47,7 +47,7 @@ $runtime = array(
         'utcdate' => $utcdate,
         'zone_group_id' => $zone_group_id,
         'db_version' => $db_version,
-        'export_target_server' => 'pro-103-gl.savonix.com'
+        'export_target_server' => 'pro-103-gl.savonix.vpn'
         );
 
 
