@@ -6,6 +6,7 @@ namespace :utilities do
   end
 
   task :import => :environment do
+    Zone.all.each {|z| z.delete}
     zonefiles = Dir.glob(File.join(Rails.root, "data", "zones", "*.zone"))
     puts zonefiles.count
     zonefiles.each do |zonefile|
@@ -22,7 +23,9 @@ namespace :utilities do
 
         %w(primary email retry refresh expire minimumTTL).each {|key| z.delete(key.to_sym)}
         zone = Zone.new(z)
-        zone.save!
+        unless zone.save
+          puts zonefile
+        end
 
 
         RecordType::TYPES.map{|at| [at.downcase, RecordType::TYPES.index(at)]}.each do |record_type, type_id|
@@ -34,11 +37,16 @@ namespace :utilities do
           end
         end
 
-      else
-        #raise ZonefileNotFound.new(zone)
       end
     end
   end
 
+  task :export => :environment do
+    Zone.all.each do |z|
+      target = File.new(File.join(Rails.root, "tmp", "zones", "#{z.origin}.zone"))
+      Zonefile.new(z.output, target, z.origin)
+    end
+
+  end
 
 end

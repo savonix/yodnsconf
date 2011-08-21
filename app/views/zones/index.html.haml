@@ -1,5 +1,3 @@
-%h1 Zones
-
 =form_tag(zones_path, :method => "delete") do
   #submit{:class=>'r'}= submit_tag "Delete Selected Zones"
   %table.tablesorter
@@ -24,3 +22,5 @@
           %td= link_to "Clone", clone_zone_path(z.id)
 
 = link_to "Create New Zone", new_zone_path
+
+%p= "Total number of zones: #{@zones.count}"
