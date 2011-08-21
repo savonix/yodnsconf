@@ -1,5 +1,5 @@
 class Zone < ActiveRecord::Base
-  has_many :record
+  has_many :records
 
   validates :origin,
     :presence => true,

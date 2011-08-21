@@ -14,7 +14,7 @@
       %tr
         %td= link_to z.origin, zone_path(z.id)
         %td= z.active_or_not
-        %td= z.record.count
+        %td= z.records.count
         %td= link_to "Edit", edit_zone_path(z.id)
         %td= link_to "Delete", zone_path(:id => z.id), :method => :delete, :confirm => 'Are you sure?'
         %td= link_to "Clone", clone_zone_path(z.id)

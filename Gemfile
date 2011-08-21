@@ -8,7 +8,10 @@ gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 gem 'inherited_resources'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'fcgi'
+gem 'zonefile'
+
+#gem 'fcgi'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

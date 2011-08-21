@@ -31,7 +31,7 @@
       %th TTL
       %th  
   %tbody
-  - @zone.record.each do |r|
+  - @zone.records.each do |r|
     %tr
       %td= link_to r.name, edit_zone_record_path(@zone.id, r.id)
       %td= r.host
