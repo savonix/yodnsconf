@@ -1,5 +1,5 @@
 class Zone < ActiveRecord::Base
-  has_many :records
+  has_many :records, :dependent => :delete_all
 
   validates :origin,
     :presence => true,

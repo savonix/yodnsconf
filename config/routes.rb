@@ -14,6 +14,7 @@ Yodnsrails::Application.routes.draw do
   resources :zones do
     resources :records
   end
+  delete 'zones', :to => 'zones#destroy', :as => :delete_zones
   get 'zones/:id/clone', :to => 'zones#clone', :as => :clone_zone
 
   root :to => "zones#index"

@@ -44,12 +44,15 @@ class ZonesController < ApplicationController
   end
 
   def destroy
-    @zone = Zone.find(params[:id])
-    if @zone.delete
-      redirect_to zones_path
-    else
-      redirect_to zones_path
+    if params[:zone_ids].present? && params[:zone_ids].is_a?(Array)
+      params[:zone_ids].each do |zid|
+        zone = Zone.find(zid)
+        zone.delete
+      end
+    elsif params[:id].present?
+      @zone = Zone.find(params[:id])
     end
+    redirect_to zones_path
   end
 
 end

@@ -6,9 +6,8 @@ namespace :utilities do
   end
 
   task :import => :environment do
-    zonefiles = Dir.glob(File.join(Rails.root, "data", "zones", "*"))
+    zonefiles = Dir.glob(File.join(Rails.root, "data", "zones", "*.zone"))
     puts zonefiles.count
-    zonefile = "data/zones/yodnsconf.com.zone"
     zonefiles.each do |zonefile|
       if File.exists?(zonefile)
         #puts Zonefile.from_file(zonefile).to_yaml

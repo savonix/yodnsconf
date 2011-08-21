@@ -11,4 +11,8 @@ class Record < ActiveRecord::Base
     record_type
   end
 
+  def display_name
+    "#{name}.#{zone.origin}"
+  end
+
 end
