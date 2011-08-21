@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yodnsrails</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <link href="/stylesheets/compiled/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/compiled/print.css" media="print" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+      <link href="/stylesheets/compiled/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="http://www-01.evenserver.com/s/js/jquery/plugins/tablesorter/themes/blue/style.css" />
+
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

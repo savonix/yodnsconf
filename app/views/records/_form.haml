@@ -1,0 +1,28 @@
+= form_for [zone, record] do |f|
+  = f.hidden_field :zone_id, :value => zone.id
+  %p= f.error_messages
+  %table
+    %tbody
+    %tr
+      %th
+        = f.label :name
+      %td
+        = f.text_field :name
+    %tr
+      %th
+        = f.label :type
+      %td
+        = f.text_field :type
+    %tr
+      %th
+        = f.label :host
+      %td
+        = f.text_field :host
+    %tr
+      %th
+        = f.label :ttl
+      %td
+        = f.text_field :ttl
+  = f.submit
+
+%p.back-to= link_to "Back to #{@zone.origin}", zone_path(@zone.id)

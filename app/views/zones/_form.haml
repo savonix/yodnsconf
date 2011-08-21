@@ -1,0 +1,30 @@
+= form_for zone do |f|
+  %table
+    %tbody
+    %tr
+      %th
+        = f.label :origin
+      %td
+        = f.text_field :origin
+    %tr
+      %th
+        = f.label :ns, "Name Server"
+      %td
+        = f.text_field :ns
+    %tr
+      %th
+        = f.label :mbox, "Mailbox"
+      %td
+        = f.text_field :mbox
+    %tr
+      %th
+        = f.label :ttl, "Time-To-Live"
+      %td
+        = f.text_field :ttl
+    %tr
+      %th
+        = f.label :active, "Active"
+      %td
+        = f.check_box :active
+
+  = f.submit

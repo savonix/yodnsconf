@@ -1,0 +1,38 @@
+%h3.zone= @zone.origin
+
+%table.tablesorter
+  %tbody
+    %tr
+      %th Nameserver
+      %td= @zone.ns
+    %tr
+      %th Mailbox
+      %td= @zone.mbox
+    %tr
+      %th TTL
+      %td= @zone.ttl
+    %tr
+      %th Active
+      %td= @zone.active_or_not
+
+
+= link_to "Edit", edit_zone_path(@zone.id)
+= link_to "Create New Record", new_zone_record_path(@zone.id)
+= zones_index 
+
+%h3.zone Records
+
+%table.tablesorter
+  %thead
+    %tr
+      %th Name
+      %th Host
+      %th TTL
+      %th  
+  %tbody
+  - @zone.record.each do |r|
+    %tr
+      %td= link_to r.name, edit_zone_record_path(@zone.id, r.id)
+      %td= r.host
+      %td= r.ttl
+      %td

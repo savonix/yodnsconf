@@ -1,22 +1,4 @@
-use Rack::Static, :urls => ['/favicon.ico'], :root => 'web/s/'
-  
-if ENV['RACK_ENV'] == "demo"
-  mountpath = '/demo/yodnsconf/'
-  dirpfx = '/var/www/dev/yodnsconf/current'
-elsif ENV['RACK_ENV'] == "development"
-  mountpath = '/dev/'
-  dirpfx = '/var/www/dev/yodnsconf'
-else
-  mountpath = '/'
-end
+# This file is used by Rack-based servers to start the application.
 
-require 'yodnsconf'
-
-
-
-map mountpath do
-  ccf = 'config/customconf.json'
-  conf = { :uripfx => mountpath.gsub(/^\/$/,''), :ccf => ccf }
-  myapp = Yodnsconf.new(conf)
-  run myapp
-end
+require ::File.expand_path('../config/environment',  __FILE__)
+run Yodnsrails::Application
