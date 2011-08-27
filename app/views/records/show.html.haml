@@ -1,2 +1,62 @@
-%h1 Records#show
-%p Find me in app/views/records/show.html.haml
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to "#{t("web-app-theme.list", :default => "List")}", records_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_record_path
+      %li.active= link_to "#{t("web-app-theme.show", :default => "Show")}", record_path
+  .content
+    .inner
+      %p
+        %b
+          = t("activerecord.attributes.record.zone_id", :default => t("activerecord.labels.zone_id", :default => "Zone"))
+          \:
+        = @record.zone_id
+      %p
+        %b
+          = t("activerecord.attributes.record.name", :default => t("activerecord.labels.name", :default => "Name"))
+          \:
+        = @record.name
+      %p
+        %b
+          = t("activerecord.attributes.record.type_id", :default => t("activerecord.labels.type_id", :default => "Type"))
+          \:
+        = @record.type_id
+      %p
+        %b
+          = t("activerecord.attributes.record.host", :default => t("activerecord.labels.host", :default => "Host"))
+          \:
+        = @record.host
+      %p
+        %b
+          = t("activerecord.attributes.record.text", :default => t("activerecord.labels.text", :default => "Text"))
+          \:
+        = @record.text
+      %p
+        %b
+          = t("activerecord.attributes.record.aux", :default => t("activerecord.labels.aux", :default => "Aux"))
+          \:
+        = @record.aux
+      %p
+        %b
+          = t("activerecord.attributes.record.ttl", :default => t("activerecord.labels.ttl", :default => "Ttl"))
+          \:
+        = @record.ttl
+      %p
+        %b
+          = t("activerecord.attributes.record.pri", :default => t("activerecord.labels.pri", :default => "Pri"))
+          \:
+        = @record.pri
+      %p
+        %b
+          = t("activerecord.attributes.record.weight", :default => t("activerecord.labels.weight", :default => "Weight"))
+          \:
+        = @record.weight
+      %p
+        %b
+          = t("activerecord.attributes.record.port", :default => t("activerecord.labels.port", :default => "Port"))
+          \:
+        = @record.port
+      .wat-cf
+        = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_record_path(@record), :class => "button"
+        = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), record_path(@record), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+- content_for :sidebar, render(:partial => 'sidebar')

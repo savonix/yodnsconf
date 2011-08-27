@@ -1,0 +1,42 @@
+.group
+  = f.label :origin, t("activerecord.attributes.zone.origin", :default => "Origin"), :class => :label
+  = f.text_field :origin, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :primary, t("activerecord.attributes.zone.primary", :default => "Primary"), :class => :label
+  = f.text_field :primary, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :email, t("activerecord.attributes.zone.email", :default => "Email"), :class => :label
+  = f.text_field :email, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :ttl, t("activerecord.attributes.zone.ttl", :default => "Ttl"), :class => :label
+  = f.number_field :ttl, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :serial, t("activerecord.attributes.zone.serial", :default => "Serial"), :class => :label
+  = f.number_field :serial, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :axfr, t("activerecord.attributes.zone.axfr", :default => "Axfr"), :class => :label
+  = f.text_field :axfr, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :minimumTTL, t("activerecord.attributes.zone.minimumTTL", :default => "Minimumttl"), :class => :label
+  = f.number_field :minimumTTL, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :active, t("activerecord.attributes.zone.active", :default => "Active"), :class => :label
+  = f.check_box :active, :class => 'check_box'
+  %span.description Ex: a simple text
+.group
+  = f.label :zone_group_id, t("activerecord.attributes.zone.zone_group_id", :default => "Zone group"), :class => :label
+  = f.number_field :zone_group_id, :class => 'number_field'
+  %span.description Ex: a simple text
+.group.navform.wat-cf
+  %button.button{:type => "submit"}
+    = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  %span.text_button_padding= t("web-app-theme.or", :default => "or")
+  = link_to t("web-app-theme.cancel", :default => "Cancel"), zones_path, :class => "text_button_padding link_button"

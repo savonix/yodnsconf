@@ -1,0 +1,46 @@
+.group
+  = f.label :zone_id, t("activerecord.attributes.record.zone_id", :default => "Zone"), :class => :label
+  = f.number_field :zone_id, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :name, t("activerecord.attributes.record.name", :default => "Name"), :class => :label
+  = f.text_field :name, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :type_id, t("activerecord.attributes.record.type_id", :default => "Type"), :class => :label
+  = f.number_field :type_id, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :host, t("activerecord.attributes.record.host", :default => "Host"), :class => :label
+  = f.text_field :host, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :text, t("activerecord.attributes.record.text", :default => "Text"), :class => :label
+  = f.text_field :text, :class => 'text_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :aux, t("activerecord.attributes.record.aux", :default => "Aux"), :class => :label
+  = f.number_field :aux, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :ttl, t("activerecord.attributes.record.ttl", :default => "Ttl"), :class => :label
+  = f.number_field :ttl, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :pri, t("activerecord.attributes.record.pri", :default => "Pri"), :class => :label
+  = f.number_field :pri, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :weight, t("activerecord.attributes.record.weight", :default => "Weight"), :class => :label
+  = f.number_field :weight, :class => 'number_field'
+  %span.description Ex: a simple text
+.group
+  = f.label :port, t("activerecord.attributes.record.port", :default => "Port"), :class => :label
+  = f.number_field :port, :class => 'number_field'
+  %span.description Ex: a simple text
+.group.navform.wat-cf
+  %button.button{:type => "submit"}
+    = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  %span.text_button_padding= t("web-app-theme.or", :default => "or")
+  = link_to t("web-app-theme.cancel", :default => "Cancel"), zone_records_path, :class => "text_button_padding link_button"
