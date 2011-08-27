@@ -24,7 +24,7 @@ describe Zone do
   end
 
   after(:all) do
-    @zone.delete
+    @zone.destroy
   end
 
 end

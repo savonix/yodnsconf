@@ -6,7 +6,7 @@ namespace :utilities do
   end
 
   task :import => :environment do
-    Zone.all.each {|z| z.delete}
+    Zone.all.map(&:destroy)
     zonefiles = Dir.glob(File.join(Rails.root, "data", "zones", "*.zone"))
     puts zonefiles.count
     zonefiles.each do |zonefile|

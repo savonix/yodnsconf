@@ -5,7 +5,5 @@
   %dl
     %dt= link_to "Zones", zones_path
     %dd= Zone.total 
-    %dt A Records
-    %dd
-    %dt CNAME Records
-    %dd
+    %dt Records
+    %dd= Record.count

@@ -1,6 +1,6 @@
 class Zone < ActiveRecord::Base
   
-  has_many :records, :dependent => :delete_all
+  has_many :records, :dependent => :destroy
 
   validates :origin,
     :presence => true,
@@ -8,6 +8,16 @@ class Zone < ActiveRecord::Base
 
   validates :ttl,
     :numericality => true
+
+  class << self
+    def total(reload=false)
+      @total = nil if reload
+      @total || Zone.all.count
+    end
+    def per_page 
+      20
+    end
+  end
 
   def active_or_not
     self.active ? "Yes" : "No"

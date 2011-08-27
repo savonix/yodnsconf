@@ -17,7 +17,7 @@ Yodnsrails::Application.routes.draw do
   delete 'zones', :to => 'zones#destroy', :as => :delete_zones
   get 'zones/:id/clone', :to => 'zones#clone', :as => :clone_zone
 
-  root :to => "zones#index"
+  root :to => "zones#welcome"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -2,7 +2,7 @@ class ZonesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @zones = Zone.all
+    @zones = Zone.paginate(:page => params[:page])
   end
 
   def show
@@ -15,9 +15,12 @@ class ZonesController < ApplicationController
 
   def clone
     oldzone = Zone.find(params[:id])
-    @newzone = Zone.new(oldzone.attributes.merge(:origin => "Clone of #{oldzone.origin}"))
-    if @newzone.save
-      redirect_to zones_path
+    newzone = Zone.new(oldzone.attributes.merge(:origin => "clone-of-#{oldzone.origin}"))
+    if newzone.save
+      oldzone.records.each do |r|
+        newzone.records << r.dup
+      end
+      redirect_to zone_path(newzone)
     end
   end
 
@@ -47,10 +50,11 @@ class ZonesController < ApplicationController
     if params[:zone_ids].present? && params[:zone_ids].is_a?(Array)
       params[:zone_ids].each do |zid|
         zone = Zone.find(zid)
-        zone.delete
+        zone.destroy
       end
     elsif params[:id].present?
-      @zone = Zone.find(params[:id])
+      zone = Zone.find(params[:id])
+      zone.destroy
     end
     redirect_to zones_path
   end

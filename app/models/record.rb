@@ -15,4 +15,8 @@ class Record < ActiveRecord::Base
     "#{name}.#{zone.origin}"
   end
 
+  def bare_record
+    self.attributes.delete_if {|k,v| k == :id || k == :zone_id}
+  end
+
 end

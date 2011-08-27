@@ -8,14 +8,14 @@
         = f.text_field :origin
     %tr
       %th
-        = f.label :ns, "Name Server"
+        = f.label :primary, "Name Server"
       %td
-        = f.text_field :ns
+        = f.text_field :primary
     %tr
       %th
-        = f.label :mbox, "Mailbox"
+        = f.label :email, "Mailbox"
       %td
-        = f.text_field :mbox
+        = f.text_field :email
     %tr
       %th
         = f.label :ttl, "Time-To-Live"
@@ -28,3 +28,5 @@
         = f.check_box :active
 
   = f.submit
+  = hidden_field_tag :cancel_to, request.referer
+  = submit_tag "Cancel", :name => 'cancel'
