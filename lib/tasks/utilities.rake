@@ -15,13 +15,10 @@ namespace :utilities do
         oz = Zonefile.from_file(zonefile)
         z  = oz.soa
 
-        z[:mbox] = z[:email]
-        z[:ns] = z[:primary]
         z[:ttl] = z[:minimumTTL]
-        z[:minimum] = z[:minimumTTL]
         z[:active] = 1
 
-        %w(primary email retry refresh expire minimumTTL).each {|key| z.delete(key.to_sym)}
+        %w(retry refresh expire).each {|key| z.delete(key.to_sym)}
         zone = Zone.new(z)
         unless zone.save
           puts zonefile

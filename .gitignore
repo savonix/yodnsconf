@@ -10,3 +10,4 @@ config_noent.xml
 apps/auth
 cache
 config/default_zone.xml
+*.sqlite3
