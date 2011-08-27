@@ -1,0 +1,11 @@
+.greeting.green.transp
+  %h2.corners Thanks for using YoDNSConf!
+  %p
+  %h3 Statistics
+  %dl
+    %dt= link_to "Zones", zones_path
+    %dd= Zone.total 
+    %dt A Records
+    %dd
+    %dt CNAME Records
+    %dd
