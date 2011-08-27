@@ -32,11 +32,7 @@ describe "YoDNSConf" do
     @app ||=   myapp
   end
   myurls = Array.new
-  myurls << '/raw/json/yd-domain-list'
-  myurls << '/raw/json/ns/example.com'
-  myurls << '/raw/json/zone/example.com'
-  myurls << '/s/css/stylesheet.css'
-  myurls << '/raw/json/zone/example.com/soa'
+  myurls << '/zones'
   
   myurls.each { |url|
     it "should respond to #{url}" do
