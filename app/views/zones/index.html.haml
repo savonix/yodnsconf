@@ -1,29 +1,34 @@
-=form_tag(zones_path, :method => "delete") do
-  %button.r= link_to "New Zone", new_zone_path
-  %table.table
-    %thead
-      %tr
-        %th= check_box_tag "select_all", "1", false, :id => 'select_all', :class => 'zone_id'
-        %th Zone
-        %th Active
-        %th Records
-        %th 
-    %tbody
-      - @zones.each do |z|
-        %tr{:class => cycle("even", "odd")}
-          %td= check_box_tag "zone_ids[]", z.id, false, :class => 'zone_ids'
-          %td= link_to z.origin, zone_path(z.id)
-          %td= z.active_or_not
-          %td= z.records.count
-          %td.last
-            = link_to "Edit", edit_zone_path(z.id)
-            = link_to "Delete", zone_path(:id => z.id), :method => :delete, :confirm => 'Are you sure?'
-            = link_to "Clone", clone_zone_path(z.id)
-
-.actions-bar.wat-cf
-  .actions
-  #submit.r= submit_tag "Delete Selected Zones"
-    
-
-  %p= will_paginate @zones
-  %p= "Total number of zones: #{Zone.total}"
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", zones_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_zone_path
+  .content
+    %h2.title
+      = t("web-app-theme.all", :default => "All")
+      Zones
+    .inner
+      %table.table
+        %tr
+          %th.first ID
+          %th
+            = t("activerecord.attributes.zone.origin", :default => t("activerecord.labels.origin", :default => "Origin"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @zones.each do |zone|
+          %tr{:class => cycle("odd", "even")}
+            %td
+              = zone.id
+            %td
+              = link_to zone.origin, zone_path(zone)
+            %td
+              = zone.created_at
+            %td.last
+              = link_to "#{t("web-app-theme.show", :default => "Show")}", zone_path(zone)
+              |
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_zone_path(zone)} |
+              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", zone_path(zone), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @zones
+- content_for :sidebar, render(:partial => 'sidebar')

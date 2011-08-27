@@ -1,40 +1,79 @@
-%h3.zone= @zone.origin
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to "#{t("web-app-theme.list", :default => "List")}", zones_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_zone_path
+      %li.active= link_to "#{t("web-app-theme.show", :default => "Show")}", zone_path
+  .content
+    .inner
+      .form
+        .columns.wat-cf
+          .column.left{:style => "width: 30%"} 
+            %p
+              %b
+                = t("activerecord.attributes.zone.origin", :default => t("activerecord.labels.origin", :default => "Origin"))
+                \:
+              = @zone.origin
+            %p
+              %b
+                = t("activerecord.attributes.zone.primary", :default => t("activerecord.labels.primary", :default => "Primary"))
+                \:
+              = @zone.primary
+            %p
+              %b
+                = t("activerecord.attributes.zone.email", :default => t("activerecord.labels.email", :default => "Email"))
+                \:
+              = @zone.email
+            %p
+              %b
+                = t("activerecord.attributes.zone.ttl", :default => t("activerecord.labels.ttl", :default => "Ttl"))
+                \:
+              = @zone.ttl
+            %p
+              %b
+                = t("activerecord.attributes.zone.serial", :default => t("activerecord.labels.serial", :default => "Serial"))
+                \:
+              = @zone.serial
+            %p
+              %b
+                = t("activerecord.attributes.zone.axfr", :default => t("activerecord.labels.axfr", :default => "Axfr"))
+                \:
+              = @zone.axfr
+            %p
+              %b
+                = t("activerecord.attributes.zone.minimumTTL", :default => t("activerecord.labels.minimumTTL", :default => "Minimumttl"))
+                \:
+              = @zone.minimumTTL
+            %p
+              %b
+                = t("activerecord.attributes.zone.active", :default => t("activerecord.labels.active", :default => "Active"))
+                \:
+              = @zone.active
+            %p
+              %b
+                = t("activerecord.attributes.zone.zone_group_id", :default => t("activerecord.labels.zone_group_id", :default => "Zone group"))
+                \:
+              = @zone.zone_group_id
+            .wat-cf
+              = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_zone_path(@zone), :class => "button"
+              = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), zone_path(@zone), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+          .column.right{:style => "width: 70%"}
+            %h3.zone Records
+            %table.table
+              %thead
+                %tr
+                  %th Name
+                  %th Host
+                  %th Type 
+                  %th TTL
+                  %th  
+              %tbody
+              - @zone.records.each do |r|
+                %tr
+                  %td= link_to r.display_name, edit_zone_record_path(@zone.id, r.id)
+                  %td= r.host
+                  %td= r.type
+                  %td= r.ttl
+                  %td
 
-%table.tablesorter
-  %tbody
-    %tr
-      %th Nameserver
-      %td= @zone.primary
-    %tr
-      %th Mailbox
-      %td= @zone.email
-    %tr
-      %th TTL
-      %td= @zone.ttl
-    %tr
-      %th Active
-      %td= @zone.active_or_not
-
-
-= link_to "Edit", edit_zone_path(@zone.id)
-= link_to "Create New Record", new_zone_record_path(@zone.id)
-= zones_index 
-
-%h3.zone Records
-
-%table.tablesorter
-  %thead
-    %tr
-      %th Name
-      %th Host
-      %th Type 
-      %th TTL
-      %th  
-  %tbody
-  - @zone.records.each do |r|
-    %tr
-      %td= link_to r.display_name, edit_zone_record_path(@zone.id, r.id)
-      %td= r.host
-      %td= r.type
-      %td= r.ttl
-      %td
+  - content_for :sidebar, render(:partial => 'sidebar')

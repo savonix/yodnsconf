@@ -15,7 +15,7 @@ class Zone < ActiveRecord::Base
       @total || Zone.all.count
     end
     def per_page 
-      20
+      10
     end
   end
 

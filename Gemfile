@@ -10,6 +10,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'zonefile'
 
+gem 'hpricot'
+
+gem 'ruby_parser'
+
 #gem 'fcgi'
 
 # Use unicorn as the web server
