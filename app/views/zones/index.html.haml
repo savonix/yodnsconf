@@ -24,7 +24,8 @@
         %td.last
           = link_to "#{t("web-app-theme.show", :default => "Show")}", zone_path(zone)
           |
-          \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_zone_path(zone)} |
+          \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_zone_path(zone)}
+          |
           \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", zone_path(zone), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
   .actions-bar.wat-cf
     .actions
