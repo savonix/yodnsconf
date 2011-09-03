@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: "Link yodns and yodnsconf "
+desc: YoDNSConf and yodns are currently separate apps. Should they be combined? Not sure yet, but at least they should share a common interface.
+type: :task
+component: yodnsconf
+release: 
+reporter: docunext <albert.lash@docunext.com>
+status: :unstarted
+disposition: 
+creation_time: 2011-09-03 23:44:04.263957 Z
+references: []
+
+id: c0d23c30430755b475b2b5282d26bd8533892b38
+log_events: 
+- - 2011-09-03 23:44:07.131976 Z
+  - docunext <albert.lash@docunext.com>
+  - created
+  - ""
