@@ -23,6 +23,10 @@ class Zone < ActiveRecord::Base
     self.active ? "Yes" : "No"
   end
 
+  def wwwhost
+    "http://www.#{origin.gsub(/\.$/,'')}/"
+  end
+
   RecordType::TYPES.each do |rt|
     define_method(rt.downcase.to_sym) do
       records.select{|r| r.type_id == type_id_for(rt)}

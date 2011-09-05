@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Integrate zonecheck
+desc: Zonecheck is a ruby based DNS inspector. Integrate it to some degree with YoDNSConf.
+type: :feature
+component: yodnsconf
+release: 
+reporter: docunext <albert.lash@docunext.com>
+status: :unstarted
+disposition: 
+creation_time: 2011-09-05 15:49:53.762916 Z
+references: []
+
+id: 9eafbba2a93a17be292a6068ac5af59461f5fdd1
+log_events: 
+- - 2011-09-05 15:49:56.510876 Z
+  - docunext <albert.lash@docunext.com>
+  - created
+  - ""
