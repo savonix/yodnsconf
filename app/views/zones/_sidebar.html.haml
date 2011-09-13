@@ -1,7 +1,8 @@
 .block.notice
   %h3 Status 
   .content
-    %p
+    %p= "Zones: #{Zone.total}"
+    %p= "Expired: #{Zone.expired}"
 .block
   %h3 Links
   %ul.navigation

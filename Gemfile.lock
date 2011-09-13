@@ -159,6 +159,7 @@ GEM
     warden (1.0.5)
       rack (>= 1.0)
     web-app-theme (0.7.0)
+    whois (2.1.0)
     zonefile (1.00)
 
 PLATFORMS
@@ -183,5 +184,6 @@ DEPENDENCIES
   vlad
   vlad-git
   web-app-theme (>= 0.6.2)
+  whois
   will_paginate!
   zonefile

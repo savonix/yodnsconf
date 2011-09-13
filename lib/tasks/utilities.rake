@@ -1,5 +1,6 @@
-namespace :utilities do
+require 'yaml'
 
+namespace :utilities do
 
   task :echo => :environment do
     puts Rails.env
@@ -46,4 +47,25 @@ namespace :utilities do
 
   end
 
+  task :whois => :environment do
+
+    c = Whois::Client.new
+    Zone.all.each do |z|
+      unless z.whois_record.present?
+        who = c.query(z.origin.gsub(/\.$/,''))
+        parts = who.parts.to_yaml
+        z.create_whois_record({"record" => parts})
+        z.update_attribute(:expires_at, z.whois_record.expiration)
+      end
+    end
+
+  end
+
+  task :expires => :environment do
+    Zone.all.each do |z|
+      if z.whois_record.present?
+        z.update_attribute(:expires_at, z.whois_record.expiration)
+      end
+    end
+  end
 end

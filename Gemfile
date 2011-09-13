@@ -14,6 +14,8 @@ gem 'hpricot'
 
 gem 'ruby_parser'
 
+gem 'whois'
+
 #gem 'fcgi'
 
 # Use unicorn as the web server

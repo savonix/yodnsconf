@@ -75,5 +75,10 @@
                   %td= r.type
                   %td= r.ttl
                   %td
+      - if @zone.whois_record.present?
+        %pre
+          = @zone.whois_record.whois
+
+
 
   - content_for :sidebar, render(:partial => 'sidebar')

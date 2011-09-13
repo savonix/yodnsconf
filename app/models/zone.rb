@@ -1,6 +1,7 @@
 class Zone < ActiveRecord::Base
   
   has_many :records, :dependent => :destroy
+  has_one :whois_record, :dependent => :destroy
 
   validates :origin,
     :presence => true,
@@ -17,14 +18,21 @@ class Zone < ActiveRecord::Base
     def per_page 
       10
     end
+    def expired
+      Zone.all.select{|x| x.expires_at.nil?}.count
+    end
   end
 
   def active_or_not
     self.active ? "Yes" : "No"
   end
 
+  def hostname
+    origin.gsub(/\.$/,'')
+  end
+
   def wwwhost
-    "http://www.#{origin.gsub(/\.$/,'')}/"
+    "http://www.#{hostname}/"
   end
 
   RecordType::TYPES.each do |rt|
