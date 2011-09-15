@@ -2,7 +2,11 @@ class ZonesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @zones = Zone.paginate(:page => params[:page], :order => 'expires_at')
+    if params.has_key?('show') && params['show'] == 'all'
+      @zones = Zone.paginate(:page => params[:page], :order => 'expires_at')
+    else
+      @zones = Zone.fresh.paginate(:page => params[:page], :order => 'expires_at')
+    end
   end
 
   def show

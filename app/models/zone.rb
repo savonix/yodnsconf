@@ -21,6 +21,9 @@ class Zone < ActiveRecord::Base
     def expired
       Zone.all.select{|x| x.expires_at.nil?}.count
     end
+    def fresh
+      Zone.all.reject{|x| x.expires_at.nil? || x.expires_at < Date.today + 1.week}
+    end
   end
 
   def active_or_not

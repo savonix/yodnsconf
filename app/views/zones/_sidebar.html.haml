@@ -3,11 +3,12 @@
   .content
     %p= "Zones: #{Zone.total}"
     %p= "Expired: #{Zone.expired}"
+    %p= link_to "Show all", "#{request.url}&show=all" 
 .block
   %h3 Links
   %ul.navigation
     %li
-      -if @zone.present?
+      -if @zone.present? && !@zone.new_record?
         %a{:href => @zone.wwwhost, :target => "_blank"}= @zone.wwwhost 
       -else
         %a{:href => app_home_url, :target => "_blank"}= app_name
