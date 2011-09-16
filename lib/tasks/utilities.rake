@@ -47,6 +47,10 @@ namespace :utilities do
 
   end
 
+  task :zonecheck => :environment do
+
+  end
+
   task :whois => :environment do
 
     c = Whois::Client.new

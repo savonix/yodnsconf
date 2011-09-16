@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Service checker like dnsstuff / intodns
+desc: Create a public part of app to allow lookups on certain domains to check their configuration.
+type: :feature
+component: yodnsconf-web
+release: 
+reporter: docunext <albert.lash@docunext.com>
+status: :unstarted
+disposition: 
+creation_time: 2011-09-16 22:10:53.153903 Z
+references: []
+
+id: b0019de71a7837b0b261f848e3e5a220ae2d79d8
+log_events: 
+- - 2011-09-16 22:10:54.614009 Z
+  - docunext <albert.lash@docunext.com>
+  - created
+  - ""

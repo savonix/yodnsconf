@@ -1,0 +1,22 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Integrate whois gem
+desc: The whois gem is quite nice - integrate it with yodnsconf.
+type: :task
+component: yodnsconf
+release: 
+reporter: docunext <albert.lash@docunext.com>
+status: :closed
+disposition: :fixed
+creation_time: 2011-09-13 01:05:02.975895 Z
+references: []
+
+id: a781cdda38f6f2e2fbb7fc974b368f827e24e987
+log_events: 
+- - 2011-09-13 01:05:06.699834 Z
+  - docunext <albert.lash@docunext.com>
+  - created
+  - ""
+- - 2011-09-16 22:09:37.106067 Z
+  - docunext <albert.lash@docunext.com>
+  - closed with disposition fixed
+  - Done, works well.
