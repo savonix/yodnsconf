@@ -1,5 +1,9 @@
 Yodnsrails::Application.routes.draw do
 
+  get "public/index"
+
+  get "public/check"
+
   devise_for :users, :zones
 
   devise_scope :user do
