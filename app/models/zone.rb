@@ -27,7 +27,7 @@ class Zone < ActiveRecord::Base
       Zone.all.reject{|x| x.expires_at.nil? || x.expires_at < Date.today + 1.week}
     end
     def checks
-      [:resolve_ns_records, :resolve_www_hosts]
+      [:resolve_ns_records, :resolve_www_hosts, :resolve_mx_records]
     end
   end
 
@@ -46,6 +46,10 @@ class Zone < ActiveRecord::Base
 
   def resolve_www_hosts
     Check::ARecords.new(@resolved) 
+  end
+
+  def resolve_mx_records
+    Check::MxRecords.new(@resolved) 
   end
 
   def wwwhost

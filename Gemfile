@@ -16,6 +16,7 @@ gem 'ruby_parser'
 
 gem 'whois'
 gem 'dnsruby'
+gem 'net-ping', :require => 'net/ping'
 
 #gem 'fcgi'
 

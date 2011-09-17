@@ -100,6 +100,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    net-ldap (0.2.2)
+    net-ping (1.5.1)
+      net-ldap (~> 0.2.2)
     open4 (0.9.6)
     orm_adapter (0.0.5)
     polyglot (0.3.2)
@@ -177,6 +180,7 @@ DEPENDENCIES
   hpricot
   inherited_resources
   jquery-rails
+  net-ping
   rails!
   rails3-generators
   rspec-rails (>= 2.0.1)

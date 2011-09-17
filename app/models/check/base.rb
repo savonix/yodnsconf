@@ -3,6 +3,10 @@ class Check::Base
 
   attr_accessor :resolved
 
+  def check_name
+    self.class.name.titleize
+  end
+
   def initialize(resolved)
     @resolved = resolved
   end
