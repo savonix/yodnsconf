@@ -13,6 +13,10 @@ Yodnsrails::Application.routes.draw do
 
   resources :zones do
     resources :records
+    member do
+      get "whois"
+      get "check"
+    end
   end
   delete 'zones', :to => 'zones#destroy', :as => :delete_zones
   get 'zones/:id/clone', :to => 'zones#clone', :as => :clone_zone

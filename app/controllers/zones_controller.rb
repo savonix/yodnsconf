@@ -13,6 +13,14 @@ class ZonesController < ApplicationController
     @zone = Zone.find(params[:id])
   end
 
+  def whois 
+    @zone = Zone.find(params[:id])
+  end
+
+  def check 
+    @zone = Zone.find(params[:id])
+  end
+
   def edit
     @zone = Zone.find(params[:id])
   end
