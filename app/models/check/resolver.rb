@@ -9,7 +9,7 @@ class Check::Resolver
         [r.nsdname.to_s, rns, r.ttl, p]
       end
       @a_records = dns.getresources("www.#{hostname}", Dnsruby::Types.A).map { |r| r.name.to_s}
-      @mx_records = dns.getresources(hostname, Dnsruby::Types.MX).map { |r| r.name.to_s}
+      @mx_records = dns.getresources(hostname, Dnsruby::Types.MX).map { |r| r.exchange.to_s}
     end
   end
 
