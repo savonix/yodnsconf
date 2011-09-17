@@ -10,6 +10,8 @@ class Zone < ActiveRecord::Base
   validates :ttl,
     :numericality => true
 
+  attr_accessor :resolved
+
   class << self
     def total(reload=false)
       @total = nil if reload
@@ -24,6 +26,9 @@ class Zone < ActiveRecord::Base
     def fresh
       Zone.all.reject{|x| x.expires_at.nil? || x.expires_at < Date.today + 1.week}
     end
+    def checks
+      [:resolve_ns_records, :resolve_www_hosts]
+    end
   end
 
   def active_or_not
@@ -32,6 +37,15 @@ class Zone < ActiveRecord::Base
 
   def hostname
     origin.gsub(/\.$/,'')
+  end
+
+  def resolve_ns_records
+    @resolved = Check::Resolver.new(origin)
+    Check::NameServers.new(@resolved) 
+  end
+
+  def resolve_www_hosts
+    Check::ARecords.new(@resolved) 
   end
 
   def wwwhost
