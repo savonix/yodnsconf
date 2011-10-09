@@ -1,4 +1,5 @@
 config/*internal.zone
+config/database.yml
 dnu
 data/zones/*
 coverage
