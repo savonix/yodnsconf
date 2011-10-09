@@ -100,6 +100,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    mysql (2.8.1)
     net-ldap (0.2.2)
     net-ping (1.5.1)
       net-ldap (~> 0.2.2)
@@ -181,6 +182,7 @@ DEPENDENCIES
   hpricot
   inherited_resources
   jquery-rails
+  mysql
   net-ping
   rails!
   rails3-generators
