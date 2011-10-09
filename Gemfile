@@ -46,6 +46,7 @@ gem 'net-ping', :require => 'net/ping'
 gem "will_paginate", :git => "https://github.com/p7r/will_paginate.git", :branch => "rails3"
 
 gem 'web-app-theme', '>= 0.6.2'
+gem 'rails_admin'
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
