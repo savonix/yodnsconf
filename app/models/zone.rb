@@ -2,20 +2,28 @@ class Zone < ActiveRecord::Base
   
   has_many :records, :dependent => :destroy
   has_one :whois_record, :dependent => :destroy
+  belongs_to :user
 
   validates :origin,
     :presence => true,
     :uniqueness => true
+
+  validates_format_of :origin,
+    :with => /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}\.?$/
 
   validates :ttl,
     :numericality => true
 
   attr_accessor :resolved
 
+
   class << self
     def total(reload=false)
       @total = nil if reload
       @total || Zone.all.count
+    end
+    def user(user_id)
+      where(:user_id => user_id)
     end
     def per_page 
       10

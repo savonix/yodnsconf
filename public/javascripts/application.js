@@ -16,4 +16,8 @@ $('document').ready(function() {
       });
     }
   );
+  $('#check-domain').click(function(){
+    mydomain = $('#origin').attr('value');
+    window.location = '/public/check/' + mydomain;
+  });
 });

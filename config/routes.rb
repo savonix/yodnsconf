@@ -2,7 +2,7 @@ Yodnsrails::Application.routes.draw do
 
   get "public/index"
 
-  get "public/check"
+  get "public/check/*id", :to => 'public#check', :format => false, :as => :public_check_zone
 
   devise_for :users, :zones
 
@@ -25,7 +25,7 @@ Yodnsrails::Application.routes.draw do
   delete 'zones', :to => 'zones#destroy', :as => :delete_zones
   get 'zones/:id/clone', :to => 'zones#clone', :as => :clone_zone
 
-  root :to => "zones#welcome"
+  root :to => "public#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
