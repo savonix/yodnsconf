@@ -9,6 +9,7 @@ gem 'inherited_resources'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql'
 gem 'replicate'
+gem 'memcache-client'
 
 gem 'zonefile'
 

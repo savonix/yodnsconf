@@ -1,12 +1,18 @@
 class ZonesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :counts
+
 
   def index
-    if params.has_key?('show') && params['show'] == 'all'
-      @zones = current_user.zones.paginate(:page => params[:page], :order => 'expires_at')
-    else
-      @zones = current_user.zones.fresh.paginate(:page => params[:page], :order => 'expires_at')
+    zones_serial = Rails.cache.fetch("zones_#{current_user.id}", :expires_in => 1.day) do
+      if params.has_key?('show') && params['show'] == 'all'
+        zones = current_user.zones
+      else
+        zones = current_user.zones.fresh
+      end
+      zones.to_yaml
     end
+    @zones = YAML.load(zones_serial).paginate(:page => params[:page], :order => 'expires_at')
   end
 
   def show
@@ -72,4 +78,14 @@ class ZonesController < ApplicationController
     redirect_to zones_path
   end
 
+private
+  def counts
+    @total_zones = Rails.cache.fetch("zones_total_#{current_user.id}", :expires_in => 1.day) do
+      Zone.total
+    end
+      
+    @total_expired = Rails.cache.fetch("zones_total_expired_#{current_user.id}", :expires_in => 1.day) do
+      Zone.expired
+    end
+  end
 end

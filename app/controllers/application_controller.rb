@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     end
   end 
 
+  before_filter :preload_modules
+
+  def preload_modules
+    unless Rails.env.production?
+      Zone
+    end
+  end
 end

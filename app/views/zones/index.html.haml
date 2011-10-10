@@ -11,7 +11,7 @@
       %th.first ID
       %th
         = t("activerecord.attributes.zone.origin", :default => t("activerecord.labels.origin", :default => "Origin"))
-      %th= t("web-app-theme.created_at", :default => "Created at")
+      %th Nameserver
       %th Expires On
       %th.last &nbsp;
     - @zones.each do |zone|
@@ -20,12 +20,8 @@
           = zone.id
         %td
           = link_to zone.origin, zone_path(zone)
-        %td
-          -if zone.whois_record.present?
-            = zone.whois_record.whois.nameservers.first
-        %td
-          -if zone.whois_record.present?
-            = !zone.whois_record.whois.available? ?  zone.whois_record.expiration : 'Not Registered'
+        %td= zone.primary
+        %td= zone.expires_at
         %td.last
           = link_to "#{t("web-app-theme.show", :default => "Show")}", zone_path(zone)
           |

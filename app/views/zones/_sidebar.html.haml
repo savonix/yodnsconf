@@ -1,9 +1,10 @@
 .block.notice
   %h3 Status 
   .content
-    %p= "Zones: #{Zone.total}"
-    %p= "Expired: #{Zone.expired}"
-    %p= link_to "Show all", "#{request.url}&show=all" 
+    %p= "Zones: #{@total_zones}"
+    %p= "Expired: #{@total_expired}"
+    - if @zones
+      %p= link_to "Show all", "#{request.url}&show=all" 
 .block
   %h3 Links
   %ul.navigation
