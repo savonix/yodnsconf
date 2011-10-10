@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title= app_name
+    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/default/style", "web-app-theme/override", "public", :cache => true
+    = javascript_include_tag :defaults, :cache => true
+    = csrf_meta_tag
+  %body
+    #container
+      #header
+        %h1
+          %a{:href => "/"}= app_name
+        #user-navigation
+          %ul.wat-cf
+            - if current_user
+              %li
+                %a{:href => "#"}= t("web-app-theme.profile", :default => "Profile")
+              %li
+                %a{:href => "#"}= t("web-app-theme.settings", :default => "Settings")
+              %li
+                %a.logout{:href => "/logout"}= t("web-app-theme.logout", :default => "Logout")
+            - else
+              %li= link_to "Login", new_user_session_path 
+        #main-navigation
+          %ul.wat-cf
+            %li= link_to "Check", public_index_path
+            - if current_user
+              %li= link_to "My Zones", zones_path
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p= message
+        #main
+          .block
+            .content
+              = yield
+          #footer
+            .block
+              %p
+                Copyright &copy; #{Time.now.year} #{app_name}.
+        #sidebar
+          = yield :sidebar
