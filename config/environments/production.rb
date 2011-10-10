@@ -46,5 +46,5 @@ Yodnsrails::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.cache_store = :mem_cache_store, "192.168.8.2:11211", { :namespace => 'elections', :compress => true }
+  config.cache_store = :mem_cache_store, "192.168.8.2:11211", { :namespace => 'elections', :compress => true, :expires_in => 3600}
 end

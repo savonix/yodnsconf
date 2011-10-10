@@ -6,22 +6,23 @@
         = text_field_tag :origin
         %button#check-domain= "Submit"
   - if @zone
-    %h2= "Check #{params[:id]}"
-    .content
-      .inner
-        %table.table
-          %thead
-            %tr
-              %th Check 
-              %th Pass 
-              %th Notes 
-          %tbody
-          - Zone.checks.each do |test|
-            - check = @zone.send(test) 
-            %tr
-              %td= check.check_name
-              %td= check.check_pass
-              %td= to_table(check.check_results)
+    - cache "check-#{@zone.origin}" do
+      %h2= "Check #{params[:id]}"
+      .content
+        .inner
+          %table.table
+            %thead
+              %tr
+                %th Check 
+                %th Pass 
+                %th Notes 
+            %tbody
+            - Zone.checks.each do |test|
+              - check = @zone.send(test) 
+              %tr
+                %td= check.check_name
+                %td= check.check_pass
+                %td= to_table(check.check_results)
 
   .content
     .inner
@@ -34,20 +35,11 @@
           %th.first
           %th
             = t("activerecord.attributes.zone.origin", :default => t("activerecord.labels.origin", :default => "Origin"))
-          %th= t("web-app-theme.created_at", :default => "Created at")
-          %th Expires On
           %th.last &nbsp;
 
         - @zones.each do |zone|
           %tr{:class => cycle("odd", "even")}
             %td
-            %td
-              = link_to zone.hostname, public_check_zone_path(zone.hostname)
-            %td
-              -if zone.whois_record.present?
-                = zone.whois_record.whois.nameservers.first
-            %td
-              -if zone.whois_record.present?
-                = !zone.whois_record.whois.available? ?  zone.whois_record.expiration : 'Not Registered'
+            %td= link_to zone.hostname, public_check_zone_path(zone.hostname)
             %td.last
               = link_to "#{t("web-app-theme.show", :default => "Show")}", public_check_zone_path(zone.hostname)

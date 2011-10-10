@@ -2,7 +2,7 @@ class Zone < ActiveRecord::Base
   
   has_many :records, :dependent => :destroy
   has_one :whois_record, :dependent => :destroy
-  belongs_to :user, :include => :whois_record
+  belongs_to :user
 
   validates :origin,
     :presence => true,

@@ -1,11 +1,11 @@
 class PublicController < ApplicationController
+  before_filter :zones
+
   def index
-    @zones = Zone.find_all_by_user_id(0).paginate(:page => params[:page], :per_page => 5)
     render :check
   end
 
   def check 
-    @zones = Zone.find_all_by_user_id(0).paginate(:page => params[:page], :per_page => 5)
     begin
       @zone = Zone.find_by_origin("#{params[:id]}.")
       unless @zone
@@ -19,4 +19,10 @@ class PublicController < ApplicationController
     end
   end
 
+  def zones
+    zones_serial = Rails.cache.fetch("zones_public", :expires_in => 1.day) do
+      Zone.find_all_by_user_id(0).to_yaml
+    end
+    @zones = YAML.load(zones_serial).paginate(:page => params[:page], :per_page => 5)
+  end
 end

@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'inherited_resources'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql'
