@@ -2,13 +2,11 @@ require 'spec_helper'
 
 describe Zone do
 
-  before(:all) do
-    @zone = Factory.build(:zone)
-    @zone.save
-  end
+  context "when working with zones" do
+    let(:zone) { Factory.create(:zone) }
 
-  it "should be able to create a new zone" do
-    @zone.should be_valid
+    it { should be_valid }
+    it { should respond_to :records }
   end
 
   it "should require origin to be unique" do
@@ -18,13 +16,10 @@ describe Zone do
     zone.errors[:origin].should == ["has already been taken"]
   end
 
-  it "should not update with invalid data" do
-    @zone.update_attributes({:ttl => 'kasjdfkhd'})
-    @zone.should_not be_valid
-  end
+#  it "should not update with invalid data" do
+#    @zone.update_attributes({:ttl => 'kasjdfkhd'})
+#    @zone.should_not be_valid
+#  end
 
-  after(:all) do
-    @zone.destroy
-  end
 
 end
